@@ -1,8 +1,8 @@
 /* Escapada a Banyoles: guarda la app en el móvil para usarla sin internet */
-const V = "eb-escapada-banyoles-v21", T = "eb-escapada-banyoles-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+const V = "eb-escapada-banyoles-v22", T = "eb-escapada-banyoles-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
   "fotos/lago.jpg", "fotos/auto.webp", "fotos/ic-auto.webp", "fotos/ic-casa.webp", "fotos/ic-corazon.webp", "fotos/ic-paraguas.webp", "fotos/ic-mochila.webp", "fotos/ic-parking.webp", "fotos/ic-lago.webp", "fotos/ic-plaza.webp", "fotos/ic-iglesia.webp", "fotos/ic-atardecer.webp", "fotos/ic-bocadillo.webp", "fotos/ic-tortada.webp", "fotos/plaza.jpg", "fotos/monasterio.jpg", "fotos/porqueres.jpg",
-  "fotos/grupo/javier3.webp", "fotos/grupo/flaco4.webp", "fotos/grupo/pilar1.webp", "fotos/grupo/flaco-cab.webp", "fotos/grupo/pilar-cab.webp", "fotos/grupo/ramon4.webp", "fotos/grupo/elisabeth3.webp",
+  "fotos/grupo/javier3.webp", "fotos/grupo/flaco4.webp", "fotos/grupo/pilar1.webp", "fotos/grupo/flaco-cab.webp", "fotos/grupo/pilar-cab2.webp", "fotos/grupo/ramon4.webp", "fotos/grupo/elisabeth3.webp",
   "fotos/tiempo/sol.png", "fotos/tiempo/solnube.png", "fotos/tiempo/nubes.png", "fotos/tiempo/lluvia.png", "fotos/tiempo/tormenta.png",
   "fotos/comer/pedir.png", "fotos/comer/tapas.png", "fotos/comer/dulces.png", "fonts/marcellus.woff2"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(V).then(c => Promise.allSettled(FILES.map(f => fetch(new Request(f, { cache: "reload" })).then(r => { if (r.ok) return c.put(f, r); })))).then(() => self.skipWaiting())); });
@@ -12,6 +12,6 @@ self.addEventListener("fetch", e => {
   if (/tile\.openstreetmap\.org/.test(r.url)) { e.respondWith(caches.open(T).then(c => c.match(r.url).then(m => m || fetch(r).then(res => { if (res.ok) c.put(r.url, res.clone()); return res; }).catch(() => new Response("", { status: 504 }))))); return; }
   const font = /fonts\.(googleapis|gstatic)\.com/.test(r.url);
   if (new URL(r.url).origin !== location.origin && !font) return;
-  if (r.mode === "navigate") { e.respondWith(fetch(r.url, { cache: "no-cache" }).then(res => { const c = res.clone(); caches.open(V).then(x => x.put(r, c)); return res; }).catch(() => caches.match(r).then(m => m || caches.match("index.html")))); return; }
-  e.respondWith(caches.match(r).then(m => m || fetch(r).then(res => { const c = res.clone(); caches.open(V).then(x => x.put(r, c)); return res; })));
+  if (r.mode === "navigate") { e.respondWith(fetch(r.url, { cache: "no-cache" }).then(res => { if (res.ok) { const c = res.clone(); caches.open(V).then(x => x.put(r, c)); } return res; }).catch(() => caches.match(r).then(m => m || caches.match("index.html")))); return; }
+  e.respondWith(caches.match(r).then(m => m || fetch(r).then(res => { if (res.ok) { const c = res.clone(); caches.open(V).then(x => x.put(r, c)); } return res; })));
 });
