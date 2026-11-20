@@ -1212,7 +1212,7 @@ body{font-size:17px}
 .lleg .rueda img{display:block;width:100%;height:100%;animation:gira 10s cubic-bezier(.25,.6,.3,1) infinite}
 .lleg .w1{left:58.5px;top:58.5px;width:22.4px;height:22.4px;transform:scaleX(.709)}
 .lleg .w2{left:128.6px;top:53.4px;width:20.4px;height:20.4px;transform:scaleX(.52)}
-@keyframes gira{0%{transform:rotate(0)}48%{transform:rotate(-2160deg)}52%,100%{transform:rotate(-2200deg)}}
+@keyframes gira{0%{transform:rotate(0)}48%,100%{transform:rotate(var(--giro,-900deg))}}
 @keyframes bache{0%,2%,6%,10%,14%,18%,22%,26%,30%,34%,38%,42%,46%{transform:translateY(0)}4%,12%,20%,28%,36%,44%{transform:translateY(-1.5px) rotate(-.4deg)}8%,16%,24%,32%,40%{transform:translateY(-.5px) rotate(.3deg)}48%,50%{transform:rotate(1.2deg)}53%,100%{transform:none}}
 .lleg .cab{position:absolute;left:47px;bottom:27px;display:flex;gap:2px;z-index:2;animation:salto 10s ease-in-out infinite}
 .lleg .cab img{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1.5px solid #fff;background:#fff}
@@ -1672,6 +1672,9 @@ function lineaHTML(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-9;
   return `<div class="lhead"><span class="lbad">B1</span><b>Badalona – Banyoles</b><small>sábado 21 · ${ST.length} paradas</small></div><ol class="lst">${ST.map((s,i)=>{
     const auto=s.dir||i===ST.length-1;const tramo=i<ST.length-1?(ST[i].dir||ST[i+1].dir?"auto":"pie"):"";
     return `<li class="${i===k?"now ":""}${i<k?"past ":""}${tramo?"t-"+tramo:"fin"}"><button type="button" data-stop="${i}"><span class="lh">${s.h}</span><span class="ld"><i></i></span><span class="ln2"><b>${esc(s.n)}</b><small>${i===k?"ahora · ":""}${esc(s.dur)}</small></span></button>${tramo==="auto"?`<span class="ltr">${ico("car",2)} en auto · ${i===0?"AP-7 y C-66":"de vuelta a casa"}</span>`:""}</li>`}).join("")}</ol>`}
+
+/* ruedas: giran exactamente lo que avanza el auto (ángulo = distancia / radio) */
+{const R=15.5,FIN_X=138;const ruedas=()=>{const l=$("lleg");if(!l)return;const D=Math.max(0,innerWidth-20-FIN_X);l.style.setProperty("--giro",(-D/R*180/Math.PI).toFixed(1)+"deg")};ruedas();addEventListener("resize",ruedas)}
 /* ---------- navegación ---------- */
 let pendStop=null,pendPt=null,pendJump=null;
 const go=h=>{if(location.hash.slice(1)===h)route_();else location.hash=h};
