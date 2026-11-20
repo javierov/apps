@@ -1360,7 +1360,7 @@ html,body{touch-action:pan-x pan-y}
 </section>
 
 <section id="s-mapa" hidden>
-  <div class="sheet" style="margin-top:0;border-top:0"><div class="box blk lin" id="linea"></div><h2>Mapa de calles</h2>
+  <div class="sheet" style="margin-top:0;border-top:0"><h2>Mapa</h2>
     <div class="box mapbox" id="mapbox">
       <div class="chips" id="mapchips"></div>
       <div class="mapw" id="mapw"><div class="mapoff" id="mapoff" hidden>Sin señal: las calles aparecerán con conexión. ✕</div><div class="memsg" id="memsg" role="status" hidden></div></div>
@@ -1693,7 +1693,7 @@ function route_(){
   const id=["mapa","comer"].includes(h)?h:"viaje";show(id);
   if(id==="viaje"){renderHome();if(pendStop!==null){openStop(pendStop);pendStop=null}else if(pendJump){const el=$(pendJump);pendJump=null;setTimeout(()=>goTo(el,140),80)}else window.scrollTo({top:0});requestAnimationFrame(()=>{window.etFitTitle&&window.etFitTitle();fitCar()});document.fonts&&document.fonts.ready.then(fitCar)}
   if(id==="comer"){renderR();window.scrollTo({top:0})}
-  if(id==="mapa"){$("linea").innerHTML=lineaHTML();if(!pendPt)window.scrollTo({top:0});drawMap(pendPt);if(pendPt){const el=$("mapbox");setTimeout(()=>goTo(el,70),50)}pendPt=null}}
+  if(id==="mapa"){if(!pendPt)window.scrollTo({top:0});drawMap(pendPt);if(pendPt){const el=$("mapbox");setTimeout(()=>goTo(el,70),50)}pendPt=null}}
 window.addEventListener("hashchange",route_);
 document.querySelectorAll("[data-ic]").forEach(e=>e.outerHTML=ico(e.dataset.ic,2));
 route_();fixImgs(document);loadWx();loadVia();if(dirV()&&!dirLL())geoFlaco();
