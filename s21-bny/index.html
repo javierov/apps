@@ -1483,7 +1483,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-gi]");if(!
   if(gp.classList.contains("habla")){gp.classList.remove("habla");clearTimeout(FRt);return}
   document.querySelectorAll(".gp.habla").forEach(x=>x.classList.remove("habla"));
   d.textContent=FR[i][FRi[i]++%FR[i].length];gp.classList.remove("habla");void gp.offsetWidth;gp.classList.add("habla");
-  clearTimeout(FRt);FRt=setTimeout(()=>gp.classList.remove("habla"),3000)});
+  clearTimeout(FRt);FRt=setTimeout(()=>gp.classList.remove("habla"),1500)});
 document.addEventListener("click",e=>{if(e.target.closest("#senbtn")){const v=prompt("¿Cómo se llama la señora del Flaco?",LS("senora")||"");if(v!==null){SS("senora",v.trim());grupo()}}});
 /* ---------- tiempo del viernes (Open-Meteo) ---------- */
 const WIMG=c=>c===0?"sol":c<=2?"solnube":c<=48?"nubes":c<=67?"lluvia":c<=82?"lluvia":c<=86?"nubes":"tormenta";
