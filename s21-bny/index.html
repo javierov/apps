@@ -1394,21 +1394,21 @@ const FDIR="Urb. Puig de Fontpudosa, 23, 17820 Banyoles",FLL=[42.11155,2.75638];
 const BANY=[42.1185,2.7655],BDN=[41.4500,2.2474];
 /* plan del día: hora aproximada, minuto del día, nombre, icono, lat, lon, búsqueda en Maps, qué es, consejo, duración, foto */
 const ST=[
- {h:"9:30",m:570,n:"Salida de Badalona",ico:"auto",ic:"car",la:BDN[0],lo:BDN[1],q:"Banyoles",dir:1,
-  t:"Ramón y Elisabeth te pasan a buscar. Son unos 120 km y 1 h 20 min por la AP-7 hasta la salida 6 (Girona Nord) y después la C-66 hasta Banyoles.",
+ {h:"8:00",m:480,n:"Salida de Badalona",ico:"auto",ic:"car",la:BDN[0],lo:BDN[1],q:"Banyoles",dir:1,
+  t:"Ramón y Elisabeth te pasan a buscar a las 8:00 en punto. Son unos 120 km y 1 h 20 min por la AP-7 hasta la salida 6 (Girona Nord) y después la C-66 hasta Banyoles.",
   tip:"Si quieren parar a tomar un café, el área de servicio del Montseny queda más o menos a mitad de camino.",dur:"1 h 20 min"},
- {h:"11:00",m:660,n:"Aparcar junto al lago",ico:"parking",ic:"pin",la:42.1273,lo:2.7618,q:"Aparcament Passeig de la Draga Banyoles",
+ {h:"9:30",m:570,n:"Aparcar junto al lago",ico:"parking",ic:"pin",la:42.1273,lo:2.7618,q:"Aparcament Passeig de la Draga Banyoles",
   t:"Hay estacionamiento gratis al lado del lago, en el Passeig de la Draga (unas 50 plazas, con mesas de pícnic y fuentes de agua). Otra opción es el Passeig Darder, también junto al agua.",
   tip:"Si el del Passeig de la Draga está lleno, prueben en el Passeig Darder o en las calles de zona blanca, que son gratuitas.",dur:"10 min"},
- {h:"11:10",m:670,n:"Paseo por el lago y las pesqueras",ico:"lago",ic:"walk",la:42.1165,lo:2.7622,q:"Passeig Darder Banyoles",
+ {h:"9:40",m:580,n:"Paseo por el lago y las pesqueras",ico:"lago",ic:"walk",la:42.1165,lo:2.7622,q:"Passeig Darder Banyoles",
   t:"El lago de Banyoles es el lago natural más grande de Cataluña. Por la orilla hay unas veinte «pesqueras»: casetas del siglo XIX junto al agua, con su muellecito, que se usaban para pescar y bañarse.",
-  tip:"La vuelta entera al lago son unos 6,5 km, algo más de una hora caminando y casi plana. Si no les tinca tanto, basta con el tramo de las pesqueras, por el Passeig Darder.",dur:"1 h",img:"lago"},
- {h:"12:15",m:735,n:"Plaça Major",ico:"plaza",ic:"cup",la:42.11807,lo:2.76538,q:"Plaça Major Banyoles",
-  t:"La plaza de soportales del siglo XIII, con sus arcos de piedra y plátanos enormes. Es el corazón del pueblo; los sábados hay algunos puestos de fruta y verdura.",
-  tip:"Si van a comprar algo para el almuerzo, háganlo aquí antes de las 13:30: la panadería Carbó, en esta misma plaza, cierra al mediodía.",dur:"30 min",img:"plaza",go:"comer"},
- {h:"12:45",m:765,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
+  tip:"La vuelta entera al lago son unos 6,5 km, algo más de una hora caminando y casi plana. Como llegan temprano, hay tiempo para la vuelta entera. Si no les tinca tanto, basta con el tramo de las pesqueras, por el Passeig Darder.",dur:"1 h 30 min",img:"lago"},
+ {h:"11:15",m:675,n:"Plaça Major",ico:"plaza",ic:"cup",la:42.11807,lo:2.76538,q:"Plaça Major Banyoles",
+  t:"La plaza de soportales del siglo XIII, con sus arcos de piedra y plátanos enormes. Es el corazón del pueblo; los sábados hay algunos puestos de fruta y verdura. Buen momento para un café bajo los soportales.",
+  tip:"Si van a comprar algo para el almuerzo, háganlo aquí antes de las 13:30: la panadería Carbó, en esta misma plaza, cierra al mediodía.",dur:"1 h",img:"plaza",go:"comer"},
+ {h:"12:30",m:750,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
   t:"El monasterio benedictino de Sant Esteve se fundó en el año 812 y de él nació el pueblo. Por el camino: la iglesia gótica de Santa Maria dels Turers, la plaza de la Font y la muralla.",
-  tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"30 min",img:"monasterio"},
+  tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"45 min",img:"monasterio"},
  {h:"13:30",m:810,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",flaco:1,
   t:"A la casa del Flaco y Pilar, en la urbanización Puig de Fontpudosa, a cerca de 1 km al sur del centro y del lago. El botón «Cómo llegar en auto» los lleva hasta la puerta.",
   tip:"Si al final hacen pícnic, el Passeig de la Draga tiene mesas de piedra y fuentes, justo al lado del lago.",dur:"2 h 30 min"},
@@ -1475,7 +1475,7 @@ const BN=[["lago","EL LAGO"],["plaza","PLAÇA MAJOR"],["monasterio","SANT ESTEVE
 $("bnr").innerHTML=BN.map(([f])=>`<div class="bs">${ph(f)}</div>`).join("")+BN.map(([,n])=>`<span class="cn">${n}</span>`).join("")+`<i class="via"></i><svg class="trn" viewBox="0 0 64 30" aria-hidden="true"><g transform="translate(64 0) scale(-1 1)"><path d="M4 22V15l6-2 6-7h22l10 7 10 1.5c2 .4 3 1.6 3 3.5V22Z" fill="#6f7d4c"/><path d="M19 8h8v6H13zM30 8h6.5l7 6H30z" fill="#d6ebf5"/><path d="M4 18h56" stroke="#4e5a33" stroke-width="2.4"/><circle cx="16" cy="23" r="4.6" fill="#1b1f27" stroke="#fff" stroke-width="2"/><circle cx="48" cy="23" r="4.6" fill="#1b1f27" stroke="#fff" stroke-width="2"/></g></svg>`;
 
 /* ---------- fotos grandes de la portada ---------- */
-const CARS=[["lago","El lago","El lago natural más grande de Cataluña",2],["plaza","Plaça Major","12:15 · soportales del siglo XIII",3],["monasterio","Sant Esteve","12:45 · el monasterio del año 812",4],["porqueres","Santa Maria de Porqueres","16:15 · románica, junto al agua",6]];
+const CARS=[["lago","El lago","El lago natural más grande de Cataluña",2],["plaza","Plaça Major","11:15 · soportales del siglo XIII",3],["monasterio","Sant Esteve","12:30 · el monasterio del año 812",4],["porqueres","Santa Maria de Porqueres","16:15 · románica, junto al agua",6]];
 $("car").innerHTML=CARS.map(([f,n,t,k])=>`<button type="button" class="cc" data-stop="${k}" aria-label="${n}">${ph(f,"scrim")}<span class="tx"><b>${n}</b><span>${t}</span></span></button>`).join("");
 $("dots").innerHTML=CARS.map(()=>"<i></i>").join("");
 function carState(){const car=$("car"),cs=[...car.children],x=car.scrollLeft;let k=0,best=1e9;cs.forEach((c,i)=>{const dd=Math.abs(c.offsetLeft-car.firstElementChild.offsetLeft-x);if(dd<best){best=dd;k=i}});
@@ -1494,12 +1494,12 @@ function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
   const G0=h>=6&&h<13?"Buenos días":h>=13&&h<20?"Buenas tardes":"Buenas noches";
   const head=(i,tx)=>`<div class="box hoy"><h3 class="bh"><span class="bi">${ico(i,2)}</span>${tx}</h3>`;
   if(f.p==="before")return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">${f.left===1?"Mañana, sábado 21":"El sábado 21 de noviembre"}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} es la escapada a Banyoles con Ramón, Elisabeth y el Flaco.</p>
-    <ul class="list"><li><span class="ic">${ico("car")}</span><span>Salida en auto desde Badalona, más o menos a las 9:30.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: la dirección ya está en «Casa del Flaco».</span></li></ul>
+    <ul class="list"><li><span class="ic">${ico("car")}</span><span>Te pasan a buscar a las 8:00 en punto, en auto desde Badalona.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: la dirección ya está en «Casa del Flaco».</span></li></ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button><button class="btn ghost" type="button" data-jump="flaco">Casa del Flaco</button></div></div>`;
   if(f.p==="after")return head("heart",`¡Hola, ${esc(NOMBRE)}!`)+`<p class="hl3">Ojalá Banyoles haya estado buenísimo.</p><p class="note">Aquí queda guardado el plan del sábado 21, por si quieres volver a mirarlo.</p></div>`;
   const m=f.t.m,k=curIdx(m);
   if(m>=FIN)return head("moon",`${G0}, ${esc(NOMBRE)}`)+`<p class="hl3">Se acabó la escapada. ¡Buen viaje de vuelta a Badalona!</p></div>`;
-  if(k<0)return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">¡Hoy es el día! Salen hacia las 9:30.</p>
+  if(k<0)return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">¡Hoy es el día! Te pasan a buscar a las 8:00 en punto.</p>
     <ul class="list"><li><span class="ic">${ico("case")}</span><span>Chaqueta, zapatillas cómodas y el celular cargado.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: «Casa del Flaco» tiene el botón para llegar.</span></li></ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button><button class="btn ghost" type="button" data-jump="flaco">Casa del Flaco</button></div></div>`;
   const s=ST[k],nx=ST[k+1],q=s.flaco?flacoQ():s.q,u=s.dir||s.flaco?dirUrl(q):map(q);
