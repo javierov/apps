@@ -1271,6 +1271,26 @@ body{font-size:17px}
 .gp.habla .dice{opacity:1;transform:none}
 .gp.habla .gt{opacity:.25;transition:opacity .25s}
 @media (prefers-reduced-motion:reduce){.ga,.gp .dice{transition:none}}
+/* juego */
+.jbtn{width:100%;margin-top:14px;min-height:44px}
+.jgo{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;padding:16px;background:rgb(0 0 0/.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.jgo[hidden]{display:none}
+.jbox{width:min(440px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:16px;border-radius:20px;background:var(--bg);border:1px solid var(--line2);box-shadow:0 20px 50px rgb(0 0 0/.5)}
+.jtop{display:grid;grid-template-columns:auto minmax(0,1fr) 36px;gap:10px;align-items:center}
+.jtop b{font-family:"Cinzel",serif;font-size:20px;color:var(--title)}
+.jtop span{color:var(--soft);font-size:13.5px;text-align:right}
+.jx{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1px solid var(--line2);background:none;color:var(--ink);cursor:pointer}
+.jfr{margin:18px 0 16px;padding:16px 16px;border-radius:18px 18px 18px 4px;background:var(--btn);color:var(--btnInk);font-size:20px;font-weight:700;line-height:1.35;text-align:center}
+.jcaras{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.jc{display:grid;justify-items:center;gap:4px;padding:8px 4px;border-radius:16px;border:1px solid var(--line);background:var(--fill);color:var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:transform .15s}
+.jc:active{transform:scale(.95)}
+.jc img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+.jc.ok{border-color:#3fbf7f;background:rgb(63 191 127/.18)}
+.jc.mal{border-color:#e0574c;background:rgb(224 87 76/.18);animation:jmal .35s}
+@keyframes jmal{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.jmsg{min-height:24px;margin:12px 0 0;text-align:center;font-weight:700;font-size:16px}
+.jfin{margin:20px 0;text-align:center;font-size:17px;line-height:1.5}.jfin b{display:block;font-family:"Cinzel",serif;font-size:40px;color:var(--title);margin-bottom:6px}
+.jbox .acts{display:flex;gap:10px}.jbox .acts .btn{flex:1}
 </style>
 </head>
 <body>
@@ -1298,7 +1318,7 @@ body{font-size:17px}
   <div class="pad">
     <div class="box blk wxb" id="wxbox"></div>
     <div class="box blk" id="flaco"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt="">Casa del Flaco</h3><div id="dirbox"></div></div>
-    <div class="box blk" id="grupo"><h3 class="bh"><img class="bic" src="fotos/ic-corazon.webp" alt="">La pandilla de hoy</h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Toca una cara: cada uno tiene algo que decir.</p><div class="grp" id="grp"></div></div>
+    <div class="box blk" id="grupo"><h3 class="bh"><img class="bic" src="fotos/ic-corazon.webp" alt="">La pandilla de hoy</h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Toca una cara: cada uno tiene algo que decir.</p><div class="grp" id="grp"></div><button type="button" class="btn jbtn" id="jOpen">¿Quién lo dijo? · Jugar</button></div>
     <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px">Las horas son aproximadas: es un día para ir sin apuro. Todo el paseo por el pueblo y el lago es gratis.</p>
     <div id="route"></div>
@@ -1484,6 +1504,25 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-gi]");if(!
   document.querySelectorAll(".gp.habla").forEach(x=>x.classList.remove("habla"));
   d.textContent=FR[i][FRi[i]++%FR[i].length];gp.classList.remove("habla");void gp.offsetWidth;gp.classList.add("habla");
   clearTimeout(FRt);FRt=setTimeout(()=>gp.classList.remove("habla"),1000)});
+
+/* juego «¿Quién lo dijo?» con las frases de la pandilla */
+{const N=8;let Q=[],k=0,pts=0,lock=false;
+ const img=i=>{const f=GR[i][2];return f?`fotos/grupo/${f.includes("@")?f.replace("@",""):f+"2"}.webp`:""};
+ function start(){const all=[];FR.forEach((a,i)=>a.forEach(t=>all.push([t,i])));for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]]}Q=all.slice(0,N);k=0;pts=0;show()}
+ function show(){lock=false;$("jsc").textContent=`${k+1} de ${N} · ${pts} ${pts===1?"punto":"puntos"}`;const [t]=Q[k];
+  $("jbody").innerHTML=`<p class="jfr">«${esc(t)}»</p><div class="jcaras">${GR.map((g,i)=>`<button type="button" class="jc" data-jc="${i}"><img src="${img(i)}" alt=""><span>${esc(g[0].replace(" Arellano",""))}</span></button>`).join("")}</div><p class="jmsg" id="jmsg"></p>`}
+ function fin(){const m=pts===N?"¡Perfecto! Conoces a la pandilla de memoria.":pts>=6?"¡Muy bien! Se nota que son amigos de verdad.":pts>=3?"Nada mal… pero hay que conversar más en el auto.":"Mmm… ¿seguro que son tus amigos?";
+  $("jsc").textContent="";$("jbody").innerHTML=`<p class="jfin"><b>${pts} de ${N}</b>${esc(m)}</p><div class="acts"><button type="button" class="btn" id="jAgain">Jugar otra vez</button><button type="button" class="btn ghost" id="jEnd">Volver</button></div>`}
+ function open(){$("jgo").hidden=false;document.body.style.overflow="hidden";start()}
+ function close(){$("jgo").hidden=true;document.body.style.overflow=""}
+ document.addEventListener("click",e=>{
+  if(e.target.closest("#jOpen")){open();return}
+  if(e.target.closest("#jClose")||e.target.closest("#jEnd")||e.target.id==="jgo"){close();return}
+  if(e.target.closest("#jAgain")){start();return}
+  const b=e.target.closest("[data-jc]");if(!b||lock)return;lock=true;const i=+b.dataset.jc,ok=i===Q[k][1];
+  if(ok){pts++;b.classList.add("ok");$("jmsg").textContent="¡Bien!"}else{b.classList.add("mal");document.querySelector(`[data-jc="${Q[k][1]}"]`).classList.add("ok");$("jmsg").textContent=`No… lo dijo ${GR[Q[k][1]][0].replace(" Arellano","").replace(/^El /,"el ")}`}
+  setTimeout(()=>{k++;k<N?show():fin()},ok?900:1600)});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("jgo").hidden)close()})}
 document.addEventListener("click",e=>{if(e.target.closest("#senbtn")){const v=prompt("¿Cómo se llama la señora del Flaco?",LS("senora")||"");if(v!==null){SS("senora",v.trim());grupo()}}});
 /* ---------- tiempo del viernes (Open-Meteo) ---------- */
 const WIMG=c=>c===0?"sol":c<=2?"solnube":c<=48?"nubes":c<=67?"lluvia":c<=82?"lluvia":c<=86?"nubes":"tormenta";
@@ -1714,4 +1753,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
   setInterval(()=>{if(document.visibilityState!=="visible")return;sec+=5;const m=sec/60;if(MARKS.includes(m))ev("usó "+m+" min")},5000);
 })();
 </script>
+<div class="jgo" id="jgo" role="dialog" aria-modal="true" aria-label="Juego ¿Quién lo dijo?" hidden><div class="jbox">
+  <div class="jtop"><b>¿Quién lo dijo?</b><span id="jsc"></span><button type="button" class="jx" id="jClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div id="jbody"></div></div></div>
 </body></html>
