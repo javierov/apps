@@ -1305,6 +1305,7 @@ body{font-size:17px}
 const NOMBRE="Javier",Y=2026,M=10,DIA=21,FIN=20*60+30;
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const dirUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
+const FDIR="Urb. Puig de Fontpudosa, 23, 17820 Banyoles",FLL=[42.11155,2.75638];
 const BANY=[42.1185,2.7655],BDN=[41.4500,2.2474];
 /* plan del día: hora aproximada, minuto del día, nombre, icono, lat, lon, búsqueda en Maps, qué es, consejo, duración, foto */
 const ST=[
@@ -1323,8 +1324,8 @@ const ST=[
  {h:"12:45",m:765,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
   t:"El monasterio benedictino de Sant Esteve se fundó en el año 812 y de él nació el pueblo. Por el camino: la iglesia gótica de Santa Maria dels Turers, la plaza de la Font y la muralla.",
   tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"30 min",img:"monasterio"},
- {h:"13:30",m:810,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:null,lo:null,q:"",flaco:1,
-  t:"A la casa del Flaco y Pilar. La dirección se escribe arriba, en «Casa del Flaco», y con eso el botón «Cómo llegar» los lleva en auto hasta la puerta.",
+ {h:"13:30",m:810,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",flaco:1,
+  t:"A la casa del Flaco y Pilar, en la urbanización Puig de Fontpudosa, a cerca de 1 km al sur del centro y del lago. El botón «Cómo llegar en auto» los lleva hasta la puerta.",
   tip:"Si al final hacen pícnic, el Passeig de la Draga tiene mesas de piedra y fuentes, justo al lado del lago.",dur:"2 h 30 min"},
  {h:"16:15",m:975,n:"Santa Maria de Porqueres",ico:"atardecer",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",
   t:"Una iglesia románica pequeñita del siglo XII, al otro lado del lago, rodeada de pasto y árboles. En auto son 5 minutos; caminando por la orilla, unos 30.",
@@ -1362,7 +1363,7 @@ const R=[
  ["Can Japet","dulce","€","Panadería de la plaza de la Font. Su especialidad es el «cargol de Banyoles», un caracol de masa crujiente con chocolate.","Forn de pa Can Japet Plaça de la Font 5 Banyoles","Plaça de la Font, 5",42.1188,2.7667],
  ["Fleca Padrés","dulce","€","Su pastelero ganó el concurso al mejor xuixo del mundo: un dulce relleno de crema y frito, típico de Girona.","Fleca Pastisseria Padrés Carrer Major 30 Banyoles","Carrer Major, 30",null,null]];
 const PLATOS=[["cake","<b>Tortada banyolina</b>: bizcocho finísimo con azúcar glas, receta del siglo XIX. Se compra en Carbó."],["cake","<b>Cargol de Banyoles</b> (Can Japet) y <b>cansalada de la Puda</b> (Figueras)."],["cake","<b>Xuixo</b>: el dulce frito relleno de crema de la zona de Girona."]];
-const TAREAS=[["dir","Pedirle al Flaco la dirección y escribirla en «Casa del Flaco»"],["abrigo","Chaqueta: junto al lago la mañana es fresca"],["zapatos","Zapatillas cómodas para caminar por la orilla"],["efectivo","Algo de efectivo para los puestos de la plaza"],["bateria","Celular cargado (y el cargador del auto)"]];
+const TAREAS=[["regalo","Algo para llevar a la casa del Flaco y Pilar (la tortada de Carbó es buena idea)"],["abrigo","Chaqueta: junto al lago la mañana es fresca"],["zapatos","Zapatillas cómodas para caminar por la orilla"],["efectivo","Algo de efectivo para los puestos de la plaza"],["bateria","Celular cargado (y el cargador del auto)"]];
 const TREN=[["car","Unos <b>120 km y 1 h 20 min</b>: AP-7 hacia Girona, salida 6 (Girona Nord), y la C-66 hasta Banyoles."],["ticket","La AP-7 ya no tiene peajes en este tramo."],["pin","<b>Estacionamiento gratis</b> junto al lago: Passeig de la Draga (unas 50 plazas) y Passeig Darder."],["info","Al llegar, para ir a la casa del Flaco usen el botón «Cómo llegar» de «Casa del Flaco»: abre Google Maps con la ruta en auto."]];
 /* la pandilla: nombre, quién es, archivo de caricatura, color */
 const GR=[["Javier","Chileno · el de la app","javier@3",'#3f6fd8'],["Ramón","Catalán · al volante","ramon@3","#2f9e6e"],["Elisabeth","De Honduras · la sonrisa del grupo","elisabeth@3","#d9822b"],["El Flaco Arellano","Chileno · el anfitrión en Banyoles","flaco@4","#8a5cc7"],["Pilar","Catalana · la anfitriona","pilar@1","#c94f7c"]];
@@ -1408,13 +1409,13 @@ function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
   const G0=h>=6&&h<13?"Buenos días":h>=13&&h<20?"Buenas tardes":"Buenas noches";
   const head=(i,tx)=>`<div class="box hoy"><h3 class="bh"><span class="bi">${ico(i,2)}</span>${tx}</h3>`;
   if(f.p==="before")return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">${f.left===1?"Mañana, sábado 21":"El sábado 21 de noviembre"}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} es la escapada a Banyoles con Ramón, Elisabeth y el Flaco.</p>
-    <ul class="list"><li><span class="ic">${ico("car")}</span><span>Salida en auto desde Badalona, más o menos a las 9:30.</span></li><li><span class="ic">${ico("home")}</span><span>Cuando el Flaco te pase la dirección, escríbela en «Casa del Flaco».</span></li></ul>
+    <ul class="list"><li><span class="ic">${ico("car")}</span><span>Salida en auto desde Badalona, más o menos a las 9:30.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: la dirección ya está en «Casa del Flaco».</span></li></ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button><button class="btn ghost" type="button" data-jump="flaco">Casa del Flaco</button></div></div>`;
   if(f.p==="after")return head("heart",`¡Hola, ${esc(NOMBRE)}!`)+`<p class="hl3">Ojalá Banyoles haya estado buenísimo.</p><p class="note">Aquí queda guardado el plan del sábado 21, por si quieres volver a mirarlo.</p></div>`;
   const m=f.t.m,k=curIdx(m);
   if(m>=FIN)return head("moon",`${G0}, ${esc(NOMBRE)}`)+`<p class="hl3">Se acabó la escapada. ¡Buen viaje de vuelta a Badalona!</p></div>`;
   if(k<0)return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">¡Hoy es el día! Salen hacia las 9:30.</p>
-    <ul class="list"><li><span class="ic">${ico("case")}</span><span>Chaqueta, zapatillas cómodas y el celular cargado.</span></li><li><span class="ic">${ico("home")}</span><span>¿Ya tienes la dirección del Flaco? Escríbela en «Casa del Flaco».</span></li></ul>
+    <ul class="list"><li><span class="ic">${ico("case")}</span><span>Chaqueta, zapatillas cómodas y el celular cargado.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: «Casa del Flaco» tiene el botón para llegar.</span></li></ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button><button class="btn ghost" type="button" data-jump="flaco">Casa del Flaco</button></div></div>`;
   const s=ST[k],nx=ST[k+1],q=s.flaco?flacoQ():s.q,u=s.dir||s.flaco?dirUrl(q):map(q);
   return head(h<13?"sunny":"walk",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">Ahora: ${esc(s.n)}</p>
@@ -1422,16 +1423,17 @@ function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
     ${nx?`<p class="nxt"><b>Hacia las ${nx.h}:</b> ${esc(nx.n)}</p>`:""}
     <div class="acts"><button class="btn" type="button" data-stop="${k}">Ver detalles</button>${q?`<a class="btn ghost" style="display:inline-grid;place-items:center;text-decoration:none" href="${u}" target="_blank" rel="noopener">Cómo llegar</a>`:""}</div></div>`}
 /* dirección del Flaco: se guarda en el teléfono */
-const flacoQ=()=>{const d=(LS("dir")||"").trim();return d?(/banyoles|porqueres|girona|\d{5}/i.test(d)?d:d+", Banyoles"):""};
-function dirBox(){const d=LS("dir")||"",ll=LS("dirll");
-  $("dirbox").innerHTML=`<p class="note" style="margin:0 0 10px">${d?"Dirección guardada en este celular:":"El Flaco te pasa la dirección mañana. Escríbela aquí y queda guardada en el celular."}</p>
+const dirV=()=>{const d=LS("dir");return d==null?FDIR:d},dirLL=()=>{const d=LS("dir");return d==null||d===FDIR?FLL:LS("dirll")};
+const flacoQ=()=>{const d=(dirV()||"").trim();return d?(/banyoles|porqueres|girona|\d{5}/i.test(d)?d:d+", Banyoles"):""};
+function dirBox(){const d=dirV()||"",ll=dirLL();
+  $("dirbox").innerHTML=`<p class="note" style="margin:0 0 10px">${d?"La dirección de la casa del Flaco y Pilar:":"Escribe la dirección aquí y queda guardada en el celular."}</p>
   <div class="dirf"><input id="dirin" type="text" inputmode="text" autocomplete="street-address" placeholder="Ej.: Carrer Major 10, Banyoles" value="${esc(d)}"><button type="button" class="btn" id="dirok">Guardar</button></div>
   ${d?`<div class="acts" style="margin-top:10px"><a class="btn" href="${dirUrl(flacoQ())}" target="_blank" rel="noopener" aria-label="Cómo llegar a casa del Flaco">Cómo llegar en auto</a><button type="button" class="btn ghost" id="dirmap"${ll?"":" disabled"}>${ll?"Ver en el mapa":"Buscando en el mapa…"}</button></div>`:""}`}
 async function geoFlaco(){const q=flacoQ();if(!q)return;try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=es&q="+encodeURIComponent(q));const j=await r.json();
-  if(j&&j[0]){SS("dirll",[+j[0].lat,+j[0].lon]);}else SS("dirll",null)}catch(e){SS("dirll",null)}if(!$("s-viaje").hidden){dirBox();const b=$("dirmap");if(b&&!LS("dirll")){b.textContent="No aparece en el mapa";}}}
+  if(j&&j[0]){SS("dirll",[+j[0].lat,+j[0].lon]);}else SS("dirll",null)}catch(e){SS("dirll",null)}if(!$("s-viaje").hidden){dirBox();const b=$("dirmap");if(b&&!dirLL()){b.textContent="No aparece en el mapa";}}}
 document.addEventListener("click",e=>{
   if(e.target.closest("#dirok")){const v=$("dirin").value.trim();SS("dir",v);SS("dirll",null);dirBox();if(v)geoFlaco();if(!$("s-viaje").hidden)$("nowbox").innerHTML=hoyBox();return}
-  if(e.target.closest("#dirmap")&&LS("dirll")){pendPt="f0";mk="all";location.hash="mapa"}});
+  if(e.target.closest("#dirmap")&&dirLL()){pendPt="f0";mk="all";location.hash="mapa"}});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="dirin"){e.preventDefault();$("dirok").click()}});
 /* la pandilla */
 function grupo(){const sn=LS("senora")||"";$("grp").innerHTML=GR.map(([n,t,f,c],i)=>{const nm=n,ini=nm.replace(/^El /,"").split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
@@ -1463,7 +1465,7 @@ function stopHTML(s,i,open,now){const fq=s.flaco?flacoQ():"",q=s.flaco?fq:s.q;
   const ln=[s.pr&&`<li><span class="ic">${ico("ticket")}</span><span>${esc(s.pr)}</span></li>`,s.hr&&`<li><span class="ic">${ico("cal")}</span><span>${esc(s.hr)}</span></li>`,s.tip&&`<li><span class="ic">${ico("heart")}</span><span>${esc(s.tip)}</span></li>`].filter(Boolean).join("");
   return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det">${s.img?`<div class="ph sphoto">${`<img src="fotos/${s.img}.jpg" alt="">`}</div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
-  <div class="acts">${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en auto</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&LS("dirll"))?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}</div></div></article>`}
+  <div class="acts">${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en auto</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}</div></div></article>`}
 function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();grupo();
   $("nowbox").innerHTML=hoyBox();
   $("route").innerHTML=ST.map((s,i)=>stopHTML(s,i,i===k,i===k)).join("");
@@ -1534,7 +1536,7 @@ function hideMe(){const m=$("memsg");if(!m)return;m.classList.remove("in");setTi
 function meControl(){const C=L.Control.extend({options:{position:"topright"},onAdd(){const b=L.DomUtil.create("button","mebtn");b.id="mebtn";b.type="button";b.setAttribute("aria-label","Dónde estoy");
   b.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>';b.title="Dónde estoy";
   L.DomEvent.disableClickPropagation(b);b.onclick=()=>{if(!meOn||WID==null)startMe();else if(ME)LM.setView(ME.getLatLng(),Math.max(LM.getZoom(),17))};return b}});LM.addControl(new C())}
-function pts(){const a=[];const fl=LS("dirll");if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:"Casa del Flaco",la:fl[0],lo:fl[1],lab:"F",sub:LS("dir")||"",q:flacoQ(),i:5});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
+function pts(){const a=[];const fl=dirLL();if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:"Casa del Flaco",la:fl[0],lo:fl[1],lab:"6",sub:`13:30 · almuerzo · ${dirV()||""}`,q:flacoQ(),i:5});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir||s.flaco)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
   if(mk==="all"||mk==="c")R.forEach((r,i)=>r[6]!=null&&a.push({id:"c"+i,k:"c",n:r[0],la:r[6],lo:r[7],lab:"",sub:r[5],q:r[4],i}));
   if(mk==="all"||mk==="n")RN.forEach((r,i)=>a.push({id:"n"+i,k:"n",n:r[0],la:r[3],lo:r[4],lab:"★",sub:`Rincón · cerca de la parada ${r[2]}`,q:r[5],i}));return a}
 function drawMap(focus){
@@ -1571,7 +1573,7 @@ function route_(){
   if(id==="mapa"){window.scrollTo({top:0});drawMap(pendPt);pendPt=null}}
 window.addEventListener("hashchange",route_);
 document.querySelectorAll("[data-ic]").forEach(e=>e.outerHTML=ico(e.dataset.ic,2));
-route_();fixImgs(document);loadWx();loadVia();if(LS("dir")&&!LS("dirll"))geoFlaco();
+route_();fixImgs(document);loadWx();loadVia();if(dirV()&&!dirLL())geoFlaco();
 /* cada minuto se actualiza «Hoy» durante el día del viaje */
 setInterval(()=>{if(!$("s-viaje").hidden&&!SIM&&phase().p==="day")$("nowbox").innerHTML=hoyBox()},60000);
 setInterval(loadWx,1800e3);
