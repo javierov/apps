@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b0c0f">
 <title>Escapada a Banyoles</title>
@@ -1317,6 +1317,9 @@ body{font-size:17px}
 .lst li.now .ln2 b{color:#d45aa8}
 @keyframes lnow{50%{box-shadow:0 0 0 3px #8a1d6b,0 0 0 14px rgb(138 29 107/0)}}
 @media (prefers-reduced-motion:reduce){.lst li.now .ld i{animation:none}}
+/* la app nunca se agranda con dos dedos: solo el mapa tiene zoom */
+html,body{touch-action:pan-x pan-y}
+#mapw,#mapw .leaflet-container{touch-action:pan-y}
 </style>
 </head>
 <body>
