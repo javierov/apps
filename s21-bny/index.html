@@ -1220,6 +1220,10 @@ body{font-size:17px}
 @keyframes salto{0%,50%{transform:none}55%{transform:translateY(-5px)}60%{transform:none}65%{transform:translateY(-4px)}70%,100%{transform:none}}
 @keyframes hola{0%,50%{opacity:0;transform:scale(.6)}54%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.lleg .auto{animation:none;transform:translateX(116px)}.lleg *{animation:none!important}.lleg .hola{opacity:1}}
+.bic{width:40px;height:40px;object-fit:contain;flex:none;margin:-8px 2px -8px -6px;filter:drop-shadow(0 2px 3px rgb(0 0 0/.35))}
+.day .t{position:relative;padding-right:50px;min-height:42px;display:flex;flex-direction:column;justify-content:center}
+.day .sic{position:absolute;right:0;top:50%;transform:translateY(-50%);width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 3px rgb(0 0 0/.35))}
+.bh .bim.bimi{object-fit:contain;background:none;box-shadow:none;border-radius:0;filter:drop-shadow(0 2px 4px rgb(0 0 0/.45))}
 </style>
 </head>
 <body>
@@ -1246,16 +1250,16 @@ body{font-size:17px}
   <div class="pad" id="nowbox"></div>
   <div class="pad">
     <div class="box blk wxb" id="wxbox"></div>
-    <div class="box blk" id="flaco"><h3 class="bh"><span class="bi"><i data-ic="home"></i></span>Casa del Flaco</h3><div id="dirbox"></div></div>
-    <div class="box blk" id="grupo"><h3 class="bh"><span class="bi"><i data-ic="heart"></i></span>La pandilla de hoy</h3><div class="grp" id="grp"></div></div>
+    <div class="box blk" id="flaco"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt="">Casa del Flaco</h3><div id="dirbox"></div></div>
+    <div class="box blk" id="grupo"><h3 class="bh"><img class="bic" src="fotos/ic-corazon.webp" alt="">La pandilla de hoy</h3><div class="grp" id="grp"></div></div>
     <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px">Las horas son aproximadas: es un día para ir sin apuro. Todo el paseo por el pueblo y el lago es gratis.</p>
     <div id="route"></div>
     <h2><span>Rincones que vale la pena</span><button type="button" data-mk2="n">Ver en el mapa</button></h2>
     <div class="box"><ul class="res" id="rincones"></ul></div>
-    <div class="box blk" id="lluvia"><h3 class="bh"><span class="bi"><i data-ic="umb"></i></span>Si llueve</h3><ul class="list" id="lluv"></ul></div>
-    <div class="box blk" id="antes"><h3 class="bh"><span class="bi"><i data-ic="case"></i></span>Antes de salir</h3><div id="tareas"></div></div>
-    <div class="box blk"><h3 class="bh"><span class="bi"><i data-ic="car"></i></span>El viaje en auto</h3><ul class="list" id="tren"></ul></div>
+    <div class="box blk" id="lluvia"><h3 class="bh"><img class="bic" src="fotos/ic-paraguas.webp" alt="">Si llueve</h3><ul class="list" id="lluv"></ul></div>
+    <div class="box blk" id="antes"><h3 class="bh"><img class="bic" src="fotos/ic-mochila.webp" alt="">Antes de salir</h3><div id="tareas"></div></div>
+    <div class="box blk"><h3 class="bh"><img class="bic" src="fotos/ic-auto.webp" alt="">El viaje en auto</h3><ul class="list" id="tren"></ul></div>
   </div>
 </section>
 
@@ -1271,7 +1275,7 @@ body{font-size:17px}
 <section id="s-comer" hidden>
   <div class="ptl"><h1>Comer y comprar</h1><p>Para llevar al almuerzo, el bocadillo de la tarde y los dulces del pueblo.</p></div>
   <div class="pad">
-    <div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/comer/dulces.png)"><img class="bim" src="fotos/comer/dulces.png" alt="">Qué probar</h3><ul class="list" id="platos"></ul></div>
+    <div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/ic-tortada.webp)"><img class="bim bimi" src="fotos/ic-tortada.webp" alt="">Qué probar</h3><ul class="list" id="platos"></ul></div>
     <div id="rlist"></div>
     <p class="note" style="margin-top:14px;font-size:13px">€ económico · €€ algo más. Los horarios cambian: mejor mirarlos en Google Maps antes de ir. Los lunes muchas panaderías cierran, pero el sábado abren.</p></div>
 </section>
@@ -1293,31 +1297,31 @@ const dirUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&desti
 const BANY=[42.1185,2.7655],BDN=[41.4500,2.2474];
 /* plan del día: hora aproximada, minuto del día, nombre, icono, lat, lon, búsqueda en Maps, qué es, consejo, duración, foto */
 const ST=[
- {h:"9:30",m:570,n:"Salida de Badalona",ic:"car",la:BDN[0],lo:BDN[1],q:"Banyoles",dir:1,
+ {h:"9:30",m:570,n:"Salida de Badalona",ico:"auto",ic:"car",la:BDN[0],lo:BDN[1],q:"Banyoles",dir:1,
   t:"Ramón y Elisabeth te pasan a buscar. Son unos 120 km y 1 h 20 min por la AP-7 hasta la salida 6 (Girona Nord) y después la C-66 hasta Banyoles.",
   tip:"Si quieren parar a tomar un café, el área de servicio del Montseny queda más o menos a mitad de camino.",dur:"1 h 20 min"},
- {h:"11:00",m:660,n:"Aparcar junto al lago",ic:"pin",la:42.1273,lo:2.7618,q:"Aparcament Passeig de la Draga Banyoles",
+ {h:"11:00",m:660,n:"Aparcar junto al lago",ico:"parking",ic:"pin",la:42.1273,lo:2.7618,q:"Aparcament Passeig de la Draga Banyoles",
   t:"Hay estacionamiento gratis al lado del lago, en el Passeig de la Draga (unas 50 plazas, con mesas de pícnic y fuentes de agua). Otra opción es el Passeig Darder, también junto al agua.",
   tip:"Si el del Passeig de la Draga está lleno, prueben en el Passeig Darder o en las calles de zona blanca, que son gratuitas.",dur:"10 min"},
- {h:"11:10",m:670,n:"Paseo por el lago y las pesqueras",ic:"walk",la:42.1165,lo:2.7622,q:"Passeig Darder Banyoles",
+ {h:"11:10",m:670,n:"Paseo por el lago y las pesqueras",ico:"lago",ic:"walk",la:42.1165,lo:2.7622,q:"Passeig Darder Banyoles",
   t:"El lago de Banyoles es el lago natural más grande de Cataluña. Por la orilla hay unas veinte «pesqueras»: casetas del siglo XIX junto al agua, con su muellecito, que se usaban para pescar y bañarse.",
   tip:"La vuelta entera al lago son unos 6,5 km, algo más de una hora caminando y casi plana. Si no les tinca tanto, basta con el tramo de las pesqueras, por el Passeig Darder.",dur:"1 h",img:"lago"},
- {h:"12:15",m:735,n:"Plaça Major",ic:"cup",la:42.11807,lo:2.76538,q:"Plaça Major Banyoles",
+ {h:"12:15",m:735,n:"Plaça Major",ico:"plaza",ic:"cup",la:42.11807,lo:2.76538,q:"Plaça Major Banyoles",
   t:"La plaza de soportales del siglo XIII, con sus arcos de piedra y plátanos enormes. Es el corazón del pueblo; los sábados hay algunos puestos de fruta y verdura.",
   tip:"Si van a comprar algo para el almuerzo, háganlo aquí antes de las 13:30: la panadería Carbó, en esta misma plaza, cierra al mediodía.",dur:"30 min",img:"plaza",go:"comer"},
- {h:"12:45",m:765,n:"Barrio Viejo y monasterio de Sant Esteve",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
+ {h:"12:45",m:765,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
   t:"El monasterio benedictino de Sant Esteve se fundó en el año 812 y de él nació el pueblo. Por el camino: la iglesia gótica de Santa Maria dels Turers, la plaza de la Font y la muralla.",
   tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"30 min",img:"monasterio"},
- {h:"13:30",m:810,n:"Almuerzo con el Flaco",ic:"home",la:null,lo:null,q:"",flaco:1,
+ {h:"13:30",m:810,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:null,lo:null,q:"",flaco:1,
   t:"A la casa del Flaco y Pilar. La dirección se escribe arriba, en «Casa del Flaco», y con eso el botón «Cómo llegar» los lleva en auto hasta la puerta.",
   tip:"Si al final hacen pícnic, el Passeig de la Draga tiene mesas de piedra y fuentes, justo al lado del lago.",dur:"2 h 30 min"},
- {h:"16:15",m:975,n:"Santa Maria de Porqueres",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",
+ {h:"16:15",m:975,n:"Santa Maria de Porqueres",ico:"atardecer",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",
   t:"Una iglesia románica pequeñita del siglo XII, al otro lado del lago, rodeada de pasto y árboles. En auto son 5 minutos; caminando por la orilla, unos 30.",
   tip:"El sol se pone hacia las 17:20: desde esta orilla se ve muy bonito sobre el agua y el pueblo.",dur:"40 min",img:"porqueres"},
- {h:"17:15",m:1035,n:"Bocadillo de la tarde",ic:"food",la:42.1179,lo:2.7651,q:"bocadillos Banyoles",go:"comer",
+ {h:"17:15",m:1035,n:"Bocadillo de la tarde",ico:"bocadillo",ic:"food",la:42.1179,lo:2.7651,q:"bocadillos Banyoles",go:"comer",
   t:"Un bocadillo y algo para tomar antes de volver. Hay varios bares de bocadillos buenos cerca del centro y del lago.",
   tip:"Las opciones están en la pestaña Comer. Si quieren algo dulce para el camino, las panaderías vuelven a abrir a las 17:00.",dur:"45 min"},
- {h:"19:00",m:1140,n:"Vuelta a Badalona",ic:"car",la:BDN[0],lo:BDN[1],q:"Badalona",dir:1,
+ {h:"19:00",m:1140,n:"Vuelta a Badalona",ico:"auto",ic:"car",la:BDN[0],lo:BDN[1],q:"Badalona",dir:1,
   t:"Mismo camino de vuelta: C-66 hasta Girona y AP-7 hacia Barcelona. Unos 1 h 20 min; un sábado por la tarde puede haber más tráfico al llegar.",
   tip:"Que Ramón no maneje cansado: si hace falta, paren en el área del Montseny.",dur:"1 h 20 min"}];
 /* rincones: nombre, qué es, parada cercana, lat, lon, búsqueda */
@@ -1331,7 +1335,7 @@ const RN=[
 const LLUVIA=[["art","El <b>Museo Darder</b>, en la plaza dels Estudis, explica el lago por dentro. Mejor mirar el horario del sábado en Google Maps."],["cup","Un café bajo los soportales de la Plaça Major: en <b>Can Pons</b>, una antigua mercería de 1891 convertida en bar."],["church","El monasterio de Sant Esteve y Santa Maria dels Turers se ven bien aunque llueva: el Barrio Viejo está a pocos pasos de la plaza."],["car","Santa Maria de Porqueres se puede ver desde el auto, sin bajarse, si llueve fuerte."],["umb","Lleven un paraguas en el auto, por si acaso."]];
 /* tiempo: sin previsión guardada hasta que haya internet */
 const WX0=null;
-const RT={llevar:["Para llevar al almuerzo","cart","pedir"],boca:["Bocadillo de la tarde","food","tapas"],dulce:["Dulces de Banyoles","cake","dulces"]};
+const RT={llevar:["Para llevar al almuerzo","cart","ic-mochila.webp"],boca:["Bocadillo de la tarde","food","ic-bocadillo.webp"],dulce:["Dulces de Banyoles","cake","comer/dulces.png"]};
 /* comer y comprar: nombre, tipo, precio, nota, búsqueda, zona, lat, lon */
 const R=[
  ["Puestos de la Plaça Major","llevar","€","Los sábados hay algunos puestos de fruta y verdura bajo los soportales. Buen sitio para llevar fruta de estación.","Plaça Major Banyoles","Plaça Major",42.11807,2.76538],
@@ -1446,7 +1450,7 @@ async function loadWx(){if(LS("wx")&&Date.now()-new Date(LS("wx").at).getTime()<
 /* ---------- ruta ---------- */
 function stopHTML(s,i,open,now){const fq=s.flaco?flacoQ():"",q=s.flaco?fq:s.q;
   const ln=[s.pr&&`<li><span class="ic">${ico("ticket")}</span><span>${esc(s.pr)}</span></li>`,s.hr&&`<li><span class="ic">${ico("cal")}</span><span>${esc(s.hr)}</span></li>`,s.tip&&`<li><span class="ic">${ico("heart")}</span><span>${esc(s.tip)}</span></li>`].filter(Boolean).join("");
-  return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t"><b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
+  return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det">${s.img?`<div class="ph sphoto">${`<img src="fotos/${s.img}.jpg" alt="">`}</div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
   <div class="acts">${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en auto</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&LS("dirll"))?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}</div></div></article>`}
 function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();grupo();
@@ -1470,7 +1474,7 @@ function openStop(i){const el=$("st"+i);if(!el)return;el.classList.add("open");e
 /* ---------- dónde comer ---------- */
 function renderR(){
   $("platos").innerHTML=PLATOS.map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
-  $("rlist").innerHTML=Object.entries(RT).map(([k,[l,ic,im]])=>{const its=R.map((r,i)=>[r,i]).filter(([r])=>r[1]===k);return its.length?`<div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/comer/${im}.png)"><img class="bim" src="fotos/comer/${im}.png" alt="">${l}</h3><ul class="res">${its.map(([[n,,pr,nt,q,zo],i])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln"><span class="pr">${pr}</span><span>${esc(zo)}</span></span><small>${esc(nt)}</small>${R[i][6]!=null?`<span class="ln" style="margin-top:4px"><button type="button" class="lkb" data-pt="c${i}">Ver en el mapa</button></span>`:""}</span><a class="go" href="${map(q)}" target="_blank" rel="noopener" aria-label="Abrir ${esc(n)} en Google Maps">${ico("pin",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")}
+  $("rlist").innerHTML=Object.entries(RT).map(([k,[l,ic,im]])=>{const its=R.map((r,i)=>[r,i]).filter(([r])=>r[1]===k);return its.length?`<div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/${im})"><img class="bim${im.startsWith("ic-")?" bimi":""}" src="fotos/${im}" alt="">${l}</h3><ul class="res">${its.map(([[n,,pr,nt,q,zo],i])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln"><span class="pr">${pr}</span><span>${esc(zo)}</span></span><small>${esc(nt)}</small>${R[i][6]!=null?`<span class="ln" style="margin-top:4px"><button type="button" class="lkb" data-pt="c${i}">Ver en el mapa</button></span>`:""}</span><a class="go" href="${map(q)}" target="_blank" rel="noopener" aria-label="Abrir ${esc(n)} en Google Maps">${ico("pin",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")}
 
 /* ---------- mapa (Leaflet + OpenStreetMap) ---------- */
 let LM=null,LG=null,mk="all",tilesOk=false,MK={};
