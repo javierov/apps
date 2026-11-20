@@ -1291,6 +1291,32 @@ body{font-size:17px}
 .jmsg{min-height:24px;margin:12px 0 0;text-align:center;font-weight:700;font-size:16px}
 .jfin{margin:20px 0;text-align:center;font-size:17px;line-height:1.5}.jfin b{display:block;font-family:"Cinzel",serif;font-size:40px;color:var(--title);margin-bottom:6px}
 .jbox .acts{display:flex;gap:10px}.jbox .acts .btn{flex:1}
+/* línea estilo Renfe */
+.lin{padding:14px 14px 8px}
+.lhead{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:10px;align-items:center;margin-bottom:12px}
+.lbad{grid-row:span 2;display:grid;place-items:center;min-width:44px;height:30px;padding:0 8px;border-radius:8px;background:#8a1d6b;color:#fff;font-weight:800;font-size:16px;letter-spacing:.02em}
+.lhead b{font-size:17px}.lhead small{color:var(--soft);font-size:13px}
+.lst{list-style:none;margin:0;padding:0}
+.lst li{position:relative}
+.lst button{display:grid;grid-template-columns:52px 30px minmax(0,1fr);align-items:center;width:100%;min-height:52px;padding:0;border:0;background:none;color:var(--ink);font:inherit;text-align:left;cursor:pointer}
+.lst .lh{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px;color:var(--soft);text-align:right;padding-right:8px}
+.lst .ld{position:relative;align-self:stretch;display:grid;place-items:center}
+.lst .ld i{position:relative;z-index:2;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid #8a1d6b;box-sizing:border-box}
+.lst li:first-child .ld i,.lst li.fin .ld i{width:20px;height:20px;border-width:5px}
+.lst .ld::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:6px;margin-left:-3px;background:#8a1d6b}
+.lst li:first-child .ld::before{top:50%}
+.lst li.fin .ld::before{bottom:50%}
+.lst li.t-auto .ld::after{content:"";position:absolute;left:50%;top:50%;bottom:-100%;width:6px;margin-left:-3px;background:repeating-linear-gradient(#8a1d6b 0 7px,transparent 7px 12px);z-index:1}
+.lst li.t-auto{padding-bottom:26px}
+.lst li.t-auto .ld::before{bottom:auto;height:50%}
+.lst li.t-auto + li .ld::before{top:50%}
+.lst .ln2 b{display:block;font-size:16px;line-height:1.25}.lst .ln2 small{display:block;color:var(--soft);font-size:13px}
+.lst .ltr{position:absolute;left:92px;bottom:4px;display:flex;gap:6px;align-items:center;color:var(--soft);font-size:12.5px}.lst .ltr svg{width:16px;height:16px}
+.lst li.past .lh,.lst li.past .ln2{opacity:.5}
+.lst li.now .ld i{background:#8a1d6b;border-color:#fff;box-shadow:0 0 0 3px #8a1d6b,0 0 0 9px rgb(138 29 107/.25);animation:lnow 1.6s ease-in-out infinite}
+.lst li.now .ln2 b{color:#d45aa8}
+@keyframes lnow{50%{box-shadow:0 0 0 3px #8a1d6b,0 0 0 14px rgb(138 29 107/0)}}
+@media (prefers-reduced-motion:reduce){.lst li.now .ld i{animation:none}}
 </style>
 </head>
 <body>
@@ -1331,7 +1357,7 @@ body{font-size:17px}
 </section>
 
 <section id="s-mapa" hidden>
-  <div class="sheet" style="margin-top:0;border-top:0"><h2>Mapa</h2>
+  <div class="sheet" style="margin-top:0;border-top:0"><div class="box blk lin" id="linea"></div><h2>Mapa de calles</h2>
     <div class="box mapbox" id="mapbox">
       <div class="chips" id="mapchips"></div>
       <div class="mapw" id="mapw"><div class="mapoff" id="mapoff" hidden>Sin señal: las calles aparecerán con conexión. ✕</div><div class="memsg" id="memsg" role="status" hidden></div></div>
@@ -1637,6 +1663,12 @@ function drawMap(focus){
     else if(P2.length){LM.fitBounds(P2.map(p=>[p.la,p.lo]),{padding:[22,22],maxZoom:16})}})}
 $("mapchips").onclick=e=>{const b=e.target.closest("[data-mk]");if(!b)return;mk=b.dataset.mk;LM&&LM.closePopup();drawMap()};
 
+
+/* esquema del día como una línea de tren (estilo Renfe) */
+function lineaHTML(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-9;
+  return `<div class="lhead"><span class="lbad">B1</span><b>Badalona – Banyoles</b><small>sábado 21 · ${ST.length} paradas</small></div><ol class="lst">${ST.map((s,i)=>{
+    const auto=s.dir||i===ST.length-1;const tramo=i<ST.length-1?(ST[i].dir||ST[i+1].dir?"auto":"pie"):"";
+    return `<li class="${i===k?"now ":""}${i<k?"past ":""}${tramo?"t-"+tramo:"fin"}"><button type="button" data-stop="${i}"><span class="lh">${s.h}</span><span class="ld"><i></i></span><span class="ln2"><b>${esc(s.n)}</b><small>${i===k?"ahora · ":""}${esc(s.dur)}</small></span></button>${tramo==="auto"?`<span class="ltr">${ico("car",2)} en auto · ${i===0?"AP-7 y C-66":"de vuelta a casa"}</span>`:""}</li>`}).join("")}</ol>`}
 /* ---------- navegación ---------- */
 let pendStop=null,pendPt=null,pendJump=null;
 const go=h=>{if(location.hash.slice(1)===h)route_();else location.hash=h};
@@ -1655,7 +1687,7 @@ function route_(){
   const id=["mapa","comer"].includes(h)?h:"viaje";show(id);
   if(id==="viaje"){renderHome();if(pendStop!==null){openStop(pendStop);pendStop=null}else if(pendJump){const el=$(pendJump);pendJump=null;setTimeout(()=>goTo(el,140),80)}else window.scrollTo({top:0});requestAnimationFrame(()=>{window.etFitTitle&&window.etFitTitle();fitCar()});document.fonts&&document.fonts.ready.then(fitCar)}
   if(id==="comer"){renderR();window.scrollTo({top:0})}
-  if(id==="mapa"){window.scrollTo({top:0});drawMap(pendPt);pendPt=null}}
+  if(id==="mapa"){$("linea").innerHTML=lineaHTML();if(!pendPt)window.scrollTo({top:0});drawMap(pendPt);if(pendPt){const el=$("mapbox");setTimeout(()=>goTo(el,70),50)}pendPt=null}}
 window.addEventListener("hashchange",route_);
 document.querySelectorAll("[data-ic]").forEach(e=>e.outerHTML=ico(e.dataset.ic,2));
 route_();fixImgs(document);loadWx();loadVia();if(dirV()&&!dirLL())geoFlaco();
