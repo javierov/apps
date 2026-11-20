@@ -1202,7 +1202,7 @@ body{font-size:17px}
 .lleg{position:relative;height:132px;margin:6px 20px 0;overflow:hidden;border-radius:12px}
 .lleg .calle{position:absolute;left:0;right:0;bottom:6px;height:2px;background:repeating-linear-gradient(90deg,var(--line2) 0 14px,transparent 14px 26px)}
 .lleg .esp{position:absolute;left:0;bottom:7px;display:flex;gap:0;align-items:flex-end}
-.lleg .esp img{height:75px;width:auto;filter:drop-shadow(0 3px 5px rgb(0 0 0/.45));transform-origin:50% 100%;animation:espera 10s ease-in-out infinite}
+.lleg .esp img{height:78px;width:auto;filter:drop-shadow(0 3px 5px rgb(0 0 0/.45));transform-origin:50% 100%;animation:espera 10s ease-in-out infinite}
 .lleg .esp .c2{animation-delay:.15s}
 .lleg .hola{position:absolute;padding:3px 8px;border-radius:10px 10px 10px 2px;background:var(--btn);color:var(--btnInk);font-size:12px;font-weight:800;white-space:nowrap;opacity:0;animation:hola 10s ease-in-out infinite}
 .lleg .auto{position:absolute;left:0;bottom:2px;width:150px;height:86px;animation:llega 10s cubic-bezier(.25,.6,.3,1) infinite}
@@ -1219,13 +1219,13 @@ body{font-size:17px}
 .lleg .rd{transform-box:fill-box;transform-origin:center;animation:rueda 10s linear infinite}
 .lleg .humo{position:absolute;right:-6px;bottom:8px;width:10px;height:10px;border-radius:50%;background:var(--line2);opacity:0;animation:humo 10s ease-out infinite}
 .lleg .humo.h2{animation-delay:.4s}
-@keyframes llega{0%{transform:translateX(calc(100vw - 20px))}48%{transform:translateX(130px)}52%{transform:translateX(134px)}88%{transform:translateX(134px);opacity:1}96%,100%{transform:translateX(134px);opacity:0}}
+@keyframes llega{0%{transform:translateX(calc(100vw - 20px))}48%{transform:translateX(138px)}52%{transform:translateX(138px)}88%{transform:translateX(138px);opacity:1}96%,100%{transform:translateX(138px);opacity:0}}
 @keyframes rueda{0%{transform:rotate(0)}48%{transform:rotate(-1440deg)}100%{transform:rotate(-1440deg)}}
 @keyframes humo{0%{opacity:0;transform:none}5%,40%{opacity:.8}10%,25%,45%{opacity:0;transform:translate(14px,-10px) scale(1.6)}100%{opacity:0}}
 @keyframes espera{0%,46%{transform:none}50%{transform:translateY(-8px)}54%{transform:none}58%{transform:translateY(-6px)}62%,100%{transform:none}}
 @keyframes salto{0%,50%{transform:none}55%{transform:translateY(-5px)}60%{transform:none}65%{transform:translateY(-4px)}70%,100%{transform:none}}
 @keyframes hola{0%,50%{opacity:0;transform:scale(.6)}54%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
-@media (prefers-reduced-motion:reduce){.lleg .auto{animation:none;transform:translateX(134px)}.lleg *{animation:none!important}.lleg .hola{opacity:1}}
+@media (prefers-reduced-motion:reduce){.lleg .auto{animation:none;transform:translateX(138px)}.lleg *{animation:none!important}.lleg .hola{opacity:1}}
 .bic{width:40px;height:40px;object-fit:contain;flex:none;margin:-8px 2px -8px -6px;filter:drop-shadow(0 2px 3px rgb(0 0 0/.35))}
 .day .t{position:relative;padding-right:50px;min-height:42px;display:flex;flex-direction:column;justify-content:center}
 .day .sic{position:absolute;right:0;top:50%;transform:translateY(-50%);width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 3px rgb(0 0 0/.35))}
