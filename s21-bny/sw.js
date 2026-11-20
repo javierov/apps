@@ -1,5 +1,5 @@
 /* Escapada a Banyoles: guarda la app en el móvil para usarla sin internet */
-const V = "eb-escapada-banyoles-v10", T = "eb-escapada-banyoles-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+const V = "eb-escapada-banyoles-v11", T = "eb-escapada-banyoles-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
   "fotos/lago.jpg", "fotos/plaza.jpg", "fotos/monasterio.jpg", "fotos/porqueres.jpg",
   "fotos/grupo/javier3.webp", "fotos/grupo/flaco4.webp", "fotos/grupo/pilar1.webp", "fotos/grupo/ramon3.webp", "fotos/grupo/elisabeth3.webp",

@@ -1198,6 +1198,27 @@ body{font-size:17px}
 .ga img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .gt b{display:block;font-size:17px}.gt small{display:block;color:var(--soft);font-size:14.5px;line-height:1.35}
 .gt .lkb{margin-top:3px}
+/* llegada: el auto con Javier, Ramón y Elisabeth llega donde esperan el Flaco y Pilar */
+.lleg{position:relative;height:74px;margin:6px 20px 0;overflow:hidden;border-radius:12px}
+.lleg .calle{position:absolute;left:0;right:0;bottom:6px;height:2px;background:repeating-linear-gradient(90deg,var(--line2) 0 14px,transparent 14px 26px)}
+.lleg .esp{position:absolute;left:4px;bottom:8px;display:flex;gap:2px;align-items:flex-end}
+.lleg .esp img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--bg);box-shadow:0 2px 6px rgb(0 0 0/.35);animation:espera 10s ease-in-out infinite}
+.lleg .esp .c2{animation-delay:.15s}
+.lleg .hola{position:absolute;left:58px;top:-26px;padding:3px 8px;border-radius:10px 10px 10px 2px;background:var(--btn);color:var(--btnInk);font-size:12px;font-weight:800;white-space:nowrap;opacity:0;animation:hola 10s ease-in-out infinite}
+.lleg .auto{position:absolute;left:0;bottom:4px;width:150px;height:66px;animation:llega 10s cubic-bezier(.25,.6,.3,1) infinite}
+.lleg .car{position:absolute;left:0;bottom:0;width:150px;height:56px;z-index:1}
+.lleg .cab{position:absolute;left:47px;bottom:27px;display:flex;gap:2px;z-index:2;animation:salto 10s ease-in-out infinite}
+.lleg .cab img{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1.5px solid #fff;background:#fff}
+.lleg .rd{transform-box:fill-box;transform-origin:center;animation:rueda 10s linear infinite}
+.lleg .humo{position:absolute;right:-6px;bottom:8px;width:10px;height:10px;border-radius:50%;background:var(--line2);opacity:0;animation:humo 10s ease-out infinite}
+.lleg .humo.h2{animation-delay:.4s}
+@keyframes llega{0%{transform:translateX(calc(100vw - 20px))}48%{transform:translateX(84px)}52%{transform:translateX(88px)}88%{transform:translateX(88px);opacity:1}96%,100%{transform:translateX(88px);opacity:0}}
+@keyframes rueda{0%{transform:rotate(0)}48%{transform:rotate(-1440deg)}100%{transform:rotate(-1440deg)}}
+@keyframes humo{0%{opacity:0;transform:none}5%,40%{opacity:.8}10%,25%,45%{opacity:0;transform:translate(14px,-10px) scale(1.6)}100%{opacity:0}}
+@keyframes espera{0%,46%{transform:none}50%{transform:translateY(-8px)}54%{transform:none}58%{transform:translateY(-6px)}62%,100%{transform:none}}
+@keyframes salto{0%,50%{transform:none}55%{transform:translateY(-5px)}60%{transform:none}65%{transform:translateY(-4px)}70%,100%{transform:none}}
+@keyframes hola{0%,50%{opacity:0;transform:scale(.6)}54%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.lleg .auto{animation:none;transform:translateX(88px)}.lleg *{animation:none!important}.lleg .hola{opacity:1}}
 </style>
 </head>
 <body>
@@ -1216,6 +1237,13 @@ body{font-size:17px}
     <button type="button" class="arr r" id="arrR" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="dots" id="dots" aria-hidden="true"></div>
+  <div class="lleg" id="lleg" aria-hidden="true">
+    <i class="calle"></i>
+    <div class="esp"><span class="hola">¡Hola!</span><img class="c1" src="fotos/grupo/flaco4.webp" alt=""><img class="c2" src="fotos/grupo/pilar1.webp" alt=""></div>
+    <div class="auto"><div class="cab"><img src="fotos/grupo/elisabeth3.webp" alt=""><img src="fotos/grupo/ramon3.webp" alt=""><img src="fotos/grupo/javier3.webp" alt=""></div>
+      <svg class="car" viewBox="0 0 150 56"><path d="M36 28 L51 10 C54 7 57 6 61 6 L105 6 C110 6 113 8 116 12 L127 28 Z" fill="#bfe3ff" fill-opacity=".55" stroke="#e0453a" stroke-width="4" stroke-linejoin="round"/><path d="M8 40 C8 33 12 29 20 28 L138 28 C144 30 146 34 146 39 L146 44 C146 46 144 48 142 48 L12 48 C9 48 8 46 8 44 Z" fill="#e0453a"/><path d="M14 31 L146 34" stroke="#fff" stroke-opacity=".35" stroke-width="2"/><rect x="2" y="36" width="10" height="5" rx="2" fill="#ffe08a"/><g class="rd"><circle cx="36" cy="47" r="9" fill="#1b1f27"/><circle cx="36" cy="47" r="4" fill="#c9ced8"/><path d="M36 40v14M29 47h14" stroke="#1b1f27" stroke-width="1.6"/></g><g class="rd r2"><circle cx="118" cy="47" r="9" fill="#1b1f27"/><circle cx="118" cy="47" r="4" fill="#c9ced8"/><path d="M118 40v14M111 47h14" stroke="#1b1f27" stroke-width="1.6"/></g></svg>
+      </div>
+  </div>
   <div class="pad" id="nowbox"></div>
   <div class="pad">
     <div class="box blk wxb" id="wxbox"></div>
@@ -1357,7 +1385,7 @@ const step=dir=>{const car=$("car"),k=carState(),t=car.children[Math.max(0,Math.
 $("arrL").onclick=e=>{e.stopPropagation();step(-1)};$("arrR").onclick=e=>{e.stopPropagation();step(1)};
 /* las fotos llenan lo que queda de la primera pantalla: termina limpia, justo después de los puntos */
 function fitCar(){const sv=$("s-viaje"),car=$("car");if(sv.hidden)return;const cs=[...car.children];cs.forEach(c=>{c.style.height="";c.style.aspectRatio=""});
-  const w=cs[0].offsetWidth,top=car.getBoundingClientRect().top+scrollY,dots=$("dots").offsetHeight+10;
+  const w=cs[0].offsetWidth,top=car.getBoundingClientRect().top+scrollY,dots=$("dots").offsetHeight+10+($("lleg")?$("lleg").offsetHeight+6:0);
   const h=Math.round(Math.max(170,Math.min(innerHeight-top-dots-14,w*2.1)));cs.forEach(c=>{c.style.aspectRatio="auto";c.style.height=h+"px"});carState()}
 addEventListener("resize",()=>requestAnimationFrame(fitCar));new ResizeObserver(carState).observe($("car"));
 
