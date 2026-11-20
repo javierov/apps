@@ -1,7 +1,7 @@
 /* Escapada a Banyoles: guarda la app en el móvil para usarla sin internet */
-const V = "eb-escapada-banyoles-v33", T = "eb-escapada-banyoles-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+const V = "eb-escapada-banyoles-v34", T = "eb-escapada-banyoles-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
-  "fotos/lago.jpg", "fotos/auto.webp", "fotos/navm-pergamino.webp", "fotos/navm-mapamed.webp", "fotos/navm-pan.webp", "fotos/rueda-r1.webp", "fotos/rueda-r2.webp", "fotos/ic-auto.webp", "fotos/ic-casa.webp", "fotos/ic-corazon.webp", "fotos/ic-paraguas.webp", "fotos/ic-mochila.webp", "fotos/ic-parking.webp", "fotos/ic-lago.webp", "fotos/ic-plaza.webp", "fotos/ic-iglesia.webp", "fotos/ic-atardecer.webp", "fotos/ic-bocadillo.webp", "fotos/ic-tortada.webp", "fotos/plaza.jpg", "fotos/monasterio.jpg", "fotos/porqueres.jpg",
+  "fotos/lago.jpg", "fotos/auto.webp", "fotos/rueda-r1.webp", "fotos/rueda-r2.webp", "fotos/ic-auto.webp", "fotos/ic-casa.webp", "fotos/ic-corazon.webp", "fotos/ic-paraguas.webp", "fotos/ic-mochila.webp", "fotos/ic-parking.webp", "fotos/ic-lago.webp", "fotos/ic-plaza.webp", "fotos/ic-iglesia.webp", "fotos/ic-atardecer.webp", "fotos/ic-bocadillo.webp", "fotos/ic-tortada.webp", "fotos/plaza.jpg", "fotos/monasterio.jpg", "fotos/porqueres.jpg",
   "fotos/grupo/javier3.webp", "fotos/grupo/flaco4.webp", "fotos/grupo/pilar1.webp", "fotos/grupo/flaco-mask2.webp", "fotos/grupo/pilar-mask2.webp", "fotos/grupo/ramon4.webp", "fotos/grupo/elisabeth3.webp",
   "fotos/tiempo/sol.png", "fotos/tiempo/solnube.png", "fotos/tiempo/nubes.png", "fotos/tiempo/lluvia.png", "fotos/tiempo/tormenta.png",
   "fotos/comer/pedir.png", "fotos/comer/tapas.png", "fotos/comer/dulces.png", "fonts/marcellus.woff2", "fonts/cinzel-700.woff2"];
