@@ -1224,6 +1224,14 @@ body{font-size:17px}
 .day .t{position:relative;padding-right:50px;min-height:42px;display:flex;flex-direction:column;justify-content:center}
 .day .sic{position:absolute;right:0;top:50%;transform:translateY(-50%);width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 3px rgb(0 0 0/.35))}
 .bh .bim.bimi{object-fit:contain;background:none;box-shadow:none;border-radius:0;filter:drop-shadow(0 2px 4px rgb(0 0 0/.45))}
+.lleg .humos{position:absolute;right:-2px;bottom:16px;width:2px;height:2px;z-index:0;animation:humos 10s linear infinite}
+.lleg .humos i{position:absolute;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgb(255 255 255/.95),rgb(205 210 220/.85) 60%,rgb(205 210 220/0) 72%);opacity:0;animation:puf 1.1s ease-out infinite}
+.lleg .humos i:nth-child(2){animation-delay:.28s;width:11px;height:11px}
+.lleg .humos i:nth-child(3){animation-delay:.55s}
+.lleg .humos i:nth-child(4){animation-delay:.82s;width:12px;height:12px}
+@keyframes puf{0%{opacity:0;transform:translate(0,0) scale(.4)}15%{opacity:.9}100%{opacity:0;transform:translate(30px,-14px) scale(1.9)}}
+@keyframes humos{0%,44%{opacity:1}54%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.lleg .humos{display:none}}
 </style>
 </head>
 <body>
@@ -1245,7 +1253,7 @@ body{font-size:17px}
   <div class="lleg" id="lleg" aria-hidden="true">
     <i class="calle"></i>
     <div class="esp"><span class="hola">¡Hola!</span><img class="c1" src="fotos/grupo/flaco-cab.webp" alt=""><img class="c2" src="fotos/grupo/pilar-cab.webp" alt=""></div>
-    <div class="auto"><img class="dus" src="fotos/auto.webp" alt=""></div>
+    <div class="auto"><div class="humos"><i></i><i></i><i></i><i></i></div><img class="dus" src="fotos/auto.webp" alt=""></div>
   </div>
   <div class="pad" id="nowbox"></div>
   <div class="pad">
