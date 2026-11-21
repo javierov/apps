@@ -429,9 +429,11 @@ button.ft{font:inherit}
 #rel .rx{width:40px;height:40px;border-radius:50%;border:0;background:#fff2;color:#fff;font-size:20px;flex:none}
 #rel .rmap{height:28vh;min-height:150px;margin:0 12px;border-radius:14px;overflow:hidden;background:#1b1d22}
 #rel .rph{flex:1;position:relative;margin:10px 12px 0;border-radius:14px;overflow:hidden;background:#000;min-height:0}
-#rel .rph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s}
-#rel .rph img.on{opacity:1;animation:relkb 10s ease-out forwards}
-@keyframes relkb{from{transform:scale(1.02)}to{transform:scale(1.13) translate(-1.5%,-1%)}}
+#rel .rph .fr{position:absolute;inset:0;opacity:0;transition:opacity .9s}#rel .rph .fr.on{opacity:1}
+#rel .rph .fr .bg{position:absolute;inset:-20px;width:calc(100% + 40px);height:calc(100% + 40px);object-fit:cover;filter:blur(18px) brightness(.55)}
+#rel .rph .fr .fg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#rel .rph .fr.on .fg{animation:relkb 10s ease-out forwards}
+@keyframes relkb{from{transform:scale(1)}to{transform:scale(1.05)}}
 #rel .rsub{position:absolute;left:0;right:0;bottom:0;padding:46px 16px 16px;background:linear-gradient(transparent,#000d 45%);font-size:16.5px;line-height:1.42;transition:opacity .5s}
 #rel .rsub.off{opacity:0}
 #rel .rdots{display:flex;gap:5px;justify-content:center;padding:10px 12px 0}#rel .rdots i{flex:1;max-width:46px;height:4px;border-radius:2px;background:#fff3;overflow:hidden}#rel .rdots i b{display:block;height:100%;width:0;background:#cdb07a}
@@ -1943,7 +1945,7 @@ car=L.marker(CH[0].b[0].ll,{icon:L.divIcon({className:"",html:'<div class="reldu
 function dots(){$("reld").innerHTML=CH.map((_,i)=>`<i><b style="width:${i<c?100:0}%"></b></i>`).join("")}
 function chapterDur(){return CH[c].b.reduce((a,x)=>a+dura(x),0)}
 function show(){const ch=CH[c],x=ch.b[b];$("relt").textContent=`${c+1}. ${ch.n}`;$("rels").textContent=`Capítulo ${c+1} de ${CH.length} · foto ${b+1} de ${ch.b.length}`;
-const ph=$("relph"),old=ph.querySelectorAll("img"),im=new Image();im.alt="";im.src=`fotos/${x.f}.webp`;ph.insertBefore(im,$("relsub"));requestAnimationFrame(()=>requestAnimationFrame(()=>im.classList.add("on")));setTimeout(()=>old.forEach(o=>o.remove()),1000);
+const ph=$("relph"),old=ph.querySelectorAll(".fr"),im=document.createElement("div");im.className="fr";im.innerHTML=`<img class="bg" src="fotos/${x.f}.webp" alt=""><img class="fg" src="fotos/${x.f}.webp" alt="">`;ph.insertBefore(im,$("relsub"));requestAnimationFrame(()=>requestAnimationFrame(()=>im.classList.add("on")));setTimeout(()=>old.forEach(o=>o.remove()),1000);
 const sub=$("relsub");sub.classList.add("off");setTimeout(()=>{sub.textContent=x.t;sub.classList.remove("off")},350);
 carFrom=car.getLatLng();carTo=L.latLng(x.ll);map.flyTo(x.ll,ch.z,{duration:1.4});dur=dura(x);el=0;t0=performance.now();dots()}
 function tick(now){if(!play)return;el+=(now-t0)/1000;t0=now;const k=Math.min(1,el/1.6);if(carFrom&&carTo)car.setLatLng([carFrom.lat+(carTo.lat-carFrom.lat)*k,carFrom.lng+(carTo.lng-carFrom.lng)*k]);
