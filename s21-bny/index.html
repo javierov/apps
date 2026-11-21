@@ -1880,8 +1880,14 @@ const setIr=()=>agl.querySelectorAll("[data-ir]").forEach(a=>{const ll=getLL(+a.
 let sonando=-1,voz=null;
 const elegirVoz=()=>{const vs=speechSynthesis.getVoices();voz=vs.find(v=>/^es[-_]ES/i.test(v.lang))||vs.find(v=>/^es/i.test(v.lang))||null};
 if("speechSynthesis"in window){elegirVoz();speechSynthesis.onvoiceschanged=elegirVoz}
-const marcar=()=>agl.querySelectorAll(".agp").forEach(d=>{const i=+d.dataset.i;d.classList.toggle("sonando",i===sonando);d.querySelector("[data-play]").textContent=i===sonando?"⏸ Parar":"▶ Escuchar";d.classList.toggle("hecho",hechos.has(i))});
+const marcar0=()=>agl.querySelectorAll(".agp").forEach(d=>{const i=+d.dataset.i;d.classList.toggle("sonando",i===sonando);d.querySelector("[data-play]").textContent=i===sonando?"⏸ Parar":"▶ Escuchar";d.classList.toggle("hecho",hechos.has(i))});
+const marcar=()=>{marcar0();if(sonando>=0)musOn();else musOff()};
 const aud=new Audio();aud.preload="none";
+const mus=new Audio("audio/musica.mp3");mus.loop=true;mus.preload="none";mus.volume=0;let musT=null;
+const musFade=(to,ms,end)=>{clearInterval(musT);const from=mus.volume,t0=Date.now();musT=setInterval(()=>{const k=Math.min(1,(Date.now()-t0)/ms);mus.volume=Math.max(0,Math.min(1,from+(to-from)*k));if(k>=1){clearInterval(musT);end&&end()}},50)};
+const musOn=()=>{mus.play().then(()=>musFade(0.16,1500)).catch(()=>{})};
+const musOff=()=>musFade(0,1800,()=>mus.pause());
+
 const fin=i=>{if(sonando===i){sonando=-1;marcar()}};
 const tts=i=>{if(!("speechSynthesis"in window)){fin(i);return}const u=new SpeechSynthesisUtterance(AG[i].n+". "+AG[i].t);u.lang="es-ES";if(voz)u.voice=voz;u.onend=u.onerror=()=>fin(i);speechSynthesis.speak(u)};
 const hablar=i=>{aud.pause();if("speechSynthesis"in window)speechSynthesis.cancel();if(sonando===i){sonando=-1;marcar();return}
