@@ -1413,9 +1413,9 @@ const ST=[
  {h:"8:00",m:480,n:"Salida de Badalona",ico:"auto",ic:"car",la:BDN[0],lo:BDN[1],q:"Banyoles",dir:1,
   t:"Ramón y Elisabeth te pasan a buscar a las 8:00 en punto. Son unos 120 km y 1 h 20 min por la AP-7 hasta la salida 6 (Girona Nord) y después la C-66 hasta Banyoles.",
   tip:"Si quieren parar a tomar un café, el área de servicio del Montseny queda más o menos a mitad de camino.",dur:"1 h 20 min"},
- {h:"9:30",m:570,n:"Coche aparcado aquí 🚙",ico:"parking",ic:"pin",la:42.123301,lo:2.759252,q:"42.123301,2.759252",
-  t:"Aquí dejamos aparcado el Duster de Ramón. Toca «Cómo llegar» para volver caminando al coche.",
-  tip:"Apunten algo cercano que les sirva de referencia para encontrar el coche a la vuelta.",dur:"10 min"},
+ {h:"9:30",m:570,n:"Coche aparcado 🚙",ico:"parking",ic:"pin",car:1,la:null,lo:null,q:"",
+  t:"Al aparcar, toca «📍 Aparqué aquí» y el teléfono guarda dónde quedó el coche. A la vuelta, «Volver al coche» los lleva caminando hasta él.",
+  tip:"Apunten también algo cercano que sirva de referencia: una tienda, un cartel, el número de la calle.",dur:"10 min"},
  {h:"9:40",m:580,n:"Paseo por el lago y las pesqueras",ico:"lago",ic:"walk",la:42.1165,lo:2.7622,q:"Passeig Darder Banyoles",
   t:"El lago de Banyoles es el lago natural más grande de Cataluña. Por la orilla hay unas veinte «pesqueras»: casetas del siglo XIX junto al agua, con su muellecito, que se usaban para pescar y bañarse.",
   tip:"La vuelta entera al lago son unos 6,5 km, algo más de una hora caminando y casi plana. Como llegan temprano, hay tiempo para la vuelta entera. Si no les tinca tanto, basta con el tramo de las pesqueras, por el Passeig Darder.",dur:"1 h 30 min",img:"lago"},
@@ -1484,6 +1484,8 @@ function fixImgs(root){root.querySelectorAll(".ph img:not([data-k])").forEach(i=
 let SIM=null;try{SIM=JSON.parse(sessionStorage.getItem("eb-sim"))}catch(e){}
 function NOW(){if(SIM)return SIM;const n=new Date();return{y:n.getFullYear(),mo:n.getMonth(),d:n.getDate(),m:n.getHours()*60+n.getMinutes()}}
 function phase(){const t=NOW(),k=t.y*10000+t.mo*100+t.d,day=Y*10000+M*100+DIA;return k<day?{p:"before",t,left:Math.round((new Date(Y,M,DIA)-new Date(t.y,t.mo,t.d))/864e5)}:k>day?{p:"after",t}:{p:"day",t}}
+const carSet=()=>{const c=LS("coche"),s=ST.find(x=>x.car);if(!s)return;if(c&&c.la){s.la=c.la;s.lo=c.lo;s.q=c.la+","+c.lo}else{s.la=null;s.lo=null;s.q=""}};carSet();
+const carCuando=()=>{const c=LS("coche");if(!c||!c.t)return"";const d=new Date(c.t);return d.toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})};
 const curIdx=m=>{let k=-1;ST.forEach((s,i)=>{if(m>=s.m)k=i});return k};
 
 /* ---------- banner ---------- */
@@ -1591,11 +1593,18 @@ async function loadWx(){if(LS("wx")&&Date.now()-new Date(LS("wx").at).getTime()<
     WX={at,d:[d.weather_code[0],Math.round(d.temperature_2m_max[0]),Math.round(d.temperature_2m_min[0]),d.precipitation_probability_max[0]],h};SS("wx",WX);if(!$("s-viaje").hidden)renderWx()}catch(e){}}
 
 /* ---------- ruta ---------- */
+const carActs=(s,i)=>s.la!=null?`<p class="note" style="width:100%;margin:0 0 6px;font-size:13px">Marcado a las ${carCuando()}</p><a class="btn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&destination=${s.la},${s.lo}" target="_blank" rel="noopener">Volver al coche</a><button class="btn ghost" type="button" data-aparcar>📍 Marcar de nuevo</button><button class="btn ghost" type="button" data-pt="r${i}">En el mapa</button>`:`<p class="note" style="width:100%;margin:0 0 6px;font-size:13px">Todavía no está marcado dónde quedó el coche.</p><button class="btn" type="button" data-aparcar>📍 Aparqué aquí</button>`;
+document.addEventListener("click",e=>{const b=e.target.closest("[data-aparcar]");if(!b)return;
+if(!navigator.geolocation){alert("Este teléfono no permite usar el GPS aquí.");return}
+b.disabled=true;b.textContent="📍 Buscando el GPS…";
+navigator.geolocation.getCurrentPosition(p=>{SS("coche",{la:+p.coords.latitude.toFixed(6),lo:+p.coords.longitude.toFixed(6),t:Date.now()});carSet();const id=b.closest(".stp")?.id;renderHome();try{drawMap()}catch(_){};const st=id&&document.getElementById(id);if(st){st.classList.add("open");st.querySelector(".dh")?.setAttribute("aria-expanded","true")}},
+()=>{b.disabled=false;b.textContent="📍 Aparqué aquí";alert("No pude leer el GPS. Revisa que la ubicación esté activada y con permiso.")},{enableHighAccuracy:true,timeout:20000,maximumAge:0})});
+
 function stopHTML(s,i,open,now){const fq=s.flaco?flacoQ():"",q=s.flaco?fq:s.q;
   const ln=[s.pr&&`<li><span class="ic">${ico("ticket")}</span><span>${esc(s.pr)}</span></li>`,s.hr&&`<li><span class="ic">${ico("cal")}</span><span>${esc(s.hr)}</span></li>`,s.tip&&`<li><span class="ic">${ico("heart")}</span><span>${esc(s.tip)}</span></li>`].filter(Boolean).join("");
   return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det">${s.img?`<div class="ph sphoto">${`<img src="fotos/${s.img}.jpg" alt="">`}</div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
-  <div class="acts">${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en coche</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}</div></div></article>`}
+  <div class="acts">${s.car?carActs(s,i):`${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en coche</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}`}</div></div></article>`}
 function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();grupo();
   $("nowbox").innerHTML=hoyBox();
   $("route").innerHTML=ST.map((s,i)=>stopHTML(s,i,i===k,i===k)).join("");
