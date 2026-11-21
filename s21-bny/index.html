@@ -1540,7 +1540,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-gi]");if(!
  function start(){const all=[];FR.forEach((a,i)=>a.forEach(t=>all.push([t,i])));for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]]}Q=all.slice(0,N);k=0;pts=0;show()}
  function show(){lock=false;$("jsc").textContent=`${k+1} de ${N} · ${pts} ${pts===1?"punto":"puntos"}`;const [t]=Q[k];
   $("jbody").innerHTML=`<p class="jfr">«${esc(t)}»</p><div class="jcaras">${GR.map((g,i)=>`<button type="button" class="jc" data-jc="${i}"><img src="${img(i)}" alt=""><span>${esc(g[0].replace(" Arellano",""))}</span></button>`).join("")}</div><p class="jmsg" id="jmsg"></p>`}
- function fin(){const m=pts===N?"¡Perfecto! Conoces a la pandilla de memoria.":pts>=6?"¡Muy bien! Se nota que son amigos de verdad.":pts>=3?"Nada mal… pero hay que conversar más en el auto.":"Mmm… ¿seguro que son tus amigos?";
+ function fin(){const m=pts===N?"¡Perfecto! Conoces a la pandilla de memoria.":pts>=6?"¡Muy bien! Se nota que son amigos de verdad.":pts>=3?"Nada mal… pero hay que conversar más en el coche.":"Mmm… ¿seguro que son tus amigos?";
   $("jsc").textContent="";$("jbody").innerHTML=`<p class="jfin"><b>${pts} de ${N}</b>${esc(m)}</p><div class="acts"><button type="button" class="btn" id="jAgain">Jugar otra vez</button><button type="button" class="btn ghost" id="jEnd">Volver</button></div>`}
  function open(){$("jgo").hidden=false;document.body.style.overflow="hidden";start()}
  function close(){$("jgo").hidden=true;document.body.style.overflow=""}
