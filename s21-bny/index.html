@@ -1425,7 +1425,7 @@ const ST=[
  {h:"12:30",m:750,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
   t:"El monasterio benedictino de Sant Esteve se fundó en el año 812 y de él nació el pueblo. Por el camino: la iglesia gótica de Santa Maria dels Turers, la plaza de la Font y la muralla.",
   tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"45 min",img:"monasterio"},
- {h:"13:30",m:810,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",flaco:1,
+ {h:"13:45",m:825,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",flaco:1,
   t:"A la casa del Flaco y Pilar, en la urbanización Puig de Fontpudosa, a cerca de 1 km al sur del centro y del lago. El botón «Cómo llegar en coche» los lleva hasta la puerta.",
   tip:"Si al final hacen pícnic, el Passeig de la Draga tiene mesas de piedra y fuentes, justo al lado del lago.",dur:"2 h 30 min"},
  {h:"16:15",m:975,n:"Santa Maria de Porqueres",ico:"atardecer",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",
@@ -1666,7 +1666,7 @@ function hideMe(){const m=$("memsg");if(!m)return;m.classList.remove("in");setTi
 function meControl(){const C=L.Control.extend({options:{position:"topright"},onAdd(){const b=L.DomUtil.create("button","mebtn");b.id="mebtn";b.type="button";b.setAttribute("aria-label","Dónde estoy");
   b.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>';b.title="Dónde estoy";
   L.DomEvent.disableClickPropagation(b);b.onclick=()=>{if(!meOn||WID==null)startMe();else if(ME)LM.setView(ME.getLatLng(),Math.max(LM.getZoom(),17))};return b}});LM.addControl(new C())}
-function pts(){const a=[];const fl=dirLL();if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:"Casa del Flaco",la:fl[0],lo:fl[1],lab:"6",sub:`13:30 · almuerzo · ${dirV()||""}`,q:flacoQ(),i:5});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir||s.flaco)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
+function pts(){const a=[];const fl=dirLL();if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:"Casa del Flaco",la:fl[0],lo:fl[1],lab:"6",sub:`13:45 · almuerzo · ${dirV()||""}`,q:flacoQ(),i:5});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir||s.flaco)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
   if(mk==="all"||mk==="c")R.forEach((r,i)=>r[6]!=null&&a.push({id:"c"+i,k:"c",n:r[0],la:r[6],lo:r[7],lab:"",sub:r[5],q:r[4],i}));
   if(mk==="all"||mk==="n")RN.forEach((r,i)=>a.push({id:"n"+i,k:"n",n:r[0],la:r[3],lo:r[4],lab:"★",sub:`Rincón · cerca de la parada ${r[2]}`,q:r[5],i}));return a}
 function drawMap(focus){
