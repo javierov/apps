@@ -1363,7 +1363,7 @@ html,body{touch-action:pan-x pan-y}
     <div class="box blk" id="flaco"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt="">Casa del Flaco</h3><div id="dirbox"></div></div>
     <div class="box blk" id="grupo"><h3 class="bh"><img class="bic" src="fotos/ic-corazon.webp" alt="">La pandilla de hoy</h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Toca una cara: cada uno tiene algo que decir.</p><div class="grp" id="grp"></div><button type="button" class="btn jbtn" id="jOpen">¿Quién lo dijo? · Jugar</button></div>
     <div class="box blk" id="album"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Álbum del día</h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Las fotos de hoy. Toca una para verla en grande.</p><div class="alg" id="alg"></div></div>
-    <div class="box blk" id="aguia"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Audioguía del lago</h3><p class="note" style="margin:-2px 0 10px;font-size:13.5px">Toca ▶ para escuchar cada parada. Con el modo paseo, la guía habla sola cuando llegas a cada punto.</p><button type="button" class="btn agps" id="agps">🚶 Activar modo paseo</button><p class="note agst" id="agst"></p><div id="agl"></div></div>
+    <div class="box blk" id="aguia"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Audioguía del lago</h3><p class="note" style="margin:-2px 0 10px;font-size:13.5px">Narrada por Marisol. Toca ▶ para escuchar cada parada; con el modo paseo, la guía habla sola cuando llegas a cada punto.</p><button type="button" class="btn agps" id="agps">🚶 Activar modo paseo</button><p class="note agst" id="agst"></p><div id="agl"></div></div>
     <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px">Las horas son aproximadas: es un día para ir sin apuro. Todo el paseo por el pueblo y el lago es gratis.</p>
     <div id="route"></div>
@@ -1850,10 +1850,12 @@ let sonando=-1,voz=null;
 const elegirVoz=()=>{const vs=speechSynthesis.getVoices();voz=vs.find(v=>/^es[-_]ES/i.test(v.lang))||vs.find(v=>/^es/i.test(v.lang))||null};
 if("speechSynthesis"in window){elegirVoz();speechSynthesis.onvoiceschanged=elegirVoz}
 const marcar=()=>agl.querySelectorAll(".agp").forEach(d=>{const i=+d.dataset.i;d.classList.toggle("sonando",i===sonando);d.querySelector("[data-play]").textContent=i===sonando?"⏸ Parar":"▶ Escuchar";d.classList.toggle("hecho",hechos.has(i))});
-const hablar=i=>{if(!("speechSynthesis"in window)){agst.textContent="Este teléfono no tiene voz para leer la guía.";return}
-speechSynthesis.cancel();if(sonando===i){sonando=-1;marcar();return}
-const u=new SpeechSynthesisUtterance(AG[i].n+". "+AG[i].t);u.lang="es-ES";if(voz)u.voice=voz;u.rate=.97;
-u.onend=u.onerror=()=>{if(sonando===i){sonando=-1;marcar()}};sonando=i;hechos.add(i);LSs("ag-hechos",[...hechos]);marcar();speechSynthesis.speak(u)};
+const aud=new Audio();aud.preload="none";
+const fin=i=>{if(sonando===i){sonando=-1;marcar()}};
+const tts=i=>{if(!("speechSynthesis"in window)){fin(i);return}const u=new SpeechSynthesisUtterance(AG[i].n+". "+AG[i].t);u.lang="es-ES";if(voz)u.voice=voz;u.onend=u.onerror=()=>fin(i);speechSynthesis.speak(u)};
+const hablar=i=>{aud.pause();if("speechSynthesis"in window)speechSynthesis.cancel();if(sonando===i){sonando=-1;marcar();return}
+sonando=i;hechos.add(i);LSs("ag-hechos",[...hechos]);marcar();
+aud.src=`audio/ag${i+1}.mp3`;aud.onended=()=>fin(i);aud.onerror=()=>{if(sonando===i)tts(i)};aud.play().catch(()=>{if(sonando===i)tts(i)})};
 agl.addEventListener("click",e=>{const pl=e.target.closest("[data-play]");if(pl){hablar(+pl.dataset.play);return}
 const th=e.target.closest("[data-ai]");if(th){abrir(+th.dataset.ai);return}
 const fx=e.target.closest("[data-fix]");if(fx){const i=+fx.dataset.fix;if(!navigator.geolocation){agst.textContent="Sin GPS disponible.";return}
@@ -1864,7 +1866,6 @@ function dist(pos){ultima=pos;let cerca=-1,min=1e9;AG.forEach((p,i)=>{const ll=g
 if(wid!==null&&cerca>=0&&min<90&&!oidos.has(cerca)&&sonando<0){oidos.add(cerca);agst.textContent=`Llegaste a «${AG[cerca].n}»`;hablar(cerca);agl.querySelector(`[data-i="${cerca}"]`).scrollIntoView({behavior:"smooth",block:"center"})}}
 agps.addEventListener("click",()=>{if(wid!==null){navigator.geolocation.clearWatch(wid);wid=null;agps.classList.remove("on");agps.textContent="🚶 Activar modo paseo";agst.textContent="";return}
 if(!navigator.geolocation){agst.textContent="Este teléfono no permite usar el GPS aquí.";return}
-if("speechSynthesis"in window){const u=new SpeechSynthesisUtterance("Modo paseo activado.");u.lang="es-ES";if(voz)u.voice=voz;speechSynthesis.speak(u)}
 agps.classList.add("on");agps.textContent="⏹ Detener modo paseo";agst.textContent="Buscando tu ubicación…";
 wid=navigator.geolocation.watchPosition(p=>{if(agst.textContent.startsWith("Buscando"))agst.textContent="Modo paseo activo: la guía hablará al llegar a cada punto.";dist([p.coords.latitude,p.coords.longitude])},()=>{agst.textContent="No pude leer el GPS. Revisa el permiso de ubicación."},{enableHighAccuracy:true,maximumAge:5000})});
 }
