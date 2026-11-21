@@ -410,7 +410,15 @@ button.ft{font:inherit}
 
 .mapoff{position:absolute;left:54px;right:10px;top:10px;z-index:500;background:rgba(255,255,255,.94);color:#334;border-radius:12px;padding:8px 10px;font-size:13px;line-height:1.35;box-shadow:0 2px 8px rgba(0,0,0,.12)}
 .alg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.alg button{all:unset;cursor:pointer;position:relative;display:block;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#0002}.alg img{width:100%;height:100%;object-fit:cover;display:block}.alg span{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;font-size:11.5px;line-height:1.25;color:#fff;background:linear-gradient(transparent,#000a)}
-#albv{position:fixed;inset:0;z-index:3000;background:#000e;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:10px}#albv[hidden]{display:none}#albv img{max-width:100%;max-height:80vh;border-radius:10px}#albv p{color:#fff;font-size:14px;text-align:center;margin:0}#albv .x{position:absolute;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff2;color:#fff;font-size:22px}
+#albv{position:fixed;inset:0;z-index:3000;background:#000;display:flex;flex-direction:column}#albv[hidden]{display:none}
+#albv .trk{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;touch-action:pan-x;overscroll-behavior:contain}#albv .trk::-webkit-scrollbar{display:none}
+#albv figure{flex:0 0 100%;width:100%;height:100%;margin:0;scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:56px 12px 28px;box-sizing:border-box}
+#albv figure img{max-width:100%;max-height:calc(100% - 44px);object-fit:contain;border-radius:10px;user-select:none;-webkit-user-drag:none}
+#albv figcaption{color:#fff;font-size:14px;text-align:center;line-height:1.35}
+#albv .x{position:absolute;z-index:2;top:14px;right:14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff2;color:#fff;font-size:22px}
+#albv .cnt{position:absolute;z-index:2;top:22px;left:18px;color:#fffc;font-size:13.5px;font-variant-numeric:tabular-nums}
+#albv .nv{position:absolute;z-index:2;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:#fff2;color:#fff;font-size:20px}#albv .nv.l{left:8px}#albv .nv.r{right:8px}
+@media (hover:none){#albv .nv{display:none}}
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1798,12 +1806,21 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
   <div class="jtop"><b>¿Quién lo dijo?</b><span id="jsc"></span><button type="button" class="jx" id="jClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div id="jbody"></div></div></div>
 
-<div id="albv" hidden role="dialog" aria-label="Foto del álbum"><button type="button" class="x" aria-label="Cerrar">✕</button><img alt=""><p></p></div>
+<div id="albv" hidden role="dialog" aria-label="Álbum de fotos"><span class="cnt"></span><button type="button" class="x" aria-label="Cerrar">✕</button><button type="button" class="nv l" aria-label="Foto anterior">‹</button><button type="button" class="nv r" aria-label="Foto siguiente">›</button><div class="trk"></div></div>
 <script>
-(()=>{const AL=[["01-duster", "10:42 · Rumbo a Banyoles en el Duster"],["carretera", "La carretera, con el Pirineo al fondo"],["buganvilla", "Una casa con buganvilla"],["parque", "El parque junto al lago"],["03b-piraguas", "Piragüistas en el embarcadero"],["ramon-elisabeth", "Ramón y Elisabeth junto al lago"],["vora-estany", "Restaurante Vora Estany"],["kayak-polo", "Un partido de kayak-polo"],["focha-1", "Una focha de cerca"],["lago-pesquera", "El lago desde una pesquera"],["fochas-juncos", "Fochas entre los juncos"],["focha-reflejos", "Focha entre reflejos"],["03-fochas", "Fochas nadando en el lago"],["focha-frente", "La frente blanca de la focha"],["focha-primer-plano", "Focha en primer plano"],["02-pesquera-blanca", "Una pesquera blanca junto al lago"],["remeros", "Remeros entrenando"],["piraguistas-k4", "Piragüistas en el lago"],["garza-2", "La garza en el embarcadero"],["garza-cerca", "La garza de cerca"],["04-pesquera-garza", "La pesquera amarilla y una garza"],["05-la-draga", "Cabaña del poblado neolítico de La Draga"],["cola-de-caballo","Cola de caballo, un fósil viviente"]];
+(()=>{const AL=[["01-duster", "10:42 · Rumbo a Banyoles en el Duster"],["carretera", "La carretera, con el Pirineo al fondo"],["buganvilla", "Una casa con buganvilla"],["parque", "El parque junto al lago"],["03b-piraguas", "Piragüistas en el embarcadero"],["ramon-elisabeth", "Ramón y Elisabeth junto al lago"],["vora-estany", "Restaurante Vora Estany"],["kayak-polo", "Un partido de kayak-polo"],["focha-1", "Una focha de cerca"],["lago-pesquera", "El lago desde una pesquera"],["fochas-juncos", "Fochas entre los juncos"],["focha-reflejos", "Focha entre reflejos"],["03-fochas", "Fochas nadando en el lago"],["focha-frente", "La frente blanca de la focha"],["focha-primer-plano", "Focha en primer plano"],["02-pesquera-blanca", "Una pesquera blanca junto al lago"],["remeros", "Remeros entrenando"],["piraguistas-k4", "Piragüistas en el lago"],["garza-2", "La garza en el embarcadero"],["garza-cerca", "La garza de cerca"],["04-pesquera-garza", "La pesquera amarilla y una garza"],["05-la-draga", "Cabaña del poblado neolítico de La Draga"],["cola-de-caballo","Cola de caballo, un fósil viviente"],["sauce","Un sauce llorón cubierto de hiedra"]];
 const g=document.getElementById("alg"),v=document.getElementById("albv");if(!g||!v)return;
 g.innerHTML=AL.map((a,i)=>`<button type="button" data-al="${i}"><img src="fotos/album/${a[0]}-t.webp" alt="${a[1]}" loading="lazy"><span>${a[1]}</span></button>`).join("");
-g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(!b)return;const a=AL[+b.dataset.al];v.querySelector("img").src=`fotos/album/${a[0]}.webp`;v.querySelector("img").alt=a[1];v.querySelector("p").textContent=a[1];v.hidden=false});
-v.addEventListener("click",()=>{v.hidden=true});document.addEventListener("keydown",e=>{if(e.key==="Escape")v.hidden=true});})();
+const trk=v.querySelector(".trk"),cnt=v.querySelector(".cnt");
+trk.innerHTML=AL.map(a=>`<figure><img src="fotos/album/${a[0]}.webp" alt="${a[1]}" loading="lazy" draggable="false"><figcaption>${a[1]}</figcaption></figure>`).join("");
+const cur=()=>Math.round(trk.scrollLeft/(trk.clientWidth||1));const upd=()=>{cnt.textContent=`${cur()+1} / ${AL.length}`};
+const go=i=>{i=Math.max(0,Math.min(AL.length-1,i));trk.scrollTo({left:i*trk.clientWidth,behavior:"smooth"})};
+trk.addEventListener("scroll",upd,{passive:true});
+g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(!b)return;v.hidden=false;document.documentElement.style.overflow="hidden";const i=+b.dataset.al;trk.scrollLeft=i*trk.clientWidth;upd()});
+const cerrar=()=>{v.hidden=true;document.documentElement.style.overflow=""};
+v.querySelector(".x").addEventListener("click",cerrar);
+v.querySelector(".nv.l").addEventListener("click",()=>go(cur()-1));v.querySelector(".nv.r").addEventListener("click",()=>go(cur()+1));
+document.addEventListener("keydown",e=>{if(v.hidden)return;if(e.key==="Escape")cerrar();if(e.key==="ArrowLeft")go(cur()-1);if(e.key==="ArrowRight")go(cur()+1)});
+})();
 </script>
 </body></html>
