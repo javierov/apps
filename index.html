@@ -2,83 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Apps de viaje hechas a mano · Javier Ovalle</title>
-<meta name="description" content="Apps de viaje personalizadas: tu ruta, tus mapas con GPS sin internet, dónde comer y el tiempo, en una app hecha para tu viaje.">
-<meta name="theme-color" content="#0b0c0f">
-<meta property="og:title" content="Apps de viaje hechas a mano">
-<meta property="og:description" content="Tu viaje en una app: ruta, mapas con GPS sin internet, dónde comer y el tiempo.">
-<link rel="icon" href="../panel-apps-de-viajes/icono-192.png">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Próximamente</title>
 <style>
-@font-face{font-family:Marcellus;src:url(fonts/marcellus.woff2) format("woff2");font-display:swap}
-:root{--bg:#0b0c0f;--card:#14161c;--line:#262a34;--tx:#eef1f6;--soft:#c4cbd7;--mute:#8d96a6;--ac:#f2c46d;--f:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.5 var(--f);padding-bottom:env(safe-area-inset-bottom)}
-.wrap{max-width:720px;margin:0 auto;padding:0 18px}
-.hero{padding:56px 0 26px;text-align:center}
-.hero small{display:inline-block;font-size:13px;letter-spacing:1.6px;text-transform:uppercase;color:var(--ac);margin-bottom:12px}
-.hero h1{font:400 clamp(32px,8vw,48px)/1.08 Marcellus,serif;margin:0 0 14px}
-.hero p{color:var(--soft);margin:0 auto;max-width:520px}
-.feat{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:22px 0 0;padding:0;list-style:none}
-.feat li{font-size:14px;color:var(--soft);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px}
-h2{font:400 24px Marcellus,serif;margin:30px 0 12px}
-.grid{display:grid;gap:12px;grid-template-columns:1fr}
-@media (min-width:620px){.grid{grid-template-columns:1fr 1fr}}
-.app{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
-.app:hover,.app:focus-visible{transform:translateY(-2px);border-color:#3a4660}
-.app img,.app .ph{width:64px;height:64px;border-radius:15px;flex:none;object-fit:cover;background:#1b1e26}
-.app .ph{display:grid;place-items:center;font:400 28px Marcellus,serif;color:#0b0c0f;background:var(--ac)}
-.app b{display:block;font-size:17.5px;line-height:1.25}
-.app span{display:block;font-size:14.5px;color:var(--soft);margin-top:3px}
-.app i{display:inline-block;font-style:normal;font-size:13.5px;color:var(--ac);margin-top:8px;font-weight:600}
-.cta{margin:30px 0 10px;background:linear-gradient(135deg,#1b2233,#14161c);border:1px solid #3a4660;border-radius:22px;padding:22px;text-align:center}
-.cta h2{margin:0 0 8px}
-.cta p{color:var(--soft);margin:0 0 16px}
-.btn{display:inline-block;background:var(--ac);color:#0b0c0f;font-weight:700;text-decoration:none;border-radius:14px;padding:13px 22px}
-footer{text-align:center;color:var(--mute);font-size:13px;padding:26px 0 34px}
+html,body{height:100%;margin:0}
+body{display:grid;place-items:center;background:#f5f1ea;color:#5d554b;font:17px/1.5 Georgia,"Times New Roman",serif}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="hero">
-  <small>Apps de viaje hechas a mano</small>
-  <h1>Tu viaje,<br>en una app hecha para ti</h1>
-  <p>Cada app se diseña a partir de tu viaje: el recorrido día a día, los mapas, dónde comer y qué no perderse. Se instala en el celular y funciona sin internet.</p>
-  <ul class="feat"><li>Ruta día a día</li><li>Mapa con GPS sin internet</li><li>Dónde comer</li><li>El tiempo</li><li>Rincones secretos</li><li>Tu propio estilo</li></ul>
-</header>
-
-<h2>Algunas apps que he hecho</h2>
-<div class="grid" id="apps"></div>
-
-<section class="cta">
-  <h2>¿Quieres la tuya?</h2>
-  <p>Cuéntame tu viaje en un cuestionario corto y te preparo tu app.</p>
-  <a class="btn" data-app="viajes-disenados-a-mano" href="../viajes-disenados-a-mano/">Diseñar mi viaje</a>
-</section>
-<footer>Javier Ovalle · Esta página cuenta las visitas de forma anónima para mejorar las apps.</footer>
-</div>
-<script>
-const APPS=[
- ["demo-escapada-a-toledo","Escapada a Toledo","Un día en Toledo a pie: ruta, rincones secretos, mapa con GPS sin internet y dónde almorzar barato."],
- ["demo-mis-vacaciones","Mis Vacaciones","Madrid, Barcelona y Praga: los días del viaje, mapas de cada ciudad, el tiempo y los gastos."],
- ["demo-lisboa-y-oporto","Lisboa y Oporto","Un viaje en pareja por Portugal, con mapa ilustrado de la ruta y las calles de cada ciudad."],
- ["demo-escapada-a-europa","Escapada a Europa","España, Italia y Francia en un solo viaje: día a día y mapa de toda la ruta."],
- ["demo-cancun-2026","Cancún 2026","Playa y sol: el plan de cada día, mapa ilustrado, el clima y qué llevar."],
- ["viaje-familia-lima","Lima Familia","Un viaje en familia a Lima, con su asesora de viaje y todo a mano."],
- ["Viajes-por-Catalunya","Viajes por Catalunya","Excursiones en tren desde Badalona a pueblos medievales de Catalunya."]];
-/* etiqueta de demo: ?de=nombre (o la que ya tenga este navegador); si no hay, «portafolio» */
-let DE="";try{const m=location.search.match(/[?&]de=([^&]*)/);if(m){const v=decodeURIComponent(m[1]).toLowerCase().replace(/[^a-z0-9ñáéíóú-]/g,"").slice(0,20);if(!v||v==="no")localStorage.removeItem("javierov-demo");else localStorage.setItem("javierov-demo",v)}DE=localStorage.getItem("javierov-demo")||""}catch(e){}
-const tag=DE||"portafolio";
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-document.getElementById("apps").innerHTML=APPS.map(([r,n,d])=>`<a class="app" data-app="${r}" href="../${r}/?de=${encodeURIComponent(tag)}"><img src="../${r}/apple-touch-icon.png" alt="" loading="lazy" onerror="this.outerHTML='<span class=ph>${esc(n[0])}</span>'"><span style="margin:0"><b>${esc(n)}</b><span>${esc(d)}</span><i>Ver la app →</i></span></a>`).join("");
-document.querySelector(".cta .btn").href="../viajes-disenados-a-mano/?de="+encodeURIComponent(tag);
-/* contador anónimo (GoatCounter), igual que en las apps */
-(function(){const GC="https://javierov.goatcounter.com/count";let off=false;try{if(/[?&]yo\b/.test(location.search))localStorage.setItem("javierov-nostats","1");off=localStorage.getItem("javierov-nostats")==="1"}catch(e){}
-  if(off||!/github\.io$/.test(location.hostname))return;
-  const send=(p,ev)=>{const u=new URLSearchParams({p,t:p,s:screen.width,rnd:Math.random().toString(36).slice(2)});if(ev)u.set("e","true");else if(document.referrer)u.set("r",document.referrer);new Image().src=GC+"?"+u};
-  const pre="demo:"+tag+" · Portafolio · ";
-  send(pre+"abrió el portafolio",true);
-  document.addEventListener("click",e=>{const a=e.target.closest("[data-app]");if(a)send(pre+"tocó: "+(a.querySelector("b")?a.querySelector("b").textContent:"Diseñar mi viaje"),true)},true)})();
-</script>
+<p>Próximamente.</p>
 </body>
 </html>
