@@ -1800,7 +1800,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
 
 <div id="albv" hidden role="dialog" aria-label="Foto del álbum"><button type="button" class="x" aria-label="Cerrar">✕</button><img alt=""><p></p></div>
 <script>
-(()=>{const AL=[["01-duster","10:42 · Rumbo a Banyoles en el Duster"],["02-pesquera-blanca","Una pesquera blanca junto al lago"],["03-fochas","Fochas nadando en el lago"],["04-pesquera-garza","La pesquera amarilla y una garza"],["05-la-draga","Cabaña del poblado neolítico de La Draga"]];
+(()=>{const AL=[["01-duster","10:42 · Rumbo a Banyoles en el Duster"],["02-pesquera-blanca","Una pesquera blanca junto al lago"],["03-fochas","Fochas nadando en el lago"],["03b-piraguas","Piragüistas en el embarcadero"],["04-pesquera-garza","La pesquera amarilla y una garza"],["05-la-draga","Cabaña del poblado neolítico de La Draga"]];
 const g=document.getElementById("alg"),v=document.getElementById("albv");if(!g||!v)return;
 g.innerHTML=AL.map((a,i)=>`<button type="button" data-al="${i}"><img src="fotos/album/${a[0]}-t.webp" alt="${a[1]}" loading="lazy"><span>${a[1]}</span></button>`).join("");
 g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(!b)return;const a=AL[+b.dataset.al];v.querySelector("img").src=`fotos/album/${a[0]}.webp`;v.querySelector("img").alt=a[1];v.querySelector("p").textContent=a[1];v.hidden=false});
