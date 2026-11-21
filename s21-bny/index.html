@@ -419,6 +419,10 @@ button.ft{font:inherit}
 #albv .cnt{position:absolute;z-index:2;top:22px;left:18px;color:#fffc;font-size:13.5px;font-variant-numeric:tabular-nums}
 #albv .nv{position:absolute;z-index:2;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:#fff2;color:#fff;font-size:20px}#albv .nv.l{left:8px}#albv .nv.r{right:8px}
 @media (hover:none){#albv .nv{display:none}}
+#aguia .agps{width:100%;margin:0 0 6px}#aguia .agps.on{background:#2f9e6e;border-color:#2f9e6e;color:#fff}#aguia .agst{font-size:12.5px;margin:0 0 10px;min-height:1em}
+.agp{border-top:1px solid var(--line,#0001);padding:12px 0}.agp:first-child{border-top:0}.agp h4{margin:0 0 2px;font-size:15.5px;display:flex;gap:8px;align-items:center}.agp h4 b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#cdb07a;color:#1b1b1b;font-size:12px;flex:none}
+.agp .agd{font-size:12.5px;opacity:.75;margin:0 0 8px}.agp .agth{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 0 8px}.agp .agth::-webkit-scrollbar{display:none}.agp .agth button{all:unset;cursor:pointer;flex:none}.agp .agth img{width:64px;height:64px;object-fit:cover;border-radius:8px;display:block}
+.agp .acts{display:flex;gap:6px;flex-wrap:wrap}.agp .acts .btn{padding:7px 11px;font-size:13.5px}.agp.sonando{background:linear-gradient(90deg,#2f9e6e14,transparent)}.agp.hecho h4 b{background:#2f9e6e}
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1359,6 +1363,7 @@ html,body{touch-action:pan-x pan-y}
     <div class="box blk" id="flaco"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt="">Casa del Flaco</h3><div id="dirbox"></div></div>
     <div class="box blk" id="grupo"><h3 class="bh"><img class="bic" src="fotos/ic-corazon.webp" alt="">La pandilla de hoy</h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Toca una cara: cada uno tiene algo que decir.</p><div class="grp" id="grp"></div><button type="button" class="btn jbtn" id="jOpen">¿Quién lo dijo? · Jugar</button></div>
     <div class="box blk" id="album"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Álbum del día</h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Las fotos de hoy. Toca una para verla en grande.</p><div class="alg" id="alg"></div></div>
+    <div class="box blk" id="aguia"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Audioguía del lago</h3><p class="note" style="margin:-2px 0 10px;font-size:13.5px">Toca ▶ para escuchar cada parada. Con el modo paseo, la guía habla sola cuando llegas a cada punto.</p><button type="button" class="btn agps" id="agps">🚶 Activar modo paseo</button><p class="note agst" id="agst"></p><div id="agl"></div></div>
     <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px">Las horas son aproximadas: es un día para ir sin apuro. Todo el paseo por el pueblo y el lago es gratis.</p>
     <div id="route"></div>
@@ -1816,11 +1821,53 @@ trk.innerHTML=AL.map(a=>`<figure><img src="fotos/album/${a[0]}.webp" alt="${a[1]
 const cur=()=>Math.round(trk.scrollLeft/(trk.clientWidth||1));const upd=()=>{cnt.textContent=`${cur()+1} / ${AL.length}`};
 const go=i=>{i=Math.max(0,Math.min(AL.length-1,i));trk.scrollTo({left:i*trk.clientWidth,behavior:"smooth"})};
 trk.addEventListener("scroll",upd,{passive:true});
-g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(!b)return;v.hidden=false;document.documentElement.style.overflow="hidden";const i=+b.dataset.al;trk.scrollLeft=i*trk.clientWidth;upd()});
+const abrir=i=>{v.hidden=false;document.documentElement.style.overflow="hidden";trk.scrollLeft=i*trk.clientWidth;upd()};
+g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(!b)return;abrir(+b.dataset.al)});
 const cerrar=()=>{v.hidden=true;document.documentElement.style.overflow=""};
 v.querySelector(".x").addEventListener("click",cerrar);
 v.querySelector(".nv.l").addEventListener("click",()=>go(cur()-1));v.querySelector(".nv.r").addEventListener("click",()=>go(cur()+1));
 document.addEventListener("keydown",e=>{if(v.hidden)return;if(e.key==="Escape")cerrar();if(e.key==="ArrowLeft")go(cur()-1);if(e.key==="ArrowRight")go(cur()+1)});
+
+/* audioguía */
+const AG=[
+{n:"Rumbo a Banyoles",ll:null,f:["01-duster","carretera"],t:"Bienvenidos a la audioguía de Banyoles. Desde Badalona son algo más de cien kilómetros hacia el norte. Al acercarse aparecen las montañas de la Garrotxa, la antesala del Pirineo. Banyoles es la capital de la comarca del Pla de l'Estany, que toma su nombre del lago: estany, en catalán."},
+{n:"El parque y la orilla",ll:[42.12330,2.75925],f:["parque","buganvilla","ramon-elisabeth","sauce","cola-de-caballo"],t:"Están en la orilla este del lago de Banyoles, el lago natural más grande de Cataluña, de unos dos kilómetros de largo. No lo alimenta ningún río: el agua llega desde el subsuelo, a través de grietas y simas del terreno calcáreo, y algunas de esas simas superan los cuarenta metros de profundidad. Los grandes plátanos de sombra dan al paseo ese color de otoño. Y entre la vegetación húmeda crece la cola de caballo, una planta cuyos parientes, hace unos trescientos millones de años, eran árboles de más de veinte metros."},
+{n:"Parque Neolítico de La Draga",ll:[42.12395,2.75880],f:["05-la-draga"],t:"Aquí, en mil novecientos noventa, mientras se plantaban jardines, apareció uno de los poblados lacustres más antiguos de Europa, de entre cinco mil cuatrocientos y cuatro mil novecientos años antes de Cristo. Vivían aquí agricultores y ganaderos. Gracias al agua y al barro se conservó la madera, algo rarísimo: arcos, peines, cucharones, hoces y cestos. Las cabañas sobre pilotes que ven son reconstrucciones a tamaño real, levantadas en dos mil cuatro."},
+{n:"Las pesqueras",ll:[42.12470,2.75690],f:["02-pesquera-blanca","lago-pesquera","garza-2","garza-cerca","04-pesquera-garza"],t:"Estas casetas sobre el agua son las pesqueras. Hay unas veinte, construidas entre mediados del siglo diecinueve y mil novecientos treinta y uno. Nacieron para pescar, pero la burguesía las convirtió en lugares de recreo, y hoy son Bien Cultural de Interés Nacional. La amarilla, con almenas medievales y ventanas de estilo árabe, es La Carpa d'Or, de mil novecientos dieciocho, en la punta del Cap de Bou. Y el ave gris inmóvil en la plataforma es una garza real, esperando un pez."},
+{n:"Las fochas",ll:[42.12290,2.75780],f:["focha-1","fochas-juncos","focha-reflejos","03-fochas","focha-frente","focha-primer-plano"],t:"Los pájaros negros que nadan entre los juncos son fochas comunes. Se reconocen por la placa blanca que les sube desde el pico hasta la frente. No son patos: en lugar de patas palmeadas tienen dedos con lóbulos, y se sumergen para comer plantas del fondo. En catalán las llaman fotges, y en invierno el lago se llena de ellas."},
+{n:"Deportes en el lago",ll:[42.12150,2.75760],f:["03b-piraguas","kayak-polo","remeros","piraguistas-k4","vora-estany"],t:"El lago de Banyoles fue la sede de las pruebas de remo de los Juegos Olímpicos de Barcelona noventa y dos, y todavía hoy entrenan aquí clubes de remo y piragüismo. Lo que se ve con cascos y petos numerados es kayak polo: dos equipos de cinco piragüistas que se pasan el balón con la mano o con la pala para meterlo en una portería colgada sobre el agua. Junto al Club Natació está el restaurante Vora Estany, famoso por su metro de butifarra."}
+];
+const agl=document.getElementById("agl"),agps=document.getElementById("agps"),agst=document.getElementById("agst");
+if(agl){
+const idx=k=>AL.findIndex(a=>a[0]===k);
+const getLL=i=>{const o=LSg("ag-ll-"+i);return o||AG[i].ll};
+function LSg(k){try{return JSON.parse(localStorage.getItem("eb-"+k))}catch(e){return null}}
+function LSs(k,v){try{localStorage.setItem("eb-"+k,JSON.stringify(v))}catch(e){}}
+const hechos=new Set(LSg("ag-hechos")||[]);
+agl.innerHTML=AG.map((p,i)=>`<div class="agp${hechos.has(i)?" hecho":""}" data-i="${i}"><h4><b>${i+1}</b>${p.n}</h4><p class="agd" data-d="${i}">${p.ll?"":"Para escuchar en cualquier momento"}</p><div class="agth">${p.f.map(k=>`<button type="button" data-ai="${idx(k)}"><img src="fotos/album/${k}-t.webp" alt="" loading="lazy"></button>`).join("")}</div><div class="acts"><button type="button" class="btn" data-play="${i}">▶ Escuchar</button>${p.ll?`<a class="btn" data-ir="${i}" target="_blank" rel="noopener">Cómo llegar</a><button type="button" class="btn" data-fix="${i}">📍 Estoy aquí</button>`:""}</div></div>`).join("");
+const setIr=()=>agl.querySelectorAll("[data-ir]").forEach(a=>{const ll=getLL(+a.dataset.ir);a.href=`https://www.google.com/maps/dir/?api=1&destination=${ll[0]},${ll[1]}&travelmode=walking`});setIr();
+let sonando=-1,voz=null;
+const elegirVoz=()=>{const vs=speechSynthesis.getVoices();voz=vs.find(v=>/^es[-_]ES/i.test(v.lang))||vs.find(v=>/^es/i.test(v.lang))||null};
+if("speechSynthesis"in window){elegirVoz();speechSynthesis.onvoiceschanged=elegirVoz}
+const marcar=()=>agl.querySelectorAll(".agp").forEach(d=>{const i=+d.dataset.i;d.classList.toggle("sonando",i===sonando);d.querySelector("[data-play]").textContent=i===sonando?"⏸ Parar":"▶ Escuchar";d.classList.toggle("hecho",hechos.has(i))});
+const hablar=i=>{if(!("speechSynthesis"in window)){agst.textContent="Este teléfono no tiene voz para leer la guía.";return}
+speechSynthesis.cancel();if(sonando===i){sonando=-1;marcar();return}
+const u=new SpeechSynthesisUtterance(AG[i].n+". "+AG[i].t);u.lang="es-ES";if(voz)u.voice=voz;u.rate=.97;
+u.onend=u.onerror=()=>{if(sonando===i){sonando=-1;marcar()}};sonando=i;hechos.add(i);LSs("ag-hechos",[...hechos]);marcar();speechSynthesis.speak(u)};
+agl.addEventListener("click",e=>{const pl=e.target.closest("[data-play]");if(pl){hablar(+pl.dataset.play);return}
+const th=e.target.closest("[data-ai]");if(th){abrir(+th.dataset.ai);return}
+const fx=e.target.closest("[data-fix]");if(fx){const i=+fx.dataset.fix;if(!navigator.geolocation){agst.textContent="Sin GPS disponible.";return}
+fx.textContent="📍 Buscando…";navigator.geolocation.getCurrentPosition(p=>{LSs("ag-ll-"+i,[p.coords.latitude,p.coords.longitude]);setIr();fx.textContent="📍 Guardado";setTimeout(()=>fx.textContent="📍 Estoy aquí",2000);if(ultima)dist(ultima)},()=>{fx.textContent="📍 Estoy aquí";agst.textContent="No pude leer el GPS. Revisa el permiso de ubicación."},{enableHighAccuracy:true,timeout:15000})}});
+const R=6371e3,rad=x=>x*Math.PI/180;const metros=(a,b)=>{const dl=rad(b[0]-a[0]),dg=rad(b[1]-a[1]);const h=Math.sin(dl/2)**2+Math.cos(rad(a[0]))*Math.cos(rad(b[0]))*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+let ultima=null,wid=null;const oidos=new Set();
+function dist(pos){ultima=pos;let cerca=-1,min=1e9;AG.forEach((p,i)=>{const ll=getLL(i);if(!ll)return;const m=metros(pos,ll);const el=agl.querySelector(`[data-d="${i}"]`);if(el)el.textContent=m<1000?`A ${Math.round(m/10)*10} m`:`A ${(m/1000).toFixed(1)} km`;if(m<min){min=m;cerca=i}});
+if(wid!==null&&cerca>=0&&min<90&&!oidos.has(cerca)&&sonando<0){oidos.add(cerca);agst.textContent=`Llegaste a «${AG[cerca].n}»`;hablar(cerca);agl.querySelector(`[data-i="${cerca}"]`).scrollIntoView({behavior:"smooth",block:"center"})}}
+agps.addEventListener("click",()=>{if(wid!==null){navigator.geolocation.clearWatch(wid);wid=null;agps.classList.remove("on");agps.textContent="🚶 Activar modo paseo";agst.textContent="";return}
+if(!navigator.geolocation){agst.textContent="Este teléfono no permite usar el GPS aquí.";return}
+if("speechSynthesis"in window){const u=new SpeechSynthesisUtterance("Modo paseo activado.");u.lang="es-ES";if(voz)u.voice=voz;speechSynthesis.speak(u)}
+agps.classList.add("on");agps.textContent="⏹ Detener modo paseo";agst.textContent="Buscando tu ubicación…";
+wid=navigator.geolocation.watchPosition(p=>{if(agst.textContent.startsWith("Buscando"))agst.textContent="Modo paseo activo: la guía hablará al llegar a cada punto.";dist([p.coords.latitude,p.coords.longitude])},()=>{agst.textContent="No pude leer el GPS. Revisa el permiso de ubicación."},{enableHighAccuracy:true,maximumAge:5000})});
+}
 })();
 </script>
 </body></html>
