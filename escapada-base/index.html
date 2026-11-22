@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="Escapada">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="viaje.js"></script>
+<script>/* datos del viaje: viaje.js; con ?ejemplo=vacaciones, el ejemplo de varios días */document.write('<script src="'+(/[?&]ejemplo=vacaciones\b/.test(location.search)?"ejemplo-vacaciones.js":"viaje.js")+'"><\/script>')</script>
 <script>try{var t=localStorage.getItem(PFX+"theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 /* VOICE everyday, app de viaje «Mis Vacaciones», elegante y nocturna
@@ -454,6 +454,64 @@ button.ft{font:inherit}
 .vprog{margin-top:14px}.vtrack{height:8px;border-radius:4px;background:#8883;overflow:hidden}.vtrack i{display:block;height:100%;width:0;background:#cdb07a;transition:width .3s}
 .vcan{display:block;width:100%;max-width:300px;margin:12px auto 0;border-radius:14px;aspect-ratio:9/16;height:auto;background:#000}
 .vout{margin-top:16px}.vout video{display:block;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9/16;border-radius:14px;background:#000}.vacts{display:flex;gap:10px;justify-content:center;margin-top:12px}.vacts .btn{text-decoration:none;display:inline-grid;place-items:center}
+/* ===== varios días, ciudades y módulos de vacaciones ===== */
+.dch.dsel{margin:0 -20px 10px;padding:2px 20px 6px}
+.mapbox .dch.dsel{margin:0 -14px 6px;padding:2px 14px 4px}
+.dch button.hoy:not(.on){box-shadow:inset 0 0 0 1.5px var(--steel2)}
+.dch button.hoy b{color:var(--steel2)}.dch button.hoy.on b{color:inherit}
+.dhead{margin:2px 0 12px}
+.dhd{margin:0;font-size:13px;font-weight:700;color:var(--soft);display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.dhd span{display:inline-flex;align-items:center;gap:6px;color:var(--ink)}.dhd span i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.dtt{margin:4px 0 2px;font-size:19px;font-weight:800;letter-spacing:-.015em;line-height:1.2}
+.dhead .note{font-size:14px}
+.dtr{margin:10px 0 6px;gap:6px}.dtr li{grid-template-columns:30px minmax(0,1fr);font-size:14px}.dtr .ic{width:30px;height:30px;border-radius:10px}.dtr .ic svg{width:16px;height:16px}
+.dnav button{display:inline-flex;align-items:center;gap:4px}.dnav svg{width:16px;height:16px}
+#wxbox{margin-bottom:12px}
+.res li.rch{border:0;padding:0}.res li.rch .rcity{margin:10px 0 0}.res li.rch:first-child .rcity{margin-top:0}
+/* útil */
+#s-util .box{margin-bottom:14px}#utilbox{padding-top:14px}#uchips{padding-top:14px}
+.rbar{height:8px;border-radius:999px;background:var(--fill2);overflow:hidden;margin:4px 0 8px}.rbar i{display:block;height:100%;background:var(--steel2);border-radius:999px}
+.rg{display:flex;justify-content:space-between;align-items:center;margin:14px 0 2px;font-size:13px;font-weight:800;color:var(--soft);text-transform:uppercase;letter-spacing:.05em}
+.rg span{display:inline-flex;align-items:center;gap:7px}.rg svg{width:16px;height:16px}.rg .cnt{font-weight:700;letter-spacing:0}
+.rv{list-style:none;margin:0;padding:0}
+.rv li{border-bottom:1px solid var(--line)}.rv li:last-child{border:0}
+.rv .rtg{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:center;width:100%;border:0;background:none;color:var(--ink);text-align:left;padding:10px 0;cursor:pointer;font:inherit}
+.rv .ck{width:26px;height:26px;border-radius:8px;border:2px solid var(--line2);display:grid;place-items:center;color:#fff}
+.rv .ck svg{width:16px;height:16px}
+.rv li.ok .ck{background:#2f8a55;border-color:#2f8a55}
+.rv b{display:block;font-size:15px;line-height:1.3}.rv small{display:block;color:var(--soft);font-size:13px;margin-top:1px}
+.rv small em{font-style:normal;font-weight:700;color:#d4553f}
+.rv li.ok b{color:var(--soft)}
+.rf{padding:0 0 12px 40px;display:grid;gap:10px}
+.rf input[type=text]{min-height:44px;font-size:15px}
+.rf .acts{margin-top:0}.rf .btn{min-height:40px;font-size:14px;display:inline-flex;align-items:center;gap:6px;text-decoration:none}.rf .btn svg{width:16px;height:16px}
+.sw{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;cursor:pointer}
+.sw input{width:22px;height:22px;accent-color:#2f8a55}
+.leg{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:16px;padding:12px 14px;margin-bottom:10px}
+.leg:last-child{margin-bottom:0}
+.leg.now{border-color:var(--line2);border-left-color:var(--c);box-shadow:0 0 0 2px var(--c) inset}
+.leg.past{opacity:.55}
+.leg .lh{display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:10px;align-items:center}
+.leg .ld{display:grid;justify-items:center;line-height:1.05}.leg .ld b{font-size:20px}.leg .ld small{font-size:11.5px;color:var(--soft);white-space:nowrap}
+.leg .lh b{display:block;font-size:15.5px;line-height:1.25}.leg .lh small{display:block;color:var(--soft);font-size:13px;margin-top:2px}
+.leg .du{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;color:var(--steel2);white-space:nowrap}.leg .du svg{width:15px;height:15px}
+.leg .op{margin:8px 0 0 56px;font-size:13.5px;font-weight:600}.leg .op+.op{margin-top:2px}
+.leg .note{margin:4px 0 0 56px;font-size:13.5px}
+.tel{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.tel:last-child{border:0;padding-bottom:0}.tel:first-child{padding-top:0}.tel .tl0{display:block;font-size:15px}.tel small{display:block;color:var(--soft);font-size:13px}
+.tls{display:flex;gap:6px}
+.tel .tl{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:800;font-size:16px;white-space:nowrap;text-decoration:none;color:var(--btnInk);background:var(--btn);border-radius:999px;padding:0 14px;min-height:42px}.tel .tl svg{width:16px;height:16px}
+.tel .tl.wa{background:#25d366;color:#fff;padding:0;width:42px}.tel .tl.wa svg{width:20px;height:20px}
+#s-gastos .dch{margin:14px -20px 0;padding:2px 20px 6px}
+#gdw{display:block}#gdw select{width:100%}
+/* fotos de un viaje largo: por días, con favoritas */
+.alg .algh{grid-column:1/-1;margin:10px 0 0;font-size:13px;font-weight:800;color:var(--soft);display:flex;align-items:center;gap:7px}
+.alg .algh:first-child{margin-top:0}.alg .algh i{width:9px;height:9px;border-radius:50%;background:var(--c)}.alg .algh small{font-weight:600}
+.alg .stf{position:absolute;left:auto;bottom:auto;right:6px;top:6px;padding:0;width:26px;height:26px;border-radius:50%;background:rgb(0 0 0/.55);display:grid;place-items:center;color:#ffd166}.alg .stf svg{width:14px;height:14px}
+.fchips{margin:2px 0 10px}.fchips button{padding:6px 12px;font-size:13.5px}
+#albv .x,#albv .nv{display:grid;place-items:center;padding:0;cursor:pointer}
+#albv .fav{position:absolute;z-index:2;top:14px;right:64px;height:40px;border:0;border-radius:999px;background:#fff2;color:#fff;font:inherit;font-size:14px;font-weight:600;padding:0 14px;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+#albv .fav[aria-pressed=true]{background:#ffd166;color:#1d1a12}#albv .fav[aria-pressed=true] svg{fill:currentColor}
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1373,7 +1431,9 @@ html,body{touch-action:pan-x pan-y}
   <button role="tab" data-go="mapa" aria-selected="false"><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/><circle cx="18" cy="9.5" r="0"/></svg>Mapa</button>
   <button role="tab" data-go="fotos" aria-selected="false"><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="2.5"/><path d="M8.5 6l1.4-2h4.2l1.4 2"/><circle cx="12" cy="13" r="3.6"/></svg>Fotos</button>
   <button role="tab" data-go="video" aria-selected="false"><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="13" height="13" rx="2.2"/><path d="M16 10.2l5-3v9.6l-5-3"/></svg>Video</button>
-  <button role="tab" data-go="comer" aria-selected="false"><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l-.8 5.6a3.2 3.2 0 0 1-6.4 0z"/><path d="M12 12v6.5M9 21h6"/></svg>Comer</button>
+  <button role="tab" data-go="comer" id="navcomer" aria-selected="false"><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l-.8 5.6a3.2 3.2 0 0 1-6.4 0z"/><path d="M12 12v6.5M9 21h6"/></svg>Comer</button>
+  <button role="tab" data-go="gastos" id="navgastos" aria-selected="false" hidden><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg>Gastos</button>
+  <button role="tab" data-go="util" id="navutil" aria-selected="false" hidden><svg class="navl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="2.5"/><path d="M9 7V5h6v2M4 12.5h16M12 11v3"/></svg>Útil</button>
 </nav></header>
 
 <div class="app">
@@ -1389,34 +1449,39 @@ html,body{touch-action:pan-x pan-y}
   <div class="pad">
     <div class="box blk wxb" id="wxbox"></div>
     <div class="box blk" id="anf"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt=""><span id="anftit"></span></h3><div id="dirbox"></div></div>
-    <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
+    <h2><span id="planh">El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
+    <div class="dch dsel" id="dch" hidden></div>
+    <div class="dhead" id="dayhead" hidden></div>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px" id="plannota"></p>
     <div id="route"></div>
-    <h2><span>Rincones que vale la pena</span><button type="button" data-mk2="n">Ver en el mapa</button></h2>
-    <div class="box"><ul class="res" id="rincones"></ul></div>
+    <div class="dnav" id="dnav" hidden></div>
+    <h2 id="rinh"><span>Rincones que vale la pena</span><button type="button" data-mk2="n">Ver en el mapa</button></h2>
+    <div class="box" id="rinbox"><ul class="res" id="rincones"></ul></div>
     <div class="box blk" id="lluvia"><h3 class="bh"><img class="bic" src="fotos/ic-paraguas.webp" alt="">Si llueve</h3><ul class="list" id="lluv"></ul></div>
     <div class="box blk" id="antes"><h3 class="bh"><img class="bic" src="fotos/ic-mochila.webp" alt="">Antes de salir</h3><div id="tareas"></div></div>
-    <div class="box blk"><h3 class="bh"><img class="bic" id="viajeico" src="fotos/ic-auto.webp" alt=""><span id="viajetit"></span></h3><ul class="list" id="tren"></ul></div>
+    <div class="box blk" id="viajebox"><h3 class="bh"><img class="bic" id="viajeico" src="fotos/ic-auto.webp" alt=""><span id="viajetit"></span></h3><ul class="list" id="tren"></ul></div>
   </div>
 </section>
 
 <section id="s-mapa" hidden>
   <div class="sheet" style="margin-top:0;border-top:0"><h2>Mapa</h2>
     <div class="box mapbox" id="mapbox">
+      <div class="dch dsel" id="mapdays" hidden></div>
       <div class="chips" id="mapchips"></div>
       <div class="mapw" id="mapw"><div class="mapoff" id="mapoff" hidden>Sin señal: las calles aparecerán con conexión. ✕</div><div class="memsg" id="memsg" role="status" hidden></div></div>
-      <p class="note" style="margin-top:8px;font-size:13px">Toca «Dónde estoy» para ver tu posición: el punto azul usa el GPS y la flecha la brújula del celular. Toca un punto para ver qué es. «Carretera» muestra el camino en coche desde Badalona. En el celular, el mapa se mueve con dos dedos; con uno se sigue bajando la página.</p></div>
+      <p class="note" style="margin-top:8px;font-size:13px" id="mapnote"></p></div>
     <div id="maplist"></div></div>
 </section>
 
 <section id="s-fotos" hidden>
-  <div class="ptl"><h1>Mis fotos</h1><p>Agrega las fotos que sacaste en la escapada. Se ordenan solas por la hora y quedan guardadas solo en este teléfono.</p></div>
+  <div class="ptl"><h1>Mis fotos</h1><p id="fintro">Agrega las fotos que sacaste en la escapada. Se ordenan solas por la hora y quedan guardadas solo en este teléfono.</p></div>
   <div class="pad">
     <div class="box blk" id="album"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Álbum de la escapada</h3>
       <input type="file" id="fin" accept="image/*" multiple hidden>
       <div class="facts"><button type="button" class="btn" id="fadd">📷 Agregar fotos</button><span id="fcnt"></span></div>
+      <div class="vchips fchips" id="ffil" hidden></div>
       <p class="note fst" id="fst"></p>
-      <p class="note fempty" id="fempty">Todavía no hay fotos. Toca «Agregar fotos» y elige las de tu galería (hasta 40).</p>
+      <p class="note fempty" id="fempty">Todavía no hay fotos. Toca «Agregar fotos» y elige las de tu galería.</p>
       <div class="alg" id="alg"></div>
     </div>
   </div>
@@ -1426,6 +1491,7 @@ html,body{touch-action:pan-x pan-y}
   <div class="pad">
     <div class="box blk" id="vbox"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">🎬 Crear mi video</h3>
       <p class="note" id="vinfo"></p>
+      <span class="vlab" id="vsell" hidden>Qué fotos</span><div class="vchips" id="vsel" hidden></div>
       <label class="vlab" for="vtit">Título</label><input id="vtit" class="vin" maxlength="40" value="">
       <span class="vlab">Música</span><div class="vchips" id="vmus"></div><button type="button" class="btn ghost vprev" id="vprev">▶ Escuchar</button>
       <span class="vlab">Duración</span><div class="vchips" id="vdur"></div>
@@ -1438,10 +1504,35 @@ html,body{touch-action:pan-x pan-y}
 </section>
 <section id="s-comer" hidden>
   <div class="ptl"><h1>Comer y comprar</h1><p id="comerintro"></p></div>
+  <div class="chips" id="rchips" hidden></div>
   <div class="pad">
-    <div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/ic-tortada.webp)"><img class="bim bimi" src="fotos/ic-tortada.webp" alt="">Qué probar</h3><ul class="list" id="platos"></ul></div>
+    <div class="box blk" id="platosbox"><h3 class="bh bhg" style="--g:url(fotos/ic-tortada.webp)"><img class="bim bimi" src="fotos/ic-tortada.webp" alt="">Qué probar</h3><ul class="list" id="platos"></ul></div>
     <div id="rlist"></div>
-    <p class="note" style="margin-top:14px;font-size:13px">€ económico · €€ algo más. Los horarios cambian: mejor mirarlos en Google Maps antes de ir. Los lunes muchas panaderías cierran, pero el sábado abren.</p></div>
+    <p class="note" style="margin-top:14px;font-size:13px">€ económico · €€ algo más. Los horarios cambian: mejor mirarlos en Google Maps antes de ir.</p></div>
+</section>
+<section id="s-gastos" hidden>
+  <div class="ptl"><h1>Gastos</h1><p id="gnota"></p></div>
+  <div class="pad">
+    <div class="dch" id="gdch" style="margin-top:14px"></div>
+    <div class="box" style="margin-top:10px" id="gsumm"></div>
+    <div class="box blk" style="margin-top:14px"><h3 class="bh" id="gf-h">Nuevo gasto</h3>
+      <form class="gform" id="gform" autocomplete="off">
+        <input class="full" type="text" id="gc" maxlength="40" placeholder="Qué fue (por ejemplo: almuerzo)" aria-label="Qué fue">
+        <input type="text" inputmode="decimal" id="gi" placeholder="Cuánto" aria-label="Cuánto">
+        <input type="time" id="gt" aria-label="Hora">
+        <label class="full" id="gdw"><select id="gd" aria-label="Día"></select></label>
+        <div class="cats" id="gk"></div>
+        <div class="full acts" style="margin-top:4px"><button type="submit" class="btn" id="gsave">Añadir gasto</button><button type="button" class="btn ghost" id="gcancel" hidden>Cancelar</button><button type="button" class="btn ghost" id="gdel" hidden>Borrar</button></div>
+      </form></div>
+    <h2><span id="gl-h">Todos los gastos</span></h2>
+    <div class="glist" id="glist"></div>
+    <p class="note" id="gempty">Todavía no hay gastos anotados.</p>
+  </div>
+</section>
+<section id="s-util" hidden>
+  <div class="ptl"><h1>Útil</h1><p>Lo práctico del viaje: queda guardado en el teléfono y sirve sin internet.</p></div>
+  <div class="chips" id="uchips" hidden></div>
+  <div class="pad" id="utilbox"></div>
 </section>
 </div>
 <script>/* Leaflet 1.9.4 — BSD-2-Clause */
@@ -1454,110 +1545,172 @@ html,body{touch-action:pan-x pan-y}
 </script>
 <script>
 {
-/* ---------- datos del viaje ---------- */
-const {APP,STATS,T,TRANSPORTE,ANF,CAJA,NOMBRE,Y,M,DIA,FIN,FDIR,FLL,BANY,BDN,ST,RN,LLUVIA,RT,R,PLATOS,TAREAS,TREN,BN,CARS,VIA0}=VIAJE;
-const li=a=>a.map(([i,t])=>`<li><span class="ic">${ico(i)}</span><span>${t}</span></li>`).join("");
-const anfBtn=()=>ANF?`<button class="btn ghost" type="button" data-jump="anf">${esc(ANF.titulo)}</button>`:"";
+/* ---------- datos del viaje (viaje.js) ---------- */
+const V=VIAJE;
+const {APP,T,TRANSPORTE,ANF=null,CAJA,NOMBRE="",Y,M,DIA,FIN,FDIR="",FLL=null,BANY,BDN,RN=[],LLUVIA=[],RT={},R=[],PLATOS=[],TAREAS=[],TREN=[],BN=[],CARS=[],VIA0=null}=V;
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const dirUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
-/* plan del día: hora aproximada, minuto del día, nombre, icono, lat, lon, búsqueda en Maps, qué es, consejo, duración, foto */
-/* rincones: nombre, qué es, parada cercana, lat, lon, búsqueda */
-/* plan B si llueve */
-/* tiempo: sin previsión guardada hasta que haya internet */
-const WX0=null;
-/* comer y comprar: nombre, tipo, precio, nota, búsqueda, zona, lat, lon */
+/* cómo llegar: en coche, la ruta por carretera; si no, Google Maps elige (a pie o en transporte público) */
+const goUrl=q=>TRANSPORTE==="coche"?dirUrl(q):"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q);
+const goTxt=TRANSPORTE==="coche"?"Cómo llegar en coche":"Cómo llegar";
 const P={plane:'<path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/>',train:'<rect x="5" y="3" width="14" height="14" rx="4"/><path d="M5 10h14M9 21l1.5-4M15 21l-1.5-4"/><circle cx="9" cy="13.5" r=".8"/><circle cx="15" cy="13.5" r=".8"/>',walk:'<circle cx="13" cy="4" r="2"/><path d="M9 21l3-7 3 3v5M7 12l4-4h3l2 4 2 1M11 8l1 6"/>',bed:'<path d="M3 19V7M3 15h18v4M21 15v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="12" r="2"/>',art:'<path d="M12 3a9 9 0 1 0 0 18c1.1 0 2-.8 2-1.9 0-1.4-1.1-1.6-1.1-2.7 0-1 .8-1.6 1.8-1.6H17a4 4 0 0 0 4-4C21 6.5 17 3 12 3z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10" cy="7" r="1"/><circle cx="15" cy="7.5" r="1"/>',cake:'<path d="M4 20h16v-7H4zM4 16c2 1.2 4 1.2 6 0s4-1.2 6 0 3 1.2 4 0M12 13V9M12 4c1 1 1 2.2 0 3-1-.8-1-2 0-3"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',castle:'<path d="M3 21h18M5 21V10M9.5 21V10M14.5 21V10M19 21V10M3 10l9-6 9 6z"/>',bag:'<path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/>',food:'<path d="M7 3v18M5 3v5a2 2 0 0 0 4 0V3M17 21V3c-2 1-3 4-3 7h3"/>',sun:'<path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 6v3M5 10l2 2M19 10l-2 2M3 14h2M19 14h2"/>',moon:'<path d="M20 14A8 8 0 1 1 10 4a6 6 0 0 0 10 10z"/>',heart:'<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',case:'<rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5h6v2M4 12h16"/>',church:'<path d="M12 2v5M10 4h4M6 21V12l6-5 6 5v9zM10 21v-4a2 2 0 0 1 4 0v4"/>',tree:'<path d="M12 21v-6M7 15h10l-5-12z"/><path d="M8.5 11h7"/>',cup:'<path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 3v3M12 3v3"/>',pin:'<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',back:'<path d="M15 5l-7 7 7 7"/>',chev:'<path d="M9 6l6 6-6 6"/>',go:'<path d="M3 11l18-8-8 18-2-8z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/>',drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',shirt:'<path d="M8 3l-5 3 2 5 3-1v11h8V10l3 1 2-5-5-3a4 4 0 0 1-8 0z"/>',umb:'<path d="M3 12a9 9 0 0 1 18 0zM12 12v7a2 2 0 0 1-4 0M12 3v0"/>',shoe:'<path d="M3 17v-6l5 1 3-4 3 3c2 1 5 1.5 7 2.5V17zM3 17h18v2H3z"/>'};
 Object.assign(P,{hanger:'<path d="M12 6.5a2 2 0 1 1 2-2M12 6.5V8L3 15a1.5 1.5 0 0 0 1 2.7h16a1.5 1.5 0 0 0 1-2.7l-9-7"/>',ticket:'<path d="M3 8a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-2a2 2 0 0 0 0-4z"/><path d="M13 6v12"/>',cloud:'<path d="M7 18h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 11a3.5 3.5 0 0 0 1 7z"/>',rain:'<path d="M7 14h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 7a3.5 3.5 0 0 0 1 7zM8 18l-1 3M12 18l-1 3M16 18l-1 3"/>',fog:'<path d="M7 13h10a4 4 0 0 0 .6-8A6 6 0 0 0 6 6a3.5 3.5 0 0 0 1 7zM4 17h16M6 21h12"/>',sunny:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',psun:'<path d="M12 3v1.5M5.6 5.6l1 1M3 12h1.5M18.4 5.6l-1 1"/><path d="M8.5 11a4 4 0 0 1 7.3-2"/><path d="M8 20h9a3.5 3.5 0 0 0 .5-7 5 5 0 0 0-9.6 1A3 3 0 0 0 8 20z"/>',plus:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',chart:'<circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/>'});
 Object.assign(P,{car:'<path d="M5 17h14v-4.5l-1.8-4.6A2 2 0 0 0 15.3 6.6H8.7a2 2 0 0 0-1.9 1.3L5 12.5z"/><path d="M5 12.5h14"/><circle cx="8" cy="17.5" r="1.8"/><circle cx="16" cy="17.5" r="1.8"/>',home:'<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',cart:'<circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2.4 11h11l2-8H6.2"/>'});
 P.phone='<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>';
+Object.assign(P,{bus:'<path d="M5 17V6.5A3.5 3.5 0 0 1 8.5 3h7A3.5 3.5 0 0 1 19 6.5V17z"/><path d="M5 12h14M9 6.5h6M3 9v2M21 9v2"/><circle cx="8.5" cy="19" r="1.6"/><circle cx="15.5" cy="19" r="1.6"/>',boat:'<path d="M3 15h18l-2.5 5h-13zM12 3v12M12 4l6 8h-6"/>',check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',euro:'<path d="M17 6.5A7 7 0 1 0 17 17.5M4 10h9M4 14h9"/>',sos:'<path d="M12 3 2.5 20h19z"/><path d="M12 10v4.5M12 17.5v.5"/>',wa:'<path d="M4 20l1.3-4A8 8 0 1 1 8 18.8z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.6l1.2-1.2 1.6.8-.4 1.6c-3.3.2-7-3.4-7-6.8L10.6 8l.8 1.6z"/>',bed:'<path d="M3 19V7M3 15h18v4M21 15v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="12" r="2"/>'});
 const ico=(k,w)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w||1.9}" stroke-linecap="round" stroke-linejoin="round">${P[k]||P.info}</svg>`;
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const LS=k=>{try{return JSON.parse(localStorage.getItem(PFX+""+k))}catch(e){return null}};
 const SS=(k,v)=>{try{localStorage.setItem(PFX+""+k,JSON.stringify(v))}catch(e){}};
 const $=id=>document.getElementById(id);
+const li=a=>a.map(([i,t])=>`<li><span class="ic">${ico(i)}</span><span>${t}</span></li>`).join("");
+const anfBtn=()=>ANF?`<button class="btn ghost" type="button" data-jump="anf">${esc(ANF.titulo)}</button>`:"";
+const cap=s=>s?s[0].toUpperCase()+s.slice(1):s;
+const slug=s=>String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+
+/* ---------- días y ciudades ----------
+   Sin DIAS en viaje.js: un solo día con las paradas ST (como «Escapada a Banyoles»).
+   Con DIAS: varios días, cada uno con sus paradas; con 2 o más CIUDADES: tarjetas de ciudad. */
+const pad=n=>String(n).padStart(2,"0");
+const DIAS=(V.DIAS&&V.DIAS.length?V.DIAS:[{f:`${Y}-${pad(M+1)}-${pad(DIA)}`,c:T.lugar,st:V.ST,fin:FIN}]).map((d,i)=>{const [y,mo,dd]=d.f.split("-").map(Number);
+  return Object.assign({},d,{i,y,mo:mo-1,d:dd,k:y*10000+(mo-1)*100+dd,c:d.c||T.lugar,st:d.st||[]})});
+const MULTI=DIAS.length>1;
+const ST=[];DIAS.forEach(d=>{d.g0=ST.length;d.st.forEach((s,j)=>{s.di=d.i;s.j=j;ST.push(s)});if(d.fin==null)d.fin=d.st.length?Math.min(24*60-1,d.st[d.st.length-1].m+120):20*60});
+const CCOL=["#2f6fd8","#c2603b","#1f8a70","#8a1d6b","#b08a3e","#3f7a3a","#a8443a","#5b86c4"];
+const CI=((V.CIUDADES&&V.CIUDADES.length)?V.CIUDADES:[...new Set(DIAS.map(d=>d.c))].map(n=>({n}))).map((c,i)=>Object.assign({ll:BANY,col:CCOL[i%CCOL.length]},c,{i}));
+const MCITY=CI.length>1;
+const ciOf=n=>CI.find(c=>c.n===n)||CI[0];
+const cDays=n=>DIAS.filter(d=>d.c===n);
+const WD=["dom","lun","mar","mié","jue","vie","sáb"],WDL=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+const MSL=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],MSC=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+const dOf=x=>new Date(x.y,x.mo,x.d);
+const wd=x=>WD[dOf(x).getDay()],wdl=x=>WDL[dOf(x).getDay()];
+const diaCorto=x=>!MULTI&&T.dia?T.dia:`${wdl(x)} ${x.d}`;
+const diaLargo=x=>!MULTI&&T.diaLargo?T.diaLargo:`El ${wdl(x)} ${x.d} de ${MSL[x.mo]}`;
+const rango=(a,b)=>a.k===b.k?`${a.d} ${MSC[a.mo]}`:a.mo===b.mo?`${a.d}–${b.d} ${MSC[a.mo]}`:`${a.d} ${MSC[a.mo]} – ${b.d} ${MSC[b.mo]}`;
+const isoOf=t=>`${t.y}-${pad(t.mo+1)}-${pad(t.d)}`;
+/* trayectos de un día (módulo TRAYECTOS) */
+const TRAY=V.TRAYECTOS||[];
+const TIC={tren:"train",avion:"plane",bus:"bus",coche:"car",barco:"boat"},TNOM={tren:"Tren",avion:"Vuelo",bus:"Bus",coche:"En coche",barco:"Barco"};
+const trayOf=x=>TRAY.filter(t=>t.f===x.f);
+const trayLi=(x,pre)=>trayOf(x).map(t=>`<li><span class="ic">${ico(TIC[t.tipo]||"train")}</span><span><b>${pre||""}${TNOM[t.tipo]||"Trayecto"} ${esc(t.de)} → ${esc(t.a)}</b>${t.sale?` · sale ${esc(t.sale)}`:""}${t.num?` · ${esc(t.num)}`:""}</span></li>`).join("");
+
 /* textos y módulos según el viaje */
-document.title=APP;$("vtitulo").textContent=APP;$("vsub").textContent=T.sub;$("vsub2").textContent=T.sub2;$("plannota").textContent=T.planNota;$("viajetit").textContent=T.viaje;$("viajeico").src="fotos/"+T.viajeIco;$("comerintro").textContent=T.comer;$("vtit").value=APP;
+document.title=APP;$("vtitulo").textContent=APP;$("vsub").textContent=T.sub;$("vsub2").textContent=T.sub2;$("plannota").textContent=T.planNota||"";$("plannota").hidden=!T.planNota;$("comerintro").textContent=T.comer||"";$("vtit").value=APP;
+if(TREN&&TREN.length){$("viajetit").textContent=T.viaje;$("viajeico").src="fotos/"+T.viajeIco}else $("viajebox").hidden=true;
 if(ANF)$("anftit").textContent=ANF.titulo;else $("anf").hidden=true;
-const ph=(f,cls)=>`<div class="ph ${cls||""}" style="--s1:#c9a46a;--s2:#3b2a1c">${f?`<img src="fotos/${f}.jpg" alt="" loading="lazy">`:""}</div>`;
+if(!RN||!RN.length){$("rinh").hidden=true;$("rinbox").hidden=true}
+if(!LLUVIA||!LLUVIA.length)$("lluvia").hidden=true;
+if(!TAREAS||!TAREAS.length)$("antes").hidden=true;
+if(MULTI){$("planh").textContent="Día a día";$("dayhead").after($("wxbox"))}
+const ph=(f,cls,c)=>`<div class="ph ${cls||""}" style="--s1:${c?c+"cc":"#c9a46a"};--s2:#3b2a1c">${f?`<img src="fotos/${f}.jpg" alt="" loading="lazy">`:""}</div>`;
 function fixImgs(root){root.querySelectorAll(".ph img:not([data-k])").forEach(i=>{i.dataset.k=1;const ok=()=>i.naturalWidth?i.classList.add("ok"):i.remove();if(i.complete)ok();else{i.addEventListener("load",ok);i.addEventListener("error",()=>i.remove())}})}
 
 /* fecha y hora: reales o simuladas con #prueba-20-12 (día-hora) o #prueba-20-1230 */
 let SIM=null;try{SIM=JSON.parse(sessionStorage.getItem(PFX+"sim"))}catch(e){}
 function NOW(){if(SIM)return SIM;const n=new Date();return{y:n.getFullYear(),mo:n.getMonth(),d:n.getDate(),m:n.getHours()*60+n.getMinutes()}}
-function phase(){const t=NOW(),k=t.y*10000+t.mo*100+t.d,day=Y*10000+M*100+DIA;return k<day?{p:"before",t,left:Math.round((new Date(Y,M,DIA)-new Date(t.y,t.mo,t.d))/864e5)}:k>day?{p:"after",t}:{p:"day",t}}
+function phase(){const t=NOW(),k=t.y*10000+t.mo*100+t.d,a=DIAS[0],z=DIAS[DIAS.length-1],left=x=>Math.round((dOf(x)-new Date(t.y,t.mo,t.d))/864e5);
+  if(k<a.k)return{p:"before",t,left:left(a),x:a};if(k>z.k)return{p:"after",t};
+  const x=DIAS.find(d=>d.k===k);if(x)return{p:"day",t,x};const nx=DIAS.find(d=>d.k>k);return{p:"gap",t,x:nx,left:left(nx)}}
+const curIdx=(m,x)=>{let k=-1;x.st.forEach((s,j)=>{if(m>=s.m)k=x.g0+j});return k};
+/* día que se está mirando: hoy durante el viaje; si no, el primero */
+let DSEL=(()=>{const f=phase();return f.p==="day"?f.x.i:f.p==="gap"?f.x.i:0})();
+const dayLL=()=>ciOf(DIAS[DSEL].c).ll||BANY;
 const carSet=()=>{const c=LS("coche"),s=ST.find(x=>x.car);if(!s)return;if(c&&c.la){s.la=c.la;s.lo=c.lo;s.q=c.la+","+c.lo}else{s.la=null;s.lo=null;s.q=""}};carSet();
 const carCuando=()=>{const c=LS("coche");if(!c||!c.t)return"";const d=new Date(c.t);return d.toLocaleTimeString("es-ES",{hour:"2-digit",minute:"2-digit"})};
-const curIdx=m=>{let k=-1;ST.forEach((s,i)=>{if(m>=s.m)k=i});return k};
 
-/* ---------- banner ---------- */
-$("bnr").innerHTML=BN.map(([f])=>`<div class="bs">${ph(f)}</div>`).join("")+BN.map(([,n])=>`<span class="cn">${n}</span>`).join("");
+/* ---------- banner: BN o, si no hay, las fotos de las ciudades ---------- */
+{const B=(BN&&BN.length?BN:CI.filter(c=>c.f).map(c=>[c.f,c.n.toUpperCase()]));
+ $("bnr").innerHTML=B.map(([f])=>`<div class="bs">${ph(f)}</div>`).join("")+B.map(([,n])=>`<span class="cn">${esc(n)}</span>`).join("");
+ if(B.length!==3&&B.length>0){const n=B.length,dur=n*4,on=100/n,st=document.createElement("style");
+  st.textContent=`.bnr .bs{animation:bfn ${dur}s infinite}.cn{animation:btn ${dur}s infinite}${B.map((_,i)=>`.bnr .bs:nth-child(${i+1}){animation-delay:${i*4}s}.cn:nth-of-type(${i+1}){animation-delay:${i*4}s}`).join("")}
+  @keyframes bfn{0%{opacity:0;transform:scale(1.12)}${(on*.18).toFixed(2)}%{opacity:1}${on.toFixed(2)}%{opacity:1}${(on*1.18).toFixed(2)}%{opacity:0;transform:scale(1)}100%{opacity:0}}
+  @keyframes btn{0%{opacity:0;transform:translateX(10px)}${(on*.18).toFixed(2)}%{opacity:1}${on.toFixed(2)}%{opacity:1;transform:none}${(on*1.18).toFixed(2)}%{opacity:0}100%{opacity:0}}
+  ${n===1?".bnr .bs,.cn{animation:none;opacity:1}":""}`;document.head.appendChild(st)}}
 
-/* ---------- fotos grandes de la portada ---------- */
-$("car").innerHTML=CARS.map(([f,n,t,k])=>`<button type="button" class="cc" data-stop="${k}" aria-label="${n}">${ph(f,"scrim")}<span class="tx"><b>${n}</b><span>${t}</span></span></button>`).join("");
-$("dots").innerHTML=CARS.map(()=>"<i></i>").join("");
-function carState(){const car=$("car"),cs=[...car.children],x=car.scrollLeft;let k=0,best=1e9;cs.forEach((c,i)=>{const dd=Math.abs(c.offsetLeft-car.firstElementChild.offsetLeft-x);if(dd<best){best=dd;k=i}});
-  $("dots").querySelectorAll("i").forEach((d,i)=>d.classList.toggle("on",i===k));$("arrL").hidden=x<8;$("arrR").hidden=x>car.scrollWidth-car.clientWidth-8;return k}
+/* ---------- fotos grandes de la portada: lugares (1 ciudad) o tarjetas de ciudad ---------- */
+if(MCITY){$("car").innerHTML=CI.map(c=>{const ds=cDays(c.n);if(!ds.length)return"";const nn=c.noches!=null?`${c.noches} noche${c.noches===1?"":"s"}`:`${ds.length} día${ds.length===1?"":"s"}`;
+  return `<button type="button" class="cc" data-city="${esc(c.n)}" aria-label="${esc(c.n)}, ${rango(ds[0],ds[ds.length-1])}">${ph(c.f,"scrim",c.col)}<span class="n">${rango(ds[0],ds[ds.length-1])}</span><span class="tx"><b>${esc(c.n)}</b><span>${c.pais?esc(c.pais)+" · ":""}${nn}</span></span></button>`}).join("")}
+else $("car").innerHTML=(CARS||[]).map(([f,n,t,k])=>`<button type="button" class="cc" data-stop="${k}" aria-label="${esc(n)}">${ph(f,"scrim")}<span class="tx"><b>${esc(n)}</b><span>${esc(t)}</span></span></button>`).join("");
+if(!$("car").children.length)$("s-viaje").querySelector(".carw").hidden=true;
+$("dots").innerHTML=[...$("car").children].map(()=>"<i></i>").join("");
+function carState(){const car=$("car"),cs=[...car.children],x=car.scrollLeft;if(!cs.length)return 0;let k=0,best=1e9;cs.forEach((c,i)=>{const dd=Math.abs(c.offsetLeft-car.firstElementChild.offsetLeft-x);if(dd<best){best=dd;k=i}});
+  $("dots").querySelectorAll("i").forEach((d,i)=>d.classList.toggle("on",i===k));$("arrL").hidden=x<8;$("arrR").hidden=x>car.scrollWidth-car.clientWidth-8;$("dots").hidden=car.scrollWidth<=car.clientWidth+8;return k}
 $("car").addEventListener("scroll",()=>requestAnimationFrame(carState),{passive:true});
-const step=dir=>{const car=$("car"),k=carState(),t=car.children[Math.max(0,Math.min(car.children.length-1,k+dir))];car.scrollTo({left:t.offsetLeft-car.firstElementChild.offsetLeft,behavior:"smooth"})};
+const step=dir=>{const car=$("car"),k=carState(),t=car.children[Math.max(0,Math.min(car.children.length-1,k+dir))];if(t)car.scrollTo({left:t.offsetLeft-car.firstElementChild.offsetLeft,behavior:"smooth"})};
 $("arrL").onclick=e=>{e.stopPropagation();step(-1)};$("arrR").onclick=e=>{e.stopPropagation();step(1)};
 /* las fotos llenan lo que queda de la primera pantalla: termina limpia, justo después de los puntos */
-function fitCar(){const sv=$("s-viaje"),car=$("car");if(sv.hidden)return;const cs=[...car.children];cs.forEach(c=>{c.style.height="";c.style.aspectRatio=""});
-  const w=cs[0].offsetWidth,top=car.getBoundingClientRect().top+scrollY,dots=$("dots").offsetHeight+10+($("lleg")?$("lleg").offsetHeight+6:0);
+function fitCar(){const sv=$("s-viaje"),car=$("car");if(sv.hidden||!car.children.length)return;const cs=[...car.children];cs.forEach(c=>{c.style.height="";c.style.aspectRatio=""});
+  const w=cs[0].offsetWidth,top=car.getBoundingClientRect().top+scrollY,dots=($("dots").hidden?0:$("dots").offsetHeight+10);
   const h=Math.round(Math.max(170,Math.min(innerHeight-top-dots-14,w*2.1)));cs.forEach(c=>{c.style.aspectRatio="auto";c.style.height=h+"px"});carState()}
 addEventListener("resize",()=>requestAnimationFrame(fitCar));new ResizeObserver(carState).observe($("car"));
+/* en un viaje de varias ciudades, la tarjeta de la ciudad de hoy queda a la vista */
+function carToToday(){if(!MCITY)return;const f=phase();if(f.p!=="day")return;const k=CI.findIndex(c=>c.n===f.x.c),car=$("car"),el=car.querySelector(`[data-city="${CSS.escape(f.x.c)}"]`);if(k>0&&el)car.scrollLeft=el.offsetLeft-car.firstElementChild.offsetLeft;carState()}
 
 /* ---------- «Hoy» ---------- */
 function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
-  const G0=h>=6&&h<13?"Buenos días":h>=13&&h<20?"Buenas tardes":"Buenas noches";
+  const G0=(h>=6&&h<13?"Buenos días":h>=13&&h<20?"Buenas tardes":"Buenas noches")+(NOMBRE?", "+esc(NOMBRE):"");
   const head=(i,tx)=>`<div class="box hoy"><h3 class="bh"><span class="bi">${ico(i,2)}</span>${tx}</h3>`;
-  if(f.p==="before")return head("sunny",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">${f.left===1?"Mañana, "+T.dia:T.diaLargo}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} ${T.antes}</p>
-    <ul class="list">${li(T.antesLista)}</ul>
-    <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button>${anfBtn()}</div></div>`;
-  if(f.p==="after")return head("heart",`¡Hola${NOMBRE?", "+esc(NOMBRE):""}!`)+`<p class="hl3">${T.despues}</p><p class="note">Aquí queda guardado el plan del ${T.dia}, por si quieres volver a mirarlo.</p></div>`;
-  const m=f.t.m,k=curIdx(m);
-  if(m>=FIN)return head("moon",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hl3">${T.fin}</p></div>`;
-  if(k<0)return head("sunny",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">${T.hoyAntes}</p>
-    <ul class="list">${li(T.hoyLista)}</ul>
-    <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button>${anfBtn()}</div></div>`;
-  const s=ST[k],nx=ST[k+1],q=s.anf?anfQ():s.q,u=s.dir||s.anf?dirUrl(q):map(q);
-  return head(h<13?"sunny":"walk",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">Ahora: ${esc(s.n)}</p>
+  const verDia=x=>MULTI?`<button class="btn" type="button" data-day="${x.i}">Ver el día</button>`:`<button class="btn" type="button" data-stop="${x.g0}">Ver el plan</button>`;
+  if(f.p==="before"){const x=f.x,tl=f.left===1?trayLi(x):"";
+    return head("sunny",G0)+`<p class="hsub">${f.left===1?"Mañana, "+diaCorto(x):diaLargo(x)}${f.left>1?` · faltan ${f.left} días`:""}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} ${T.antes}</p>
+    <ul class="list">${li(T.antesLista||[])}${tl}</ul>
+    <div class="acts">${verDia(x)}${anfBtn()}</div></div>`}
+  if(f.p==="after")return head("heart",`¡Hola${NOMBRE?", "+esc(NOMBRE):""}!`)+`<p class="hl3">${T.despues}</p><p class="note">Aquí queda guardado ${MULTI?"el plan de todos los días":"el plan del "+diaCorto(DIAS[0])}, por si quieres volver a mirarlo.</p></div>`;
+  if(f.p==="gap"){const x=f.x;return head("sunny",G0)+`<p class="hsub">Hoy no hay nada planeado</p><p class="hl3">${f.left===1?"Mañana":diaLargo(x)}: ${esc(x.t||"el plan sigue")}${MCITY?` · en ${esc(x.c)}`:""}</p>${f.left===1&&trayOf(x).length?`<ul class="list">${trayLi(x)}</ul>`:""}<div class="acts">${verDia(x)}</div></div>`}
+  const x=f.x,m=f.t.m,k=curIdx(m,x),lug=x.c||T.lugar,hoy=`Hoy, ${diaCorto(x)} · ${esc(lug)}`,nd=DIAS[x.i+1];
+  if(m>=x.fin){if(!nd)return head("moon",G0)+`<p class="hl3">${T.fin}</p></div>`;
+    return head("moon",G0)+`<p class="hsub">${hoy}</p><p class="hl3">Mañana, ${diaCorto(nd)}: ${esc(nd.t||"el plan sigue")}${nd.c!==x.c?` · vas a ${esc(nd.c)}`:""}</p>${trayOf(nd).length?`<ul class="list">${trayLi(nd)}</ul>`:""}<div class="acts"><button class="btn" type="button" data-day="${nd.i}">Ver mañana</button></div></div>`}
+  if(k<0){const s0=x.st[0],first=x.i===0&&T.hoyAntes;
+    return head("sunny",G0)+`<p class="hsub">${hoy}</p><p class="hl3">${first?T.hoyAntes:`Hoy: ${esc(x.t||"el plan del día")}`}</p>
+    <ul class="list">${trayLi(x,"Hoy: ")}${first?li(T.hoyLista||[]):s0?`<li><span class="ic">${ico(s0.ic)}</span><span><b>Hacia las ${s0.h}:</b> ${esc(s0.n)}</span></li>`:""}</ul>
+    <div class="acts">${x.st.length?`<button class="btn" type="button" data-stop="${x.g0}">Ver el plan</button>`:""}${anfBtn()}</div></div>`}
+  const s=ST[k],nx=ST[k+1]&&ST[k+1].di===x.i?ST[k+1]:null,q=s.anf?anfQ():s.q,u=s.dir?dirUrl(q):s.anf?goUrl(q):map(q);
+  return head(h<13?"sunny":"walk",G0)+`<p class="hsub">${hoy}</p><p class="hl3">Ahora: ${esc(s.n)}</p>
     <ul class="list"><li><span class="ic">${ico(s.ic)}</span><span>${esc(s.t)}</span></li></ul>
-    ${nx?`<p class="nxt"><b>Hacia las ${nx.h}:</b> ${esc(nx.n)}</p>`:""}
+    ${nx?`<p class="nxt"><b>Hacia las ${nx.h}:</b> ${esc(nx.n)}</p>`:nd?`<p class="nxt"><b>Mañana:</b> ${esc(nd.t||nd.c)}</p>`:""}
     <div class="acts"><button class="btn" type="button" data-stop="${k}">Ver detalles</button>${q?`<a class="btn ghost" style="display:inline-grid;place-items:center;text-decoration:none" href="${u}" target="_blank" rel="noopener">Cómo llegar</a>`:""}</div></div>`}
 /* dirección del anfitrión: se guarda en el teléfono */
 const dirV=()=>{const d=LS("dir");return d==null?FDIR:d},dirLL=()=>{const d=LS("dir");return d==null||d===FDIR?FLL:LS("dirll")};
 const anfQ=()=>{const d=(dirV()||"").trim();return d?(ANF&&new RegExp(ANF.re,"i").test(d)?d:d+", "+T.lugar):""};
 function dirBox(){if(!ANF)return;const d=dirV();
-  $("dirbox").innerHTML=`<button type="button" class="dirln" id="dirmap" aria-label="Ver ${esc(ANF.titulo)} en el mapa"><span class="dirpin">${ico("pin",2.2)}</span><span><b>${esc(d)}</b><small>A cerca de 1 km al sur del centro y del lago · toca para verla en el mapa</small></span></button>
-  <div class="acts" style="margin-top:10px"><a class="btn" href="${dirUrl(anfQ())}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(ANF.titulo)}">Cómo llegar en coche</a><button type="button" class="btn ghost" data-pt="f0">Ver en el mapa</button></div>`}
+  $("dirbox").innerHTML=`<button type="button" class="dirln" id="dirmap" aria-label="Ver ${esc(ANF.titulo)} en el mapa"><span class="dirpin">${ico("pin",2.2)}</span><span><b>${esc(d)}</b><small>${ANF.nota?esc(ANF.nota)+" · ":""}toca para verla en el mapa</small></span></button>
+  <div class="acts" style="margin-top:10px"><a class="btn" href="${goUrl(anfQ())}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(ANF.titulo)}">${goTxt}</a><button type="button" class="btn ghost" data-pt="f0">Ver en el mapa</button></div>`}
 async function geoAnf(){if(!ANF)return;const q=anfQ();if(!q)return;try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=es&q="+encodeURIComponent(q));const j=await r.json();
   if(j&&j[0]){SS("dirll",[+j[0].lat,+j[0].lon]);}else SS("dirll",null)}catch(e){SS("dirll",null)}if(!$("s-viaje").hidden){dirBox();const b=$("dirmap");if(b&&!dirLL()){b.textContent="No aparece en el mapa";}}}
 document.addEventListener("click",e=>{
   if(e.target.closest("#dirok")){const v=$("dirin").value.trim();SS("dir",v);SS("dirll",null);dirBox();if(v)geoAnf();if(!$("s-viaje").hidden)$("nowbox").innerHTML=hoyBox();return}
   if(e.target.closest("#dirmap")){pendPt="f0";mk="all";location.hash="mapa"}});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="dirin"){e.preventDefault();$("dirok").click()}});
-/* ---------- tiempo del viernes (Open-Meteo) ---------- */
+
+/* ---------- el tiempo (Open-Meteo): una previsión por ciudad, hasta unos 15 días antes ---------- */
 const WIMG=c=>c===0?"sol":c<=2?"solnube":c<=48?"nubes":c<=67?"lluvia":c<=82?"lluvia":c<=86?"nubes":"tormenta";
 const wim=(c,cl)=>`<img class="${cl}" src="fotos/tiempo/${WIMG(c)}.png" alt="">`;
 const WMO=c=>c===0?["sunny","Despejado"]:c<=2?["psun","Algo nuboso"]:c===3?["cloud","Nublado"]:c<=48?["fog","Niebla"]:c<=57?["rain","Llovizna"]:c<=67?["rain","Lluvia"]:c<=77?["cloud","Nieve"]:c<=82?["rain","Chubascos"]:c<=86?["cloud","Nieve"]:["rain","Tormenta"];
-let WX=LS("wx")||WX0;
-function ropa(w){const p=[];p.push(w[2]<=6?"Abrigo de invierno, bufanda y guantes para la mañana":w[1]<=15?"Chaqueta abrigada y ropa en capas":"Chaqueta ligera y ropa en capas");
-  if(w[3]>=50)p.push("paraguas plegable");else if(w[3]>=25)p.push("un paraguas pequeño por si acaso");p.push("calzado cómodo que no resbale");return p.join(", ")+"."}
-function renderWx(){if(!WX){$("wxbox").innerHTML=`<h3 class="bh"><span class="bi">${ico("cloud",2)}</span>${T.tiempo}</h3><p class="note">La previsión aparece en cuanto el celular tenga internet.</p>`;return}const w=WX.d,[ic,tx]=WMO(w[0]),hh=Object.entries(WX.h);
-  const at=new Date(WX.at),hm=`${String(at.getHours()).padStart(2,"0")}:${String(at.getMinutes()).padStart(2,"0")}`;
-  $("wxbox").innerHTML=`<h3 class="bh"><span class="bi">${ico(ic,2)}</span>${T.tiempo}</h3>
-  <div class="wxt">${wim(w[0],"wxi")}<span class="wxn">${w[1]}°</span><span><b>${tx}</b><small>Máxima ${w[1]}° · mínima ${w[2]}°${w[3]!=null?` · lluvia ${w[3]}%`:""}</small></span></div>
-  <div class="wxh">${hh.map(([h,[c,t,pp]])=>`<span><small>${h}:00</small>${wim(c,"wxhi")}<b>${t}°</b>${pp>=20?`<small>${pp}%</small>`:""}</span>`).join("")}</div>
-  <p class="rtip">${ico("shirt",2)}<span>${ropa(w)}</span></p><p class="rtip">${ico("moon",2)}<span>Se pone el sol hacia las 17:20.</span></p>${w[3]>=40?`<p class="rtip">${ico("umb",2)}<span>Puede llover: mira «Si llueve», más abajo.</span></p>`:""}
+const wxOf=c=>LS("wx-"+slug(c));
+function ropa(mx,mn,pp){const p=[];p.push(mn<=6?"Abrigo de invierno, bufanda y guantes para la mañana":mx<=15?"Chaqueta abrigada y ropa en capas":mx<=24?"Chaqueta ligera y ropa en capas":"Ropa fresca, gorra y protector solar");
+  if(pp>=50)p.push("paraguas plegable");else if(pp>=25)p.push("un paraguas pequeño por si acaso");p.push("calzado cómodo que no resbale");return p.join(", ")+"."}
+function renderWx(){const x=DIAS[DSEL],c=x.c,w=wxOf(c),d=w&&w.D&&w.D[x.f],hh=w&&w.H&&w.H[x.f];
+  const tit=!MULTI?(T.tiempo||"El tiempo"):`El tiempo del ${diaCorto(x)}${MCITY?" en "+esc(c):""}`;
+  if(!d){const nm=ciOf(c).norm;$("wxbox").innerHTML=`<h3 class="bh"><span class="bi">${ico("cloud",2)}</span>${tit}</h3>${nm?`<div class="wxt">${wim(2,"wxi")}<span class="wxn">${nm[0]}°</span><span><b>Lo normal estos días</b><small>Máxima ${nm[0]}° · mínima ${nm[1]}°</small></span></div><p class="rtip">${ico("shirt",2)}<span>${ropa(nm[0],nm[1],0)}</span></p>`:""}<p class="note"${nm?' style="margin-top:8px"':""}>${(()=>{const t=NOW();return x.k<t.y*10000+t.mo*100+t.d?"No quedó guardada la previsión de ese día.":"La previsión aparece unos 15 días antes, en cuanto el celular tenga internet."})()}</p>`;return}
+  const [ic,tx]=WMO(d[0]),at=new Date(w.at),hm=`${pad(at.getHours())}:${pad(at.getMinutes())}`;
+  $("wxbox").innerHTML=`<h3 class="bh"><span class="bi">${ico(ic,2)}</span>${tit}</h3>
+  <div class="wxt">${wim(d[0],"wxi")}<span class="wxn">${d[1]}°</span><span><b>${tx}</b><small>Máxima ${d[1]}° · mínima ${d[2]}°${d[3]!=null?` · lluvia ${d[3]}%`:""}</small></span></div>
+  ${hh?`<div class="wxh">${Object.entries(hh).map(([h,[c2,t,pp]])=>`<span><small>${h}:00</small>${wim(c2,"wxhi")}<b>${t}°</b>${pp>=20?`<small>${pp}%</small>`:""}</span>`).join("")}</div>`:""}
+  <p class="rtip">${ico("shirt",2)}<span>${ropa(d[1],d[2],d[3]||0)}</span></p>${d[4]?`<p class="rtip">${ico("moon",2)}<span>Se pone el sol hacia las ${d[4]}.</span></p>`:""}${d[3]>=40&&LLUVIA&&LLUVIA.length?`<p class="rtip">${ico("umb",2)}<span>Puede llover: mira «Si llueve», más abajo.</span></p>`:""}
   <p class="note" style="font-size:12.5px;margin-top:8px">Previsión de Open-Meteo, actualizada el ${at.getDate()} a las ${hm}.</p>`}
-async function loadWx(){if(LS("wx")&&Date.now()-new Date(LS("wx").at).getTime()<1800e3)return;
-  try{const r=await fetch("https://api.open-meteo.com/v1/forecast?latitude=${BANY[0]}&longitude=${BANY[1]}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&hourly=temperature_2m,precipitation_probability,weather_code&timezone=Europe%2FMadrid&start_date=2026-11-21&end_date=2026-11-21");
-    if(!r.ok)return;const j=await r.json(),d=j.daily,h={};
-    j.hourly.time.forEach((t,i)=>{const H=+t.slice(11,13);if([10,13,16,18].includes(H))h[H]=[j.hourly.weather_code[i],Math.round(j.hourly.temperature_2m[i]),j.hourly.precipitation_probability[i]]});
-    const n=new Date(),at=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}-${String(n.getDate()).padStart(2,"0")}T${String(n.getHours()).padStart(2,"0")}:${String(n.getMinutes()).padStart(2,"0")}`;
-    WX={at,d:[d.weather_code[0],Math.round(d.temperature_2m_max[0]),Math.round(d.temperature_2m_min[0]),d.precipitation_probability_max[0]],h};SS("wx",WX);if(!$("s-viaje").hidden)renderWx()}catch(e){}}
+const wxBusy={};
+async function loadWx(c){c=c||DIAS[DSEL].c;const old=wxOf(c);if(old&&old.D&&Date.now()-old.at<1800e3)return;if(wxBusy[c])return;wxBusy[c]=1;
+  try{const n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate()),lim=new Date(t0.getTime()+15*864e5);
+    const ds=cDays(c).filter(x=>dOf(x)>=t0&&dOf(x)<=lim);if(!ds.length)return;
+    const [la,lo]=ciOf(c).ll||BANY;
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunset&hourly=temperature_2m,precipitation_probability,weather_code&timezone=auto&start_date=${ds[0].f}&end_date=${ds[ds.length-1].f}`);
+    if(!r.ok)return;const j=await r.json(),D={},H={};
+    j.daily.time.forEach((t,i)=>D[t]=[j.daily.weather_code[i],Math.round(j.daily.temperature_2m_max[i]),Math.round(j.daily.temperature_2m_min[i]),j.daily.precipitation_probability_max[i],(j.daily.sunset[i]||"").slice(11,16)]);
+    j.hourly.time.forEach((t,i)=>{const h=+t.slice(11,13);if([10,13,16,19].includes(h))(H[t.slice(0,10)]=H[t.slice(0,10)]||{})[h]=[j.hourly.weather_code[i],Math.round(j.hourly.temperature_2m[i]),j.hourly.precipitation_probability[i]]});
+    SS("wx-"+slug(c),{at:Date.now(),D,H});if(!$("s-viaje").hidden)renderWx()}catch(e){}finally{wxBusy[c]=0}}
 
-/* ---------- ruta ---------- */
+/* ---------- plan del día ---------- */
 const carActs=(s,i)=>s.la!=null?`<p class="note" style="width:100%;margin:0 0 6px;font-size:13px">Marcado a las ${carCuando()}</p><a class="btn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&destination=${s.la},${s.lo}" target="_blank" rel="noopener">Volver al coche</a><button class="btn ghost" type="button" data-aparcar>📍 Marcar de nuevo</button><button class="btn ghost" type="button" data-pt="r${i}">En el mapa</button>`:`<p class="note" style="width:100%;margin:0 0 6px;font-size:13px">Todavía no está marcado dónde quedó el coche.</p><button class="btn" type="button" data-aparcar>📍 Aparqué aquí</button>`;
 document.addEventListener("click",e=>{const b=e.target.closest("[data-aparcar]");if(!b)return;
 if(!navigator.geolocation){alert("Este teléfono no permite usar el GPS aquí.");return}
@@ -1565,35 +1718,56 @@ b.disabled=true;b.textContent="📍 Buscando el GPS…";
 navigator.geolocation.getCurrentPosition(p=>{SS("coche",{la:+p.coords.latitude.toFixed(6),lo:+p.coords.longitude.toFixed(6),t:Date.now()});carSet();const id=b.closest(".stp")?.id;renderHome();try{drawMap()}catch(_){};const st=id&&document.getElementById(id);if(st){st.classList.add("open");st.querySelector(".dh")?.setAttribute("aria-expanded","true")}},
 ()=>{b.disabled=false;b.textContent="📍 Aparqué aquí";alert("No pude leer el GPS. Revisa que la ubicación esté activada y con permiso.")},{enableHighAccuracy:true,timeout:20000,maximumAge:0})});
 
-function stopHTML(s,i,open,now){const fq=s.anf?anfQ():"",q=s.anf?fq:s.q;
+function stopHTML(s,i,open,now){const fq=s.anf?anfQ():"",nd=DIAS[s.di].st.length;
   const ln=[s.pr&&`<li><span class="ic">${ico("ticket")}</span><span>${esc(s.pr)}</span></li>`,s.hr&&`<li><span class="ic">${ico("cal")}</span><span>${esc(s.hr)}</span></li>`,s.tip&&`<li><span class="ic">${ico("heart")}</span><span>${esc(s.tip)}</span></li>`].filter(Boolean).join("");
-  return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
-  <div class="det">${s.img?`<div class="ph sphoto">${`<img src="fotos/${s.img}.jpg" alt="">`}</div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
-  <div class="acts">${s.car?carActs(s,i):`${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.anf?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en coche</a>`:`<button class="btn" type="button" data-jump="anf">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.anf&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.anf?"f0":"r"+i}">En el mapa</button>`:""}`}</div></div></article>`}
-function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();
+  return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${s.j+1} de ${nd}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur||"")}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
+  <div class="det">${s.img?`<div class="ph sphoto"><img src="fotos/${s.img}.jpg" alt=""></div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
+  <div class="acts">${s.car?carActs(s,i):`${s.go?`<button class="btn" type="button" data-go="${s.go}">${esc(s.gt||(s.go==="comer"?"Dónde comer":"Ver"))}</button>`:""}${s.anf?(fq?`<a class="btn" href="${goUrl(fq)}" target="_blank" rel="noopener">${goTxt}</a>`:`<button class="btn" type="button" data-jump="anf">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go||!s.q?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir&&TRANSPORTE==="coche"&&VIA0?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.anf&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.anf?"f0":"r"+i}">En el mapa</button>`:""}`}</div></div></article>`}
+/* tira de días (varios días): número, día de la semana y un punto con el color de la ciudad */
+const dayChips=sel=>DIAS.map(x=>{const f=phase();return `<button type="button" data-dsel="${x.i}" class="${x.i===sel?"on":""}${f.p==="day"&&f.x.i===x.i?" hoy":""}" style="--c:${ciOf(x.c).col}" aria-label="${cap(wdl(x))} ${x.d} de ${MSL[x.mo]} · ${esc(x.c)}"><b>${x.d}</b><small>${wd(x)}</small><i></i></button>`}).join("");
+function renderDay(k){const x=DIAS[DSEL];
+  if(MULTI){$("dch").hidden=false;$("dch").innerHTML=dayChips(DSEL);
+    const tr=trayOf(x),pv=DIAS[x.i-1],nx=DIAS[x.i+1];
+    $("dayhead").hidden=false;$("dayhead").innerHTML=`<p class="dhd">${cap(wdl(x))} ${x.d} de ${MSL[x.mo]}${MCITY?` · <span style="--c:${ciOf(x.c).col}"><i></i>${esc(x.c)}</span>`:""}</p>${x.t?`<h3 class="dtt">${esc(x.t)}</h3>`:""}${x.w?`<p class="note">${esc(x.w)}</p>`:""}${tr.length?`<ul class="list dtr">${trayLi(x)}</ul>`+(V.TRAYECTOS?`<button type="button" class="lkb" data-go="util" data-ujump="u-tray">Ver los trayectos</button>`:""):""}`;
+    $("dnav").hidden=false;$("dnav").innerHTML=`<button type="button" data-dsel="${pv?pv.i:""}"${pv?"":" disabled"}>${ico("back",2.2)}${pv?`${wd(pv)} ${pv.d}`:""}</button><button type="button" data-dsel="${nx?nx.i:""}"${nx?"":" disabled"}>${nx?`${wd(nx)} ${nx.d}`:""}${ico("chev",2.2)}</button>`}
+  $("route").innerHTML=x.st.map((s,j)=>stopHTML(s,x.g0+j,x.g0+j===k,x.g0+j===k)).join("")||`<p class="note">Día libre: no hay nada planeado.</p>`;
+  renderWx();loadWx(x.c);fixImgs($("route"))}
+function selDay(i,scroll){if(i==null||i===""||!DIAS[+i])return;DSEL=+i;const f=phase();renderDay(f.p==="day"&&f.x.i===DSEL&&f.t.m<f.x.fin?curIdx(f.t.m,f.x):-2);
+  const c=$("dch").querySelector(".on");if(c)c.scrollIntoView({block:"nearest",inline:"center"});if(scroll)goTo($("planh"),topH()+8)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-dsel]");if(!b||b.disabled)return;if(b.closest("#mapdays")){DSEL=+b.dataset.dsel;LM&&LM.closePopup();drawMap();return}selDay(b.dataset.dsel,!!b.closest("#dnav"))});
+function renderHome(){const f=phase(),k=f.p==="day"&&f.x.i===DSEL&&f.t.m<f.x.fin?curIdx(f.t.m,f.x):-2;dirBox();
   $("nowbox").innerHTML=hoyBox();
-  $("route").innerHTML=ST.map((s,i)=>stopHTML(s,i,i===k,i===k)).join("");
+  renderDay(k);
   const done=LS("tareas")||{};
-  $("tareas").innerHTML=TAREAS.map(([k2,tx])=>`<label class="chk"><input type="checkbox" data-t="${k2}"${done[k2]?" checked":""}><span>${esc(tx)}</span></label>`).join("");
-  renderWx();
-  const RV=LS("rv")||{};
-  $("rincones").innerHTML=RN.map(([n,t,k,,,q,f],i)=>`<li${f?' class="rnf"':''}>${f&&0?`<div class="kh" style="--d:${-i*1.7}s"><img src="fotos/rincones/${f}.jpg" alt="${esc(n)}" loading="lazy"></div>`:""}<div class="rw2"><span><b>${esc(n)}</b><span class="ln"><span>Cerca de la parada ${k}: ${esc(ST[k-1].n)}</span></span><small>${esc(t)}</small><span class="ln" style="margin-top:4px"><button type="button" class="lkb" data-pt="n${i}">Ver en el mapa</button></span></span><a class="go" href="${map(q)}" target="_blank" rel="noopener" aria-label="Abrir ${esc(n)} en Google Maps">${ico("pin",2)}</a></div></li>`).join("");
-  $("lluv").innerHTML=LLUVIA.map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
-  $("tren").innerHTML=TREN.map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
+  $("tareas").innerHTML=(TAREAS||[]).map(([k2,tx])=>`<label class="chk"><input type="checkbox" data-t="${k2}"${done[k2]?" checked":""}><span>${esc(tx)}</span></label>`).join("");
+  let lc="";
+  $("rincones").innerHTML=(RN||[]).map((r,i)=>{const [n,t,k3,,,q]=r,c=rnCity(r),hd=MCITY&&c!==lc?`<li class="rch"><p class="rcity" style="--c:${ciOf(c).col}"><i></i>${esc(c)}</p></li>`:"";lc=c;
+    const cerca=typeof k3==="number"&&ST[k3-1]?`Cerca de la parada ${ST[k3-1].j+1}: ${esc(ST[k3-1].n)}`:typeof k3==="string"&&!CI.some(x=>x.n===k3)?esc(k3):"";
+    return hd+`<li><div class="rw2"><span><b>${esc(n)}</b>${cerca?`<span class="ln"><span>${cerca}</span></span>`:""}<small>${esc(t)}</small><span class="ln" style="margin-top:4px"><button type="button" class="lkb" data-pt="n${i}">Ver en el mapa</button></span></span><a class="go" href="${map(q)}" target="_blank" rel="noopener" aria-label="Abrir ${esc(n)} en Google Maps">${ico("pin",2)}</a></div></li>`}).join("");
+  $("lluv").innerHTML=(LLUVIA||[]).map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
+  $("tren").innerHTML=(TREN||[]).map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
   fixImgs(document)}
-$("rincones").addEventListener("click",e=>{const b=e.target.closest("[data-kh]");if(!b||b.classList.contains("open"))return;b.classList.add("open");const d=LS("rv")||{};d[b.dataset.kh]=1;SS("rv",d)});
+/* ciudad de un rincón: la de su parada (número) o la que se escribe (texto) */
+const rnCity=r=>typeof r[2]==="number"&&ST[r[2]-1]?DIAS[ST[r[2]-1].di].c:typeof r[2]==="string"&&CI.some(x=>x.n===r[2])?r[2]:DIAS[0].c;
 $("tareas").addEventListener("change",e=>{const c=e.target.closest("[data-t]");if(!c)return;const d=LS("tareas")||{};d[c.dataset.t]=c.checked;SS("tareas",d)});
 $("route").addEventListener("click",e=>{const h=e.target.closest(".dh");if(h){const a=h.parentNode;a.classList.toggle("open");h.setAttribute("aria-expanded",a.classList.contains("open"));fixImgs(a)}});
-/* desplazamiento seguro: suave si se puede y, si el navegador no se mueve, directo */
-function goTo(el,off){if(!el)return;const y=Math.max(0,Math.round(el.getBoundingClientRect().top+scrollY-(off==null?72:off)));try{window.scrollTo({top:y,behavior:"smooth"})}catch(e){window.scrollTo(0,y)}setTimeout(()=>{if(Math.abs(scrollY-y)>30)window.scrollTo(0,y)},700)}
-function openStop(i){const el=$("st"+i);if(!el)return;el.classList.add("open");el.querySelector(".dh").setAttribute("aria-expanded","true");fixImgs(el);setTimeout(()=>goTo(el),60)}
+/* desplazamiento seguro: mide la barra de arriba y deja 12 px; si el navegador no se mueve, va directo */
+const topH=()=>{const t=document.querySelector(".top");return t?t.getBoundingClientRect().height:60};
+function goTo(el,off){if(!el)return;const y=Math.max(0,Math.round(el.getBoundingClientRect().top+scrollY-(off==null?topH()+12:off)));try{window.scrollTo({top:y,behavior:"smooth"})}catch(e){window.scrollTo(0,y)}setTimeout(()=>{if(Math.abs(scrollY-y)>30)window.scrollTo(0,y)},700)}
+function openStop(i){const s=ST[i];if(!s)return;if(s.di!==DSEL)selDay(s.di);const el=$("st"+i);if(!el)return;el.classList.add("open");el.querySelector(".dh").setAttribute("aria-expanded","true");fixImgs(el);setTimeout(()=>goTo(el),60)}
 
-/* ---------- dónde comer ---------- */
-function renderR(){
-  $("platos").innerHTML=PLATOS.map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
-  $("rlist").innerHTML=Object.entries(RT).map(([k,[l,ic,im]])=>{const its=R.map((r,i)=>[r,i]).filter(([r])=>r[1]===k);return its.length?`<div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/${im})"><img class="bim${im.startsWith("ic-")?" bimi":""}" src="fotos/${im}" alt="">${l}</h3><ul class="res">${its.map(([[n,,pr,nt,q,zo],i])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln"><span class="pr">${pr}</span><span>${esc(zo)}</span></span><small>${esc(nt)}</small>${R[i][6]!=null?`<span class="ln" style="margin-top:4px"><button type="button" class="lkb" data-pt="c${i}">Ver en el mapa</button></span>`:""}</span><a class="go" href="${map(q)}" target="_blank" rel="noopener" aria-label="Abrir ${esc(n)} en Google Maps">${ico("pin",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")}
+/* ---------- dónde comer (con varias ciudades: una pestaña por ciudad) ---------- */
+let rcity=null;
+const rCity=r=>r[8]||CI[0].n;
+function renderR(){const cs=MCITY?CI.filter(c=>R.some(r=>rCity(r)===c.n)).map(c=>c.n):[];
+  if(rcity===null||!cs.includes(rcity))rcity=cs.includes(DIAS[DSEL].c)?DIAS[DSEL].c:cs[0]||"";
+  $("rchips").hidden=cs.length<2;$("rchips").innerHTML=cs.map(c=>`<button type="button" data-rc="${esc(c)}" class="${c===rcity?"on":""}">${esc(c)}</button>`).join("");
+  const pl=(PLATOS||[]).filter(p=>!p[2]||!cs.length||p[2]===rcity);
+  $("platosbox").hidden=!pl.length;$("platos").innerHTML=pl.map(([i,tx])=>`<li><span class="ic">${ico(i)}</span><span>${tx}</span></li>`).join("");
+  $("rlist").innerHTML=Object.entries(RT||{}).map(([k,[l,ic,im]])=>{const its=R.map((r,i)=>[r,i]).filter(([r])=>r[1]===k&&(!cs.length||rCity(r)===rcity));return its.length?`<div class="box blk"><h3 class="bh bhg" style="--g:url(fotos/${im})"><img class="bim${im.startsWith("ic-")?" bimi":""}" src="fotos/${im}" alt="">${esc(l)}</h3><ul class="res">${its.map(([[n,,pr,nt,q,zo],i])=>`<li><div class="rw2"><span><b>${esc(n)}</b><span class="ln"><span class="pr">${pr}</span><span>${esc(zo)}</span></span><small>${esc(nt)}</small>${R[i][6]!=null?`<span class="ln" style="margin-top:4px"><button type="button" class="lkb" data-pt="c${i}">Ver en el mapa</button></span>`:""}</span><a class="go" href="${map(q)}" target="_blank" rel="noopener" aria-label="Abrir ${esc(n)} en Google Maps">${ico("pin",2)}</a></div></li>`).join("")}</ul></div>`:""}).join("")}
+$("rchips").onclick=e=>{const b=e.target.closest("[data-rc]");if(!b)return;rcity=b.dataset.rc;renderR()};
 
-/* ---------- mapa (Leaflet + OpenStreetMap) ---------- */
+/* ---------- mapa (Leaflet + Esri) ---------- */
 let LM=null,LG=null,mk="all",tilesOk=false,MK={};
 function initMap(){if(LM||!window.L)return;
   LM=L.map("mapw",{zoomControl:true,scrollWheelZoom:false,tap:true,dragging:!L.Browser.mobile,touchZoom:true});LM.attributionControl.setPrefix(false);
@@ -1608,9 +1782,10 @@ function initMap(){if(LM||!window.L)return;
   mw.addEventListener("touchstart",stop,{passive:false});mw.addEventListener("touchmove",stop,{passive:false});
   ["gesturestart","gesturechange","gestureend"].forEach(t=>mw.addEventListener(t,e=>e.preventDefault(),{passive:false}))}
 const PC={r:"#8a1d6b",c:"#e2711d",n:"#1f8a70",f:"#2f6fd8"};
-/* carretera Badalona → Banyoles: se pide el trazado exacto con internet; si no, un trazado aproximado */
+/* carretera origen → destino: se pide el trazado exacto con internet; si no, un trazado aproximado */
 let VIA=LS("via")||VIA0,VIAL=null;
-async function loadVia(){if(TRANSPORTE!=="coche"||LS("via"))return;try{const r=await fetch(`https://router.project-osrm.org/route/v1/driving/${BDN[1]},${BDN[0]};${BANY[1]},${BANY[0]}?overview=simplified&geometries=geojson`);const j=await r.json();const c=j.routes[0].geometry.coordinates.map(([a,b])=>[+b.toFixed(5),+a.toFixed(5)]);if(c.length>10){VIA=c;SS("via",c)}}catch(e){}}
+const HAYVIA=TRANSPORTE==="coche"&&!!(VIA0&&VIA0.length);
+async function loadVia(){if(!HAYVIA||LS("via"))return;try{const r=await fetch(`https://router.project-osrm.org/route/v1/driving/${BDN[1]},${BDN[0]};${BANY[1]},${BANY[0]}?overview=simplified&geometries=geojson`);const j=await r.json();const c=j.routes[0].geometry.coordinates.map(([a,b])=>[+b.toFixed(5),+a.toFixed(5)]);if(c.length>10){VIA=c;SS("via",c)}}catch(e){}}
 /* ---------- «Dónde estoy»: punto azul con GPS y flecha con la brújula (funciona sin internet) ---------- */
 let ME=null,MEACC=null,WID=null,meOn=false,meFirst=true,HEAD=null,meRot=0;
 function meIcon(){return L.divIcon({className:"mepin",html:'<div class="me"><b class="dot"></b><div class="merot"><svg class="arw" viewBox="0 0 44 44"><path d="M22 5 34 36 22 29 10 36Z" fill="#7cc0ff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg></div></div>',iconSize:[44,44],iconAnchor:[22,22]})}
@@ -1628,7 +1803,7 @@ function startMe(){if(!navigator.geolocation){alertMe("Este teléfono no da la u
     if(!ME){ME=L.marker(ll,{icon:meIcon(),zIndexOffset:1000,interactive:false}).addTo(LM);MEACC=L.circle(ll,{radius:p.coords.accuracy,color:"#2f80ff",weight:1,opacity:.5,fillColor:"#2f80ff",fillOpacity:.12,interactive:false}).addTo(LM);if(HEAD!=null)setTimeout(()=>setHead(HEAD),0)}
     else{ME.setLatLng(ll);MEACC.setLatLng(ll).setRadius(p.coords.accuracy)}
     if(HEAD==null&&p.coords.heading!=null&&!isNaN(p.coords.heading)&&p.coords.speed>0.5)setHead(p.coords.heading);
-    if(meFirst){meFirst=false;LM.setView(ll,Math.max(LM.getZoom(),LM.distance(ll,BANY)>8000?11:16))}},
+    if(meFirst){meFirst=false;LM.setView(ll,Math.max(LM.getZoom(),LM.distance(ll,dayLL())>8000?11:16))}},
    err=>{meMsg("");alertMe(err.code===1?"Para ver dónde estás, permite la ubicación en el teléfono (Ajustes del navegador).":"No se encuentra la señal de GPS. Prueba en un sitio más abierto.")},
    {enableHighAccuracy:true,maximumAge:5000,timeout:45000})}
 function stopMe(){if(WID!=null)navigator.geolocation.clearWatch(WID);WID=null}
@@ -1639,60 +1814,177 @@ function hideMe(){const m=$("memsg");if(!m)return;m.classList.remove("in");setTi
 function meControl(){const C=L.Control.extend({options:{position:"topright"},onAdd(){const b=L.DomUtil.create("button","mebtn");b.id="mebtn";b.type="button";b.setAttribute("aria-label","Dónde estoy");
   b.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>';b.title="Dónde estoy";
   L.DomEvent.disableClickPropagation(b);b.onclick=()=>{if(!meOn||WID==null)startMe();else if(ME)LM.setView(ME.getLatLng(),Math.max(LM.getZoom(),17))};return b}});LM.addControl(new C())}
-function pts(){const a=[];const fl=ANF&&dirLL();if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:ANF.titulo,la:fl[0],lo:fl[1],lab:String(ST.findIndex(x=>x.anf)+1),sub:`${ANF.sub} · ${dirV()||""}`,q:anfQ(),i:ST.findIndex(x=>x.anf)});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir||s.anf)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
-  if(mk==="all"||mk==="c")R.forEach((r,i)=>r[6]!=null&&a.push({id:"c"+i,k:"c",n:r[0],la:r[6],lo:r[7],lab:"",sub:r[5],q:r[4],i}));
-  if(mk==="all"||mk==="n")RN.forEach((r,i)=>a.push({id:"n"+i,k:"n",n:r[0],la:r[3],lo:r[4],lab:"★",sub:`Rincón · cerca de la parada ${r[2]}`,q:r[5],i}));return a}
+function pts(){const a=[],x=DIAS[DSEL],inDay=s=>s.di===DSEL;const all=mk==="all";
+  const ai=ST.findIndex(s=>s.anf),fl=ANF&&dirLL();if(fl&&ai>=0&&inDay(ST[ai])&&(all||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:ANF.titulo,la:fl[0],lo:fl[1],lab:String(ST[ai].j+1),sub:`${ANF.sub} · ${dirV()||""}`,q:anfQ(),i:ai});
+  if(all||mk==="r")x.st.forEach((s,j)=>{const i=x.g0+j;if(s.la==null||s.dir||s.anf)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(j+1),sub:`${s.h} · parada ${j+1}${MULTI?" · "+wd(x)+" "+x.d:""}`,q:s.q,i})});
+  if(all||mk==="c")R.forEach((r,i)=>r[6]!=null&&(!MCITY||rCity(r)===x.c)&&a.push({id:"c"+i,k:"c",n:r[0],la:r[6],lo:r[7],lab:"",sub:r[5],q:r[4],i}));
+  if(all||mk==="n")(RN||[]).forEach((r,i)=>(!MCITY||rnCity(r)===x.c)&&a.push({id:"n"+i,k:"n",n:r[0],la:r[3],lo:r[4],lab:"★",sub:typeof r[2]==="number"&&ST[r[2]-1]?`Rincón · cerca de la parada ${ST[r[2]-1].j+1}`:"Rincón",q:r[5],i}));return a}
+/* orden de visita de las ciudades y si se llega en avión */
+const CORD=[...new Set(DIAS.map(d=>d.c))].map(ciOf);
+const enAvion=(a,b)=>TRAY.some(t=>t.tipo==="avion"&&t.de===a.n&&t.a===b.n);
+function mapNote(){const p=["Toca «Dónde estoy» para ver tu posición: el punto azul usa el GPS y la flecha la brújula del celular. Toca un punto para ver qué es."];
+  if(HAYVIA)p.push(`«Carretera» muestra el camino en coche desde ${esc(T.origen)}.`);if(MCITY)p.push("«Ciudades» muestra todo el recorrido.");if(MULTI)p.push("Arriba se elige el día.");
+  p.push("En el celular, el mapa se mueve con dos dedos; con uno se sigue bajando la página.");$("mapnote").innerHTML=p.join(" ")}
 function drawMap(focus){
-  $("mapchips").innerHTML=[["all","Todo"],["r","Plan"],["c","Comer"],["n","Rincones"],["v","Carretera"]].map(([k,l])=>`<button type="button" data-mk="${k}" class="${mk===k?"on":""}">${l}</button>`).join("");
-  const P2=pts();
-  $("maplist").innerHTML=!P2.length?"":`<div class="box blk"><ul class="res">${P2.map(p=>`<li><div class="rw" data-pt="${p.id}"><span class="ic" style="color:#fff;background:${PC[p.k]};border-color:${PC[p.k]};font-weight:800;font-size:13px">${p.lab||ico("food",2.2)}</span><span><b>${esc(p.n)}</b><small>${esc(p.sub)}</small></span></div></li>`).join("")}</ul></div>`;
+  if(focus&&focus[0]==="r"&&ST[+focus.slice(1)])DSEL=ST[+focus.slice(1)].di;
+  if(focus==="f0"){const ai=ST.findIndex(s=>s.anf);if(ai>=0)DSEL=ST[ai].di}
+  $("mapdays").hidden=!MULTI||mk==="ci"||mk==="v";if(MULTI)$("mapdays").innerHTML=dayChips(DSEL);
+  const CH=[["all","Todo"],["r","Plan"],R.some(r=>r[6]!=null)&&["c","Comer"],RN&&RN.length&&["n","Rincones"],HAYVIA&&["v","Carretera"],MCITY&&["ci","Ciudades"]].filter(Boolean);
+  if(!CH.some(c=>c[0]===mk))mk="all";
+  $("mapchips").innerHTML=CH.map(([k,l])=>`<button type="button" data-mk="${k}" class="${mk===k?"on":""}">${l}</button>`).join("");
+  mapNote();
+  const P2=mk==="ci"||mk==="v"?[]:pts();
+  $("maplist").innerHTML=mk==="ci"?`<div class="box blk"><ul class="res">${CORD.map((c,i)=>{const ds=cDays(c.n);return `<li><div class="rw" data-city="${esc(c.n)}"><span class="ic" style="color:#fff;background:${c.col};border-color:${c.col};font-weight:800;font-size:13px">${i+1}</span><span><b>${esc(c.n)}</b><small>${rango(ds[0],ds[ds.length-1])} · ${ds.length} día${ds.length===1?"":"s"}${i&&enAvion(CORD[i-1],c)?" · llegada en avión":""}</small></span></div></li>`}).join("")}</ul></div>`
+   :!P2.length?(mk==="v"?"":`<p class="note" style="margin-top:4px">Ese día no tiene lugares en el mapa.</p>`):`<div class="box blk"><ul class="res">${P2.map(p=>`<li><div class="rw" data-pt="${p.id}"><span class="ic" style="color:#fff;background:${PC[p.k]};border-color:${PC[p.k]};font-weight:800;font-size:13px">${p.lab||ico("food",2.2)}</span><span><b>${esc(p.n)}</b><small>${esc(p.sub)}</small></span></div></li>`).join("")}</ul></div>`;
   if(!window.L){$("mapw").innerHTML=`<p class="note" style="padding:20px">El mapa no se pudo cargar.</p>`;return}
   requestAnimationFrame(()=>{initMap();LM.invalidateSize();LG.clearLayers();MK={};
-    if(mk==="v"){L.polyline(VIA,{color:"#fff",weight:10,opacity:1}).addTo(LG);L.polyline(VIA,{color:"#8a1d6b",weight:6,opacity:1}).addTo(LG);[[BDN,T.origen],[BANY,T.lugar]].forEach(([ll,n])=>L.marker(ll,{icon:L.divIcon({className:"lpin",html:`<span style="background:#8a1d6b">${n===T.origen?T.origenIni:"★"}</span>`,iconSize:[28,28],iconAnchor:[14,14]})}).bindPopup(`<div class="lpop"><b>${n}</b><a class="lk" href="${dirUrl(n)}" target="_blank" rel="noopener">Ruta en Google Maps</a></div>`).addTo(LG));LM.fitBounds(VIA,{padding:[20,20]});return}
+    if(mk==="v"){L.polyline(VIA,{color:"#fff",weight:10,opacity:1}).addTo(LG);L.polyline(VIA,{color:"#8a1d6b",weight:6,opacity:1}).addTo(LG);[[BDN,T.origen],[BANY,T.lugar]].forEach(([ll,n])=>L.marker(ll,{icon:L.divIcon({className:"lpin",html:`<span style="background:#8a1d6b">${n===T.origen?esc(T.origenIni):"★"}</span>`,iconSize:[28,28],iconAnchor:[14,14]})}).bindPopup(`<div class="lpop"><b>${esc(n)}</b><a class="lk" href="${dirUrl(n)}" target="_blank" rel="noopener">Ruta en Google Maps</a></div>`).addTo(LG));LM.fitBounds(VIA,{padding:[20,20]});return}
+    if(mk==="ci"){const ll=CORD.map(c=>c.ll);for(let i=0;i<ll.length-1;i++){const f=enAvion(CORD[i],CORD[i+1]);L.polyline([ll[i],ll[i+1]],f?{color:"#111214",weight:3,opacity:.6,dashArray:"7 8"}:{color:"#111214",weight:3.5,opacity:.75}).addTo(LG)}
+      CORD.forEach((c,i)=>{const ds=cDays(c.n);MK["ci"+i]=L.marker(c.ll,{icon:L.divIcon({className:"lpin",html:`<span style="background:${c.col}">${i+1}</span>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]}),title:c.n,riseOnHover:true})
+        .bindPopup(`<div class="lpop"><b>${i+1}. ${esc(c.n)}</b><small>${rango(ds[0],ds[ds.length-1])}</small><button type="button" class="btn" data-city="${esc(c.n)}">Ver los días</button><a class="lk" href="${map(c.n)}" target="_blank" rel="noopener">Ver en Google Maps</a></div>`,{maxWidth:240,autoPanPadding:[20,20]}).addTo(LG)});
+      if(ll.length>1)LM.fitBounds(ll,{padding:[34,34],maxZoom:11});else LM.setView(ll[0],11);return}
     P2.forEach(p=>{MK[p.id]=L.marker([p.la,p.lo],{icon:L.divIcon({className:"lpin",html:`<span style="background:${PC[p.k]}">${p.lab||"<svg viewBox='0 0 24 24' width='14' height='14' fill='none' stroke='#fff' stroke-width='2.4' stroke-linecap='round'><path d='M7 3v18M5 3v5a2 2 0 0 0 4 0V3M17 21V3c-2 1-3 4-3 7h3'/></svg>"}</span>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]}),title:p.n,riseOnHover:true,zIndexOffset:p.k==="r"?100:0})
-      .bindPopup(`<div class="lpop"><b>${esc(p.n)}</b><small>${esc(p.sub)}</small>${p.k==="r"||p.k==="f"?`<button type="button" class="btn" data-stop="${p.i}">Ver en el plan</button>`:p.k==="c"?`<button type="button" class="btn" data-go="comer">Ver en Comer</button>`:`<button type="button" class="btn" data-jump2="rincones">Ver en la lista</button>`}<a class="lk" href="${p.k==="f"?dirUrl(p.q):map(p.q)}" target="_blank" rel="noopener">${p.k==="f"?"Cómo llegar en coche":"Ver en Google Maps"}</a></div>`,{maxWidth:240,autoPanPadding:[20,20]}).addTo(LG)});
+      .bindPopup(`<div class="lpop"><b>${esc(p.n)}</b><small>${esc(p.sub)}</small>${p.k==="r"||p.k==="f"?`<button type="button" class="btn" data-stop="${p.i}">Ver en el plan</button>`:p.k==="c"?`<button type="button" class="btn" data-go="comer">Ver en Comer</button>`:`<button type="button" class="btn" data-jump2="rincones">Ver en la lista</button>`}<a class="lk" href="${p.k==="f"?goUrl(p.q):map(p.q)}" target="_blank" rel="noopener">${p.k==="f"?goTxt:"Ver en Google Maps"}</a></div>`,{maxWidth:240,autoPanPadding:[20,20]}).addTo(LG)});
     if(focus&&MK[focus]){LM.setView(MK[focus].getLatLng(),17);MK[focus].openPopup()}
-    else if(P2.length){LM.fitBounds(P2.map(p=>[p.la,p.lo]),{padding:[22,22],maxZoom:16})}})}
+    else if(P2.length)LM.fitBounds(P2.map(p=>[p.la,p.lo]),{padding:[22,22],maxZoom:16});
+    else LM.setView(dayLL(),13)})}
 $("mapchips").onclick=e=>{const b=e.target.closest("[data-mk]");if(!b)return;mk=b.dataset.mk;LM&&LM.closePopup();drawMap()};
 
+/* ---------- útil: trayectos, reservas, gastos, conversor y emergencias (cada uno solo si está en viaje.js) ---------- */
+const RESV=V.RESERVAS,GAS=V.GASTOS,MON=V.MONEDAS,SOS=V.EMERGENCIAS||[];
+const HAY={tray:TRAY.length>0,res:!!(RESV&&RESV.lista&&RESV.lista.length),gas:!!GAS,mon:!!(MON&&MON.lista&&MON.lista.length>1),sos:SOS.length>0};
+const UTIL=HAY.tray||HAY.res||HAY.mon||HAY.sos;
+function renderTray(){const f=phase(),hk=f.p==="day"?f.x.k:f.p==="after"?1e9:0;
+  return TRAY.map(t=>{const x=DIAS.find(d=>d.f===t.f),[y,mo,d]=t.f.split("-").map(Number),k=y*10000+(mo-1)*100+d,dd={y,mo:mo-1,d},col=ciOf(t.a).col;
+    return `<div class="leg${k===hk?" now":""}${k<hk?" past":""}" style="--c:${CI.some(c=>c.n===t.a)?col:CI.some(c=>c.n===t.de)?ciOf(t.de).col:"var(--steel2)"}"><div class="lh"><span class="ld"><b>${d}</b><small>${wd(dd)} ${MSC[mo-1]}</small></span><span><b>${esc(t.de)} → ${esc(t.a)}</b>${t.est?`<small>${esc(t.est)}</small>`:""}</span>${t.dur?`<span class="du">${ico(TIC[t.tipo]||"train",2)}${esc(t.dur)}</span>`:`<span class="du">${ico(TIC[t.tipo]||"train",2)}</span>`}</div>
+    ${t.sale||t.llega?`<p class="op">${t.sale?"Sale "+esc(t.sale):""}${t.sale&&t.llega?" · ":""}${t.llega?"llega "+esc(t.llega):""}</p>`:""}${t.num||t.emp?`<p class="op">${[t.emp,t.num].filter(Boolean).map(esc).join(" · ")}</p>`:""}${t.tip?`<p class="note">${esc(t.tip)}</p>`:""}${t.tipo==="avion"&&t.num?`<p class="note"><a class="lkb" href="https://www.google.com/search?q=${encodeURIComponent("vuelo "+t.num)}" target="_blank" rel="noopener">Estado del vuelo ↗</a></p>`:""}</div>`}).join("")}
+/* mis reservas: se marcan y se apuntan en el teléfono */
+let RS=LS("res")||{},rsel=null;
+function renderRes(){const L0=RESV.lista,tot=L0.length,ok=L0.filter(r=>(RS[r[0]]||{}).ok).length;
+  return `<div class="rbar"><i style="width:${Math.round(ok/tot*100)}%"></i></div><p class="note" style="margin-bottom:6px"><b>${ok} de ${tot}</b> hechas. Toca una para marcarla como reservada y apuntar el código o la hora.</p>`+
+  Object.entries(RESV.grupos||{x:["Reservas","ticket"]}).map(([g,[l,ic]])=>{const its=L0.filter(r=>(r[1]||"x")===g);if(!its.length)return"";const n=its.filter(r=>(RS[r[0]]||{}).ok).length;
+    return `<h4 class="rg"><span>${ico(ic,2)}${esc(l)}</span><span class="cnt">${n}/${its.length}</span></h4><ul class="rv">${its.map(([id,,nm,det,url,urg])=>{const s=RS[id]||{};
+      return `<li class="${s.ok?"ok":""}"><button type="button" class="rtg" data-rid="${esc(id)}" aria-expanded="${rsel===id}"><span class="ck">${s.ok?ico("check",2.6):""}</span><span><b>${esc(nm)}</b><small>${s.ok?(s.n?esc(s.n):"Reservado"):(urg?"<em>"+esc(det||"Urgente")+"</em>":esc(det||"Sin reservar"))}</small></span></button>
+      ${rsel===id?`<div class="rf"><label class="sw"><input type="checkbox" data-rok="${esc(id)}"${s.ok?" checked":""}><span>Ya está reservado</span></label><input type="text" data-rn="${esc(id)}" value="${esc(s.n||"")}" placeholder="Código, hora o dirección" aria-label="Nota"><div class="acts">${url?`<a class="btn ghost" href="${esc(url)}" target="_blank" rel="noopener">${ico("link",2)}Web oficial</a>`:""}<button type="button" class="btn" data-rclose>Listo</button></div></div>`:""}</li>`}).join("")}</ul>`}).join("")}
+/* conversor de monedas: tasas del día con internet; sin internet, las últimas guardadas o las de viaje.js */
+let FX=Object.assign({},MON&&MON.tasas||{},(LS("fx")||{}).r||{}),fxAt=(LS("fx")||{}).at||0,fxV=null;
+async function loadFx(){if(!HAY.mon||Date.now()-fxAt<6*3600e3)return;try{const b=MON.lista[0][0],r=await fetch("https://open.er-api.com/v6/latest/"+b);if(!r.ok)return;const j=await r.json();if(!j||!j.rates)return;
+  const nr={};MON.lista.forEach(([c])=>{if(j.rates[c])nr[c]=j.rates[c]/(j.rates[b]||1)});FX=Object.assign(FX,nr);fxAt=Date.now();SS("fx",{at:fxAt,r:FX});if(!$("s-util").hidden)fxFill()}catch(e){}}
+const fxDec=c=>["CLP","JPY","KRW","COP","PYG","ISK","HUF","VND","IDR","ARS"].includes(c)?0:2;
+const fxFmt=(v,c)=>v==null||isNaN(v)?"":v.toLocaleString("es-ES",{maximumFractionDigits:fxDec(c),minimumFractionDigits:0,useGrouping:true});
+function fxFill(from){const base=MON.lista[0][0];if(!fxV)fxV={c:MON.lista[0][0],v:10};
+  MON.lista.forEach(([c])=>{if(from&&c===fxV.c)return;const el=document.querySelector(`[data-fx="${c}"]`);if(!el)return;const r1=FX[fxV.c],r2=FX[c];el.value=r1&&r2?fxFmt(fxV.v/r1*r2,c):""});
+  const n=$("fxnote");if(n){const at=fxAt?new Date(fxAt):null;n.textContent=at?`Cambio del ${at.getDate()} de ${MSL[at.getMonth()]}, ${pad(at.getHours())}:${pad(at.getMinutes())}.`:"Cambio aproximado: se actualiza solo cuando hay internet."}}
+function renderMon(){const L0=MON.lista,q=MON.rapidos||[5,10,20,50,100];
+  return `<div class="fx">${L0.map(([c,n])=>`<label><b>${esc(c)}<small>${esc(n||"")}</small></b><input type="text" inputmode="decimal" data-fx="${esc(c)}" aria-label="${esc(n||c)}"></label>`).join("")}</div>
+  <div class="fxq">${q.map(v=>`<button type="button" data-fxq="${v}">${v} ${esc(L0[0][0])}</button>`).join("")}</div><p class="note" id="fxnote" style="margin-top:8px;font-size:12.5px"></p>`}
+const fxNum=s=>{s=String(s).trim().replace(/\s/g,"");if(/,\d{1,2}$/.test(s))s=s.replace(/\./g,"").replace(",",".");else s=s.replace(/[.,](?=\d{3}(\D|$))/g,"").replace(",",".");return parseFloat(s)};
+document.addEventListener("input",e=>{const i=e.target.closest("[data-fx]");if(i){fxV={c:i.dataset.fx,v:fxNum(i.value)||0};fxFill(true)}});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-fxq]");if(b){fxV={c:MON.lista[0][0],v:+b.dataset.fxq};const el=document.querySelector(`[data-fx="${fxV.c}"]`);if(el)el.value=fxFmt(fxV.v,fxV.c);fxFill(true)}});
+function renderSos(){return SOS.map(([n,l,s,wa])=>`<div class="tel"><span><b class="tl0">${esc(l)}</b>${s?`<small>${esc(s)}</small>`:""}</span><span class="tls"><a class="tl" href="tel:${esc(String(n).replace(/[^\d+]/g,""))}" aria-label="Llamar a ${esc(l)}">${ico("phone",2)}${esc(n)}</a>${wa?`<a class="tl wa" href="https://wa.me/${String(wa).replace(/\D/g,"")}" target="_blank" rel="noopener" aria-label="WhatsApp de ${esc(l)}">${ico("wa",2)}</a>`:""}</span></div>`).join("")}
+const gasTab=()=>!$("navgastos").hidden;
+function renderUtil(){const S=[];
+  if(HAY.tray)S.push(["u-tray","Trayectos",TRAY.some(t=>t.tipo==="avion")?"plane":"train",`<div class="legs2">${renderTray()}</div>`]);
+  if(HAY.res)S.push(["u-res","Mis reservas","ticket",`<div id="rbox">${renderRes()}</div>`]);
+  if(HAY.gas&&!gasTab()){const tot=gTot();S.push(["u-gas","Gastos","euro",`<p class="note">${tot?`Llevas <b>${gFmt(tot)}</b> anotados.`:"Anota lo que gastas cada día y mira cuánto llevas."}</p><div class="acts" style="margin-top:10px"><button class="btn" type="button" data-go="gastos">Abrir gastos</button></div>`])}
+  if(HAY.mon)S.push(["u-mon","Conversor de monedas","euro",renderMon()]);
+  if(HAY.sos)S.push(["u-sos","Emergencias","sos",`<div>${renderSos()}</div>${V.EMERG_NOTA?`<p class="note" style="margin-top:10px">${V.EMERG_NOTA}</p>`:""}`]);
+  $("uchips").hidden=S.length<3;$("uchips").innerHTML=S.map(([id,t])=>`<button type="button" data-uj="${id}">${t}</button>`).join("");
+  $("utilbox").innerHTML=S.map(([id,t,ic,h])=>`<div class="box blk" id="${id}"><h3 class="bh"><span class="bi">${ico(ic,2)}</span>${t}</h3>${h}</div>`).join("");
+  if(HAY.mon)fxFill()}
+$("uchips").onclick=e=>{const b=e.target.closest("[data-uj]");if(b)goTo($(b.dataset.uj))};
+$("utilbox").addEventListener("click",e=>{const t=e.target.closest("[data-rid]");if(t){rsel=rsel===t.dataset.rid?null:t.dataset.rid;$("rbox").innerHTML=renderRes();return}if(e.target.closest("[data-rclose]")){rsel=null;$("rbox").innerHTML=renderRes()}});
+$("utilbox").addEventListener("change",e=>{const c=e.target.closest("[data-rok]");if(c){const id=c.dataset.rok,n=document.querySelector(`[data-rn="${CSS.escape(id)}"]`);RS[id]=Object.assign(RS[id]||{},{ok:c.checked,n:n?n.value.trim():(RS[id]||{}).n});SS("res",RS);$("rbox").innerHTML=renderRes()}});
+$("utilbox").addEventListener("input",e=>{const n=e.target.closest("[data-rn]");if(n){const id=n.dataset.rn;RS[id]=Object.assign(RS[id]||{},{n:n.value.trim()});SS("res",RS)}});
 
-/* esquema del día como una línea de tren (estilo Renfe) */
-function lineaHTML(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-9;
-  return `<div class="lhead"><span class="lbad">B1</span><b>${T.origen} – ${T.lugar}</b><small>${T.dia} · ${ST.length} paradas</small></div><ol class="lst">${ST.map((s,i)=>{
-    const auto=s.dir||i===ST.length-1;const tramo=i<ST.length-1?(ST[i].dir||ST[i+1].dir?"auto":"pie"):"";
-    return `<li class="${i===k?"now ":""}${i<k?"past ":""}${tramo?"t-"+tramo:"fin"}"><button type="button" data-stop="${i}"><span class="lh">${s.h}</span><span class="ld"><i></i></span><span class="ln2"><b>${esc(s.n)}</b><small>${i===k?"ahora · ":""}${esc(s.dur)}</small></span></button>${tramo==="auto"?`<span class="ltr">${ico("car",2)} en auto · ${i===0?"AP-7 y C-66":"de vuelta a casa"}</span>`:""}</li>`}).join("")}</ol>`}
+/* ---------- gastos (se guardan en el teléfono) ---------- */
+const BUD=GAS&&GAS.presupuesto||0,MONG=GAS&&GAS.moneda||"EUR";
+const gFmt=n=>{try{return n.toLocaleString("es-ES",{style:"currency",currency:MONG,maximumFractionDigits:fxDec(MONG)})}catch(e){return Math.round(n)+" "+MONG}};
+const CATS=[["comida","Comida","food"],["transporte","Transporte","train"],["entradas","Entradas","ticket"],["compras","Compras","bag"],["alojamiento","Alojamiento","bed"],["otro","Otro","info"]];
+let G=(LS("gastos")||[]).map((g,i)=>({id:g.id||Date.now()+i,c:g.c||"Gasto",v:+g.v||0,d:g.d==null?-1:g.d,h:g.h||"",k:g.k||"otro"}));
+const gTot=()=>G.reduce((a,g)=>a+g.v,0);
+let gsel=null,editId=null;
+const dcol=i=>DIAS[i]?ciOf(DIAS[i].c).col:"#8a92a0";
+const dLab=x=>`${wd(x)} ${x.d} ${MSC[x.mo]}${MCITY?" · "+x.c:""}`;
+function gInit(){if(!HAY.gas)return;$("gd").innerHTML=DIAS.map(x=>`<option value="${x.i}">${esc(dLab(x))}</option>`).join("");$("gdw").hidden=!MULTI;
+  $("gk").innerHTML=CATS.map(([k,l,ic],i)=>`<label><input type="radio" name="gk" value="${k}"${i?"":" checked"}><span>${ico(ic,2)}${l}</span></label>`).join("");
+  $("gnota").textContent=GAS.nota||"";$("gnota").hidden=!GAS.nota;resetForm()}
+function resetForm(){const f=phase(),n=new Date();editId=null;$("gform").reset();$("gd").value=String(gsel!=null&&gsel>=0?gsel:f.p==="day"?f.x.i:0);$("gt").value=`${pad(n.getHours())}:${pad(n.getMinutes())}`;$("gsave").textContent="Añadir gasto";$("gcancel").hidden=true;$("gdel").hidden=true;$("gf-h").textContent="Nuevo gasto"}
+function renderG(){const f=phase();if(gsel===null)gsel=MULTI?(f.p==="day"?f.x.i:-1):0;
+  const daySum=i=>G.filter(g=>g.d===i).reduce((a,g)=>a+g.v,0);
+  $("gdch").hidden=!MULTI;$("gdch").innerHTML=`<button type="button" data-gs="-1" class="${gsel<0?"on":""}" style="--c:transparent"><b>Todo</b><small>viaje</small><i></i></button>`+DIAS.map(x=>`<button type="button" data-gs="${x.i}" class="${gsel===x.i?"on":""}" style="--c:${dcol(x.i)}"><b>${x.d}</b><small>${wd(x)}</small><i></i></button>`).join("");
+  const tot=gTot(),max=BUD*DIAS.length;
+  if(gsel<0){const by=DIAS.map(x=>[x,daySum(x.i)]);let acc=0;const stops=tot?by.map(([x,v])=>{const s=acc;acc+=v/tot*360;return `${dcol(x.i)} ${s}deg ${acc}deg`}).join(","):"var(--fill2) 0deg 360deg";
+    $("gsumm").innerHTML=`<div class="gtop"><div class="donut" style="background:conic-gradient(${stops})"><div><span><b>${gFmt(tot)}</b><small>en total</small></span></div></div><div>${BUD?`<p style="margin:0 0 8px;font-size:14px"><b>${Math.round(tot/max*100)}%</b> <span style="color:var(--soft)">de ${gFmt(max)} (${DIAS.length} días)</span></p>`:""}<div class="gl">${by.map(([x,v])=>`<p style="--c:${dcol(x.i)}"><i></i><span>${esc(dLab(x))}</span><b>${gFmt(v)}</b></p>`).join("")}</div></div></div>`}
+  else{const v=daySum(gsel),x=DIAS[gsel],top=BUD*1.5,cl=v>BUD?"hi":v>BUD*.8?"mid":"",bc=CATS.map(([k,l])=>[l,G.filter(g=>g.d===gsel&&g.k===k).reduce((a,g)=>a+g.v,0)]).filter(r=>r[1]);
+    $("gsumm").innerHTML=`<p class="note">${cap(wdl(x))} ${x.d} de ${MSL[x.mo]}${MCITY?" · "+esc(x.c):""}</p><div class="big2">${gFmt(v)}</div>${BUD?`<div class="meter"><i class="${cl}" style="width:${Math.min(100,v/top*100)}%"></i><em style="left:${BUD/top*100}%"></em></div><div class="mlab"><span>${gFmt(0)}</span><span>${gFmt(BUD)} al día</span><span>${gFmt(top)}</span></div>`:""}<p class="note" style="margin-top:8px">${BUD?(v>BUD?`Por encima de lo previsto para el día.`:v>BUD*.8?"Cerca del límite del día.":"Dentro de lo previsto."):""}${bc.length?(BUD?" · ":"")+bc.map(([l,a])=>`${l} ${gFmt(a)}`).join(" · "):""}</p>`}
+  const list=G.filter(g=>gsel<0||g.d===gsel).sort((a,b)=>(b.d-a.d)||(b.h>a.h?1:-1));
+  $("gl-h").textContent=gsel<0?"Todos los gastos":MULTI?`Gastos del ${DIAS[gsel].d} de ${MSL[DIAS[gsel].mo]}`:"Gastos del día";
+  let last=-9,html="";
+  for(const g of list){if(gsel<0&&MULTI&&g.d!==last){last=g.d;const x=DIAS[g.d];html+=`<p class="gh">${x?esc(cap(wdl(x))+" "+x.d+(MCITY?" · "+x.c:"")):"Sin día"}</p>`}
+    const cat=CATS.find(c=>c[0]===g.k)||CATS[CATS.length-1];
+    html+=`<div class="gi${editId===g.id?" ed":""}" role="button" tabindex="0" data-ge="${g.id}" style="--c:${dcol(g.d)}"><span class="ic">${ico(cat[2],2)}</span><span><b>${esc(g.c)}</b><small>${g.c===cat[1]?"":cat[1]+" · "}${esc(g.h||"")}</small></span><span class="amt">${gFmt(g.v)}</span></div>`}
+  $("glist").innerHTML=html;$("gempty").hidden=!!list.length}
+$("gdch").onclick=e=>{const b=e.target.closest("[data-gs]");if(!b)return;gsel=+b.dataset.gs;if(!editId&&gsel>=0)$("gd").value=String(gsel);renderG()};
+$("gform").onsubmit=e=>{e.preventDefault();const v=parseFloat(String($("gi").value).replace(",","."));if(!(v>0)){$("gi").focus();return}
+  const k=($("gform").querySelector("[name=gk]:checked")||{}).value||"otro";
+  const rec={c:$("gc").value.trim()||(CATS.find(c=>c[0]===k)||CATS[CATS.length-1])[1],v,d:MULTI?+$("gd").value:0,h:$("gt").value,k};
+  if(editId){Object.assign(G.find(g=>g.id===editId),rec)}else G.push({id:Date.now(),...rec});
+  SS("gastos",G);if(MULTI&&gsel>=0)gsel=rec.d;resetForm();renderG()};
+$("gcancel").onclick=()=>{resetForm();renderG()};
+$("gdel").onclick=()=>{G=G.filter(g=>g.id!==editId);SS("gastos",G);resetForm();renderG()};
+$("glist").addEventListener("click",e=>{const r=e.target.closest("[data-ge]");if(!r)return;const g=G.find(g=>g.id===+r.dataset.ge);if(!g)return;editId=g.id;$("gc").value=g.c;$("gi").value=g.v;$("gd").value=String(Math.max(0,g.d));$("gt").value=g.h;const rk=$("gform").querySelector(`[name=gk][value="${g.k}"]`);if(rk)rk.checked=true;$("gsave").textContent="Guardar";$("gcancel").hidden=false;$("gdel").hidden=false;$("gf-h").textContent="Editar gasto";renderG();goTo($("gform"))});
+$("glist").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.closest("[data-ge]")){e.preventDefault();e.target.click()}});
+
+/* ---------- menú: solo las pestañas que tiene este viaje (6 como máximo, para que quepan a 330 px) ---------- */
+{const nav=$("nav");$("navcomer").hidden=!(R&&R.length);$("navutil").hidden=!UTIL;$("navgastos").hidden=!HAY.gas;
+ const vis=()=>[...nav.children].filter(b=>!b.hidden);if(vis().length>6){$("navgastos").hidden=true;if(!UTIL)$("navutil").hidden=false}
+ nav.style.gridTemplateColumns=`repeat(${vis().length},minmax(0,1fr))`}
+gInit();
+/* para «Mis fotos» y «Mi video»: los días y ciudades del viaje */
+window.ESC={DIAS,MULTI,CI,MCITY,ciOf,wd,wdl,MSL,MSC,rango};
 
 /* ---------- navegación ---------- */
-let pendStop=null,pendPt=null,pendJump=null;
+let pendStop=null,pendPt=null,pendJump=null,pendDay=null,pendU=null;
 const go=h=>{if(location.hash.slice(1)===h)route_();else location.hash=h};
+const cityDay=n=>{const f=phase(),ds=cDays(n);return f.p==="day"&&f.x.c===n?f.x.i:ds.length?ds[0].i:0};
 document.addEventListener("click",e=>{
   const s=e.target.closest("[data-stop]");if(s){const k=+s.dataset.stop;LM&&LM.closePopup();if(!$("s-viaje").hidden){openStop(k);return}pendStop=k;go("");return}
+  const d=e.target.closest("[data-day]");if(d){const i=+d.dataset.day;if(!$("s-viaje").hidden){selDay(i,true);return}pendDay=i;go("");return}
+  const c=e.target.closest("[data-city]");if(c){LM&&LM.closePopup();const i=cityDay(c.dataset.city);if(!$("s-viaje").hidden){selDay(i,true);return}pendDay=i;go("");return}
   const m2=e.target.closest("[data-mk2]");if(m2){mk=m2.dataset.mk2;if(location.hash.slice(1)==="mapa")drawMap();else go("mapa");return}
   const j2=e.target.closest("[data-jump2]");if(j2){LM&&LM.closePopup();pendJump=j2.dataset.jump2;go("");return}
   const p=e.target.closest("[data-pt]");if(p){const id=p.dataset.pt;if(mk!=="all"&&mk!==id[0])mk="all";pendPt=id;if(location.hash.slice(1)==="mapa"){drawMap(id);window.scrollTo({top:0,behavior:"smooth"})}else go("mapa");return}
   const j=e.target.closest("[data-jump]");if(j){goTo($(j.dataset.jump));return}
-  const g=e.target.closest("[data-go]");if(g&&g.tagName==="BUTTON"){LM&&LM.closePopup();go(g.dataset.go)}});
+  const g=e.target.closest("[data-go]");if(g&&g.tagName==="BUTTON"){LM&&LM.closePopup();pendU=g.dataset.ujump||null;go(g.dataset.go)}});
 function show(id){if(id!=="mapa")stopMe();else if(meOn&&WID==null&&LM)startMe();document.querySelectorAll(".app>section").forEach(s=>s.hidden=s.id!=="s-"+id);document.querySelectorAll("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.go===(id==="viaje"?"":id)?"true":"false"))}
 function route_(){
   let h=decodeURIComponent(location.hash.slice(1));
   const m=h.match(/^prueba-(\d+)(?:-(\d{1,2})(\d{2})?)?$/);
-  if(m){SIM={y:Y,mo:M,d:+m[1],m:(m[2]!==undefined?+m[2]:9)*60+(m[3]?+m[3]:0)};try{sessionStorage.setItem(PFX+"sim",JSON.stringify(SIM))}catch(e){}history.replaceState(null,"",location.pathname+location.search);h=""}
-  const id=["mapa","comer","fotos","video"].includes(h)?h:"viaje";show(id);
-  if(id==="viaje"){renderHome();if(pendStop!==null){openStop(pendStop);pendStop=null}else if(pendJump){const el=$(pendJump);pendJump=null;setTimeout(()=>goTo(el,140),80)}else window.scrollTo({top:0});requestAnimationFrame(()=>{window.etFitTitle&&window.etFitTitle();fitCar()});document.fonts&&document.fonts.ready.then(fitCar)}
-  if(id==="comer"){renderR();window.scrollTo({top:0})}
+  if(m){const n=+m[1],x=DIAS.find(d=>d.d===n)||DIAS[0];SIM={y:x.y,mo:x.mo,d:n,m:(m[2]!==undefined?+m[2]:9)*60+(m[3]?+m[3]:0)};try{sessionStorage.setItem(PFX+"sim",JSON.stringify(SIM))}catch(e){}
+    const f=phase();DSEL=f.p==="day"||f.p==="gap"?f.x.i:0;history.replaceState(null,"",location.pathname+location.search);h=""}
+  const ok=["mapa","fotos","video"].concat(R&&R.length?["comer"]:[],HAY.gas?["gastos"]:[],UTIL||HAY.gas?["util"]:[]);
+  const id=ok.includes(h)?h:"viaje";show(id);
+  if(id==="viaje"){renderHome();if(pendStop!==null){openStop(pendStop);pendStop=null}else if(pendDay!==null){const i=pendDay;pendDay=null;selDay(i);setTimeout(()=>goTo($("planh")),80)}else if(pendJump){const el=$(pendJump);pendJump=null;setTimeout(()=>goTo(el,140),80)}else window.scrollTo({top:0});requestAnimationFrame(()=>{window.etFitTitle&&window.etFitTitle();fitCar();carToToday()});document.fonts&&document.fonts.ready.then(fitCar)}
+  if(id==="comer"){rcity=null;renderR();window.scrollTo({top:0})}
   if(id==="fotos"||id==="video")window.scrollTo({top:0});
+  if(id==="util"){renderUtil();loadFx();if(pendU){const el=$(pendU);pendU=null;setTimeout(()=>goTo(el),60)}else window.scrollTo({top:0})}
+  if(id==="gastos"){renderG();window.scrollTo({top:0})}
   if(id==="mapa"){if(!pendPt)window.scrollTo({top:0});drawMap(pendPt);if(pendPt){const el=$("mapbox");setTimeout(()=>goTo(el,70),50)}pendPt=null}}
 window.addEventListener("hashchange",route_);
 document.querySelectorAll("[data-ic]").forEach(e=>e.outerHTML=ico(e.dataset.ic,2));
-route_();fixImgs(document);loadWx();loadVia();if(dirV()&&!dirLL())geoAnf();
-/* cada minuto se actualiza «Hoy» durante el día del viaje */
+route_();fixImgs(document);loadVia();if(dirV()&&!dirLL())geoAnf();
+{const f=phase();if(f.p==="day"&&f.x.i!==DSEL)loadWx(f.x.c)}
+/* cada minuto se actualiza «Hoy» durante el viaje */
 setInterval(()=>{if(!$("s-viaje").hidden&&!SIM&&phase().p==="day")$("nowbox").innerHTML=hoyBox()},60000);
-setInterval(loadWx,1800e3);
+setInterval(()=>loadWx(),1800e3);
 
-/* calles del casco guardadas de antemano (zoom 14 a 17), para que el mapa sirva sin señal */
-function preTiles(){try{if(LS("tiles")===6)return;const t=(la,lo,z)=>{const n=2**z,r=la*Math.PI/180;return[Math.floor((lo+180)/360*n),Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n)]};
-  const u=[];for(let z=13;z<=17;z++){const[a,b]=t(CAJA[0][0],CAJA[0][1],z),[c,d]=t(CAJA[1][0],CAJA[1][1],z);for(let x=a;x<=c;x++)for(let y=b;y<=d;y++)u.push(`https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${z}/${y}/${x}`)}
-  let i=0,ok=0;const next=()=>{if(i>=u.length){if(ok>u.length*.9)SS("tiles",6);return}fetch(u[i++],{mode:"cors"}).then(r=>{if(r.ok)ok++}).catch(()=>{}).finally(()=>setTimeout(next,150))};next()}catch(e){}}
+/* calles guardadas de antemano para que el mapa sirva sin señal: CAJA (zoom 13 a 17) y el centro de cada ciudad (zoom 13 a 16) */
+function preTiles(){try{const VER=7;if(LS("tiles")===VER)return;const t=(la,lo,z)=>{const n=2**z,r=la*Math.PI/180;return[Math.floor((lo+180)/360*n),Math.floor((1-Math.log(Math.tan(r)+1/Math.cos(r))/Math.PI)/2*n)]};
+  const box=[];if(CAJA&&CAJA.length){(Array.isArray(CAJA[0][0])?CAJA:[CAJA]).forEach(b=>box.push([b,17]))}
+  if(MCITY)CI.forEach(c=>{if(c.ll&&!(c.caja===false))box.push([c.caja||[[c.ll[0]+.012,c.ll[1]-.018],[c.ll[0]-.012,c.ll[1]+.018]],16])});
+  const u=[],seen={};box.forEach(([b,zx])=>{for(let z=13;z<=zx;z++){const[a,bb]=t(b[0][0],b[0][1],z),[c,d]=t(b[1][0],b[1][1],z);for(let x=a;x<=c;x++)for(let y=bb;y<=d;y++){const s=`https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${z}/${y}/${x}`;if(!seen[s]){seen[s]=1;u.push(s)}}}});
+  let i=0,ok=0;const next=()=>{if(i>=u.length){if(ok>u.length*.9)SS("tiles",VER);return}fetch(u[i++],{mode:"cors"}).then(r=>{if(r.ok)ok++}).catch(()=>{}).finally(()=>setTimeout(next,150))};next()}catch(e){}}
 /* sin conexión: solo en la web publicada */
 if("serviceWorker" in navigator&&/github\.io$|pages\.dev$/.test(location.hostname)){try{navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(()=>{if(navigator.onLine)setTimeout(preTiles,4000)}).catch(()=>{})}catch(e){}}
 }
@@ -1719,7 +2011,7 @@ window.etFitTitle=fit;fit();addEventListener("resize",fit);document.fonts&&docum
 </div><button type="button" class="tha r" aria-label="Siguiente"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="thd" aria-hidden="true"></div></div></div>
 <script>
 /* estilo de la app: el del cuestionario por defecto; el viajero puede cambiarlo y queda guardado */
-(function(){const QUIZ="noche",K=PFX+"theme",TC={noche:"#0b0c0f",luminoso:"#f7f7f5",cobalto:"#f6f7fb",calido:"#f6efe3",natura:"#111d17",sepia:"#f3ead8",mar:"#f4f8fb",atardecer:"#1e1424",nordico:"#eef0f2",contraste:"#000000",rosa:"#fcf1f4",morado:"#17122a"};
+(function(){const QUIZ=(window.VIAJE&&VIAJE.ESTILO)||"noche",K=PFX+"theme",TC={noche:"#0b0c0f",luminoso:"#f7f7f5",cobalto:"#f6f7fb",calido:"#f6efe3",natura:"#111d17",sepia:"#f3ead8",mar:"#f4f8fb",atardecer:"#1e1424",nordico:"#eef0f2",contraste:"#000000",rosa:"#fcf1f4",morado:"#17122a"};
 function set(t,save){if(!TC[t])t="noche";document.documentElement.dataset.theme=t;const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=TC[t];
 document.querySelectorAll("[data-thm]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.thm===t));if(save)try{localStorage.setItem(K,t)}catch(e){}document.dispatchEvent(new Event("themechange"))}
 let t=QUIZ;try{t=localStorage.getItem(K)||QUIZ}catch(e){}set(t);
@@ -1788,9 +2080,9 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
 })();
 </script>
 
-<div id="albv" hidden role="dialog" aria-label="Mis fotos"><span class="cnt"></span><button type="button" class="x" aria-label="Cerrar">✕</button><button type="button" class="nv l" aria-label="Foto anterior">‹</button><button type="button" class="nv r" aria-label="Foto siguiente">›</button><div class="trk"></div><button type="button" class="del" id="albdel">Quitar esta foto</button></div>
+<div id="albv" hidden role="dialog" aria-label="Mis fotos"><span class="cnt"></span><button type="button" class="x" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button><button type="button" class="nv l" aria-label="Foto anterior"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="nv r" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><button type="button" class="fav" id="albfav" aria-pressed="false"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg><span>Favorita</span></button><div class="trk"></div><button type="button" class="del" id="albdel">Quitar esta foto</button></div>
 <script>
-(()=>{const MAXF=40,MINV=8,MAXV=30;const $=id=>document.getElementById(id);
+(()=>{const MAXF=VIAJE.FOTOS_MAX||(window.ESC&&ESC.MULTI?300:40),MINV=8,MAXV=30;const $=id=>document.getElementById(id);
 /* fotos guardadas solo en este teléfono (IndexedDB) */
 let dbp=null;const db=()=>dbp||(dbp=new Promise((res,rej)=>{const r=indexedDB.open(PFX+"fotos",1);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains("f"))d.createObjectStore("f",{keyPath:"id"});if(!d.objectStoreNames.contains("v"))d.createObjectStore("v",{keyPath:"id"})};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}));
 const tx=(st,m,fn)=>db().then(d=>new Promise((res,rej)=>{const t=d.transaction(st,m),q=fn(t.objectStore(st));t.oncomplete=()=>res(q&&q.result);t.onerror=()=>rej(t.error);t.onabort=()=>rej(t.error)}));
@@ -1808,38 +2100,64 @@ async function shrink(file){const bm=await createImageBitmap(file);const k=Math.
 const c=document.createElement("canvas");c.width=Math.round(bm.width*k);c.height=Math.round(bm.height*k);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);
 const t=document.createElement("canvas");t.width=t.height=360;const s=Math.min(bm.width,bm.height);t.getContext("2d").drawImage(bm,(bm.width-s)/2,(bm.height-s)/2,s,s,0,0,360,360);bm.close&&bm.close();
 return{full:await toBlob(c,.86),thumb:await toBlob(t,.75)}}
-/* álbum */
+/* álbum: en un viaje de varios días, las fotos se agrupan por día y se pueden marcar como ⭐ favoritas */
 const g=$("alg"),v=$("albv"),fin=$("fin"),cntEl=$("fcnt");if(!g||!v)return;
-let L=[],urls=[];const trk=v.querySelector(".trk"),cnt=v.querySelector(".cnt");
+const E=window.ESC||{DIAS:[],MULTI:false};
+const dIdx=t=>{const d=new Date(t),k=d.getFullYear()*10000+d.getMonth()*100+d.getDate();const x=(E.DIAS||[]).find(x=>x.k===k);return x?x.i:-1};
+const dTit=i=>{const x=E.DIAS[i];return x?`${E.wdl(x)[0].toUpperCase()+E.wdl(x).slice(1)} ${x.d} de ${E.MSL[x.mo]}${E.MCITY?" · "+x.c:""}`:"Otras fotos"};
+const STAR='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L12 16.8l-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>';
+$("fintro")&&E.MULTI&&($("fintro").textContent="Agrega las fotos del viaje. Se ordenan solas por día y hora, y quedan guardadas solo en este teléfono. Marca con ⭐ las mejores: con ellas se hace el video resumen.");
+if(E.MULTI){const h=$("album")&&$("album").querySelector(".bh");if(h&&h.lastChild&&h.lastChild.nodeType===3)h.lastChild.textContent="Álbum del viaje"}
+$("fempty")&&($("fempty").textContent=`Todavía no hay fotos. Toca «Agregar fotos» y elige las de tu galería (hasta ${MAXF}).`);
+let L=[],VL=[],urls=[],favOnly=false;const trk=v.querySelector(".trk"),cnt=v.querySelector(".cnt");
 async function load(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];L=await getAll().catch(()=>[]);
-g.innerHTML=L.map((f,i)=>{const u=URL.createObjectURL(f.thumb);urls.push(u);return`<button type="button" data-al="${i}"><img src="${u}" alt="" loading="lazy" onerror="this.parentNode.remove()"></button>`}).join("");
+const nf=L.filter(f=>f.fav).length;if(!nf)favOnly=false;VL=favOnly?L.filter(f=>f.fav):L;
+const ff=$("ffil");if(ff){ff.hidden=!nf;ff.innerHTML=`<button type="button" data-ff="0" class="${favOnly?"":"on"}">Todas</button><button type="button" data-ff="1" class="${favOnly?"on":""}">⭐ Favoritas (${nf})</button>`}
+let last=null,html="";
+VL.forEach((f,i)=>{if(E.MULTI){const di=dIdx(f.t);if(di!==last){last=di;const n=VL.filter(x=>dIdx(x.t)===di).length,x=E.DIAS[di];html+=`<p class="algh" style="--c:${x?E.ciOf(x.c).col:"#8a92a0"}"><i></i>${dTit(di)} <small>· ${n}</small></p>`}}
+  const u=URL.createObjectURL(f.thumb);urls.push(u);html+=`<button type="button" data-al="${i}"><img src="${u}" alt="" loading="lazy" onerror="this.parentNode.remove()">${f.fav?`<span class="stf">${STAR}</span>`:""}</button>`});
+g.innerHTML=html;
 $("fempty").hidden=L.length>0;cntEl.textContent=L.length?`${L.length} de ${MAXF} fotos`:"";
 $("fadd").disabled=L.length>=MAXF;vinfo()}
+$("ffil")&&$("ffil").addEventListener("click",e=>{const b=e.target.closest("[data-ff]");if(!b)return;favOnly=b.dataset.ff==="1";load()});
 fin&&fin.addEventListener("change",async()=>{const fs=[...fin.files].filter(f=>/^image\//.test(f.type)||/\.(jpe?g|png|heic|webp)$/i.test(f.name));fin.value="";if(!fs.length)return;
 const room=MAXF-L.length,take=fs.slice(0,room);const st=$("fst");let ok=0;
 for(let i=0;i<take.length;i++){st.textContent=`Guardando ${i+1} de ${take.length}…`;try{const f=take[i],t=(await exifDate(f))||f.lastModified||Date.now(),s=await shrink(f);await putF({id:f.name+"_"+f.size+"_"+t,t,full:s.full,thumb:s.thumb});ok++}catch(e){}}
-st.textContent=(fs.length>room?`Se guardaron ${ok}. El máximo son ${MAXF} fotos.`:`Listo: ${ok} ${ok===1?"foto guardada":"fotos guardadas"}.`)+(ok<take.length?" Algunas no se pudieron leer.":"");setTimeout(()=>st.textContent="",6000);await load()});
+st.textContent=(fs.length>room?`Se guardaron ${ok}. El máximo son ${MAXF} fotos.`:`Listo: ${ok} ${ok===1?"foto guardada":"fotos guardadas"}.`)+(ok<take.length?" Algunas no se pudieron leer.":"");setTimeout(()=>st.textContent="",6000);favOnly=false;await load()});
 $("fadd")&&($("fadd").onclick=()=>fin.click());
-let vu=[];const cur=()=>Math.round(trk.scrollLeft/(trk.clientWidth||1));const upd=()=>{cnt.textContent=L.length?`${cur()+1} / ${L.length}`:""};
-const go=i=>{i=Math.max(0,Math.min(L.length-1,i));trk.scrollTo({left:i*trk.clientWidth,behavior:"smooth"})};
-function abrir(i){vu.forEach(u=>URL.revokeObjectURL(u));vu=L.map(f=>URL.createObjectURL(f.full));
-trk.innerHTML=L.map((f,k)=>{const d=new Date(f.t);return`<figure><img src="${vu[k]}" alt="" loading="lazy" draggable="false"><figcaption>${d.toLocaleDateString("es-CL",{day:"numeric",month:"short"})} · ${d.toLocaleTimeString("es-CL",{hour:"2-digit",minute:"2-digit"})}</figcaption></figure>`}).join("");
+let vu=[],VW2=[];const cur=()=>Math.round(trk.scrollLeft/(trk.clientWidth||1));const upd=()=>{cnt.textContent=VW2.length?`${cur()+1} / ${VW2.length}`:"";favBtn()};
+const go=i=>{i=Math.max(0,Math.min(VW2.length-1,i));trk.scrollTo({left:i*trk.clientWidth,behavior:"smooth"})};
+const fb=$("albfav");function favBtn(){const f=VW2[cur()];if(fb)fb.setAttribute("aria-pressed",f&&f.fav?"true":"false")}
+function abrir(i){vu.forEach(u=>URL.revokeObjectURL(u));VW2=VL.slice();vu=VW2.map(f=>URL.createObjectURL(f.full));
+trk.innerHTML=VW2.map((f,k)=>{const d=new Date(f.t),di=E.MULTI?dIdx(f.t):-1,x=E.DIAS[di];return`<figure><img src="${vu[k]}" alt="" loading="lazy" draggable="false"><figcaption>${d.toLocaleDateString("es-CL",{day:"numeric",month:"short"})} · ${d.toLocaleTimeString("es-CL",{hour:"2-digit",minute:"2-digit"})}${x&&E.MCITY?" · "+x.c:""}</figcaption></figure>`}).join("");
 v.hidden=false;document.documentElement.style.overflow="hidden";trk.scrollLeft=i*trk.clientWidth;upd();resetDel()}
-const cerrar=()=>{v.hidden=true;document.documentElement.style.overflow="";vu.forEach(u=>URL.revokeObjectURL(u));vu=[];trk.innerHTML=""};
+let dirty=false;
+const cerrar=()=>{v.hidden=true;document.documentElement.style.overflow="";vu.forEach(u=>URL.revokeObjectURL(u));vu=[];VW2=[];trk.innerHTML="";if(dirty){dirty=false;load()}};
+fb&&(fb.onclick=async()=>{const f=VW2[cur()];if(!f)return;f.fav=!f.fav;favBtn();dirty=true;await putF(f).catch(()=>{})});
 trk.addEventListener("scroll",()=>{upd();resetDel()},{passive:true});
 g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(b)abrir(+b.dataset.al)});
 v.querySelector(".x").onclick=cerrar;v.querySelector(".nv.l").onclick=()=>go(cur()-1);v.querySelector(".nv.r").onclick=()=>go(cur()+1);
 const del=$("albdel");let armed=false;function resetDel(){armed=false;del.textContent="Quitar esta foto";del.classList.remove("on")}
-del.onclick=async()=>{if(!armed){armed=true;del.textContent="¿Quitarla? Toca otra vez";del.classList.add("on");return}const i=cur(),f=L[i];if(!f)return;await delF(f.id);await load();if(!L.length){cerrar();return}abrir(Math.min(i,L.length-1))};
+del.onclick=async()=>{if(!armed){armed=true;del.textContent="¿Quitarla? Toca otra vez";del.classList.add("on");return}const i=cur(),f=VW2[i];if(!f)return;await delF(f.id);dirty=false;await load();if(!VL.length){cerrar();return}abrir(Math.min(i,VL.length-1))};
 document.addEventListener("keydown",e=>{if(v.hidden)return;if(e.key==="Escape")cerrar();if(e.key==="ArrowLeft")go(cur()-1);if(e.key==="ArrowRight")go(cur()+1)});
-
+/* qué fotos van al video: en un viaje largo, el resumen (con las favoritas si hay suficientes), una ciudad o un día */
+let vSel="all";
+function vOpts(){if(!E.MULTI)return[];const o=[["all","Resumen del viaje"]];if(E.MCITY)E.CI.forEach(c=>{if(L.some(f=>{const x=E.DIAS[dIdx(f.t)];return x&&x.c===c.n}))o.push(["c:"+c.n,c.n])});
+  else E.DIAS.forEach(x=>{if(L.some(f=>dIdx(f.t)===x.i))o.push(["d:"+x.i,`${E.wd(x)} ${x.d}`])});return o}
+function vFotos(){if(vSel==="all"){const fv=L.filter(f=>f.fav);return fv.length>=MINV?{f:fv,fav:true}:{f:L}}
+  if(vSel.startsWith("c:")){const c=vSel.slice(2);return{f:L.filter(f=>{const x=E.DIAS[dIdx(f.t)];return x&&x.c===c})}}
+  const i=+vSel.slice(2);return{f:L.filter(f=>dIdx(f.t)===i)}}
+function vTit(){if(vSel==="all")return VIAJE.APP;if(vSel.startsWith("c:"))return vSel.slice(2);const x=E.DIAS[+vSel.slice(2)];return x?`${E.wdl(x)} ${x.d}${E.MCITY?" en "+x.c:""}`:VIAJE.APP}
+function vSelRender(){const el=$("vsel"),lb=$("vsell");if(!el)return;const o=vOpts();if(!o.some(x=>x[0]===vSel))vSel="all";el.hidden=lb.hidden=o.length<2;
+  el.innerHTML=o.map(([k,l])=>`<button type="button" data-vs="${k}" class="${k===vSel?"on":""}">${l}</button>`).join("")}
+$("vsel")&&$("vsel").addEventListener("click",e=>{const b=e.target.closest("[data-vs]");if(!b)return;vSel=b.dataset.vs;$("vtit").value=vTit();vSelRender();vinfo()});
 /* ===== video del recuerdo ===== */
 const BEATS={"g": [0.07, 0.604, 1.115, 1.649, 2.183, 2.694, 3.228, 3.762, 4.296, 4.83, 5.364, 5.898, 6.409, 6.943, 7.477, 8.011, 8.545, 9.079, 9.613, 10.147, 10.658, 11.192, 11.726, 12.26, 12.794, 13.328, 13.862, 14.396, 14.907, 15.441, 15.975, 16.509, 17.043, 17.578, 18.112, 18.646, 19.156, 19.691, 20.225, 20.759, 21.293, 21.85, 22.361, 22.872, 23.406, 23.94, 24.474, 25.008, 25.542, 26.076, 26.587, 27.121, 27.655, 28.189, 28.723, 29.257, 29.791, 30.325, 30.859, 31.393, 31.904, 32.438, 32.972, 33.506, 34.04, 34.575, 35.085, 35.619, 36.153, 36.688, 37.222, 37.756, 38.29, 38.824, 39.335, 39.869, 40.403, 40.937, 41.471, 42.005, 42.539, 43.073, 43.584, 44.118, 44.652, 45.186, 45.72, 46.254, 46.765, 47.299, 47.833, 48.367, 48.901, 49.435, 49.969, 50.503, 51.014, 51.548, 52.082, 52.616, 53.15, 53.685, 54.219, 54.729, 55.263, 55.798, 56.332, 56.866, 57.4, 57.957, 58.468, 59.002, 59.536, 60.07, 60.604, 61.138, 61.649, 62.183, 62.717, 63.251, 63.785, 64.296, 64.83, 65.364, 65.898, 66.456, 66.966, 67.5, 68.034, 68.569, 69.079, 69.637, 70.147, 70.705, 71.216], "m": [0.07, 0.418, 0.766, 1.115, 1.44, 1.788, 2.113, 2.485, 2.81, 3.158, 3.483, 3.831, 4.18, 4.528, 4.853, 5.201, 5.526, 5.875, 6.223, 6.548, 6.896, 7.245, 7.593, 7.918, 8.243, 8.568, 8.916, 9.265, 9.613, 9.961, 10.286, 10.635, 10.983, 11.308, 11.656, 12.005, 12.353, 12.701, 13.026, 13.375, 13.723, 14.071, 14.42, 14.745, 15.07, 15.418, 15.766, 16.115, 16.44, 16.765, 17.113, 17.461, 17.81, 18.135, 18.483, 18.831, 19.18, 19.505, 19.853, 20.201, 20.526, 20.875, 21.2, 21.548, 21.896, 22.221, 22.57, 22.918, 23.266, 23.591, 23.94, 24.265, 24.613, 24.938, 25.263, 25.612, 25.983, 26.331, 26.657, 26.982, 27.33, 27.678, 28.026, 28.352, 28.7, 29.048, 29.373, 29.722, 30.07, 30.395, 30.743, 31.092, 31.44, 31.765, 32.113, 32.461, 32.787, 33.135, 33.483, 33.831, 34.157, 34.505, 34.853, 35.178, 35.527, 35.875, 36.2, 36.571, 36.897, 37.222, 37.57, 37.918, 38.243, 38.592, 38.94, 39.265, 39.613, 39.962, 40.31, 40.658, 40.983, 41.332, 41.657, 42.005, 42.33, 42.678, 43.027, 43.375, 43.723, 44.048, 44.397, 44.745, 45.07, 45.395, 45.743, 46.092, 46.44, 46.765, 47.113, 47.462, 47.81, 48.135, 48.483, 48.832, 49.157, 49.505, 49.853, 50.178, 50.527, 50.875, 51.2, 51.548, 51.897, 52.222, 52.57, 52.918, 53.243, 53.592, 53.94, 54.265, 54.613, 54.962, 55.31, 55.635, 55.983, 56.332, 56.657, 57.005, 57.353, 57.702, 58.027, 58.352, 58.7, 59.048, 59.397, 59.722, 60.07, 60.418, 60.767, 61.115, 61.44, 61.788, 62.137, 62.462, 62.81, 63.158, 63.483, 63.832, 64.18, 64.505, 64.853, 65.202, 65.527, 65.875, 66.223, 66.572, 66.897, 67.245, 67.593, 67.942, 68.267, 68.615, 68.963, 69.312, 69.637, 69.985, 70.31, 70.658, 71.007, 71.355, 71.68, 72.005, 72.33, 72.678, 73.027, 73.375, 73.723, 74.048, 74.397, 74.745, 75.093, 75.442, 75.79, 76.138, 76.463, 76.788, 77.113, 77.462, 77.81]};
 const TRK=[{n:"Guitarra alegre",f:"video/m-guitarra.mp3",b:BEATS.g,k:4},{n:"Medieval",f:"audio/musica.mp3",b:BEATS.m,k:8}];
 let tSel=0,dSel=45;const VW=720,VH=1280,TT=.42,FX=["white","zoom","fade","slide","pixel","circle","white","zoom","slideup","fade","pixel","circle"];
 const vt=$("vtit"),vgo=$("vgo");
-function vinfo(){const el=$("vinfo");if(!el)return;const n=L.length;
-el.innerHTML=n<MINV?`Tienes <b>${n}</b> ${n===1?"foto":"fotos"}. Para crear el video hacen falta al menos <b>${MINV}</b>. <a href="#fotos">Agregar fotos</a>`:`Tienes <b>${n}</b> fotos en Mis fotos${n>MAXV?`; el video usará ${MAXV} repartidas a lo largo del día`:""}.`;
+function vinfo(){const el=$("vinfo");if(!el)return;vSelRender();const sel=vFotos(),n=sel.f.length,todo=!E.MULTI||vSel==="all";
+el.innerHTML=n<MINV?`${todo?"Tienes":"Para esto tienes"} <b>${n}</b> ${n===1?"foto":"fotos"}. Para crear el video hacen falta al menos <b>${MINV}</b>. <a href="#fotos">Agregar fotos</a>`:`${sel.fav?`Usará tus <b>${n}</b> fotos ⭐ favoritas`:`Tienes <b>${n}</b> fotos${todo?" en Mis fotos":""}`}${n>MAXV?`; el video usará ${MAXV} repartidas a lo largo ${E.MULTI&&vSel==="all"?"del viaje":vSel.startsWith("c:")?"de los días":"del día"}`:""}.${E.MULTI&&vSel==="all"&&!sel.fav&&L.length>=MINV?" Si marcas al menos 8 con ⭐, el resumen usa solo esas.":""}`;
 if(vgo)vgo.disabled=n<MINV||rendering}
 function chips(id,arr,get,set){const el=$(id);if(!el)return;el.innerHTML=arr.map((a,i)=>`<button type="button" data-i="${i}" class="${get()===i?"on":""}">${a}</button>`).join("");el.onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;set(+b.dataset.i);chips(id,arr,get,set)}}
 const DUR=[30,45,60];chips("vmus",TRK.map(t=>t.n),()=>tSel,i=>{tSel=i;prevStop()});chips("vdur",DUR.map(d=>d+" s"),()=>DUR.indexOf(dSel),i=>dSel=DUR[i]);
@@ -1862,13 +2180,14 @@ const LV=[...Array(40)].map((_,i)=>{const r=k=>{const x=Math.sin(i*97.13+k*13.7)
 function leaves(ctx,t,a){if(a<=0)return;ctx.save();ctx.globalAlpha=a;for(const l of LV){const y=l.y+l.vy*t+VH*.25;if(y<-60||y>VH+60)continue;const x=l.x+l.sw*Math.sin(l.ph+t*2.2);
 ctx.save();ctx.translate(x,y);ctx.rotate(l.ro+l.vr*t);ctx.fillStyle=l.c;ctx.beginPath();ctx.ellipse(0,0,l.s,l.s*.45,0,0,6.283);ctx.fill();ctx.strokeStyle="rgba(110,55,20,.7)";ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(-l.s,0);ctx.lineTo(l.s,0);ctx.stroke();ctx.restore()}ctx.restore()}
 let rendering=false;
-async function crear(){if(rendering)return;const fotos=L.slice();if(fotos.length<MINV){vinfo();return}
+async function crear(){if(rendering)return;const fotos=vFotos().f.slice();if(fotos.length<MINV){vinfo();return}
 const can=$("vcan"),ctx=can.getContext("2d"),tr=TRK[tSel],D=dSel,bt=tr.b,k=tr.k,slot=bt[k]-bt[0];
 const bnd=[];for(let j=0;j<bt.length;j+=k)bnd.push(bt[j]-bt[0]);
 let nFit=bnd.filter(x=>x<=D-2*slot+.01).length;nFit=Math.min(nFit,MAXV);let use=fotos;
 if(fotos.length>nFit){use=[];for(let i=0;i<nFit;i++)use.push(fotos[Math.round(i*(fotos.length-1)/(nFit-1))])}
 const n=use.length,times=bnd.slice(0,n),total=fotos.length>=nFit?D:Math.min(D,times[n-1]+Math.max(2*slot,3.2));times.push(total);
-const titulo=(vt.value||"").trim()||"Mi escapada";const d0=new Date(use[0].t),sub=d0.toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"});
+const titulo=(vt.value||"").trim()||(E.MULTI?"Mi viaje":"Mi escapada");const d0=new Date(use[0].t),d1=new Date(use[n-1].t),same=d0.toDateString()===d1.toDateString();
+const sub=same?d0.toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"}):d0.getMonth()===d1.getMonth()?`${d0.getDate()}–${d1.toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"})}`:`${d0.toLocaleDateString("es-CL",{day:"numeric",month:"long"})} – ${d1.toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"})}`;
 rendering=true;vinfo();$("vout").hidden=true;$("vprog").hidden=false;can.hidden=false;const bar=$("vbar"),pct=$("vpct");pct.textContent="Preparando las fotos…";bar.style.width="0%";prevStop();
 try{await (document.fonts&&Promise.all([document.fonts.load('700 64px "Cinzel"'),document.fonts.load('400 30px "Marcellus"')]).catch(()=>{}));
 const AC=window.AudioContext||window.webkitAudioContext,ac=new AC();await ac.resume();const buf=await ac.decodeAudioData(await (await fetch(tr.f)).arrayBuffer());
@@ -1894,7 +2213,7 @@ else if(fx==="circle"){dP(ctx);ctx.save();ctx.beginPath();ctx.arc(VW/2,VH/2,e*Ma
 else kb(ctx,A,i,pOf(i))}
 ctx.save();ctx.globalCompositeOperation="overlay";ctx.fillStyle="rgba(255,175,90,.10)";ctx.fillRect(0,0,VW,VH);ctx.restore();
 if(i===0||(i===1&&q<1)){const a=i===0?cl((tc-.3)/.6,0,1):1-ease(cl(q,0,1));leaves(ctx,tc,i===0?1:1-ease(cl(q,0,1)));card(ctx,[titulo],sub,a)}
-if(i===n-1){card(ctx,["Hasta la próxima escapada"],titulo,cl((tc-(total-2.8))/.8,0,1))}
+if(i===n-1){card(ctx,[E.MULTI?"Hasta el próximo viaje":"Hasta la próxima escapada"],titulo,cl((tc-(total-2.8))/.8,0,1))}
 const fa=Math.max(cl(1-tc/.45,0,1),cl((tc-(total-.7))/.7,0,1));if(fa>0){ctx.fillStyle=`rgba(0,0,0,${fa})`;ctx.fillRect(0,0,VW,VH)}
 const pc=Math.floor(100*tc/total);if(pc!==last){last=pc;bar.style.width=pc+"%";pct.textContent=`Creando tu video… ${pc} % · deja la pantalla abierta`}
 requestAnimationFrame(draw)}requestAnimationFrame(draw)});

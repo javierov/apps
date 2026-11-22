@@ -1,6 +1,8 @@
 /* =========================================================
    DATOS DEL VIAJE — lo único que cambia de una escapada a otra.
    Las fotos de los lugares van en fotos/ con el nombre que se usa aquí.
+   Este es el modelo de UN día. Para varios días, ciudades y los módulos de vacaciones
+   (trayectos, reservas, gastos, monedas, emergencias), ver ejemplo-vacaciones.js y LEEME.md.
    ========================================================= */
 /* prefijo propio para lo que se guarda en el teléfono (cada app el suyo) */
 const PFX="esc-";
@@ -27,7 +29,7 @@ const T={
 /* transporte: "coche" (ruta por carretera y botón «Coche aparcado») o "tren" */
 const TRANSPORTE="coche";
 /* anfitrión: casa a la que se va (título y hora); null si no hay */
-const ANF={titulo:"Casa de los amigos", sub:"13:45 · almuerzo", re:"banyoles|porqueres|girona|\\d{5}"};
+const ANF={titulo:"Casa de los amigos", sub:"13:45 · almuerzo", nota:"A cerca de 1 km al sur del centro y del lago", re:"banyoles|porqueres|girona|\\d{5}"};
 /* zona del mapa que se guarda para usar sin internet: [norte, oeste], [sur, este] */
 const CAJA=[[42.1300,2.7430],[42.1120,2.7720]];
 const NOMBRE="",   /* nombre del viajero para el saludo; "" = sin nombre */
@@ -46,7 +48,7 @@ const ST=[
   tip:"La vuelta entera al lago son unos 6,5 km, algo más de una hora caminando y casi plana. Como llegan temprano, hay tiempo para la vuelta entera. Si no les tinca tanto, basta con el tramo de las pesqueras, por el Passeig Darder.",dur:"1 h 30 min",img:"lago"},
  {h:"11:15",m:675,n:"Plaça Major",ico:"plaza",ic:"cup",la:42.11807,lo:2.76538,q:"Plaça Major Banyoles",
   t:"La plaza de soportales del siglo XIII, con sus arcos de piedra y plátanos enormes. Es el corazón del pueblo; los sábados hay algunos puestos de fruta y verdura. Buen momento para un café bajo los soportales.",
-  tip:"Si van a comprar algo para el almuerzo, háganlo aquí antes de las 13:30: la panadería Carbó, en esta misma plaza, cierra al mediodía.",dur:"1 h",img:"plaza",go:"comer"},
+  tip:"Si van a comprar algo para el almuerzo, háganlo aquí antes de las 13:30: la panadería Carbó, en esta misma plaza, cierra al mediodía.",dur:"1 h",img:"plaza",go:"comer",gt:"Qué comprar"},
  {h:"12:30",m:750,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
   t:"El monasterio benedictino de Sant Esteve se fundó en el año 812 y de él nació el pueblo. Por el camino: la iglesia gótica de Santa Maria dels Turers, la plaza de la Font y la muralla.",
   tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"45 min",img:"monasterio"},
@@ -56,7 +58,7 @@ const ST=[
  {h:"16:15",m:975,n:"Santa Maria de Porqueres",ico:"atardecer",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",
   t:"Una iglesia románica pequeñita del siglo XII, al otro lado del lago, rodeada de pasto y árboles. En coche son 5 minutos; caminando por la orilla, unos 30.",
   tip:"El sol se pone hacia las 17:20: desde esta orilla se ve muy bonito sobre el agua y el pueblo.",dur:"40 min",img:"porqueres"},
- {h:"17:15",m:1035,n:"Bocadillo de la tarde",ico:"bocadillo",ic:"food",la:42.1179,lo:2.7651,q:"bocadillos Banyoles",go:"comer",
+ {h:"17:15",m:1035,n:"Bocadillo de la tarde",ico:"bocadillo",ic:"food",la:42.1179,lo:2.7651,q:"bocadillos Banyoles",go:"comer",gt:"Ver bocadillos",
   t:"Un bocadillo y algo para tomar antes de volver. Hay varios bares de bocadillos buenos cerca del centro y del lago.",
   tip:"Las opciones están en la pestaña Comer. Si quieren algo dulce para el camino, las panaderías vuelven a abrir a las 17:00.",dur:"45 min"},
  {h:"19:00",m:1140,n:"Vuelta a Badalona",ico:"auto",ic:"car",la:BDN[0],lo:BDN[1],q:"Badalona",dir:1,
