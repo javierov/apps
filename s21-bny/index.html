@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b0c0f">
-<title>Escapada a Banyoles</title>
+<title>Escapada a Banyoles y Besalú</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icono-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Escapada a Banyoles">
+<meta name="apple-mobile-web-app-title" content="Banyoles y Besalú">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script>try{var t=localStorage.getItem("eb-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
@@ -453,6 +453,8 @@ button.ft{font:inherit}
 .vprog{margin-top:14px}.vtrack{height:8px;border-radius:4px;background:#8883;overflow:hidden}.vtrack i{display:block;height:100%;width:0;background:#cdb07a;transition:width .3s}
 .vcan{display:block;width:100%;max-width:300px;margin:12px auto 0;border-radius:14px;aspect-ratio:9/16;height:auto;background:#000}
 .vout{margin-top:16px}.vout video{display:block;width:100%;max-width:360px;margin:0 auto;aspect-ratio:9/16;border-radius:14px;background:#000}.vacts{display:flex;gap:10px;justify-content:center;margin-top:12px}.vacts .btn{text-decoration:none;display:inline-grid;place-items:center}
+#vrec{display:block;width:100%;max-width:380px;margin:0 auto;aspect-ratio:9/16;border-radius:14px;background:#000}
+.brand.dos{white-space:normal;line-height:1.1;padding-bottom:2px;font-size:clamp(19px,6.3vw,28px)!important}.brand.dos span{font-size:.82em}
 </style>
 <style>/* Leaflet 1.9.4 — BSD-2-Clause, © Volodymyr Agafonkin */
 /* required styles */
@@ -1378,7 +1380,7 @@ html,body{touch-action:pan-x pan-y}
 <div class="app">
 <section id="s-viaje">
   <div class="bnr" aria-hidden="true" id="bnr"></div>
-  <div class="hh"><h1 class="brand medi">Escapada a Banyoles</h1><div class="hs"><div><p class="sub">Sábado 21 de noviembre · de día</p><p class="sub2">En coche desde Badalona · lago y pueblo</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
+  <div class="hh"><h1 class="brand medi dos">Escapada a&nbsp;Banyoles<br><span>y Besalú</span></h1><div class="hs"><div><p class="sub">Sábado 21 de noviembre · de día</p><p class="sub2">En coche · lago y pueblos medievales</p></div><button type="button" class="thb" id="thOpen" aria-haspopup="dialog" aria-controls="thSheet"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5c0-4-4-7.4-9-7.4Z"/><circle cx="7.5" cy="11" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="15" cy="7.5" r="1"/></svg>Estilo app</button></div></div>
   <div class="carw"><div class="car" id="car"></div>
     <button type="button" class="arr l" id="arrL" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <button type="button" class="arr r" id="arrR" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
@@ -1415,29 +1417,17 @@ html,body{touch-action:pan-x pan-y}
 </section>
 
 <section id="s-fotos" hidden>
-  <div class="ptl"><h1>Mis fotos</h1><p>Agrega las fotos que sacaste en la escapada. Se ordenan solas por la hora y quedan guardadas solo en este teléfono.</p></div>
+  <div class="ptl"><h1>Fotos del día</h1><p>Las fotos de la escapada, en orden. Toca una para verla en grande y desliza para pasar a la siguiente.</p></div>
   <div class="pad">
-    <div class="box blk" id="album"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Álbum de la escapada</h3>
-      <input type="file" id="fin" accept="image/*" multiple hidden>
-      <div class="facts"><button type="button" class="btn" id="fadd">📷 Agregar fotos</button><span id="fcnt"></span></div>
-      <p class="note fst" id="fst"></p>
-      <p class="note fempty" id="fempty">Todavía no hay fotos. Toca «Agregar fotos» y elige las de tu galería (hasta 40).</p>
-      <div class="alg" id="alg"></div>
-    </div>
+    <div class="box blk" id="album"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">Álbum de la escapada</h3><div class="alg" id="alg"></div></div>
   </div>
 </section>
 <section id="s-video" hidden>
-  <div class="ptl"><h1>Mi video</h1><p>Un video del recuerdo con tus fotos y música, listo para guardar o compartir.</p></div>
+  <div class="ptl"><h1>El video</h1><p>El recuerdo del día en un minuto, para verlo, guardarlo o compartirlo.</p></div>
   <div class="pad">
-    <div class="box blk" id="vbox"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">🎬 Crear mi video</h3>
-      <p class="note" id="vinfo"></p>
-      <label class="vlab" for="vtit">Título</label><input id="vtit" class="vin" maxlength="40" value="Escapada a Banyoles">
-      <span class="vlab">Música</span><div class="vchips" id="vmus"></div><button type="button" class="btn ghost vprev" id="vprev">▶ Escuchar</button>
-      <span class="vlab">Duración</span><div class="vchips" id="vdur"></div>
-      <button type="button" class="btn vgo" id="vgo">🎬 Crear mi video</button>
-      <div id="vprog" class="vprog" hidden><div class="vtrack"><i id="vbar"></i></div><p class="note" id="vpct"></p></div>
-      <canvas id="vcan" class="vcan" width="720" height="1280" hidden></canvas>
-      <div id="vout" class="vout" hidden><video controls playsinline></video><div class="vacts"><a class="btn" id="vdl" download>⬇ Descargar</a><button type="button" class="btn" id="vsh" hidden>Compartir</button></div><p class="note" id="vfmt"></p></div>
+    <div class="box blk" id="vbox"><h3 class="bh"><img class="bic" src="fotos/ic-lago.webp" alt="">🎬 Escapada a Banyoles y Besalú</h3>
+      <video id="vrec" src="video/recuerdo-v2.mp4" poster="video/recuerdo-v2.jpg" controls playsinline preload="none"></video>
+      <div class="vacts"><a class="btn" id="vdl" href="video/recuerdo-v2.mp4" download="escapada-a-banyoles-y-besalu.mp4">⬇ Descargar</a><button type="button" class="btn" id="vsh" hidden>Compartir</button></div>
     </div>
   </div>
 </section>
@@ -1485,9 +1475,9 @@ const ST=[
  {h:"13:45",m:825,n:"Almuerzo con el Flaco",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",flaco:1,
   t:"A la casa del Flaco y Pilar, en la urbanización Puig de Fontpudosa, a cerca de 1 km al sur del centro y del lago. El botón «Cómo llegar en coche» los lleva hasta la puerta.",
   tip:"Si al final hacen pícnic, el Passeig de la Draga tiene mesas de piedra y fuentes, justo al lado del lago.",dur:"2 h 30 min"},
- {h:"16:15",m:975,n:"Santa Maria de Porqueres",ico:"atardecer",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",
-  t:"Una iglesia románica pequeñita del siglo XII, al otro lado del lago, rodeada de pasto y árboles. En coche son 5 minutos; caminando por la orilla, unos 30.",
-  tip:"El sol se pone hacia las 17:20: desde esta orilla se ve muy bonito sobre el agua y el pueblo.",dur:"40 min",img:"porqueres"},
+ {h:"16:40",m:1000,n:"Besalú",ico:"atardecer",ic:"church",la:42.19883,lo:2.70231,q:"Pont de Besalú",
+  t:"A unos 15 km de Banyoles (20 minutos en coche), uno de los pueblos medievales mejor conservados de Cataluña. Se entra por el puente románico sobre el río Fluvià, con su torre de peaje en el medio. Dentro: calles empedradas, la plaza de soportales, el barrio judío con su baño ritual del siglo XII y la iglesia de Sant Pere.",
+  tip:"Para una foto del puente entero, bajen a la orilla del río por el lado del aparcamiento. Y si son golosos: Cal Tuset, en la calle del Comte Tallaferro, hace magdalenas de muchos sabores.",dur:"45 min",img:"besalu"},
  {h:"17:15",m:1035,n:"Bocadillo de la tarde",ico:"bocadillo",ic:"food",la:42.1179,lo:2.7651,q:"bocadillos Banyoles",go:"comer",
   t:"Un bocadillo y algo para tomar antes de volver. Hay varios bares de bocadillos buenos cerca del centro y del lago.",
   tip:"Las opciones están en la pestaña Comer. Si quieren algo dulce para el camino, las panaderías vuelven a abrir a las 17:00.",dur:"45 min"},
@@ -1500,7 +1490,8 @@ const RN=[
  ["La Llotja del Tint","Un edificio medieval donde se teñían telas: una de las pocas industrias medievales que se pueden visitar en Cataluña.",5,42.1199,2.7672,"Llotja del Tint Banyoles"],
  ["La muralla y sus glorietas","Un tramo de la muralla medieval con unos miradores góticos en lo alto, en pleno Barrio Viejo.",5,42.1189,2.7684,"Muralla de Banyoles"],
  ["Museo Darder","El centro de interpretación del lago, en la plaza dels Estudis. Explica por qué el agua del lago sale desde abajo, del subsuelo. Ideal si llueve.",4,42.1191,2.7663,"Museu Darder Banyoles"],
- ["El pueblo neolítico de La Draga","Junto al estacionamiento: reconstrucción de un poblado de hace unos 7.000 años, uno de los más antiguos de la península.",2,42.1266,2.7598,"Parc Neolític de la Draga Banyoles"]];
+ ["El pueblo neolítico de La Draga","Junto al estacionamiento: reconstrucción de un poblado de hace unos 7.000 años, uno de los más antiguos de la península.",2,42.1266,2.7598,"Parc Neolític de la Draga Banyoles"],
+ ["El barrio judío de Besalú","En Besalú, junto al río: el «call» medieval con los restos de la sinagoga y el mikvé, un baño ritual del siglo XII, de los pocos que se conservan en Europa.",6,42.1985,2.7009,"Micvé de Besalú"]];
 /* plan B si llueve */
 const LLUVIA=[["art","El <b>Museo Darder</b>, en la plaza dels Estudis, explica el lago por dentro. Mejor mirar el horario del sábado en Google Maps."],["cup","Un café bajo los soportales de la Plaça Major: en <b>Can Pons</b>, una antigua mercería de 1891 convertida en bar."],["church","El monasterio de Sant Esteve y Santa Maria dels Turers se ven bien aunque llueva: el Barrio Viejo está a pocos pasos de la plaza."],["car","Santa Maria de Porqueres se puede ver desde el coche, sin bajarse, si llueve fuerte."],["umb","Lleven un paraguas en el coche, por si acaso."]];
 /* tiempo: sin previsión guardada hasta que haya internet */
@@ -1546,11 +1537,11 @@ const carCuando=()=>{const c=LS("coche");if(!c||!c.t)return"";const d=new Date(c
 const curIdx=m=>{let k=-1;ST.forEach((s,i)=>{if(m>=s.m)k=i});return k};
 
 /* ---------- banner ---------- */
-const BN=[["lago","EL LAGO"],["plaza","PLAÇA MAJOR"],["monasterio","SANT ESTEVE"]];
+const BN=[["lago","EL LAGO"],["plaza","PLAÇA MAJOR"],["monasterio","SANT ESTEVE"],["besalu","BESALÚ"]];
 $("bnr").innerHTML=BN.map(([f])=>`<div class="bs">${ph(f)}</div>`).join("")+BN.map(([,n])=>`<span class="cn">${n}</span>`).join("")+`<i class="via"></i><svg class="trn" viewBox="0 0 64 32" aria-hidden="true"><g transform="translate(64 0) scale(-1 1)"><rect x="8" y="1" width="31" height="1.5" rx=".7" fill="#c8ccd2"/><rect x="10" y="2" width="1.4" height="1.6" fill="#c8ccd2"/><rect x="36" y="2" width="1.4" height="1.6" fill="#c8ccd2"/><path d="M3 23V6Q3 3.4 5.6 3.4H43Q44.6 3.4 45.4 4.6L50.5 11.2 58.6 12.4Q61 12.9 61 15.4V23Q61 25 59 25H5Q3 25 3 23Z" fill="#6f7d4c"/><path d="M6 5.2H17.6V11.2H6ZM19.4 5.2H31.2V11.2H19.4ZM33 5.2H43.3L47.9 11.2H33Z" fill="#d6ebf5"/><path d="M32.1 5V19M18.5 5V11.2" stroke="#4e5a33" stroke-width="1.3"/><path d="M3 19.8H61V23Q61 25 59 25H5Q3 25 3 23Z" fill="#2b2f35"/><circle cx="14" cy="25" r="7.6" fill="#2b2f35"/><circle cx="50" cy="25" r="7.6" fill="#2b2f35"/><circle cx="14" cy="25.4" r="6" fill="#15181d"/><circle cx="50" cy="25.4" r="6" fill="#15181d"/><circle cx="14" cy="25.4" r="3" fill="#c9ced8"/><circle cx="50" cy="25.4" r="3" fill="#c9ced8"/><path d="M57 22.2H61.4V24.4H58Z" fill="#c9ced8"/><path d="M57.6 14H61V16.4H58.2Z" fill="#ffe08a"/><path d="M59.2 17.4H61V19.4H59.2Z" fill="#15181d"/><path d="M3 7.6H4.8V12.2H3Z" fill="#d64a3a"/></g></svg>`;
 
 /* ---------- fotos grandes de la portada ---------- */
-const CARS=[["lago","El lago","El lago natural más grande de Cataluña",2],["plaza","Plaça Major","11:15 · soportales del siglo XIII",3],["monasterio","Sant Esteve","12:30 · el monasterio del año 812",4],["porqueres","Santa Maria de Porqueres","16:15 · románica, junto al agua",6]];
+const CARS=[["lago","El lago","El lago natural más grande de Cataluña",2],["plaza","Plaça Major","11:15 · soportales del siglo XIII",3],["monasterio","Sant Esteve","12:30 · el monasterio del año 812",4],["besalu","Besalú","16:40 · el puente medieval",6]];
 $("car").innerHTML=CARS.map(([f,n,t,k])=>`<button type="button" class="cc" data-stop="${k}" aria-label="${n}">${ph(f,"scrim")}<span class="tx"><b>${n}</b><span>${t}</span></span></button>`).join("");
 $("dots").innerHTML=CARS.map(()=>"<i></i>").join("");
 function carState(){const car=$("car"),cs=[...car.children],x=car.scrollLeft;let k=0,best=1e9;cs.forEach((c,i)=>{const dd=Math.abs(c.offsetLeft-car.firstElementChild.offsetLeft-x);if(dd<best){best=dd;k=i}});
@@ -1886,126 +1877,22 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
   <div class="jtop"><b>¿Quién lo dijo?</b><span id="jsc"></span><button type="button" class="jx" id="jClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div id="jbody"></div></div></div>
 
-<div id="albv" hidden role="dialog" aria-label="Mis fotos"><span class="cnt"></span><button type="button" class="x" aria-label="Cerrar">✕</button><button type="button" class="nv l" aria-label="Foto anterior">‹</button><button type="button" class="nv r" aria-label="Foto siguiente">›</button><div class="trk"></div><button type="button" class="del" id="albdel">Quitar esta foto</button></div>
+<div id="albv" hidden role="dialog" aria-label="Fotos del día"><span class="cnt"></span><button type="button" class="x" aria-label="Cerrar">✕</button><button type="button" class="nv l" aria-label="Foto anterior">‹</button><button type="button" class="nv r" aria-label="Foto siguiente">›</button><div class="trk"></div></div>
 <script>
-(()=>{const MAXF=40,MINV=8,MAXV=30;const $=id=>document.getElementById(id);
-/* fotos guardadas solo en este teléfono (IndexedDB) */
-let dbp=null;const db=()=>dbp||(dbp=new Promise((res,rej)=>{const r=indexedDB.open("eb-fotos",1);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains("f"))d.createObjectStore("f",{keyPath:"id"});if(!d.objectStoreNames.contains("v"))d.createObjectStore("v",{keyPath:"id"})};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)}));
-const tx=(st,m,fn)=>db().then(d=>new Promise((res,rej)=>{const t=d.transaction(st,m),q=fn(t.objectStore(st));t.oncomplete=()=>res(q&&q.result);t.onerror=()=>rej(t.error);t.onabort=()=>rej(t.error)}));
-const getAll=()=>tx("f","readonly",s=>s.getAll()).then(a=>(a||[]).sort((x,y)=>x.t-y.t)),putF=o=>tx("f","readwrite",s=>s.put(o)),delF=id=>tx("f","readwrite",s=>s.delete(id));
-/* fecha de la foto (EXIF) */
-async function exifDate(file){try{const b=new DataView(await file.slice(0,262144).arrayBuffer());if(b.getUint16(0)!==0xFFD8)return null;let o=2;
-while(o<b.byteLength-10){const m=b.getUint16(o),l=b.getUint16(o+2);if((m&0xFF00)!==0xFF00)break;
-if(m===0xFFE1&&b.getUint32(o+4)===0x45786966){const t=o+10,le=b.getUint16(t)===0x4949,u16=x=>b.getUint16(x,le),u32=x=>b.getUint32(x,le);
-const find=(off,tag)=>{const n=u16(t+off);for(let i=0;i<n;i++){const e=t+off+2+i*12;if(u16(e)===tag)return e}return 0};
-let e=find(u32(t+4),0x8769);if(!e)return null;e=find(u32(e+8),0x9003)||find(u32(e+8),0x9004);if(!e)return null;
-const so=t+u32(e+8);let s="";for(let i=0;i<19;i++)s+=String.fromCharCode(b.getUint8(so+i));
-const x=s.match(/(\d{4}):(\d\d):(\d\d) (\d\d):(\d\d):(\d\d)/);return x?new Date(+x[1],x[2]-1,+x[3],+x[4],+x[5],+x[6]).getTime():null}o+=2+l}}catch(e){}return null}
-const toBlob=(c,q)=>new Promise(r=>c.toBlob(r,"image/jpeg",q));
-async function shrink(file){const bm=await createImageBitmap(file);const k=Math.min(1,1600/Math.max(bm.width,bm.height));
-const c=document.createElement("canvas");c.width=Math.round(bm.width*k);c.height=Math.round(bm.height*k);c.getContext("2d").drawImage(bm,0,0,c.width,c.height);
-const t=document.createElement("canvas");t.width=t.height=360;const s=Math.min(bm.width,bm.height);t.getContext("2d").drawImage(bm,(bm.width-s)/2,(bm.height-s)/2,s,s,0,0,360,360);bm.close&&bm.close();
-return{full:await toBlob(c,.86),thumb:await toBlob(t,.75)}}
-/* álbum */
-const g=$("alg"),v=$("albv"),fin=$("fin"),cntEl=$("fcnt");if(!g||!v)return;
-let L=[],urls=[];const trk=v.querySelector(".trk"),cnt=v.querySelector(".cnt");
-async function load(){urls.forEach(u=>URL.revokeObjectURL(u));urls=[];L=await getAll().catch(()=>[]);
-g.innerHTML=L.map((f,i)=>{const u=URL.createObjectURL(f.thumb);urls.push(u);return`<button type="button" data-al="${i}"><img src="${u}" alt="" loading="lazy" onerror="this.parentNode.remove()"></button>`}).join("");
-$("fempty").hidden=L.length>0;cntEl.textContent=L.length?`${L.length} de ${MAXF} fotos`:"";
-$("fadd").disabled=L.length>=MAXF;vinfo()}
-fin&&fin.addEventListener("change",async()=>{const fs=[...fin.files].filter(f=>/^image\//.test(f.type)||/\.(jpe?g|png|heic|webp)$/i.test(f.name));fin.value="";if(!fs.length)return;
-const room=MAXF-L.length,take=fs.slice(0,room);const st=$("fst");let ok=0;
-for(let i=0;i<take.length;i++){st.textContent=`Guardando ${i+1} de ${take.length}…`;try{const f=take[i],t=(await exifDate(f))||f.lastModified||Date.now(),s=await shrink(f);await putF({id:f.name+"_"+f.size+"_"+t,t,full:s.full,thumb:s.thumb});ok++}catch(e){}}
-st.textContent=(fs.length>room?`Se guardaron ${ok}. El máximo son ${MAXF} fotos.`:`Listo: ${ok} ${ok===1?"foto guardada":"fotos guardadas"}.`)+(ok<take.length?" Algunas no se pudieron leer.":"");setTimeout(()=>st.textContent="",6000);await load()});
-$("fadd")&&($("fadd").onclick=()=>fin.click());
-let vu=[];const cur=()=>Math.round(trk.scrollLeft/(trk.clientWidth||1));const upd=()=>{cnt.textContent=L.length?`${cur()+1} / ${L.length}`:""};
-const go=i=>{i=Math.max(0,Math.min(L.length-1,i));trk.scrollTo({left:i*trk.clientWidth,behavior:"smooth"})};
-function abrir(i){vu.forEach(u=>URL.revokeObjectURL(u));vu=L.map(f=>URL.createObjectURL(f.full));
-trk.innerHTML=L.map((f,k)=>{const d=new Date(f.t);return`<figure><img src="${vu[k]}" alt="" loading="lazy" draggable="false"><figcaption>${d.toLocaleDateString("es-CL",{day:"numeric",month:"short"})} · ${d.toLocaleTimeString("es-CL",{hour:"2-digit",minute:"2-digit"})}</figcaption></figure>`}).join("");
-v.hidden=false;document.documentElement.style.overflow="hidden";trk.scrollLeft=i*trk.clientWidth;upd();resetDel()}
-const cerrar=()=>{v.hidden=true;document.documentElement.style.overflow="";vu.forEach(u=>URL.revokeObjectURL(u));vu=[];trk.innerHTML=""};
-trk.addEventListener("scroll",()=>{upd();resetDel()},{passive:true});
-g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(b)abrir(+b.dataset.al)});
-v.querySelector(".x").onclick=cerrar;v.querySelector(".nv.l").onclick=()=>go(cur()-1);v.querySelector(".nv.r").onclick=()=>go(cur()+1);
-const del=$("albdel");let armed=false;function resetDel(){armed=false;del.textContent="Quitar esta foto";del.classList.remove("on")}
-del.onclick=async()=>{if(!armed){armed=true;del.textContent="¿Quitarla? Toca otra vez";del.classList.add("on");return}const i=cur(),f=L[i];if(!f)return;await delF(f.id);await load();if(!L.length){cerrar();return}abrir(Math.min(i,L.length-1))};
+(()=>{const AL=[["dia/f104334", "10:43 · Ramón al volante del Duster"], ["dia/f104347", "Por la autovía, con las montañas al fondo"], ["dia/f104353", "Llegando a Banyoles"], ["dia/f110108", "Una casa con buganvilla"], ["dia/f110509", "Llegando al lago entre plátanos"], ["dia/f110550", "Piraguas listas en el embarcadero"], ["dia/f110555", "Kayaks junto a la orilla"], ["dia/f110638", "Ramón y Elisabeth junto al lago"], ["dia/f110709", "Elisabeth en la baranda del lago"], ["dia/f110827", "Un ánade real"], ["dia/f110840", "El lago y la sierra"], ["dia/f110943", "Restaurante Vora Estany"], ["dia/f111757", "Un partido de kayak polo"], ["dia/f112136", "Fochas entre los juncos"], ["dia/f112142", "Focha entre reflejos"], ["dia/f112446", "Dos fochas en la orilla"], ["dia/f112450", "La frente blanca de la focha"], ["dia/f112643", "Una pesquera blanca"], ["dia/f112717", "Remeros entrenando"], ["dia/f113010", "Piragüistas en el lago"], ["dia/f113034", "La garza en el embarcadero"], ["dia/f113055", "La pesquera amarilla y la garza"], ["dia/f113222", "Fochas en el lago"], ["dia/f113301", "La garza de cerca"], ["dia/f113548", "Cabaña del poblado neolítico de La Draga"], ["dia/f113642", "Parc Neolític de la Draga"], ["dia/f113705", "El parque neolítico"], ["dia/f113906", "La pesquera de las almenas"], ["dia/f114725", "Una caseta junto al lago"], ["dia/f115037", "Por el sendero del bosque"], ["dia/f115107", "Ramón y Elisabeth en el sendero"], ["dia/f115143", "Reflejos en el agua"], ["dia/f115148", "Hojas bajo el agua"], ["dia/f115155", "Un canal en el bosque"], ["dia/f115200", "Junto al canal"], ["dia/f115208", "El camino entre los árboles"], ["dia/f115217", "Un abrazo en el camino"], ["dia/f115220", "Ramón y Elisabeth junto a un tronco"], ["dia/f115235", "Un brazo del lago entre los árboles"], ["dia/f115349", "Sendero con hiedra"], ["dia/f115353", "Km 1 de la Volta a l'Estany"], ["dia/f115422", "Una casita al final de la pasarela"], ["dia/f115806", "Un sauce llorón cubierto de hiedra"], ["dia/f115853", "El lago entre los árboles"], ["album/cola-de-caballo", "Cola de caballo, un fósil viviente"], ["dia/f120504", "Paseantes y remeros junto al lago"], ["dia/f120514", "El paseo de la orilla norte"], ["dia/f120844", "Las pesqueras desde la otra orilla"], ["dia/f121812", "La barca Tirona"], ["dia/f121821", "Un entrenador siguiendo a una piragüista"], ["dia/f122046", "El mirador de madera"], ["dia/f122053", "Mirando el lago desde el pantalán"], ["dia/f123331", "De vuelta por el sendero"], ["dia/f123516", "Un rincón de agua en el bosque"], ["dia/f123606", "Ramas sobre el agua"], ["dia/f124028", "Caminando de vuelta"], ["dia/f124347", "El cielo reflejado"], ["dia/f125040", "El camino de vuelta"], ["dia/f125053", "Ramón y Elisabeth de la mano"], ["dia/f125135", "Una pesquera entre las ramas"], ["dia/f125145", "El lago entre las cañas"], ["dia/f125743", "Pesqueras bajo los plátanos"], ["dia/f125747", "El lago desde el paseo"], ["dia/f125750", "El paseo de los plátanos"], ["dia/f131119", "13:11 · La cervecita"], ["dia/f135002", "Un canal de Banyoles"], ["dia/f164141", "16:41 · Llegando a Besalú"], ["dia/f164215", "El puente medieval de Besalú"], ["dia/f164242", "En el puente de Besalú"], ["dia/f165325", "Callejuelas de Besalú"], ["dia/f165335", "Por el barrio antiguo"], ["dia/f170147", "La plaza de Besalú"], ["dia/f170525", "Cocas y panes artesanos"], ["dia/f170734", "Cal Tuset, magdalenería"], ["dia/f170911", "La tienda de Cal Tuset"], ["dia/f171225", "Circusland, el museo del circo"], ["dia/f171232", "Una fachada de la plaza"], ["dia/f171532", "Interior de Sant Pere de Besalú"], ["dia/caballero", "Con el caballero templario de Besalú"]];const $=id=>document.getElementById(id);
+const g=$("alg"),v=$("albv");if(!g||!v)return;const trk=v.querySelector(".trk"),cnt=v.querySelector(".cnt");
+g.innerHTML=AL.map((a,i)=>`<button type="button" data-al="${i}"><img src="fotos/${a[0]}-t.webp" alt="" loading="lazy" onerror="this.parentNode.remove()"><span>${a[1]}</span></button>`).join("");
+trk.innerHTML=AL.map(a=>`<figure><img src="fotos/${a[0]}.webp" alt="" loading="lazy" draggable="false"><figcaption>${a[1]}</figcaption></figure>`).join("");
+const cur=()=>Math.round(trk.scrollLeft/(trk.clientWidth||1)),upd=()=>{cnt.textContent=`${cur()+1} / ${AL.length}`};
+const go=i=>{i=Math.max(0,Math.min(AL.length-1,i));trk.scrollTo({left:i*trk.clientWidth,behavior:"smooth"})};
+trk.addEventListener("scroll",upd,{passive:true});
+g.addEventListener("click",e=>{const b=e.target.closest("[data-al]");if(!b)return;v.hidden=false;document.documentElement.style.overflow="hidden";trk.scrollLeft=+b.dataset.al*trk.clientWidth;upd()});
+const cerrar=()=>{v.hidden=true;document.documentElement.style.overflow=""};v.querySelector(".x").onclick=cerrar;
+v.querySelector(".nv.l").onclick=()=>go(cur()-1);v.querySelector(".nv.r").onclick=()=>go(cur()+1);
 document.addEventListener("keydown",e=>{if(v.hidden)return;if(e.key==="Escape")cerrar();if(e.key==="ArrowLeft")go(cur()-1);if(e.key==="ArrowRight")go(cur()+1)});
-
-/* ===== video del recuerdo ===== */
-const BEATS={"g": [0.07, 0.604, 1.115, 1.649, 2.183, 2.694, 3.228, 3.762, 4.296, 4.83, 5.364, 5.898, 6.409, 6.943, 7.477, 8.011, 8.545, 9.079, 9.613, 10.147, 10.658, 11.192, 11.726, 12.26, 12.794, 13.328, 13.862, 14.396, 14.907, 15.441, 15.975, 16.509, 17.043, 17.578, 18.112, 18.646, 19.156, 19.691, 20.225, 20.759, 21.293, 21.85, 22.361, 22.872, 23.406, 23.94, 24.474, 25.008, 25.542, 26.076, 26.587, 27.121, 27.655, 28.189, 28.723, 29.257, 29.791, 30.325, 30.859, 31.393, 31.904, 32.438, 32.972, 33.506, 34.04, 34.575, 35.085, 35.619, 36.153, 36.688, 37.222, 37.756, 38.29, 38.824, 39.335, 39.869, 40.403, 40.937, 41.471, 42.005, 42.539, 43.073, 43.584, 44.118, 44.652, 45.186, 45.72, 46.254, 46.765, 47.299, 47.833, 48.367, 48.901, 49.435, 49.969, 50.503, 51.014, 51.548, 52.082, 52.616, 53.15, 53.685, 54.219, 54.729, 55.263, 55.798, 56.332, 56.866, 57.4, 57.957, 58.468, 59.002, 59.536, 60.07, 60.604, 61.138, 61.649, 62.183, 62.717, 63.251, 63.785, 64.296, 64.83, 65.364, 65.898, 66.456, 66.966, 67.5, 68.034, 68.569, 69.079, 69.637, 70.147, 70.705, 71.216], "m": [0.07, 0.418, 0.766, 1.115, 1.44, 1.788, 2.113, 2.485, 2.81, 3.158, 3.483, 3.831, 4.18, 4.528, 4.853, 5.201, 5.526, 5.875, 6.223, 6.548, 6.896, 7.245, 7.593, 7.918, 8.243, 8.568, 8.916, 9.265, 9.613, 9.961, 10.286, 10.635, 10.983, 11.308, 11.656, 12.005, 12.353, 12.701, 13.026, 13.375, 13.723, 14.071, 14.42, 14.745, 15.07, 15.418, 15.766, 16.115, 16.44, 16.765, 17.113, 17.461, 17.81, 18.135, 18.483, 18.831, 19.18, 19.505, 19.853, 20.201, 20.526, 20.875, 21.2, 21.548, 21.896, 22.221, 22.57, 22.918, 23.266, 23.591, 23.94, 24.265, 24.613, 24.938, 25.263, 25.612, 25.983, 26.331, 26.657, 26.982, 27.33, 27.678, 28.026, 28.352, 28.7, 29.048, 29.373, 29.722, 30.07, 30.395, 30.743, 31.092, 31.44, 31.765, 32.113, 32.461, 32.787, 33.135, 33.483, 33.831, 34.157, 34.505, 34.853, 35.178, 35.527, 35.875, 36.2, 36.571, 36.897, 37.222, 37.57, 37.918, 38.243, 38.592, 38.94, 39.265, 39.613, 39.962, 40.31, 40.658, 40.983, 41.332, 41.657, 42.005, 42.33, 42.678, 43.027, 43.375, 43.723, 44.048, 44.397, 44.745, 45.07, 45.395, 45.743, 46.092, 46.44, 46.765, 47.113, 47.462, 47.81, 48.135, 48.483, 48.832, 49.157, 49.505, 49.853, 50.178, 50.527, 50.875, 51.2, 51.548, 51.897, 52.222, 52.57, 52.918, 53.243, 53.592, 53.94, 54.265, 54.613, 54.962, 55.31, 55.635, 55.983, 56.332, 56.657, 57.005, 57.353, 57.702, 58.027, 58.352, 58.7, 59.048, 59.397, 59.722, 60.07, 60.418, 60.767, 61.115, 61.44, 61.788, 62.137, 62.462, 62.81, 63.158, 63.483, 63.832, 64.18, 64.505, 64.853, 65.202, 65.527, 65.875, 66.223, 66.572, 66.897, 67.245, 67.593, 67.942, 68.267, 68.615, 68.963, 69.312, 69.637, 69.985, 70.31, 70.658, 71.007, 71.355, 71.68, 72.005, 72.33, 72.678, 73.027, 73.375, 73.723, 74.048, 74.397, 74.745, 75.093, 75.442, 75.79, 76.138, 76.463, 76.788, 77.113, 77.462, 77.81]};
-const TRK=[{n:"Guitarra alegre",f:"video/m-guitarra.mp3",b:BEATS.g,k:4},{n:"Medieval",f:"audio/musica.mp3",b:BEATS.m,k:8}];
-let tSel=0,dSel=45;const VW=720,VH=1280,TT=.42,FX=["white","zoom","fade","slide","pixel","circle","white","zoom","slideup","fade","pixel","circle"];
-const vt=$("vtit"),vgo=$("vgo");
-function vinfo(){const el=$("vinfo");if(!el)return;const n=L.length;
-el.innerHTML=n<MINV?`Tienes <b>${n}</b> ${n===1?"foto":"fotos"}. Para crear el video hacen falta al menos <b>${MINV}</b>. <a href="#fotos">Agregar fotos</a>`:`Tienes <b>${n}</b> fotos en Mis fotos${n>MAXV?`; el video usará ${MAXV} repartidas a lo largo del día`:""}.`;
-if(vgo)vgo.disabled=n<MINV||rendering}
-function chips(id,arr,get,set){const el=$(id);if(!el)return;el.innerHTML=arr.map((a,i)=>`<button type="button" data-i="${i}" class="${get()===i?"on":""}">${a}</button>`).join("");el.onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;set(+b.dataset.i);chips(id,arr,get,set)}}
-const DUR=[30,45,60];chips("vmus",TRK.map(t=>t.n),()=>tSel,i=>{tSel=i;prevStop()});chips("vdur",DUR.map(d=>d+" s"),()=>DUR.indexOf(dSel),i=>dSel=DUR[i]);
-const pa=new Audio();pa.preload="none";const pb=$("vprev");function prevStop(){pa.pause();if(pb)pb.textContent="▶ Escuchar"}
-pb&&(pb.onclick=()=>{if(!pa.paused){prevStop();return}pa.src=TRK[tSel].f;pa.currentTime=0;pa.play().then(()=>pb.textContent="⏸ Parar").catch(()=>{});setTimeout(prevStop,12000)});
-const ease=q=>q*q*(3-2*q),cl=(x,a,b)=>Math.max(a,Math.min(b,x));
-async function frameOf(f){const bm=await createImageBitmap(f.full),c=document.createElement("canvas");c.width=VW;c.height=VH;const x=c.getContext("2d");const r=bm.width/bm.height;
-if(r<=VW/VH+.02){const h=VW/r,y=-(h-VH)*.35;x.drawImage(bm,0,y,VW,h)}else{const s=document.createElement("canvas");s.width=27;s.height=48;const sx=s.getContext("2d");const ch=bm.height,cw=ch*VW/VH;sx.drawImage(bm,(bm.width-cw)/2,0,cw,ch,0,0,27,48);
-x.imageSmoothingQuality="high";x.drawImage(s,0,0,VW,VH);x.fillStyle="rgba(0,0,0,.45)";x.fillRect(0,0,VW,VH);const h=VW/r;x.drawImage(bm,0,(VH-h)/2,VW,h)}bm.close&&bm.close();return c}
-function kb(ctx,c,j,p){p=cl(p,0,1);const m=j%4;let s=1.1,ox=0;if(m===0)s=1+.12*p;else if(m===1)s=1.12-.12*p;else if(m===2)ox=(p-.5)*VW*.08;else ox=(.5-p)*VW*.08;
-const w=VW*s,h=VH*s;ctx.drawImage(c,(VW-w)/2+ox,(VH-h)/2,w,h)}
-const pix=document.createElement("canvas"),px=pix.getContext("2d");
-function pixel(ctx,draw,bs){pix.width=Math.max(4,Math.round(VW/bs));pix.height=Math.max(6,Math.round(VH/bs));px.save();px.scale(pix.width/VW,pix.height/VH);draw(px);px.restore();ctx.imageSmoothingEnabled=false;ctx.drawImage(pix,0,0,VW,VH);ctx.imageSmoothingEnabled=true}
-function wrap(ctx,t,maxW){const w=t.split(/\s+/),out=[];let l="";for(const x of w){const tt=l?l+" "+x:x;if(ctx.measureText(tt).width>maxW&&l){out.push(l);l=x}else l=tt}if(l)out.push(l);return out.slice(0,3)}
-function card(ctx,lines,sub,a){if(a<=0)return;ctx.save();ctx.globalAlpha=a;const gr=ctx.createLinearGradient(0,VH*.5,0,VH);gr.addColorStop(0,"rgba(0,0,0,0)");gr.addColorStop(1,"rgba(0,0,0,.82)");ctx.fillStyle=gr;ctx.fillRect(0,VH*.5,VW,VH*.5);
-ctx.textAlign="center";ctx.fillStyle="#ffecbe";ctx.font='700 64px "Cinzel",Georgia,serif';ctx.shadowColor="rgba(0,0,0,.5)";ctx.shadowBlur=12;
-const ls=lines.flatMap(l=>wrap(ctx,l,VW-90));const y0=VH-150-ls.length*76;ls.forEach((l,i)=>ctx.fillText(l,VW/2,y0+i*76));
-ctx.font='400 30px "Marcellus",Georgia,serif';ctx.fillStyle="#fff";ctx.fillText(sub,VW/2,VH-110);ctx.restore()}
-const LV=[...Array(40)].map((_,i)=>{const r=k=>{const x=Math.sin(i*97.13+k*13.7)*43758.5453;return x-Math.floor(x)};return{x:r(1)*VW,y:-r(2)*VH*.9,s:16+r(3)*26,vy:260+r(4)*260,sw:20+r(5)*60,ph:r(6)*6.3,ro:r(7)*6.3,vr:(r(8)-.5)*5,c:["#d6782a","#be501e","#e6a03c","#a0461a","#f0be50"][Math.floor(r(9)*5)]}});
-function leaves(ctx,t,a){if(a<=0)return;ctx.save();ctx.globalAlpha=a;for(const l of LV){const y=l.y+l.vy*t+VH*.25;if(y<-60||y>VH+60)continue;const x=l.x+l.sw*Math.sin(l.ph+t*2.2);
-ctx.save();ctx.translate(x,y);ctx.rotate(l.ro+l.vr*t);ctx.fillStyle=l.c;ctx.beginPath();ctx.ellipse(0,0,l.s,l.s*.45,0,0,6.283);ctx.fill();ctx.strokeStyle="rgba(110,55,20,.7)";ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(-l.s,0);ctx.lineTo(l.s,0);ctx.stroke();ctx.restore()}ctx.restore()}
-let rendering=false;
-async function crear(){if(rendering)return;const fotos=L.slice();if(fotos.length<MINV){vinfo();return}
-const can=$("vcan"),ctx=can.getContext("2d"),tr=TRK[tSel],D=dSel,bt=tr.b,k=tr.k,slot=bt[k]-bt[0];
-const bnd=[];for(let j=0;j<bt.length;j+=k)bnd.push(bt[j]-bt[0]);
-let nFit=bnd.filter(x=>x<=D-2*slot+.01).length;nFit=Math.min(nFit,MAXV);let use=fotos;
-if(fotos.length>nFit){use=[];for(let i=0;i<nFit;i++)use.push(fotos[Math.round(i*(fotos.length-1)/(nFit-1))])}
-const n=use.length,times=bnd.slice(0,n),total=fotos.length>=nFit?D:Math.min(D,times[n-1]+Math.max(2*slot,3.2));times.push(total);
-const titulo=(vt.value||"").trim()||"Mi escapada";const d0=new Date(use[0].t),sub=d0.toLocaleDateString("es-CL",{day:"numeric",month:"long",year:"numeric"});
-rendering=true;vinfo();$("vout").hidden=true;$("vprog").hidden=false;can.hidden=false;const bar=$("vbar"),pct=$("vpct");pct.textContent="Preparando las fotos…";bar.style.width="0%";prevStop();
-try{await (document.fonts&&Promise.all([document.fonts.load('700 64px "Cinzel"'),document.fonts.load('400 30px "Marcellus"')]).catch(()=>{}));
-const AC=window.AudioContext||window.webkitAudioContext,ac=new AC();await ac.resume();const buf=await ac.decodeAudioData(await (await fetch(tr.f)).arrayBuffer());
-const fr={},get=i=>fr[i]||(fr[i]=frameOf(use[i]));const ready={};const need=async i=>{if(i<n&&!ready[i])ready[i]=await get(i)};await need(0);await need(1);
-const dest=ac.createMediaStreamDestination(),gn=ac.createGain(),src=ac.createBufferSource();src.buffer=buf;src.connect(gn);gn.connect(dest);
-const st=can.captureStream(30);dest.stream.getAudioTracks().forEach(t=>st.addTrack(t));
-const types=["video/mp4;codecs=avc1.42E01E,mp4a.40.2","video/mp4;codecs=avc1,mp4a","video/mp4","video/webm;codecs=vp9,opus","video/webm;codecs=vp8,opus","video/webm"];
-const mime=types.find(t=>window.MediaRecorder&&MediaRecorder.isTypeSupported(t))||"";const rec=new MediaRecorder(st,mime?{mimeType:mime,videoBitsPerSecond:6e6,audioBitsPerSecond:160000}:{});const chunks=[];rec.ondataavailable=e=>e.data&&e.data.size&&chunks.push(e.data);
-const done=new Promise(r=>rec.onstop=r);
-const t0=ac.currentTime+.15;gn.gain.setValueAtTime(0,t0);gn.gain.linearRampToValueAtTime(1,t0+.4);gn.gain.setValueAtTime(1,t0+total-3);gn.gain.linearRampToValueAtTime(0,t0+total);src.start(t0,Math.max(0,bt[0]-.05));
-rec.start(500);let last=-1;
-await new Promise(res=>{function draw(){const t=ac.currentTime-t0;if(t>=total+.15){res();return}const tc=cl(t,0,total);
-let i=0;while(i<n-1&&times[i+1]<=tc)i++;need(i+1);need(i+2);if(i>2){delete ready[i-2];delete fr[i-2]}
-const A=ready[i];ctx.fillStyle="#000";ctx.fillRect(0,0,VW,VH);
-const pOf=j=>(tc-times[j])/(times[j+1]-times[j]+TT);const q=(tc-times[i])/TT;const P=i>0&&q<1?ready[i-1]:null;
-if(A){if(P){const e=ease(q),fx=FX[(i-1)%FX.length],dA=c=>kb(c,A,i,pOf(i)),dP=c=>kb(c,P,i-1,pOf(i-1));
-if(fx==="fade"){dP(ctx);ctx.globalAlpha=e;dA(ctx);ctx.globalAlpha=1}
-else if(fx==="white"){(q<.5?dP:dA)(ctx);ctx.fillStyle=`rgba(255,240,205,${Math.sin(Math.PI*q)*.95})`;ctx.fillRect(0,0,VW,VH)}
-else if(fx==="zoom"){dA(ctx);ctx.save();ctx.globalAlpha=1-e;ctx.translate(VW/2,VH/2);ctx.scale(1+e*.7,1+e*.7);ctx.translate(-VW/2,-VH/2);dP(ctx);ctx.restore()}
-else if(fx==="slide"||fx==="slideup"){ctx.save();if(fx==="slide")ctx.translate(-e*VW,0);else ctx.translate(0,-e*VH);dP(ctx);ctx.restore();ctx.save();if(fx==="slide")ctx.translate((1-e)*VW,0);else ctx.translate(0,(1-e)*VH);dA(ctx);ctx.restore()}
-else if(fx==="pixel"){const bs=4+Math.sin(Math.PI*q)*40;pixel(ctx,q<.5?dP:dA,bs)}
-else if(fx==="circle"){dP(ctx);ctx.save();ctx.beginPath();ctx.arc(VW/2,VH/2,e*Math.hypot(VW,VH)/2+1,0,6.283);ctx.clip();dA(ctx);ctx.restore()}}
-else kb(ctx,A,i,pOf(i))}
-ctx.save();ctx.globalCompositeOperation="overlay";ctx.fillStyle="rgba(255,175,90,.10)";ctx.fillRect(0,0,VW,VH);ctx.restore();
-if(i===0||(i===1&&q<1)){const a=i===0?cl((tc-.3)/.6,0,1):1-ease(cl(q,0,1));leaves(ctx,tc,i===0?1:1-ease(cl(q,0,1)));card(ctx,[titulo],sub,a)}
-if(i===n-1){card(ctx,["Hasta la próxima escapada"],titulo,cl((tc-(total-2.8))/.8,0,1))}
-const fa=Math.max(cl(1-tc/.45,0,1),cl((tc-(total-.7))/.7,0,1));if(fa>0){ctx.fillStyle=`rgba(0,0,0,${fa})`;ctx.fillRect(0,0,VW,VH)}
-const pc=Math.floor(100*tc/total);if(pc!==last){last=pc;bar.style.width=pc+"%";pct.textContent=`Creando tu video… ${pc} % · deja la pantalla abierta`}
-requestAnimationFrame(draw)}requestAnimationFrame(draw)});
-rec.stop();try{src.stop()}catch(e){}await done;ac.close&&ac.close();
-const type=(rec.mimeType||mime||"video/webm").split(";")[0],blob=new Blob(chunks,{type});await tx("v","readwrite",s=>s.put({id:"ultimo",blob,type,titulo})).catch(()=>{});show({blob,type,titulo})}
-catch(e){$("vpct").textContent="No se pudo crear el video en este teléfono. Prueba con Chrome actualizado.";rendering=false;vinfo();return}
-rendering=false;$("vprog").hidden=true;can.hidden=true;vinfo()}
-let ou=null;function show(o){const out=$("vout"),vid=out.querySelector("video"),a=$("vdl");if(ou)URL.revokeObjectURL(ou);ou=URL.createObjectURL(o.blob);vid.src=ou;
-const ext=/mp4/.test(o.type)?"mp4":"webm",name=(o.titulo||"mi-video").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/gi,"-").replace(/^-|-$/g,"").toLowerCase()+"."+ext;a.href=ou;a.download=name;
-const file=new File([o.blob],name,{type:o.type});const sh=$("vsh");sh.hidden=!(navigator.canShare&&navigator.canShare({files:[file]}));sh.onclick=()=>navigator.share({files:[file],title:o.titulo}).catch(()=>{});
-$("vfmt").textContent=ext==="webm"?"Este teléfono lo guarda en formato WebM: algunas apps (como WhatsApp) pueden no aceptarlo.":"";out.hidden=false}
-vgo&&(vgo.onclick=crear);
-tx("v","readonly",s=>s.get("ultimo")).then(o=>{if(o&&o.blob)show(o)}).catch(()=>{});
-load()})();
+/* video: compartir el archivo si el teléfono lo permite */
+const sh=$("vsh");if(sh&&navigator.canShare){sh.hidden=false;sh.onclick=async()=>{sh.disabled=true;sh.textContent="Preparando…";try{const b=await (await fetch("video/recuerdo-v2.mp4")).blob(),f=new File([b],"escapada-a-banyoles-y-besalu.mp4",{type:"video/mp4"});
+if(navigator.canShare({files:[f]}))await navigator.share({files:[f],title:"Escapada a Banyoles y Besalú"});else location.href="video/recuerdo-v2.mp4"}catch(e){}sh.disabled=false;sh.textContent="Compartir"}}
+})();
 </script>
 </body></html>
