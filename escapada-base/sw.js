@@ -1,5 +1,5 @@
 /* Escapada (base): guarda la app en el móvil para usarla sin internet */
-const V = "esc-base-v5", T = "esc-base-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
+const V = "esc-base-v6", T = "esc-base-mapa"; /* solo borra sus propias copias: en github.io todas las apps comparten el mismo sitio */
 const FILES = ["./", "index.html","viaje.js", "manifest.json", "icono.png", "icono-192.png", "favicon-32.png", "apple-touch-icon.png",
   "fotos/lago.jpg", "fotos/ic-auto.webp", "fotos/ic-casa.webp", "fotos/ic-paraguas.webp", "fotos/ic-mochila.webp", "fotos/ic-parking.webp", "fotos/ic-lago.webp", "fotos/ic-plaza.webp", "fotos/ic-iglesia.webp", "fotos/ic-atardecer.webp", "fotos/ic-bocadillo.webp", "fotos/ic-tortada.webp", "fotos/plaza.jpg", "fotos/monasterio.jpg", "fotos/porqueres.jpg",
   "fotos/tiempo/sol.png", "fotos/tiempo/solnube.png", "fotos/tiempo/nubes.png", "fotos/tiempo/lluvia.png", "fotos/tiempo/tormenta.png",
