@@ -12,7 +12,7 @@
 <link rel="manifest" href="manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="Escapada a Banyoles">
+<meta name="apple-mobile-web-app-title" content="Escapada">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="viaje.js"></script>
@@ -1385,16 +1385,10 @@ html,body{touch-action:pan-x pan-y}
     <button type="button" class="arr r" id="arrR" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
   <div class="dots" id="dots" aria-hidden="true"></div>
-  <div class="lleg" id="lleg" aria-hidden="true">
-    <i class="calle"></i>
-    <div class="esp"><span class="hola h1"></span><span class="hola h2"></span><img class="c1" alt=""><img class="c2" alt=""></div>
-    <div class="auto"><div class="humos"><i></i><i></i><i></i><i></i></div><div class="cuerpo"><img class="dus" src="fotos/auto.webp" alt=""><span class="rueda w1"><img src="fotos/rueda-r1.webp" alt=""></span><span class="rueda w2"><img src="fotos/rueda-r2.webp" alt=""></span></div></div>
-  </div>
   <div class="pad" id="nowbox"></div>
   <div class="pad">
     <div class="box blk wxb" id="wxbox"></div>
     <div class="box blk" id="flaco"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt=""><span id="anftit"></span></h3><div id="dirbox"></div></div>
-    <div class="box blk" id="grupo"><h3 class="bh"><img class="bic" src="fotos/ic-corazon.webp" alt=""><span id="pandtit"></span></h3><p class="note" style="margin:-2px 0 12px;font-size:13.5px">Toca una cara: cada uno tiene algo que decir.</p><div class="grp" id="grp"></div><button type="button" class="btn jbtn" id="jOpen">¿Quién lo dijo? · Jugar</button></div>
     <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px" id="plannota"></p>
     <div id="route"></div>
@@ -1461,7 +1455,7 @@ html,body{touch-action:pan-x pan-y}
 <script>
 {
 /* ---------- datos del viaje ---------- */
-const {APP,STATS,T,TRANSPORTE,ANF,CAJA,NOMBRE,Y,M,DIA,FIN,FDIR,FLL,BANY,BDN,ST,RN,LLUVIA,RT,R,PLATOS,TAREAS,TREN,GR,BN,CARS,FR,VIA0}=VIAJE;
+const {APP,STATS,T,TRANSPORTE,ANF,CAJA,NOMBRE,Y,M,DIA,FIN,FDIR,FLL,BANY,BDN,ST,RN,LLUVIA,RT,R,PLATOS,TAREAS,TREN,BN,CARS,VIA0}=VIAJE;
 const li=a=>a.map(([i,t])=>`<li><span class="ic">${ico(i)}</span><span>${t}</span></li>`).join("");
 const anfBtn=()=>ANF?`<button class="btn ghost" type="button" data-jump="flaco">${esc(ANF.titulo)}</button>`:"";
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
@@ -1483,9 +1477,8 @@ const LS=k=>{try{return JSON.parse(localStorage.getItem(PFX+""+k))}catch(e){retu
 const SS=(k,v)=>{try{localStorage.setItem(PFX+""+k,JSON.stringify(v))}catch(e){}};
 const $=id=>document.getElementById(id);
 /* textos y módulos según el viaje */
-document.title=APP;$("vtitulo").textContent=APP;$("vsub").textContent=T.sub;$("vsub2").textContent=T.sub2;$("plannota").textContent=T.planNota;$("viajetit").textContent=T.viaje;$("viajeico").src="fotos/"+T.viajeIco;$("comerintro").textContent=T.comer;$("vtit").value=APP;$("pandtit").textContent=T.pandilla||"";
-if(ANF){$("anftit").textContent=ANF.titulo;const lg=$("lleg"),h=lg.querySelectorAll(".hola"),c=lg.querySelectorAll(".esp img");if(ANF.bienvenida&&ANF.caras&&ANF.caras.length){h[0].textContent=ANF.bienvenida[0]||"";h[1].textContent=ANF.bienvenida[1]||"";h[1].hidden=!ANF.bienvenida[1];c[0].src="fotos/"+ANF.caras[0]+".webp";if(ANF.caras[1])c[1].src="fotos/"+ANF.caras[1]+".webp";else c[1].remove()}else lg.hidden=true}else{$("flaco").hidden=true;$("lleg").hidden=true}
-if(!GR||!GR.length)$("grupo").hidden=true;
+document.title=APP;$("vtitulo").textContent=APP;$("vsub").textContent=T.sub;$("vsub2").textContent=T.sub2;$("plannota").textContent=T.planNota;$("viajetit").textContent=T.viaje;$("viajeico").src="fotos/"+T.viajeIco;$("comerintro").textContent=T.comer;$("vtit").value=APP;
+if(ANF)$("anftit").textContent=ANF.titulo;else $("flaco").hidden=true;
 const ph=(f,cls)=>`<div class="ph ${cls||""}" style="--s1:#c9a46a;--s2:#3b2a1c">${f?`<img src="fotos/${f}.jpg" alt="" loading="lazy">`:""}</div>`;
 function fixImgs(root){root.querySelectorAll(".ph img:not([data-k])").forEach(i=>{i.dataset.k=1;const ok=()=>i.naturalWidth?i.classList.add("ok"):i.remove();if(i.complete)ok();else{i.addEventListener("load",ok);i.addEventListener("error",()=>i.remove())}})}
 
@@ -1498,7 +1491,7 @@ const carCuando=()=>{const c=LS("coche");if(!c||!c.t)return"";const d=new Date(c
 const curIdx=m=>{let k=-1;ST.forEach((s,i)=>{if(m>=s.m)k=i});return k};
 
 /* ---------- banner ---------- */
-$("bnr").innerHTML=BN.map(([f])=>`<div class="bs">${ph(f)}</div>`).join("")+BN.map(([,n])=>`<span class="cn">${n}</span>`).join("")+`<i class="via"></i><svg class="trn" viewBox="0 0 64 32" aria-hidden="true"><g transform="translate(64 0) scale(-1 1)"><rect x="8" y="1" width="31" height="1.5" rx=".7" fill="#c8ccd2"/><rect x="10" y="2" width="1.4" height="1.6" fill="#c8ccd2"/><rect x="36" y="2" width="1.4" height="1.6" fill="#c8ccd2"/><path d="M3 23V6Q3 3.4 5.6 3.4H43Q44.6 3.4 45.4 4.6L50.5 11.2 58.6 12.4Q61 12.9 61 15.4V23Q61 25 59 25H5Q3 25 3 23Z" fill="#6f7d4c"/><path d="M6 5.2H17.6V11.2H6ZM19.4 5.2H31.2V11.2H19.4ZM33 5.2H43.3L47.9 11.2H33Z" fill="#d6ebf5"/><path d="M32.1 5V19M18.5 5V11.2" stroke="#4e5a33" stroke-width="1.3"/><path d="M3 19.8H61V23Q61 25 59 25H5Q3 25 3 23Z" fill="#2b2f35"/><circle cx="14" cy="25" r="7.6" fill="#2b2f35"/><circle cx="50" cy="25" r="7.6" fill="#2b2f35"/><circle cx="14" cy="25.4" r="6" fill="#15181d"/><circle cx="50" cy="25.4" r="6" fill="#15181d"/><circle cx="14" cy="25.4" r="3" fill="#c9ced8"/><circle cx="50" cy="25.4" r="3" fill="#c9ced8"/><path d="M57 22.2H61.4V24.4H58Z" fill="#c9ced8"/><path d="M57.6 14H61V16.4H58.2Z" fill="#ffe08a"/><path d="M59.2 17.4H61V19.4H59.2Z" fill="#15181d"/><path d="M3 7.6H4.8V12.2H3Z" fill="#d64a3a"/></g></svg>`;
+$("bnr").innerHTML=BN.map(([f])=>`<div class="bs">${ph(f)}</div>`).join("")+BN.map(([,n])=>`<span class="cn">${n}</span>`).join("")+`<i class="via"></i><svg class="trn" viewBox="0 0 64 32" aria-hidden="true"><g transform="translate(64 0) scale(-1 1)"><rect x="8" y="1" width="31" height="1.5" rx=".7" fill="#c8ccd2"/><rect x="10" y="2" width="1.4" height="1.6" fill="#c8ccd2"/><rect x="36" y="2" width="1.4" height="1.6" fill="#c8ccd2"/><path d="M3 23V6Q3 3.4 5.6 3.4H43Q44.6 3.4 45.4 4.6L50.5 11.2 58.6 12.4Q61 12.9 61 15.4V23Q61 25 59 25H5Q3 25 3 23Z" fill="#f4f5f6"/><path d="M6 5.2H17.6V11.2H6ZM19.4 5.2H31.2V11.2H19.4ZM33 5.2H43.3L47.9 11.2H33Z" fill="#d6ebf5"/><path d="M32.1 5V19M18.5 5V11.2" stroke="#c4c9cf" stroke-width="1.3"/><path d="M3 19.8H61V23Q61 25 59 25H5Q3 25 3 23Z" fill="#2b2f35"/><circle cx="14" cy="25" r="7.6" fill="#2b2f35"/><circle cx="50" cy="25" r="7.6" fill="#2b2f35"/><circle cx="14" cy="25.4" r="6" fill="#15181d"/><circle cx="50" cy="25.4" r="6" fill="#15181d"/><circle cx="14" cy="25.4" r="3" fill="#c9ced8"/><circle cx="50" cy="25.4" r="3" fill="#c9ced8"/><path d="M57 22.2H61.4V24.4H58Z" fill="#c9ced8"/><path d="M57.6 14H61V16.4H58.2Z" fill="#ffe08a"/><path d="M59.2 17.4H61V19.4H59.2Z" fill="#15181d"/><path d="M3 7.6H4.8V12.2H3Z" fill="#d64a3a"/></g></svg>`;
 
 /* ---------- fotos grandes de la portada ---------- */
 $("car").innerHTML=CARS.map(([f,n,t,k])=>`<button type="button" class="cc" data-stop="${k}" aria-label="${n}">${ph(f,"scrim")}<span class="tx"><b>${n}</b><span>${t}</span></span></button>`).join("");
@@ -1518,17 +1511,17 @@ addEventListener("resize",()=>requestAnimationFrame(fitCar));new ResizeObserver(
 function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
   const G0=h>=6&&h<13?"Buenos días":h>=13&&h<20?"Buenas tardes":"Buenas noches";
   const head=(i,tx)=>`<div class="box hoy"><h3 class="bh"><span class="bi">${ico(i,2)}</span>${tx}</h3>`;
-  if(f.p==="before")return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">${f.left===1?"Mañana, "+T.dia:T.diaLargo}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} ${T.antes}</p>
+  if(f.p==="before")return head("sunny",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">${f.left===1?"Mañana, "+T.dia:T.diaLargo}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} ${T.antes}</p>
     <ul class="list">${li(T.antesLista)}</ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button>${anfBtn()}</div></div>`;
-  if(f.p==="after")return head("heart",`¡Hola, ${esc(NOMBRE)}!`)+`<p class="hl3">${T.despues}</p><p class="note">Aquí queda guardado el plan del ${T.dia}, por si quieres volver a mirarlo.</p></div>`;
+  if(f.p==="after")return head("heart",`¡Hola${NOMBRE?", "+esc(NOMBRE):""}!`)+`<p class="hl3">${T.despues}</p><p class="note">Aquí queda guardado el plan del ${T.dia}, por si quieres volver a mirarlo.</p></div>`;
   const m=f.t.m,k=curIdx(m);
-  if(m>=FIN)return head("moon",`${G0}, ${esc(NOMBRE)}`)+`<p class="hl3">${T.fin}</p></div>`;
-  if(k<0)return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">${T.hoyAntes}</p>
+  if(m>=FIN)return head("moon",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hl3">${T.fin}</p></div>`;
+  if(k<0)return head("sunny",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">${T.hoyAntes}</p>
     <ul class="list">${li(T.hoyLista)}</ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button>${anfBtn()}</div></div>`;
   const s=ST[k],nx=ST[k+1],q=s.flaco?flacoQ():s.q,u=s.dir||s.flaco?dirUrl(q):map(q);
-  return head(h<13?"sunny":"walk",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">Ahora: ${esc(s.n)}</p>
+  return head(h<13?"sunny":"walk",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">Ahora: ${esc(s.n)}</p>
     <ul class="list"><li><span class="ic">${ico(s.ic)}</span><span>${esc(s.t)}</span></li></ul>
     ${nx?`<p class="nxt"><b>Hacia las ${nx.h}:</b> ${esc(nx.n)}</p>`:""}
     <div class="acts"><button class="btn" type="button" data-stop="${k}">Ver detalles</button>${q?`<a class="btn ghost" style="display:inline-grid;place-items:center;text-decoration:none" href="${u}" target="_blank" rel="noopener">Cómo llegar</a>`:""}</div></div>`}
@@ -1544,35 +1537,6 @@ document.addEventListener("click",e=>{
   if(e.target.closest("#dirok")){const v=$("dirin").value.trim();SS("dir",v);SS("dirll",null);dirBox();if(v)geoFlaco();if(!$("s-viaje").hidden)$("nowbox").innerHTML=hoyBox();return}
   if(e.target.closest("#dirmap")){pendPt="f0";mk="all";location.hash="mapa"}});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="dirin"){e.preventDefault();$("dirok").click()}});
-/* la pandilla */
-function grupo(){const sn=LS("senora")||"";$("grp").innerHTML=GR.map(([n,t,f,c],i)=>{const nm=n,ini=nm.replace(/^El /,"").split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase();
-  return `<div class="gp"><button type="button" class="ga" data-gi="${i}" aria-label="${esc(nm)} dice algo" style="--c:${c}">${f?`<img src="fotos/grupo/${f.includes("@")?f.replace("@",""):f+"2"}.webp" alt="" onerror="this.remove()">`:""}<b>${esc(ini)}</b></button><span class="dice" aria-live="polite"></span><span class="gt"><b>${esc(nm)}</b><small>${esc(t)}</small></span></div>`}).join("")}
-const FRi=FR.map(()=>0);let FRt=null;
-document.addEventListener("click",e=>{const b=e.target.closest("[data-gi]");if(!b)return;const i=+b.dataset.gi,gp=b.closest(".gp"),d=gp.querySelector(".dice");
-  if(gp.classList.contains("habla")){gp.classList.remove("habla");clearTimeout(FRt);return}
-  document.querySelectorAll(".gp.habla").forEach(x=>x.classList.remove("habla"));
-  d.textContent=FR[i][FRi[i]++%FR[i].length];gp.classList.remove("habla");void gp.offsetWidth;gp.classList.add("habla");
-  clearTimeout(FRt);FRt=setTimeout(()=>gp.classList.remove("habla"),2000)});
-
-/* juego «¿Quién lo dijo?» con las frases de la pandilla */
-{const N=8;let Q=[],k=0,pts=0,lock=false;
- const img=i=>{const f=GR[i][2];return f?`fotos/grupo/${f.includes("@")?f.replace("@",""):f+"2"}.webp`:""};
- function start(){const all=[];FR.forEach((a,i)=>a.forEach(t=>all.push([t,i])));for(let i=all.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[all[i],all[j]]=[all[j],all[i]]}Q=all.slice(0,N);k=0;pts=0;show()}
- function show(){lock=false;$("jsc").textContent=`${k+1} de ${N} · ${pts} ${pts===1?"punto":"puntos"}`;const [t]=Q[k];
-  $("jbody").innerHTML=`<p class="jfr">«${esc(t)}»</p><div class="jcaras">${GR.map((g,i)=>`<button type="button" class="jc" data-jc="${i}"><img src="${img(i)}" alt=""><span>${esc(g[0].replace(" Arellano",""))}</span></button>`).join("")}</div><p class="jmsg" id="jmsg"></p>`}
- function fin(){const m=pts===N?"¡Perfecto! Conoces a la pandilla de memoria.":pts>=6?"¡Muy bien! Se nota que son amigos de verdad.":pts>=3?"Nada mal… pero hay que conversar más en el coche.":"Mmm… ¿seguro que son tus amigos?";
-  $("jsc").textContent="";$("jbody").innerHTML=`<p class="jfin"><b>${pts} de ${N}</b>${esc(m)}</p><div class="acts"><button type="button" class="btn" id="jAgain">Jugar otra vez</button><button type="button" class="btn ghost" id="jEnd">Volver</button></div>`}
- function open(){$("jgo").hidden=false;document.body.style.overflow="hidden";start()}
- function close(){$("jgo").hidden=true;document.body.style.overflow=""}
- document.addEventListener("click",e=>{
-  if(e.target.closest("#jOpen")){open();return}
-  if(e.target.closest("#jClose")||e.target.closest("#jEnd")||e.target.id==="jgo"){close();return}
-  if(e.target.closest("#jAgain")){start();return}
-  const b=e.target.closest("[data-jc]");if(!b||lock)return;lock=true;const i=+b.dataset.jc,ok=i===Q[k][1];
-  if(ok){pts++;b.classList.add("ok");$("jmsg").textContent="¡Bien!"}else{b.classList.add("mal");document.querySelector(`[data-jc="${Q[k][1]}"]`).classList.add("ok");$("jmsg").textContent=`No… lo dijo ${GR[Q[k][1]][0].replace(" Arellano","").replace(/^El /,"el ")}`}
-  setTimeout(()=>{k++;k<N?show():fin()},ok?900:1600)});
- document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("jgo").hidden)close()})}
-document.addEventListener("click",e=>{if(e.target.closest("#senbtn")){const v=prompt("¿Cómo se llama?",LS("senora")||"");if(v!==null){SS("senora",v.trim());grupo()}}});
 /* ---------- tiempo del viernes (Open-Meteo) ---------- */
 const WIMG=c=>c===0?"sol":c<=2?"solnube":c<=48?"nubes":c<=67?"lluvia":c<=82?"lluvia":c<=86?"nubes":"tormenta";
 const wim=(c,cl)=>`<img class="${cl}" src="fotos/tiempo/${WIMG(c)}.png" alt="">`;
@@ -1607,7 +1571,7 @@ function stopHTML(s,i,open,now){const fq=s.flaco?flacoQ():"",q=s.flaco?fq:s.q;
   return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det">${s.img?`<div class="ph sphoto">${`<img src="fotos/${s.img}.jpg" alt="">`}</div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
   <div class="acts">${s.car?carActs(s,i):`${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en coche</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}`}</div></div></article>`}
-function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();grupo();
+function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();
   $("nowbox").innerHTML=hoyBox();
   $("route").innerHTML=ST.map((s,i)=>stopHTML(s,i,i===k,i===k)).join("");
   const done=LS("tareas")||{};
@@ -1699,8 +1663,6 @@ function lineaHTML(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-9;
     const auto=s.dir||i===ST.length-1;const tramo=i<ST.length-1?(ST[i].dir||ST[i+1].dir?"auto":"pie"):"";
     return `<li class="${i===k?"now ":""}${i<k?"past ":""}${tramo?"t-"+tramo:"fin"}"><button type="button" data-stop="${i}"><span class="lh">${s.h}</span><span class="ld"><i></i></span><span class="ln2"><b>${esc(s.n)}</b><small>${i===k?"ahora · ":""}${esc(s.dur)}</small></span></button>${tramo==="auto"?`<span class="ltr">${ico("car",2)} en auto · ${i===0?"AP-7 y C-66":"de vuelta a casa"}</span>`:""}</li>`}).join("")}</ol>`}
 
-/* ruedas: giran exactamente lo que avanza el auto (ángulo = distancia / radio) */
-{const R=15.5,FIN_X=138;const ruedas=()=>{const l=$("lleg");if(!l)return;const D=Math.max(0,innerWidth-20-FIN_X);l.style.setProperty("--giro",(-D/R*180/Math.PI).toFixed(1)+"deg")};ruedas();addEventListener("resize",ruedas)}
 /* ---------- navegación ---------- */
 let pendStop=null,pendPt=null,pendJump=null;
 const go=h=>{if(location.hash.slice(1)===h)route_();else location.hash=h};
@@ -1826,9 +1788,6 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&sh&&!sh.hidden)show
   setInterval(()=>{if(document.visibilityState!=="visible")return;sec+=5;const m=sec/60;if(MARKS.includes(m))ev("usó "+m+" min")},5000);
 })();
 </script>
-<div class="jgo" id="jgo" role="dialog" aria-modal="true" aria-label="Juego ¿Quién lo dijo?" hidden><div class="jbox">
-  <div class="jtop"><b>¿Quién lo dijo?</b><span id="jsc"></span><button type="button" class="jx" id="jClose" aria-label="Cerrar"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <div id="jbody"></div></div></div>
 
 <div id="albv" hidden role="dialog" aria-label="Mis fotos"><span class="cnt"></span><button type="button" class="x" aria-label="Cerrar">✕</button><button type="button" class="nv l" aria-label="Foto anterior">‹</button><button type="button" class="nv r" aria-label="Foto siguiente">›</button><div class="trk"></div><button type="button" class="del" id="albdel">Quitar esta foto</button></div>
 <script>
