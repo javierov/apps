@@ -1568,17 +1568,17 @@ addEventListener("resize",()=>requestAnimationFrame(fitCar));new ResizeObserver(
 function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
   const G0=h>=6&&h<13?"Buenos días":h>=13&&h<20?"Buenas tardes":"Buenas noches";
   const head=(i,tx)=>`<div class="box hoy"><h3 class="bh"><span class="bi">${ico(i,2)}</span>${tx}</h3>`;
-  if(f.p==="before")return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">${f.left===1?"Mañana, sábado 21":"El sábado 21 de noviembre"}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} es la escapada a Banyoles con Ramón, Elisabeth y el Flaco.</p>
+  if(f.p==="before")return head("sunny",`${G0}`)+`<p class="hsub">${f.left===1?"Mañana, sábado 21":"El sábado 21 de noviembre"}</p><p class="hl3">${f.left===1?"Mañana":"Ese día"} es la escapada a Banyoles con Ramón, Elisabeth y el Flaco.</p>
     <ul class="list"><li><span class="ic">${ico("car")}</span><span>Te pasan a buscar a las 8:00 en punto, en coche desde Badalona.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: la dirección ya está en «Casa del Flaco».</span></li></ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button><button class="btn ghost" type="button" data-jump="flaco">Casa del Flaco</button></div></div>`;
-  if(f.p==="after")return head("heart",`¡Hola, ${esc(NOMBRE)}!`)+`<p class="hl3">Ojalá Banyoles haya estado buenísimo.</p><p class="note">Aquí queda guardado el plan del sábado 21, por si quieres volver a mirarlo.</p></div>`;
+  if(f.p==="after")return head("heart",`¡Hola!`)+`<p class="hl3">Ojalá Banyoles haya estado buenísimo.</p><p class="note">Aquí queda guardado el plan del sábado 21, por si quieres volver a mirarlo.</p></div>`;
   const m=f.t.m,k=curIdx(m);
-  if(m>=FIN)return head("moon",`${G0}, ${esc(NOMBRE)}`)+`<p class="hl3">Se acabó la escapada. ¡Buen viaje de vuelta a Badalona!</p></div>`;
-  if(k<0)return head("sunny",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">¡Hoy es el día! Te pasan a buscar a las 8:00 en punto.</p>
+  if(m>=FIN)return head("moon",`${G0}`)+`<p class="hl3">Se acabó la escapada. ¡Buen viaje de vuelta a Badalona!</p></div>`;
+  if(k<0)return head("sunny",`${G0}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">¡Hoy es el día! Te pasan a buscar a las 8:00 en punto.</p>
     <ul class="list"><li><span class="ic">${ico("case")}</span><span>Chaqueta, zapatillas cómodas y el celular cargado.</span></li><li><span class="ic">${ico("home")}</span><span>Almuerzo en la casa del Flaco y Pilar: «Casa del Flaco» tiene el botón para llegar.</span></li></ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button><button class="btn ghost" type="button" data-jump="flaco">Casa del Flaco</button></div></div>`;
   const s=ST[k],nx=ST[k+1],q=s.flaco?flacoQ():s.q,u=s.dir||s.flaco?dirUrl(q):map(q);
-  return head(h<13?"sunny":"walk",`${G0}, ${esc(NOMBRE)}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">Ahora: ${esc(s.n)}</p>
+  return head(h<13?"sunny":"walk",`${G0}`)+`<p class="hsub">Hoy, sábado 21 · Banyoles</p><p class="hl3">Ahora: ${esc(s.n)}</p>
     <ul class="list"><li><span class="ic">${ico(s.ic)}</span><span>${esc(s.t)}</span></li></ul>
     ${nx?`<p class="nxt"><b>Hacia las ${nx.h}:</b> ${esc(nx.n)}</p>`:""}
     <div class="acts"><button class="btn" type="button" data-stop="${k}">Ver detalles</button>${q?`<a class="btn ghost" style="display:inline-grid;place-items:center;text-decoration:none" href="${u}" target="_blank" rel="noopener">Cómo llegar</a>`:""}</div></div>`}
