@@ -50,7 +50,7 @@ const ST=[
  {h:"12:30",m:750,n:"Barrio Viejo y monasterio de Sant Esteve",ico:"iglesia",ic:"church",la:42.1206,lo:2.76945,q:"Monestir de Sant Esteve Banyoles",
   t:"El monasterio benedictino de Sant Esteve se fundó en el año 812 y de él nació el pueblo. Por el camino: la iglesia gótica de Santa Maria dels Turers, la plaza de la Font y la muralla.",
   tip:"Desde la Plaça Major, sigan la calle de les Escrivanies hasta la calle del Puig, que termina en el monasterio. Son unos 5 minutos.",dur:"45 min",img:"monasterio"},
- {h:"13:45",m:825,n:"Almuerzo con los amigos",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",flaco:1,
+ {h:"13:45",m:825,n:"Almuerzo con los amigos",ico:"casa",ic:"home",la:FLL[0],lo:FLL[1],q:"",anf:1,
   t:"A la casa de los amigos, en la urbanización Puig de Fontpudosa, a cerca de 1 km al sur del centro y del lago. El botón «Cómo llegar en coche» los lleva hasta la puerta.",
   tip:"Si al final hacen pícnic, el Passeig de la Draga tiene mesas de piedra y fuentes, justo al lado del lago.",dur:"2 h 30 min"},
  {h:"16:15",m:975,n:"Santa Maria de Porqueres",ico:"atardecer",ic:"church",la:42.1186,lo:2.7471,q:"Església de Santa Maria de Porqueres",

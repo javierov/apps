@@ -8,8 +8,8 @@ App para escapadas de un día o un fin de semana. Todo lo que cambia de un viaje
    - `PFX`: prefijo propio (por ejemplo `"tol-"`). Cada app el suyo, porque todas comparten javierov.github.io.
    - `APP`, `STATS` y los textos de `T` (fecha, lugar, origen, avisos de antes, durante y después).
    - `TRANSPORTE`: `"coche"` (ruta por carretera y parada «Coche aparcado») o `"tren"`.
-   - `ANF`: casa a la que se va (título, hora, caras para la llegada) o `null` si no hay.
-   - `GR` y `FR`: la pandilla y sus frases; `[]` si no hay (se oculta la sección y el juego).
+   - `NOMBRE`: nombre del viajero para el saludo (o `""`).
+   - `ANF`: casa a la que se va (título y hora) o `null` si no hay.
    - `ST` (paradas del plan), `RN` (rincones), `R` (comer), `LLUVIA`, `PLATOS`, `TAREAS`, `TREN` (el viaje), `BN` (banner), `CARS` (fotos grandes), `VIA0` (ruta aproximada), `CAJA` (zona del mapa sin internet), `BANY`/`BDN` (destino y origen).
 3. **fotos/**: las fotos de los lugares con los nombres que usa viaje.js.
 4. **sw.js**: cambiar `V` y `T` al prefijo nuevo y el `startsWith(...)` igual al prefijo.

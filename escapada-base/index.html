@@ -1229,7 +1229,7 @@ body{font-size:17px}
 
 /* estilos claros: el logo va sobre una banda oscura para que se lea */
 [data-theme="luminoso"] .brand.logo,[data-theme="cobalto"] .brand.logo,[data-theme="calido"] .brand.logo,[data-theme="sepia"] .brand.logo,[data-theme="mar"] .brand.logo,[data-theme="nordico"] .brand.logo,[data-theme="rosa"] .brand.logo{background:#101318!important;border-radius:14px;padding:0!important;outline:8px solid #101318;outline-offset:-1px;margin:6px 0 4px!important;box-shadow:0 2px 8px rgb(0 0 0/.18)}
-/* Banyoles: casa del Flaco y la pandilla */
+/* dirección del anfitrión: se guarda en el teléfono */
 .brand{font-family:"Marcellus",Georgia,serif;font-weight:400;letter-spacing:0}
 .dirf{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
 .dirf input{min-width:0;height:44px;padding:0 12px;border-radius:12px;border:1px solid var(--line2);background:var(--fill);color:var(--ink);font:inherit;font-size:16px}
@@ -1243,7 +1243,7 @@ body{font-size:17px}
 .ga img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .gt b{display:block;font-size:17px}.gt small{display:block;color:var(--soft);font-size:14.5px;line-height:1.35}
 .gt .lkb{margin-top:3px}
-/* llegada: el auto con Javier, Ramón y Elisabeth llega donde esperan el Flaco y Pilar */
+/* dirección del anfitrión: se guarda en el teléfono */
 .lleg{position:relative;height:132px;margin:6px 20px 0;overflow:hidden;border-radius:12px}
 .lleg .calle{position:absolute;left:0;right:0;bottom:6px;height:2px;background:repeating-linear-gradient(90deg,var(--line2) 0 14px,transparent 14px 26px)}
 .lleg .esp{position:absolute;left:0;bottom:7px;display:flex;gap:0;align-items:flex-end}
@@ -1286,7 +1286,7 @@ body{font-size:17px}
 .lleg .hola.h1{left:8px;top:-44px}
 .lleg .hola.h2{left:74px;top:-20px;border-radius:10px 10px 10px 2px;background:#f6d36b;color:#3a2a05;animation-name:hola2}
 @keyframes hola2{0%,58%{opacity:0;transform:scale(.6)}62%,86%{opacity:1;transform:none}92%,100%{opacity:0}}
-/* casa del Flaco: dirección fija */
+/* dirección del anfitrión: se guarda en el teléfono */
 .dirln{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;width:100%;padding:10px 12px;border:1px solid var(--line2);border-radius:14px;background:var(--fill);color:var(--ink);font:inherit;text-align:left;cursor:pointer}
 .dirln b{display:block;font-size:17px;line-height:1.3}.dirln small{display:block;margin-top:3px;font-size:13.5px;color:var(--soft);line-height:1.35}
 .dirpin{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#2f6fd8;color:#fff;box-shadow:0 3px 8px rgb(47 111 216/.4)}.dirpin svg{width:22px;height:22px}
@@ -1388,7 +1388,7 @@ html,body{touch-action:pan-x pan-y}
   <div class="pad" id="nowbox"></div>
   <div class="pad">
     <div class="box blk wxb" id="wxbox"></div>
-    <div class="box blk" id="flaco"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt=""><span id="anftit"></span></h3><div id="dirbox"></div></div>
+    <div class="box blk" id="anf"><h3 class="bh"><img class="bic" src="fotos/ic-casa.webp" alt=""><span id="anftit"></span></h3><div id="dirbox"></div></div>
     <h2><span>El plan del día</span><button type="button" data-go="mapa">Ver mapa</button></h2>
     <p class="note" style="margin:-4px 0 12px;font-size:13.5px" id="plannota"></p>
     <div id="route"></div>
@@ -1457,7 +1457,7 @@ html,body{touch-action:pan-x pan-y}
 /* ---------- datos del viaje ---------- */
 const {APP,STATS,T,TRANSPORTE,ANF,CAJA,NOMBRE,Y,M,DIA,FIN,FDIR,FLL,BANY,BDN,ST,RN,LLUVIA,RT,R,PLATOS,TAREAS,TREN,BN,CARS,VIA0}=VIAJE;
 const li=a=>a.map(([i,t])=>`<li><span class="ic">${ico(i)}</span><span>${t}</span></li>`).join("");
-const anfBtn=()=>ANF?`<button class="btn ghost" type="button" data-jump="flaco">${esc(ANF.titulo)}</button>`:"";
+const anfBtn=()=>ANF?`<button class="btn ghost" type="button" data-jump="anf">${esc(ANF.titulo)}</button>`:"";
 const map=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
 const dirUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
 /* plan del día: hora aproximada, minuto del día, nombre, icono, lat, lon, búsqueda en Maps, qué es, consejo, duración, foto */
@@ -1477,7 +1477,7 @@ const SS=(k,v)=>{try{localStorage.setItem(PFX+""+k,JSON.stringify(v))}catch(e){}
 const $=id=>document.getElementById(id);
 /* textos y módulos según el viaje */
 document.title=APP;$("vtitulo").textContent=APP;$("vsub").textContent=T.sub;$("vsub2").textContent=T.sub2;$("plannota").textContent=T.planNota;$("viajetit").textContent=T.viaje;$("viajeico").src="fotos/"+T.viajeIco;$("comerintro").textContent=T.comer;$("vtit").value=APP;
-if(ANF)$("anftit").textContent=ANF.titulo;else $("flaco").hidden=true;
+if(ANF)$("anftit").textContent=ANF.titulo;else $("anf").hidden=true;
 const ph=(f,cls)=>`<div class="ph ${cls||""}" style="--s1:#c9a46a;--s2:#3b2a1c">${f?`<img src="fotos/${f}.jpg" alt="" loading="lazy">`:""}</div>`;
 function fixImgs(root){root.querySelectorAll(".ph img:not([data-k])").forEach(i=>{i.dataset.k=1;const ok=()=>i.naturalWidth?i.classList.add("ok"):i.remove();if(i.complete)ok();else{i.addEventListener("load",ok);i.addEventListener("error",()=>i.remove())}})}
 
@@ -1519,21 +1519,21 @@ function hoyBox(){const f=phase(),h=Math.floor(f.t.m/60);
   if(k<0)return head("sunny",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">${T.hoyAntes}</p>
     <ul class="list">${li(T.hoyLista)}</ul>
     <div class="acts"><button class="btn" type="button" data-stop="0">Ver el plan</button>${anfBtn()}</div></div>`;
-  const s=ST[k],nx=ST[k+1],q=s.flaco?flacoQ():s.q,u=s.dir||s.flaco?dirUrl(q):map(q);
+  const s=ST[k],nx=ST[k+1],q=s.anf?anfQ():s.q,u=s.dir||s.anf?dirUrl(q):map(q);
   return head(h<13?"sunny":"walk",`${G0}${NOMBRE?", "+esc(NOMBRE):""}`)+`<p class="hsub">Hoy, ${T.dia} · ${T.lugar}</p><p class="hl3">Ahora: ${esc(s.n)}</p>
     <ul class="list"><li><span class="ic">${ico(s.ic)}</span><span>${esc(s.t)}</span></li></ul>
     ${nx?`<p class="nxt"><b>Hacia las ${nx.h}:</b> ${esc(nx.n)}</p>`:""}
     <div class="acts"><button class="btn" type="button" data-stop="${k}">Ver detalles</button>${q?`<a class="btn ghost" style="display:inline-grid;place-items:center;text-decoration:none" href="${u}" target="_blank" rel="noopener">Cómo llegar</a>`:""}</div></div>`}
-/* dirección del Flaco: se guarda en el teléfono */
+/* dirección del anfitrión: se guarda en el teléfono */
 const dirV=()=>{const d=LS("dir");return d==null?FDIR:d},dirLL=()=>{const d=LS("dir");return d==null||d===FDIR?FLL:LS("dirll")};
-const flacoQ=()=>{const d=(dirV()||"").trim();return d?(ANF&&new RegExp(ANF.re,"i").test(d)?d:d+", "+T.lugar):""};
+const anfQ=()=>{const d=(dirV()||"").trim();return d?(ANF&&new RegExp(ANF.re,"i").test(d)?d:d+", "+T.lugar):""};
 function dirBox(){if(!ANF)return;const d=dirV();
   $("dirbox").innerHTML=`<button type="button" class="dirln" id="dirmap" aria-label="Ver ${esc(ANF.titulo)} en el mapa"><span class="dirpin">${ico("pin",2.2)}</span><span><b>${esc(d)}</b><small>A cerca de 1 km al sur del centro y del lago · toca para verla en el mapa</small></span></button>
-  <div class="acts" style="margin-top:10px"><a class="btn" href="${dirUrl(flacoQ())}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(ANF.titulo)}">Cómo llegar en coche</a><button type="button" class="btn ghost" data-pt="f0">Ver en el mapa</button></div>`}
-async function geoFlaco(){if(!ANF)return;const q=flacoQ();if(!q)return;try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=es&q="+encodeURIComponent(q));const j=await r.json();
+  <div class="acts" style="margin-top:10px"><a class="btn" href="${dirUrl(anfQ())}" target="_blank" rel="noopener" aria-label="Cómo llegar a ${esc(ANF.titulo)}">Cómo llegar en coche</a><button type="button" class="btn ghost" data-pt="f0">Ver en el mapa</button></div>`}
+async function geoAnf(){if(!ANF)return;const q=anfQ();if(!q)return;try{const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=es&q="+encodeURIComponent(q));const j=await r.json();
   if(j&&j[0]){SS("dirll",[+j[0].lat,+j[0].lon]);}else SS("dirll",null)}catch(e){SS("dirll",null)}if(!$("s-viaje").hidden){dirBox();const b=$("dirmap");if(b&&!dirLL()){b.textContent="No aparece en el mapa";}}}
 document.addEventListener("click",e=>{
-  if(e.target.closest("#dirok")){const v=$("dirin").value.trim();SS("dir",v);SS("dirll",null);dirBox();if(v)geoFlaco();if(!$("s-viaje").hidden)$("nowbox").innerHTML=hoyBox();return}
+  if(e.target.closest("#dirok")){const v=$("dirin").value.trim();SS("dir",v);SS("dirll",null);dirBox();if(v)geoAnf();if(!$("s-viaje").hidden)$("nowbox").innerHTML=hoyBox();return}
   if(e.target.closest("#dirmap")){pendPt="f0";mk="all";location.hash="mapa"}});
 document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="dirin"){e.preventDefault();$("dirok").click()}});
 /* ---------- tiempo del viernes (Open-Meteo) ---------- */
@@ -1565,11 +1565,11 @@ b.disabled=true;b.textContent="📍 Buscando el GPS…";
 navigator.geolocation.getCurrentPosition(p=>{SS("coche",{la:+p.coords.latitude.toFixed(6),lo:+p.coords.longitude.toFixed(6),t:Date.now()});carSet();const id=b.closest(".stp")?.id;renderHome();try{drawMap()}catch(_){};const st=id&&document.getElementById(id);if(st){st.classList.add("open");st.querySelector(".dh")?.setAttribute("aria-expanded","true")}},
 ()=>{b.disabled=false;b.textContent="📍 Aparqué aquí";alert("No pude leer el GPS. Revisa que la ubicación esté activada y con permiso.")},{enableHighAccuracy:true,timeout:20000,maximumAge:0})});
 
-function stopHTML(s,i,open,now){const fq=s.flaco?flacoQ():"",q=s.flaco?fq:s.q;
+function stopHTML(s,i,open,now){const fq=s.anf?anfQ():"",q=s.anf?fq:s.q;
   const ln=[s.pr&&`<li><span class="ic">${ico("ticket")}</span><span>${esc(s.pr)}</span></li>`,s.hr&&`<li><span class="ic">${ico("cal")}</span><span>${esc(s.hr)}</span></li>`,s.tip&&`<li><span class="ic">${ico("heart")}</span><span>${esc(s.tip)}</span></li>`].filter(Boolean).join("");
   return `<article class="day stp${s.pay?" opt":""}${open?" open":""}${now?" today":""}" id="st${i}"><button type="button" class="dh" aria-expanded="${open}"><span class="db hr"><b>${s.h}</b><small>${i+1} de ${ST.length}</small></span><span class="t">${s.ico?`<img class="sic" src="fotos/ic-${s.ico}.webp" alt="">`:""}<b>${esc(s.n)}</b><small>${esc(s.dur)}${now?" · ahora":""}</small></span>${ico("chev",2.2).replace("<svg","<svg class=\"chev\"")}</button>
   <div class="det">${s.img?`<div class="ph sphoto">${`<img src="fotos/${s.img}.jpg" alt="">`}</div>`:""}${s.pay?`<p class="altg">${ico("walk",2)}<span><b>Sin pagar:</b> ${esc(s.alt)}</span></p><p class="stx" style="margin-top:10px"><b>Si deciden entrar:</b> ${esc(s.t)}</p>`:`<p class="stx">${esc(s.t)}</p>`}${ln?`<ul class="list">${ln}</ul>`:""}
-  <div class="acts">${s.car?carActs(s,i):`${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.flaco?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en coche</a>`:`<button class="btn" type="button" data-jump="flaco">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.flaco&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.flaco?"f0":"r"+i}">En el mapa</button>`:""}`}</div></div></article>`}
+  <div class="acts">${s.car?carActs(s,i):`${s.go?`<button class="btn" type="button" data-go="${s.go}">${s.go==="comer"&&i<5?"Qué comprar":"Ver bocadillos"}</button>`:""}${s.anf?(fq?`<a class="btn" href="${dirUrl(fq)}" target="_blank" rel="noopener">Cómo llegar en coche</a>`:`<button class="btn" type="button" data-jump="anf">Escribir la dirección</button>`):s.dir?`<a class="btn" href="${dirUrl(s.q)}" target="_blank" rel="noopener">Ruta en Google Maps</a>`:s.go?"":`<a class="btn" style="display:inline-grid;place-items:center;text-decoration:none" href="${map(s.q)}" target="_blank" rel="noopener">Ver en Google Maps</a>`}${s.dir?`<button class="btn ghost" type="button" data-mk2="v">Ver la carretera</button>`:s.la!=null||(s.anf&&dirLL())?`<button class="btn ghost" type="button" data-pt="${s.anf?"f0":"r"+i}">En el mapa</button>`:""}`}</div></div></article>`}
 function renderHome(){const f=phase(),k=f.p==="day"&&f.t.m<FIN?curIdx(f.t.m):-2;dirBox();
   $("nowbox").innerHTML=hoyBox();
   $("route").innerHTML=ST.map((s,i)=>stopHTML(s,i,i===k,i===k)).join("");
@@ -1639,7 +1639,7 @@ function hideMe(){const m=$("memsg");if(!m)return;m.classList.remove("in");setTi
 function meControl(){const C=L.Control.extend({options:{position:"topright"},onAdd(){const b=L.DomUtil.create("button","mebtn");b.id="mebtn";b.type="button";b.setAttribute("aria-label","Dónde estoy");
   b.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="8"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>';b.title="Dónde estoy";
   L.DomEvent.disableClickPropagation(b);b.onclick=()=>{if(!meOn||WID==null)startMe();else if(ME)LM.setView(ME.getLatLng(),Math.max(LM.getZoom(),17))};return b}});LM.addControl(new C())}
-function pts(){const a=[];const fl=ANF&&dirLL();if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:ANF.titulo,la:fl[0],lo:fl[1],lab:String(ST.findIndex(x=>x.flaco)+1),sub:`${ANF.sub} · ${dirV()||""}`,q:flacoQ(),i:ST.findIndex(x=>x.flaco)});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir||s.flaco)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
+function pts(){const a=[];const fl=ANF&&dirLL();if(fl&&(mk==="all"||mk==="r"||mk==="f"))a.push({id:"f0",k:"f",n:ANF.titulo,la:fl[0],lo:fl[1],lab:String(ST.findIndex(x=>x.anf)+1),sub:`${ANF.sub} · ${dirV()||""}`,q:anfQ(),i:ST.findIndex(x=>x.anf)});if(mk==="all"||mk==="r")ST.forEach((s,i)=>{if(s.la==null||s.dir||s.anf)return;a.push({id:"r"+i,k:"r",n:s.n,la:s.la,lo:s.lo,lab:String(i+1),sub:`${s.h} · parada ${i+1}`,q:s.q,i})});
   if(mk==="all"||mk==="c")R.forEach((r,i)=>r[6]!=null&&a.push({id:"c"+i,k:"c",n:r[0],la:r[6],lo:r[7],lab:"",sub:r[5],q:r[4],i}));
   if(mk==="all"||mk==="n")RN.forEach((r,i)=>a.push({id:"n"+i,k:"n",n:r[0],la:r[3],lo:r[4],lab:"★",sub:`Rincón · cerca de la parada ${r[2]}`,q:r[5],i}));return a}
 function drawMap(focus){
@@ -1684,7 +1684,7 @@ function route_(){
   if(id==="mapa"){if(!pendPt)window.scrollTo({top:0});drawMap(pendPt);if(pendPt){const el=$("mapbox");setTimeout(()=>goTo(el,70),50)}pendPt=null}}
 window.addEventListener("hashchange",route_);
 document.querySelectorAll("[data-ic]").forEach(e=>e.outerHTML=ico(e.dataset.ic,2));
-route_();fixImgs(document);loadWx();loadVia();if(dirV()&&!dirLL())geoFlaco();
+route_();fixImgs(document);loadWx();loadVia();if(dirV()&&!dirLL())geoAnf();
 /* cada minuto se actualiza «Hoy» durante el día del viaje */
 setInterval(()=>{if(!$("s-viaje").hidden&&!SIM&&phase().p==="day")$("nowbox").innerHTML=hoyBox()},60000);
 setInterval(loadWx,1800e3);
