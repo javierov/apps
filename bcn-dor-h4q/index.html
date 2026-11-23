@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Barcelona · Dónde dormir</title>
-<meta name="description" content="Cinco alojamientos buenos, bonitos y baratos en Barcelona, del 25 al 27 de noviembre (llegada a la 1 am).">
+<meta name="description" content="Cuatro alojamientos buenos, bonitos y baratos en Barcelona, del 25 al 27 de noviembre (llegada a la 1 am).">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Barcelona · Dónde dormir">
-<meta property="og:description" content="Cinco opciones buenas, bonitas y baratas, con su enlace a Booking.">
+<meta property="og:description" content="Cuatro opciones buenas, bonitas y baratas, con su enlace a Booking.">
 <meta property="og:url" content="https://viajes-disenados-a-mano.pages.dev/bcn-dor-h4q/">
 <meta property="og:image" content="https://viajes-disenados-a-mano.pages.dev/bcn-dor-h4q/img/portada-wa.jpg">
 <meta property="og:image:width" content="1200">
@@ -120,7 +120,7 @@ p{margin:0 0 .8em}
  </div>
  <div class="cbot">
   <h1>¿Dónde <em>dormir?</em></h1>
-  <p class="sub">Cinco alojamientos en Barcelona: <b>buenos, bonitos y baratos</b>, cerca de todo y a pie.</p>
+  <p class="sub">Cuatro alojamientos en Barcelona: <b>buenos, bonitos y baratos</b>, cerca de todo y a pie.</p>
   <svg class="cstamp slam" id="cst" viewBox="0 0 200 200" aria-hidden="true"></svg>
  </div>
 </header>
@@ -144,8 +144,8 @@ p{margin:0 0 .8em}
 
 <section class="hello">
  <div class="wrap">
-  <h2 class="rv">Elegí estos cinco</h2>
-  <p class="rv">Todos con buenas opiniones, en barrios con vida y a pocos minutos a pie de la Rambla o del Paseo de Gràcia. Van del más barato al que más se da un gusto. Cada botón abre Booking con las fechas y los dos ya puestos.</p>
+  <h2 class="rv">Elegí estos cuatro</h2>
+  <p class="rv">Todos con buenas opiniones, en barrios con vida y a pocos minutos a pie de la Rambla o del Paseo de Gràcia. Van del más barato al que más se da un gusto; tres tienen recepción 24 horas, ideal para llegar de madrugada. Cada botón abre Booking con las fechas y los dos ya puestos.</p>
  </div>
 </section>
 
@@ -177,29 +177,24 @@ p{margin:0 0 .8em}
 <script>
 const IN='2026-11-24',OUT='2026-11-27';
 const qs=`checkin=${IN}&checkout=${OUT}&group_adults=2&group_children=0&no_rooms=1&lang=es`;
-const S=q=>`https://www.booking.com/searchresults.es.html?ss=${encodeURIComponent(q)}&${qs}`;
+const L=slug=>`https://www.booking.com/hotel/es/${slug}.es.html?${qs}`;
 const H=[
- {n:'Hostal Campi',b:'GÓTICO',c:'--par',r:'-.8deg',tag:'El más barato',
-  z:'Barri Gòtic · a 400 m de Plaça Catalunya y a pasos de la Rambla',
-  f:['Hostal familiar','Edificio antiguo','Todo a pie'],
-  w:'Sencillo y sin lujos, pero limpio y en pleno centro: salen a la calle y ya están en la Rambla y el Gótico.',p:'60 – 90 €',u:S('Hostal Campi Barcelona')},
- {n:'TOC Hostel Barcelona',b:'UNIVERSITAT',c:'--flo',r:'.9deg',fav:1,tag:'Mi favorito',
-  z:'Gran Via, entre Plaça Universitat y Sant Antoni',
-  f:['Pieza privada con baño','Bar y cocina común','Ambiente joven'],
-  w:'Un hostal moderno con piezas privadas de hotel. Buen precio, muy bien comentado y cerca del Raval y su vida de noche.',p:'70 – 110 €',u:S('TOC Hostel Barcelona')},
- {n:'Generator Barcelona',b:'GRÀCIA',c:'--rom',r:'-.6deg',tag:'Barrio con onda',
-  z:'Gràcia · a 5 min de la Pedrera y el Paseo de Gràcia',
-  f:['Pieza privada','Bar animado','Plazas de Gràcia'],
-  w:'Para vivir Barcelona como local: Gràcia tiene plazas, bares y tiendas pequeñas, y el Modernismo queda a un paseo.',p:'70 – 120 €',u:S('Generator Barcelona')},
- {n:'Hotel Curious',b:'RAVAL',c:'--mad',r:'.7deg',tag:'Junto a la Boqueria',
-  z:'El Raval · calle del Carme, al lado de la Boqueria',
-  f:['Hotel','Habitación con baño','Mercado a 2 min'],
-  w:'Piezas pequeñas pero limpias y bien hechas, a un minuto de la Boqueria y la Rambla. Mucho hotel por su precio.',p:'80 – 120 €',u:S('Hotel Curious Barcelona')},
+ {n:'TOC Hostel Barcelona',b:'UNIVERSITAT',c:'--flo',r:'.9deg',fav:1,
+  z:'Gran Via 580 · a 700 m de Plaça Catalunya',
+  f:['Pieza privada con baño','Recepción 24 h','Bar y cocina común'],
+  w:'Un hostal moderno con piezas privadas de hotel. Buen precio, muy bien comentado (8,4 en Booking) y a pasos del Raval y su vida de noche.',p:'70 – 110 €',u:L('toc-hostel-barcelona')},
+ {n:'Hotel Curious',b:'RAVAL',c:'--mad',r:'-.7deg',tag:'Junto a la Boqueria',
+  z:'El Raval · calle del Carme 25, al lado de la Boqueria',
+  f:['Hotel pequeño','Habitación con baño','Nota 8,8'],
+  w:'Piezas pequeñas pero limpias, con un personal que todos destacan, a un minuto de la Boqueria y la Rambla. Avísenle que llegan a la 1 am.',p:'80 – 120 €',u:L('pension-selecta')},
+ {n:'Casa Gràcia',b:'GRÀCIA',c:'--rom',r:'.6deg',tag:'Barrio con onda',
+  z:'Arriba del Paseo de Gràcia · a 300 m de la Pedrera',
+  f:['Pieza privada','Recepción 24 h','Terraza'],
+  w:'Hostal de diseño en una casa señorial, con terraza y paseos a pie gratis. Gràcia tiene plazas, bares y tiendas pequeñas.',p:'90 – 140 €',u:L('hostel-casa-gracia')},
  {n:'Hotel Market',b:'SANT ANTONI',c:'--bcn',r:'-.9deg',tag:'Para darse un gusto',
   z:'Sant Antoni · frente al Mercat de Sant Antoni, metro a 200 m',
-  f:['Hotel 3★','Diseño cuidado','Restaurante de arroces'],
-  w:'Un hotel con estilo y buen precio, en el barrio de moda, sin multitudes turísticas. El mercado de enfrente es un panorama.',p:'90 – 140 €',
-  u:`https://www.booking.com/hotel/es/market.es.html?${qs}`}
+  f:['Hotel 3★','Recepción 24 h','Restaurante de arroces'],
+  w:'Un hotel con estilo y buen precio, en el barrio de moda, sin multitudes turísticas. El mercado de enfrente es un panorama.',p:'90 – 140 €',u:L('market')}
 ];
 let sid=0;
 const stamp=(top,mid,bot,color,bg)=>{const k='p'+(sid++);return `${bg?`<circle cx="100" cy="100" r="97" fill="${bg}"/>`:''}<circle cx="100" cy="100" r="93" fill="none" stroke="${color}" stroke-width="5"/><circle cx="100" cy="100" r="65" fill="none" stroke="${color}" stroke-width="2"/><circle cx="100" cy="100" r="54" fill="${color}" opacity=".12"/><defs><path id="${k}a" d="M27 100a73 73 0 0 1 146 0"/><path id="${k}b" d="M16 100a84 84 0 0 0 168 0"/></defs><text font-family="DM,sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}a" startOffset="50%">${top}</textPath></text><text font-family="DM,sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}b" startOffset="50%">${bot}</textPath></text><text x="100" y="${mid.length>6?107:114}" font-family="AB,sans-serif" font-size="${mid.length>7?21:mid.length>6?24:38}" fill="${color}" text-anchor="middle">${mid}</text>`};
