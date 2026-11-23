@@ -211,6 +211,14 @@ html,body{max-width:100%}
 .sa.r:not([hidden]){animation:nudge 1.6s ease-in-out 3}
 @keyframes nudge{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-50%) translateX(5px)}}
 @media (prefers-reduced-motion:reduce){.sa.r{animation:none!important}}
+.fx{margin-top:16px;background:rgba(251,246,238,.08);border:2px dashed rgba(251,246,238,.35);padding:16px 18px}
+.fxh{display:flex;justify-content:space-between;align-items:baseline;gap:6px 14px;flex-wrap:wrap;margin-bottom:8px}
+.fxh small{font:700 12px/1.2 var(--t);letter-spacing:.12em;text-transform:uppercase;color:var(--bcn)}
+.fxh b{font:700 14px/1.3 var(--t)}
+.fxr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid rgba(251,246,238,.15)}
+.fxr span{font-weight:500}
+.fxr strong{font:400 22px/1 var(--h);white-space:nowrap}
+.fxr em{font-style:normal;font-size:14px;opacity:.75;white-space:nowrap;text-align:right;min-width:9ch}
 </style>
 </head>
 <body>
@@ -272,7 +280,12 @@ html,body{max-width:100%}
    <div class="a"><small>Todo el alojamiento · 5 viajeros</small><div class="n"><span>USD</span>5.445</div><p>11 noches en Barcelona, París, Florencia y Roma, en los alojamientos de esta propuesta.</p></div>
    <div class="b"><span>Ticket del viaje</span><span>Precio total · 11 noches</span></div>
   </div>
-  <p class="note">Madrid: su Airbnb, por cuenta de ustedes. Valores en dólares por toda la estadía. Precios sujetos a cambios según disponibilidad.</p>
+  <div class="fx rv">
+   <div class="fxh"><small>Tipo de cambio</small><b>Válido al 23 de noviembre de 2026</b></div>
+   <div class="fxr"><span>Contado</span><strong>$1.022</strong><em>≈ $5.564.790</em></div>
+   <div class="fxr"><span>Tarjetas</span><strong>$1.036</strong><em>≈ $5.641.020</em></div>
+  </div>
+  <p class="note">Madrid: su Airbnb, por cuenta de ustedes. Valores en dólares por toda la estadía; el equivalente en pesos chilenos es referencial, según el tipo de cambio del día. Cotización válida al 23 de noviembre de 2026. Valores sujetos a disponibilidad.</p>
  </div>
 </section>
 
