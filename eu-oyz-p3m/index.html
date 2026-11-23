@@ -364,8 +364,8 @@ document.querySelectorAll('.rv,.slam').forEach(el=>io.observe(el));
 const gb=document.getElementById('wa');
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
  let tk=false;
- const upd=()=>{tk=false;const de=document.documentElement,left=de.scrollHeight-(scrollY+innerHeight),R=innerHeight*.55;
-  const p=Math.max(0,Math.min(1,1-left/R)),q=1-p;
+ const upd=()=>{tk=false;const de=document.documentElement,left=de.scrollHeight-(scrollY+innerHeight),R=innerHeight*.5,M=innerHeight*.18;
+  const p=Math.max(0,Math.min(1,1-(left-M)/R)),q=1-p;
   gb.style.transform=p>=1?'':`rotate(${-8-110*q}deg) scale(${1+.8*q})`;};
  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});
  addEventListener('resize',upd);upd();
