@@ -269,7 +269,7 @@ p{margin:0 0 .8em}
  </div>
 </section>
 
-<section class="vid"><div class="wrap"><h2 class="rv">¡Dale play!</h2><div class="vbox rv"><video id="vid" src="img/video-europa-30s.mp4" poster="img/poster-europa.jpg" muted playsinline loop preload="metadata" controls></video><b>Europa en 30 segundos</b><button class="snd" id="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2"/></svg>Con música</button></div></div></section>
+<section class="vid"><div class="wrap"><h2 class="rv">¡Dale play!</h2><div class="vbox rv"><video id="vid" src="img/video-europa-30s-v2.mp4" poster="img/poster-europa-v2.jpg" muted playsinline loop preload="metadata" controls></video><b>Europa en 30 segundos</b><button class="snd" id="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2"/></svg>Con música</button></div></div></section>
 
 <section class="end">
  <div class="wrap">
@@ -315,7 +315,7 @@ const C=[
 ];
 const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 let sid=0;
-const stamp=(top,mid,bot,color,bg)=>{const k='p'+(sid++);return `${bg?`<circle cx="100" cy="100" r="97" fill="${bg}"/>`:''}<circle cx="100" cy="100" r="92" fill="none" stroke="${color}" stroke-width="6"/><circle cx="100" cy="100" r="78" fill="none" stroke="${color}" stroke-width="2"/><circle cx="100" cy="100" r="54" fill="${color}" opacity=".12"/><defs><path id="${k}a" d="M30 100a70 70 0 0 1 140 0"/><path id="${k}b" d="M14 100a86 86 0 0 0 172 0"/></defs><text font-family="DM,sans-serif" font-weight="700" font-size="17" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}a" startOffset="50%">${top}</textPath></text><text font-family="DM,sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}b" startOffset="50%">${bot}</textPath></text><text x="100" y="${mid.length>6?108:114}" font-family="AB,sans-serif" font-size="${mid.length>6?26:38}" fill="${color}" text-anchor="middle">${mid}</text>`};
+const stamp=(top,mid,bot,color,bg)=>{const k='p'+(sid++);return `${bg?`<circle cx="100" cy="100" r="97" fill="${bg}"/>`:''}<circle cx="100" cy="100" r="93" fill="none" stroke="${color}" stroke-width="5"/><circle cx="100" cy="100" r="65" fill="none" stroke="${color}" stroke-width="2"/><circle cx="100" cy="100" r="54" fill="${color}" opacity=".12"/><defs><path id="${k}a" d="M27 100a73 73 0 0 1 146 0"/><path id="${k}b" d="M16 100a84 84 0 0 0 168 0"/></defs><text font-family="DM,sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}a" startOffset="50%">${top}</textPath></text><text font-family="DM,sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}b" startOffset="50%">${bot}</textPath></text><text x="100" y="${mid.length>6?107:114}" font-family="AB,sans-serif" font-size="${mid.length>7?21:mid.length>6?24:38}" fill="${color}" text-anchor="middle">${mid}</text>`};
 
 document.getElementById('cst').innerHTML=stamp('FAMILIA OYARZÚN','2027','★ EUROPA ★','#eaa922');
 
