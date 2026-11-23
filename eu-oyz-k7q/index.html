@@ -235,14 +235,6 @@ p{margin:0 0 .9em}
   <h2 class="rv">Todo el alojamiento</h2>
   <div class="big rv"><small>USD</small>5.445</div>
   <p class="what rv">11 noches en Barcelona, París, Florencia y Roma, para los cinco, en los alojamientos de esta propuesta.</p>
-  <button class="tog" id="tog" aria-expanded="false" aria-controls="det">Ver detalle por ciudad</button>
-  <div class="det" id="det">
-   <div><span>Barcelona · 3 noches</span><span>USD 1.498</span></div>
-   <div><span>París · 3 noches, con desayuno</span><span>USD 1.272</span></div>
-   <div><span>Florencia · 2 noches</span><span>USD 850</span></div>
-   <div><span>Roma · 3 noches</span><span>USD 1.825</span></div>
-   <div class="t"><span>Total</span><span>USD 5.445</span></div>
-  </div>
   <p class="note">Madrid: su Airbnb, por cuenta de ustedes. Valores en dólares por toda la estadía. Precios sujetos a cambios según disponibilidad.</p>
  </div>
 </section>
@@ -329,8 +321,6 @@ document.querySelectorAll('.galw').forEach(w=>{
  g.addEventListener('scroll',()=>{const k=cur();d.forEach((x,i)=>x.classList.toggle('on',i===k))},{passive:true});
 });
 
-const t=document.getElementById('tog'),det=document.getElementById('det');
-t.onclick=()=>{const o=det.classList.toggle('open');t.setAttribute('aria-expanded',o);t.textContent=o?'Ocultar detalle':'Ver detalle por ciudad'};
 
 const dd=Math.ceil((new Date(2027,1,1)-new Date())/864e5);
 if(dd>0)document.getElementById('days').textContent=dd;else document.getElementById('count').style.display='none';

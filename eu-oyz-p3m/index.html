@@ -252,9 +252,8 @@ p{margin:0 0 .8em}
   <h2 class="rv">La cuenta, sin sorpresas</h2>
   <div class="pt rv">
    <div class="a"><small>Todo el alojamiento · 5 viajeros</small><div class="n"><span>USD</span>5.445</div><p>11 noches en Barcelona, París, Florencia y Roma, en los alojamientos de esta propuesta.</p></div>
-   <div class="b"><span>Ticket del viaje</span><button class="tog" id="tog" aria-expanded="false" aria-controls="det">Ver por ciudad</button></div>
+   <div class="b"><span>Ticket del viaje</span><span>Precio total · 11 noches</span></div>
   </div>
-  <div class="det" id="det"></div>
   <p class="note">Madrid: su Airbnb, por cuenta de ustedes. Valores en dólares por toda la estadía. Precios sujetos a cambios según disponibilidad.</p>
  </div>
 </section>
@@ -350,11 +349,6 @@ document.querySelectorAll('.gw').forEach(w=>{
  g.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1)}});
  g.addEventListener('scroll',()=>{ct.textContent=(cur()+1)+' / '+n},{passive:true});
 });
-
-const det=document.getElementById('det');
-det.innerHTML=C.filter(c=>c.price).map(c=>`<div style="--c:var(${c.c})"><span><i></i>${c.n} · ${c.nights} noches${c.id==='paris'?', con desayuno':''}</span><span>USD ${c.price.toLocaleString('es-CL')}</span></div>`).join('')+`<div class="t"><span>Total</span><span>USD 5.445</span></div>`;
-const t=document.getElementById('tog');
-t.onclick=()=>{const o=det.classList.toggle('open');t.setAttribute('aria-expanded',o);t.textContent=o?'Ocultar':'Ver por ciudad'};
 
 const dd=Math.ceil((new Date(2027,1,1)-new Date())/864e5);
 if(dd>0){document.getElementById('days').textContent=dd;document.getElementById('dl').textContent=dd===1?'día para despegar':'días para despegar'}
