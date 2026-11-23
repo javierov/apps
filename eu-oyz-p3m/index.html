@@ -193,6 +193,10 @@ p{margin:0 0 .8em}
  .pt .b{border-top:0;border-left:3px dashed #d9cfbf;flex-direction:column;justify-content:center;text-align:center}
 }
 .vid{background:var(--ink);color:var(--pap);padding:52px 0}.vid h2{font-size:clamp(36px,10vw,62px);margin-bottom:22px;color:var(--pap)}.vbox{position:relative;max-width:460px;margin:0 auto;background:#fff;padding:10px 10px 46px;transform:rotate(-1.5deg);box-shadow:0 18px 40px rgba(0,0,0,.4)}.vbox video{display:block;width:100%;aspect-ratio:4/5;background:#1f1d36}.vbox>b{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:700 13px/1 var(--t);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}.snd{position:absolute;left:22px;top:22px;display:flex;align-items:center;gap:8px;background:var(--mad);color:#fff;border:0;font:700 15px/1 var(--t);padding:12px 14px;min-height:44px;cursor:pointer}.snd svg{width:20px;height:20px}.snd:focus-visible{outline:3px solid #fff}.snd.off{display:none}
+.go:not(.in){opacity:0;transform:rotate(-220deg) scale(.35)}
+.go.in{animation:goin 1s cubic-bezier(.2,.8,.3,1)}
+@keyframes goin{0%{opacity:0;transform:rotate(-220deg) scale(.35)}55%{opacity:1;transform:rotate(6deg) scale(1.1)}75%{transform:rotate(-13deg) scale(.96)}90%{transform:rotate(-6deg) scale(1.02)}100%{transform:rotate(-8deg) scale(1)}}
+@media (prefers-reduced-motion:reduce){.go:not(.in){opacity:1;transform:rotate(-8deg)}.go.in{animation:none}}
 </style>
 </head>
 <body>
@@ -357,6 +361,7 @@ document.getElementById('wa').href='https://wa.me/56973764358?text='+encodeURICo
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
 document.querySelectorAll('.rv,.slam').forEach(el=>io.observe(el));
+const gb=document.getElementById('wa'),go2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){gb.classList.add('in');go2.disconnect()}}),{threshold:.7});go2.observe(gb);
 const vd=document.getElementById('vid'),sb=document.getElementById('snd');
 if(vd){const vo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(vd.muted)vd.play().catch(()=>{})}else vd.pause()}),{threshold:.5});vo.observe(vd);
 sb.onclick=()=>{vd.muted=false;vd.currentTime=0;vd.play().catch(()=>{});sb.classList.add('off')};
