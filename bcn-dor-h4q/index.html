@@ -15,6 +15,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="leaflet.css">
 <style>
 @font-face{font-family:AB;src:url(fonts/archivo-black-latin-400-normal.woff2) format("woff2");font-display:swap}
 @font-face{font-family:DM;src:url(fonts/dm-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -80,6 +81,13 @@ p{margin:0 0 .8em}
 .bk:focus-visible{outline:3px solid var(--c);outline-offset:3px}
 .fav{position:absolute;left:20px;top:-18px;background:var(--mad);color:#fff;font:700 13px/1 var(--t);text-transform:uppercase;letter-spacing:.1em;padding:8px 10px;transform:rotate(-3deg)}
 
+.mapa{padding:30px 0 0}.mapa h2{font-size:clamp(30px,8vw,48px)}.mapa p{max-width:44ch;margin-top:12px}
+#map{height:min(70vh,460px);margin-top:16px;border:6px solid #fff;box-shadow:0 10px 26px rgba(31,29,54,.14);background:#e8e3d8}
+.mk{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;font:400 14px/1 var(--h);color:#fff;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);font-style:normal}
+.mk.h{background:var(--ink)}.mk.a{background:#e0565b}.mk.p{background:var(--bcn);color:var(--ink);width:24px;height:24px;font-size:12px}
+.leg{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font:500 14px/1.2 var(--t);color:var(--mut)}.leg span{display:flex;align-items:center;gap:6px}.leg .mk{width:22px;height:22px;font-size:11px;border-width:2px}
+.leaflet-popup-content{font:15px/1.35 var(--t);margin:12px 14px}.leaflet-popup-content b{display:block;font:400 17px/1.1 var(--h);margin-bottom:4px}.leaflet-popup-content a{color:var(--ink);font-weight:700}
+.leaflet-div-icon{background:none;border:0}
 .late{padding:24px 0 0}.lt{background:var(--ink);color:var(--pap);padding:20px;border-left:10px solid var(--mad)}.lt b{display:block;font:400 24px/1.1 var(--h);margin-bottom:8px;color:var(--bcn)}.lt p{margin:0}
 .air{padding:40px 0 0}.ah{font-size:clamp(30px,8vw,48px);margin-bottom:12px}.abs{display:grid;gap:10px;margin-top:16px}.abs .bk{margin:0;background:#e0565b}
 .fly{padding:46px 0 10px}.fly h2{font-size:clamp(30px,8vw,48px)}.fly>.wrap>p{max-width:44ch;margin-top:12px}
@@ -158,6 +166,13 @@ p{margin:0 0 .8em}
  </div>
 </section>
 
+<section class="mapa"><div class="wrap">
+ <h2 class="rv">Dónde queda cada uno</h2>
+ <p class="rv">Los números negros son hoteles y los rojos, departamentos de Airbnb (Airbnb muestra solo la zona aproximada). Toca uno para ver cuál es.</p>
+ <div id="map" role="region" aria-label="Mapa de Barcelona con los alojamientos"></div>
+ <div class="leg"><span><i class="mk h">1</i>Hotel u hostal</span><span><i class="mk a">1</i>Airbnb (zona)</span><span><i class="mk p">★</i>Lugar de referencia</span></div>
+</div></section>
+
 <section class="late"><div class="wrap"><div class="lt rv"><b>Llegan a la 1 de la madrugada</b><p>Para tener la pieza lista al llegar, la reserva parte el <strong>martes 24</strong> (esa noche ya es suya) y en Booking se marca la hora de llegada. Elijan uno que diga <strong>«recepción 24 horas»</strong>; si no, escríbanle al alojamiento antes para que los esperen.</p></div></div></section>
 
 <section class="hot"><div class="wrap" id="list"></div></section>
@@ -165,7 +180,7 @@ p{margin:0 0 .8em}
 <section class="air"><div class="wrap">
  <h2 class="rv ah">O un departamento en Airbnb</h2>
  <p class="rv">Cinco departamentos enteros que estaban libres del 24 al 27 cuando los revisé (24 nov, 00:25). En Airbnb el precio es el <strong>total de las 3 noches</strong>. Como llegan a la 1 am, prefieran uno con <strong>llegada autónoma</strong> (caja con llave o código) o escríbanle al anfitrión antes.</p>
-<article class="card rv acard" style="--c:#e0565b;--r:-.6deg" data-b="SAGRADA F." data-c="#e0565b">
+<article class="card rv acard" id="a1" style="--c:#e0565b;--r:-.6deg" data-b="SAGRADA F." data-c="#e0565b">
  <svg class="st" viewBox="0 0 200 200" aria-hidden="true"></svg>
  <span class="no">Airbnb 1 de 5</span>
  <span class="tag">Departamento entero</span>
@@ -176,7 +191,7 @@ p{margin:0 0 .8em}
  <div class="price"><div><small>Total 3 noches · los dos</small><b>251 €</b></div></div>
  <a class="bk ab" href="https://www.airbnb.es/rooms/1197058036461399646?check_in=2026-11-24&check_out=2026-11-27&adults=2" target="_blank" rel="noopener" aria-label="Ver Cerca de la Sagrada Família en Airbnb (se abre en otra pestaña)">Ver en Airbnb ›</a>
 </article>
-<article class="card rv acard" style="--c:#d9412f;--r:.7deg" data-b="EIXAMPLE" data-c="#d9412f">
+<article class="card rv acard" id="a2" style="--c:#d9412f;--r:.7deg" data-b="EIXAMPLE" data-c="#d9412f">
  <svg class="st" viewBox="0 0 200 200" aria-hidden="true"></svg>
  <span class="no">Airbnb 2 de 5</span>
  <span class="tag">Departamento entero</span>
@@ -187,7 +202,7 @@ p{margin:0 0 .8em}
  <div class="price"><div><small>Total 3 noches · los dos</small><b>310 €</b></div></div>
  <a class="bk ab" href="https://www.airbnb.es/rooms/1567372027086346670?check_in=2026-11-24&check_out=2026-11-27&adults=2" target="_blank" rel="noopener" aria-label="Ver Flateli 430 en Airbnb (se abre en otra pestaña)">Ver en Airbnb ›</a>
 </article>
-<article class="card rv acard" style="--c:#2d5bb5;--r:-.5deg" data-b="POBLENOU" data-c="#2d5bb5">
+<article class="card rv acard" id="a3" style="--c:#2d5bb5;--r:-.5deg" data-b="POBLENOU" data-c="#2d5bb5">
  <svg class="st" viewBox="0 0 200 200" aria-hidden="true"></svg>
  <span class="no">Airbnb 3 de 5</span>
  <span class="tag">Departamento entero</span>
@@ -198,7 +213,7 @@ p{margin:0 0 .8em}
  <div class="price"><div><small>Total 3 noches · los dos</small><b>332 €</b></div></div>
  <a class="bk ab" href="https://www.airbnb.es/rooms/27942031?check_in=2026-11-24&check_out=2026-11-27&adults=2" target="_blank" rel="noopener" aria-label="Ver Lugaris Rambla en Airbnb (se abre en otra pestaña)">Ver en Airbnb ›</a>
 </article>
-<article class="card rv acard" style="--c:#2c8a68;--r:.6deg" data-b="PL. ESPANYA" data-c="#2c8a68">
+<article class="card rv acard" id="a4" style="--c:#2c8a68;--r:.6deg" data-b="PL. ESPANYA" data-c="#2c8a68">
  <svg class="st" viewBox="0 0 200 200" aria-hidden="true"></svg>
  <span class="no">Airbnb 4 de 5</span>
  <span class="tag">Departamento entero</span>
@@ -209,7 +224,7 @@ p{margin:0 0 .8em}
  <div class="price"><div><small>Total 3 noches · los dos</small><b>338 €</b></div></div>
  <a class="bk ab" href="https://www.airbnb.es/rooms/13571420?check_in=2026-11-24&check_out=2026-11-27&adults=2" target="_blank" rel="noopener" aria-label="Ver Feelathome Plaza en Airbnb (se abre en otra pestaña)">Ver en Airbnb ›</a>
 </article>
-<article class="card rv acard" style="--c:#8b2f62;--r:-.7deg" data-b="GRÀCIA" data-c="#8b2f62">
+<article class="card rv acard" id="a5" style="--c:#8b2f62;--r:-.7deg" data-b="GRÀCIA" data-c="#8b2f62">
  <svg class="st" viewBox="0 0 200 200" aria-hidden="true"></svg>
  <span class="no">Airbnb 5 de 5</span>
  <span class="tag">Departamento entero</span>
@@ -251,40 +266,41 @@ p{margin:0 0 .8em}
  </div>
 </section>
 
-<footer class="foot">Fotos: <a href="https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_Sant_Felip_Neri.jpg">Sant Felip Neri</a> y <a href="https://commons.wikimedia.org/wiki/File:2014-_Hospital_Sant_Pau,_Barcelona,_Spain_(_Ank_Kumar_)_03.jpg">Sant Pau</a> (Wikimedia Commons). Precios orientativos, sin garantía.</footer>
+<footer class="foot">Mapa: © colaboradores de OpenStreetMap, Leaflet. Fotos: <a href="https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_Sant_Felip_Neri.jpg">Sant Felip Neri</a> y <a href="https://commons.wikimedia.org/wiki/File:2014-_Hospital_Sant_Pau,_Barcelona,_Spain_(_Ank_Kumar_)_03.jpg">Sant Pau</a> (Wikimedia Commons). Precios orientativos, sin garantía.</footer>
 
+<script src="leaflet.js"></script>
 <script>
 const IN='2026-11-24',OUT='2026-11-27';
 const qs=`checkin=${IN}&checkout=${OUT}&group_adults=2&group_children=0&no_rooms=1&lang=es`;
-const L=slug=>`https://www.booking.com/hotel/es/${slug}.es.html?${qs}`;
+const BK=slug=>`https://www.booking.com/hotel/es/${slug}.es.html?${qs}`;
 const H=[
  {n:'TOC Hostel Barcelona',b:'UNIVERSITAT',c:'--flo',r:'.9deg',fav:1,
   z:'Gran Via 580 · a 700 m de Plaça Catalunya',
   f:['Pieza privada con baño','Recepción 24 h','Bar y cocina común'],
-  w:'Un hostal moderno con piezas privadas de hotel. Buen precio, muy bien comentado (8,4 en Booking) y a pasos del Raval y su vida de noche.',p:'70 – 110 €',u:L('toc-hostel-barcelona')},
+  w:'Un hostal moderno con piezas privadas de hotel. Buen precio, muy bien comentado (8,4 en Booking) y a pasos del Raval y su vida de noche.',p:'70 – 110 €',u:BK('toc-hostel-barcelona')},
  {n:'Hostal Eixample',b:'EIXAMPLE',c:'--mad',r:'-.7deg',tag:'A un paso del Born',
   z:'Eixample · a 500 m de Plaça Catalunya, a 4 min a pie del Born y el Gótico',
   f:['Baño privado','Hostal tranquilo','Nota 8,3'],
-  w:'Habitaciones limpias con baño propio y un personal que todos destacan. Es tranquilo y queda en el borde del centro histórico. Avísenle que llegan a la 1 am.',p:'70 – 110 €',u:L('hostal-san-remo')},
+  w:'Habitaciones limpias con baño propio y un personal que todos destacan. Es tranquilo y queda en el borde del centro histórico. Avísenle que llegan a la 1 am.',p:'70 – 110 €',u:BK('hostal-san-remo')},
  {n:'Casa Gràcia',b:'GRÀCIA',c:'--rom',r:'.6deg',tag:'Barrio con onda',
   z:'Arriba del Paseo de Gràcia · a 300 m de la Pedrera',
   f:['Pieza privada','Recepción 24 h','Terraza'],
-  w:'Hostal de diseño en una casa señorial, con terraza y paseos a pie gratis. Gràcia tiene plazas, bares y tiendas pequeñas.',p:'90 – 140 €',u:L('hostel-casa-gracia')},
+  w:'Hostal de diseño en una casa señorial, con terraza y paseos a pie gratis. Gràcia tiene plazas, bares y tiendas pequeñas.',p:'90 – 140 €',u:BK('hostel-casa-gracia')},
  {n:'Pol & Grace',b:'SANT GERVASI',c:'--par',r:'.8deg',tag:'Hotel de arte',
   z:'Sant Gervasi · junto al metro, a 2 paradas de Plaça Catalunya',
   f:['Hotel','Habitaciones de artistas','Terraza','Nota 8,4'],
-  w:'Cada habitación la decoraron artistas en residencia. Limpio, tranquilo y con un personal muy querido. Queda en un barrio residencial, un poco fuera del centro, pero a dos paradas de todo.',p:'60 – 130 €',u:L('guillermo-tell')},
+  w:'Cada habitación la decoraron artistas en residencia. Limpio, tranquilo y con un personal muy querido. Queda en un barrio residencial, un poco fuera del centro, pero a dos paradas de todo.',p:'60 – 130 €',u:BK('guillermo-tell')},
  {n:'Hotel Market',b:'SANT ANTONI',c:'--bcn',r:'-.9deg',tag:'Para darse un gusto',
   z:'Sant Antoni · frente al Mercat de Sant Antoni, metro a 200 m',
   f:['Hotel 3★','Recepción 24 h','Restaurante de arroces'],
-  w:'Un hotel con estilo y buen precio, en el barrio de moda, sin multitudes turísticas. El mercado de enfrente es un panorama.',p:'90 – 140 €',u:L('market')}
+  w:'Un hotel con estilo y buen precio, en el barrio de moda, sin multitudes turísticas. El mercado de enfrente es un panorama.',p:'90 – 140 €',u:BK('market')}
 ];
 let sid=0;
 const stamp=(top,mid,bot,color,bg)=>{const k='p'+(sid++);return `${bg?`<circle cx="100" cy="100" r="97" fill="${bg}"/>`:''}<circle cx="100" cy="100" r="93" fill="none" stroke="${color}" stroke-width="5"/><circle cx="100" cy="100" r="65" fill="none" stroke="${color}" stroke-width="2"/><circle cx="100" cy="100" r="54" fill="${color}" opacity=".12"/><defs><path id="${k}a" d="M27 100a73 73 0 0 1 146 0"/><path id="${k}b" d="M16 100a84 84 0 0 0 168 0"/></defs><text font-family="DM,sans-serif" font-weight="700" font-size="15" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}a" startOffset="50%">${top}</textPath></text><text font-family="DM,sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}b" startOffset="50%">${bot}</textPath></text><text x="100" y="${mid.length>6?107:114}" font-family="AB,sans-serif" font-size="${mid.length>7?21:mid.length>6?24:38}" fill="${color}" text-anchor="middle">${mid}</text>`};
 const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 document.getElementById('cst').innerHTML=stamp('★ BARCELONA ★','BBB','BUENO · BONITO · BARATO','#eaa922');
 const ext='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
-document.getElementById('list').innerHTML=H.map((h,i)=>{const c=col(h.c)==='#eaa922'?'#b07a0c':col(h.c);return `<article class="card rv" style="--c:var(${h.c});--r:${h.r}">
+document.getElementById('list').innerHTML=H.map((h,i)=>{const c=col(h.c)==='#eaa922'?'#b07a0c':col(h.c);return `<article class="card rv" id="h${i+1}" style="--c:var(${h.c});--r:${h.r}">
  ${h.fav?'<span class="fav">★ Mi favorito</span>':''}
  <svg class="st" viewBox="0 0 200 200" aria-hidden="true">${stamp(h.b,'Nº'+(i+1),'BARCELONA · 3 NOCHES',c,'#fff')}</svg>
  <span class="no">Opción ${i+1} de ${H.length}</span>
@@ -297,6 +313,19 @@ document.getElementById('list').innerHTML=H.map((h,i)=>{const c=col(h.c)==='#eaa
  <a class="bk" href="${h.u}" target="_blank" rel="noopener" aria-label="Ver ${h.n} en Booking (se abre en otra pestaña)">Ver en Booking ${ext}</a>
 </article>`}).join('');
 document.querySelectorAll('.acard').forEach((e,i)=>e.querySelector('.st').innerHTML=stamp(e.dataset.b,'A'+(i+1),'AIRBNB · 3 NOCHES',e.dataset.c,'#fff'));
+
+const MK=[
+ ['h',1,'TOC Hostel Barcelona',41.38463,2.16266],['h',2,'Hostal Eixample',41.39079,2.17471],['h',3,'Casa Gràcia',41.39718,2.15917],['h',4,'Pol & Grace',41.40174,2.14774],['h',5,'Hotel Market',41.37920,2.16063],
+ ['a',1,'Cerca de la Sagrada Família',41.41268,2.18],['a',2,'Flateli 430',41.39683,2.17417],['a',3,'Lugaris Rambla',41.39889,2.20592],['a',4,'Feelathome Plaza',41.3745,2.1424],['a',5,'Apartamentos de Carlos',41.4073,2.1483]];
+const PL=[['Plaça Catalunya',41.38706,2.17001],['Sagrada Família',41.40363,2.17436],['La Rambla y la Boqueria',41.38173,2.17166],['Barceloneta (playa)',41.37850,2.19250],['Sants (tren)',41.37919,2.14005]];
+function mapa(){if(!window.L)return;const m=L.map('map',{scrollWheelZoom:false,tap:true}).setView([41.392,2.167],13);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(m);
+ const ic=(c,t)=>L.divIcon({className:'',html:`<i class="mk ${c}">${t}</i>`,iconSize:c==='p'?[24,24]:[30,30],iconAnchor:c==='p'?[12,12]:[15,15]});
+ PL.forEach(([n,a,b])=>L.marker([a,b],{icon:ic('p','★'),title:n}).addTo(m).bindPopup(`<b>${n}</b>`));
+ const all=[];MK.forEach(([k,n,t,a,b])=>{all.push([a,b]);if(k==='a')L.circle([a,b],{radius:180,color:'#e0565b',weight:1,fillOpacity:.12}).addTo(m);
+  L.marker([a,b],{icon:ic(k,n),title:t,zIndexOffset:500}).addTo(m).bindPopup(`<b>${t}</b>${k==='h'?'Hotel u hostal':'Airbnb · zona aproximada'}<br><a href="#${k}${n}">Ver la postal ↓</a>`)});
+ m.fitBounds(all,{padding:[24,24]});}
+mapa();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv,.slam').forEach(el=>io.observe(el));
 </script>
