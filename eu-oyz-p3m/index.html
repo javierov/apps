@@ -363,12 +363,13 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.rv,.slam').forEach(el=>io.observe(el));
 const gb=document.getElementById('wa');
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
- let tk=false;
- const upd=()=>{tk=false;const de=document.documentElement,left=de.scrollHeight-(scrollY+innerHeight),R=innerHeight*.5,M=innerHeight*.18;
-  const p=Math.max(0,Math.min(1,1-(left-M)/R)),q=1-p;
+ let tk=false,cy=0;
+ const meas=()=>{const t=gb.style.transform;gb.style.transform='';const r=gb.getBoundingClientRect();cy=r.top+r.height/2+scrollY;gb.style.transform=t};
+ const upd=()=>{tk=false;const c=cy-scrollY,vh=innerHeight;
+  const p=Math.max(0,Math.min(1,(1.16*vh-c)/(.36*vh))),q=1-p;
   gb.style.transform=p>=1?'':`rotate(${-8-110*q}deg) scale(${1+.8*q})`;};
  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(upd)}},{passive:true});
- addEventListener('resize',upd);upd();
+ addEventListener('resize',()=>{meas();upd()});addEventListener('load',()=>{meas();upd()});meas();upd();
 }
 const sg=document.getElementById('sig');new IntersectionObserver(es=>es.forEach(e=>sg.classList.toggle('in',e.isIntersecting)),{threshold:.9}).observe(sg);
 const vd=document.getElementById('vid'),sb=document.getElementById('snd');
