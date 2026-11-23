@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Europa · Familia Oyarzún</title>
+<style>
+/* VOICE: revista de viajes, cálida y segura; habla de "ustedes".
+   IDEA: un folleto de agencia impreso, a doble página, que se hojea en el celular.
+   PICTURE: fotos a sangre de cada ciudad y de cada hotel, títulos grandes encima.
+   COLOUR and TYPE: petróleo #17414b, terracota #d2643a, papel #f4efe8; Oswald + Source Sans 3.
+   LAYOUT: portada a pantalla completa, luego un capítulo por ciudad: foto, hotel, rincones. */
+@font-face{font-family:Oswald;src:url(fonts/oswald-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Oswald;src:url(fonts/oswald-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Oswald;src:url(fonts/oswald-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(fonts/source-sans-3-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(fonts/source-sans-3-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(fonts/source-sans-3-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(fonts/source-sans-3-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{color-scheme:light;--pet:#17414b;--pet2:#0f2e35;--ter:#d2643a;--ter2:#b9532c;--pap:#f4efe8;--ink:#1c2a2e;--mut:#5d6b6e;--line:#ddd3c6;
+ --tt:Oswald,"Arial Narrow",Impact,sans-serif;--tx:"Source Sans 3",system-ui,sans-serif}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:56px}
+body{margin:0;background:var(--pap);color:var(--ink);font:17px/1.55 var(--tx);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--tt);font-weight:600;text-transform:uppercase;line-height:1;margin:0;letter-spacing:.005em}
+p{margin:0 0 .9em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 max(5vw,18px)}
+.kicker{font:500 14px/1.2 var(--tt);text-transform:uppercase;letter-spacing:.08em;color:var(--ter)}
+
+/* portada */
+.cover{position:relative;height:100svh;min-height:560px;max-height:980px;color:#fff;overflow:hidden;background:var(--pet2)}
+.cover>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.cover:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,30,36,.55) 0%,rgba(10,30,36,0) 30%,rgba(10,30,36,0) 52%,rgba(10,30,36,.75) 100%)}
+.cover .top{position:absolute;z-index:2;top:0;left:0;right:0;padding:22px max(5vw,18px);display:flex;justify-content:space-between;gap:12px;font:500 13px/1.3 var(--tt);text-transform:uppercase;letter-spacing:.1em}
+.cover .ttl{position:absolute;z-index:2;left:max(5vw,18px);right:max(5vw,18px);bottom:150px}
+.cover h1{font-size:clamp(64px,19vw,150px);line-height:.88}
+.cover h1 span{display:block;font-size:clamp(22px,7vw,58px);font-weight:400;letter-spacing:.02em;margin-top:.2em}
+.cover .for{margin-top:14px;font-size:18px;line-height:1.4;max-width:34ch}
+.cover .for b{font-weight:600}
+.strip{position:absolute;z-index:2;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--ter)}
+.strip div{padding:16px 10px 18px;text-align:center;border-left:1px solid rgba(255,255,255,.28)}
+.strip div:first-child{border:0}
+.strip b{display:block;font:600 34px/1 var(--tt)}
+.strip small{font:500 12px/1.2 var(--tt);text-transform:uppercase;letter-spacing:.08em}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:var(--pet);display:flex;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:1 0 auto;color:#e9e2d8;text-decoration:none;font:500 14px/1 var(--tt);text-transform:uppercase;letter-spacing:.08em;padding:18px 16px;text-align:center;border-bottom:3px solid transparent}
+.nav a.on{color:#fff;border-color:var(--ter)}
+
+/* bienvenida */
+.welcome{padding:56px 0 40px}
+.welcome h2{font-size:clamp(46px,13vw,96px);color:var(--pet)}
+.welcome .lead{font-size:20px;line-height:1.5;margin-top:18px;max-width:40ch}
+.two{display:grid;gap:14px;margin-top:28px}
+.two div{background:#fff;padding:20px;border-top:4px solid var(--pet)}
+.two div+div{border-color:var(--ter)}
+.two h3{font-size:22px;margin-bottom:8px;color:var(--pet)}
+.two p{margin:0;color:var(--mut);font-size:16px}
+.count{margin-top:28px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;color:var(--pet)}
+.count b{font:600 56px/1 var(--tt);color:var(--ter)}
+.count span{font:500 18px/1.2 var(--tt);text-transform:uppercase;letter-spacing:.05em}
+
+/* ruta */
+.route{background:var(--pet);color:#fff;padding:48px 0}
+.route h2{font-size:clamp(36px,9vw,64px)}
+.route .sub{color:#bcd0d2;margin-top:8px}
+.legs{list-style:none;margin:28px 0 0;padding:0}
+.legs li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 0;border-top:1px solid rgba(255,255,255,.14)}
+.legs li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
+.legs img{width:64px;height:64px;object-fit:cover}
+.legs b{display:block;font:600 22px/1.1 var(--tt);text-transform:uppercase}
+.legs small{color:#bcd0d2;font-size:15px}
+.legs .n{font:600 28px/1 var(--tt);color:var(--ter);text-align:right;white-space:nowrap}
+.legs .n i{display:block;font:500 11px/1.3 var(--tt);font-style:normal;color:#bcd0d2;letter-spacing:.08em;text-transform:uppercase}
+.move{color:#bcd0d2;font-size:14px;padding:6px 0 6px 78px}
+
+/* capítulo ciudad */
+.city{position:relative;height:88svh;min-height:520px;max-height:860px;color:#fff;overflow:hidden;background:var(--pet2)}
+.city>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.city:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,30,36,0) 45%,rgba(10,30,36,.8) 100%)}
+.city .in{position:absolute;z-index:2;left:max(5vw,18px);right:max(5vw,18px);bottom:34px}
+.city .num{font:500 14px/1 var(--tt);letter-spacing:.12em;text-transform:uppercase;opacity:.9}
+.city h2{font-size:clamp(60px,18vw,140px);line-height:.9;margin-top:8px}
+.city .dates{display:inline-block;margin-top:14px;background:var(--ter);font:500 16px/1 var(--tt);text-transform:uppercase;letter-spacing:.06em;padding:10px 14px}
+.chap{padding:40px 0 52px}
+.chap+.city{margin-top:0}
+.hotel{background:#fff}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal img{flex:0 0 100%;width:100%;aspect-ratio:4/3;object-fit:cover;scroll-snap-align:start}
+.galw{position:relative}
+.dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px}
+.dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55)}
+.dots i.on{background:#fff}
+.arr{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.9);color:var(--pet);font:600 22px/1 var(--tt);cursor:pointer;display:grid;place-items:center}
+.arr.l{left:10px}.arr.r{right:10px}
+.arr:focus-visible{outline:3px solid var(--ter)}
+.hb{padding:22px 20px 24px}
+.hb .kicker{margin-bottom:6px}
+.hb h3{font-size:30px;color:var(--pet);line-height:1.05}
+.hb .zone{color:var(--mut);margin:6px 0 14px;font-size:16px}
+.feats{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.feats li{padding-left:22px;position:relative;font-size:16px}
+.feats li:before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;background:var(--ter)}
+.room{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:15px;color:var(--mut)}
+.own{background:#fff;padding:22px 20px;border-left:5px solid var(--ter)}
+.own h3{font-size:24px;color:var(--pet);margin-bottom:6px}
+.own p{margin:0;color:var(--mut)}
+.secret{margin-top:34px}
+.secret h3{font-size:26px;color:var(--pet)}
+.secret .s{color:var(--mut);font-size:16px;margin:6px 0 16px}
+.spots{display:grid;gap:16px}
+.spot{background:#fff}
+.spot img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.spot div{padding:14px 16px 16px}
+.spot b{display:block;font:600 19px/1.15 var(--tt);text-transform:uppercase;color:var(--pet)}
+.spot p{margin:6px 0 0;font-size:15.5px;color:var(--mut)}
+
+/* precio */
+.price{background:var(--pet);color:#fff;padding:52px 0}
+.price h2{font-size:clamp(40px,11vw,80px)}
+.big{margin:22px 0 6px;font:600 clamp(64px,20vw,120px)/.9 var(--tt);color:#fff}
+.big small{font-size:.32em;font-weight:500;color:var(--ter);margin-right:8px;vertical-align:.9em}
+.price .what{color:#bcd0d2;max-width:44ch}
+.tog{margin-top:18px;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;font:500 15px/1 var(--tt);letter-spacing:.06em;text-transform:uppercase;padding:14px 18px;cursor:pointer;min-height:44px}
+.tog:focus-visible{outline:3px solid var(--ter)}
+.det{display:none;margin-top:18px;max-width:560px}
+.det.open{display:block}
+.det div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:16px}
+.det div span:last-child{white-space:nowrap;font-weight:600}
+.det div.t{border:0;font-weight:700}
+.note{font-size:14px;color:#bcd0d2;margin-top:18px}
+
+/* con catalina */
+.why{padding:52px 0}
+.why h2{font-size:clamp(36px,10vw,64px);color:var(--pet)}
+.wl{display:grid;gap:12px;margin-top:24px}
+.wl>div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start;background:#fff;padding:18px}
+.wl svg{width:44px;height:44px}
+.wl b{display:block;font:600 19px/1.2 var(--tt);text-transform:uppercase;color:var(--pet);margin-bottom:4px}
+.wl p{margin:0;font-size:16px;color:var(--mut)}
+
+/* cierre */
+.end{position:relative;color:#fff;overflow:hidden;background:var(--pet2)}
+.end>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.end:after{content:"";position:absolute;inset:0;background:rgba(10,30,36,.62)}
+.end .in{position:relative;z-index:2;padding:80px max(5vw,18px) 64px;max-width:760px}
+.end h2{font-size:clamp(48px,14vw,104px)}
+.end p{font-size:19px;margin:16px 0 26px;max-width:34ch}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--ter);color:#fff;text-decoration:none;font:600 18px/1 var(--tt);text-transform:uppercase;letter-spacing:.06em;padding:18px 24px;min-height:56px}
+.cta:hover{background:var(--ter2)}
+.cta svg{width:22px;height:22px}
+.sig{margin-top:30px;font-size:16px}
+.sig b{display:block;font:600 20px/1.2 var(--tt);text-transform:uppercase;letter-spacing:.04em}
+.sig span{color:#d9e3e4}
+.foot{background:var(--pet2);color:#8fa6a9;font-size:13px;padding:18px max(5vw,18px) 26px}
+.foot a{color:#b9cbcd}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+@media (min-width:760px){
+ .two,.spots{grid-template-columns:1fr 1fr}
+ .hotel{display:grid;grid-template-columns:1.25fr 1fr}
+ .hotel .galw{height:100%}.hotel .gal{height:100%}.hotel .gal img{aspect-ratio:auto;height:100%}
+ .hb{padding:30px}
+ .wl{grid-template-columns:1fr 1fr 1fr}
+ .cover .ttl{bottom:170px}
+}
+</style>
+</head>
+<body>
+
+<header class="cover" id="inicio">
+ <img src="img/c-paris.jpg" alt="París al atardecer, con la Torre Eiffel y el Sena">
+ <div class="top"><span>Catalina Rozas · Viajes a la medida</span><span>Febrero 2027</span></div>
+ <div class="ttl">
+  <h1>Europa<span>Cinco ciudades, una familia</span></h1>
+  <p class="for">Una propuesta preparada para la <b>familia Oyarzún</b>.</p>
+ </div>
+ <div class="strip">
+  <div><b>16</b><small>días</small></div>
+  <div><b>5</b><small>ciudades</small></div>
+  <div><b>5</b><small>viajeros</small></div>
+ </div>
+</header>
+
+<nav class="nav" id="nav">
+ <a href="#ruta">Ruta</a><a href="#madrid">Madrid</a><a href="#barcelona">Barcelona</a><a href="#paris">París</a><a href="#florencia">Florencia</a><a href="#roma">Roma</a><a href="#estadia">Estadía</a>
+</nav>
+
+<section class="welcome">
+ <div class="wrap">
+  <div class="kicker rv">Bienvenidos</div>
+  <h2 class="rv">Su viaje, armado a la medida</h2>
+  <p class="lead rv">Elegí cada hotel pensando en ustedes cinco: bien ubicados, con buenas opiniones de quienes ya se alojaron y con espacio para viajar cómodos entre adultos.</p>
+  <div class="two">
+   <div class="rv"><h3>Para los que vuelven</h3><p>Ustedes ya conocen Europa. Por eso les dejo, en cada ciudad, rincones que no salen en las guías y que se recorren sin apuro.</p></div>
+   <div class="rv"><h3>Para los que llegan</h3><p>Para los chicos es la primera vez. Los hoteles quedan cerca de lo imperdible, para que salgan a la calle y ya estén en el viaje.</p></div>
+  </div>
+  <div class="count rv" id="count"><b id="days">—</b><span>días para salir de Chile</span></div>
+ </div>
+</section>
+
+<section class="route" id="ruta">
+ <div class="wrap">
+  <div class="kicker rv">La ruta</div>
+  <h2 class="rv">Del 1 al 16 de febrero</h2>
+  <p class="sub rv">Madrid, Barcelona, París, Florencia y Roma, y vuelta a casa desde Madrid.</p>
+  <ul class="legs" id="legs"></ul>
+ </div>
+</section>
+
+<main id="chapters"></main>
+
+<section class="price" id="estadia">
+ <div class="wrap">
+  <div class="kicker rv">Su estadía</div>
+  <h2 class="rv">Todo el alojamiento</h2>
+  <div class="big rv"><small>USD</small>5.445</div>
+  <p class="what rv">11 noches en Barcelona, París, Florencia y Roma, para los cinco, en los alojamientos de esta propuesta.</p>
+  <button class="tog" id="tog" aria-expanded="false" aria-controls="det">Ver detalle por ciudad</button>
+  <div class="det" id="det">
+   <div><span>Barcelona · 3 noches</span><span>USD 1.498</span></div>
+   <div><span>París · 3 noches, con desayuno</span><span>USD 1.272</span></div>
+   <div><span>Florencia · 2 noches</span><span>USD 850</span></div>
+   <div><span>Roma · 3 noches</span><span>USD 1.825</span></div>
+   <div class="t"><span>Total</span><span>USD 5.445</span></div>
+  </div>
+  <p class="note">Madrid: su Airbnb, por cuenta de ustedes. Valores en dólares por toda la estadía, sujetos a disponibilidad al momento de reservar.</p>
+ </div>
+</section>
+
+<section class="why">
+ <div class="wrap">
+  <div class="kicker rv">Viajar conmigo</div>
+  <h2 class="rv">Una persona detrás de su viaje</h2>
+  <div class="wl">
+   <div class="rv"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="4" y="10" width="36" height="28" fill="#17414b"/><rect x="10" y="4" width="24" height="10" fill="#d2643a"/><rect x="10" y="18" width="7" height="7" fill="#f4efe8"/><rect x="27" y="18" width="7" height="7" fill="#f4efe8"/><rect x="18" y="28" width="8" height="10" fill="#f4efe8"/></svg><div><b>Hoteles elegidos a mano</b><p>No es una lista de búsqueda: revisé ubicación, opiniones y espacio para cinco adultos.</p></div></div>
+   <div class="rv"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="18" fill="#17414b"/><path d="M13 23l6 6 12-13" stroke="#d2643a" stroke-width="5" fill="none"/></svg><div><b>Una ruta que calza</b><p>Fechas, ciudades y traslados pensados como un solo viaje, no como reservas sueltas.</p></div></div>
+   <div class="rv"><svg viewBox="0 0 44 44" aria-hidden="true"><path d="M6 8h32v22H20l-9 8v-8H6z" fill="#17414b"/><rect x="12" y="15" width="20" height="4" fill="#d2643a"/><rect x="12" y="22" width="13" height="3" fill="#f4efe8"/></svg><div><b>Su asesora por WhatsApp</b><p>Antes y durante el viaje, si algo cambia o surge una duda, me escriben directo a mí. Sin call centers.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="end" id="reservar">
+ <img src="img/c-roma.jpg" alt="Roma al atardecer, con la cúpula de San Pedro y el Tíber">
+ <div class="in">
+  <div class="kicker">¿Partimos?</div>
+  <h2>Europa los espera</h2>
+  <p>Si la propuesta les gusta, me escriben y dejamos todo reservado.</p>
+  <a class="cta" id="wa" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2s-1 .3-3.3-.7a11 11 0 0 1-4.4-3.9c-.3-.5-1-1.5-1-2.8s.7-2 1-2.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></svg>Lo quiero</a>
+  <div class="sig"><b>Catalina Rozas</b><span>Asesora de viajes a la medida · +56 9 7376 4358</span></div>
+ </div>
+</section>
+<footer class="foot">Fotos de rincones: Wikimedia Commons (<a href="https://commons.wikimedia.org/wiki/File:Jard%C3%ADn_del_Pr%C3%ADncipe_de_Anglona_Madrid.jpg">Anglona</a>, <a href="https://commons.wikimedia.org/wiki/File:Madrid_-_Museo-Palacio_Cerralbo,_interior_04.jpg">Cerralbo</a>, <a href="https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_Sant_Felip_Neri.jpg">Sant Felip Neri</a>, <a href="https://commons.wikimedia.org/wiki/File:2014-_Hospital_Sant_Pau,_Barcelona,_Spain_(_Ank_Kumar_)_03.jpg">Sant Pau</a>, <a href="https://commons.wikimedia.org/wiki/File:Galerie_Vivienne,_12_March_2015.jpg">Vivienne</a>, <a href="https://commons.wikimedia.org/wiki/File:Rue_Cr%C3%A9mieux,_Paris_12.jpg">Crémieux</a>, <a href="https://commons.wikimedia.org/wiki/File:Via_Santo_Spirito_9,_palazzo,_buchetta_del_vino_sotto_finestra_01.jpg">Buchetta</a>, <a href="https://commons.wikimedia.org/wiki/File:Firenze_Basilica_di_San_Miniato_al_Monte_Esterno_Facciata_7.jpg">San Miniato</a>, <a href="https://commons.wikimedia.org/wiki/File:Knights_of_Malta_Keyhole,_Aventine_Hill,_Rome_(Unsplash).jpg">Aventino</a>, <a href="https://commons.wikimedia.org/wiki/File:20110327_Roma_-_Gianicolo_006.jpg">Gianicolo</a>). Fotos de hoteles: de cada alojamiento.</footer>
+
+<script>
+{
+const C=[
+ {id:'madrid',n:'Madrid',img:'madrid',dates:'2 – 4 feb',nights:2,from:'Llegan el martes 2 a las 16:30',
+  own:{t:'Su Airbnb',p:'En Madrid se quedan en el departamento que ustedes ya tienen. Dos noches para pasear sin horario y acostumbrarse a la hora.'},
+  spots:[['s02-anglona','Jardín del Príncipe de Anglona','Un jardín escondido detrás de un muro en el Madrid de los Austrias. Pocos madrileños lo conocen.'],
+         ['s03-cerralbo','Museo Cerralbo','Un palacio del siglo XIX que sigue amueblado como cuando vivía su dueño: salones, espejos y salón de baile.']]},
+ {id:'barcelona',n:'Barcelona',img:'barcelona',dates:'4 – 7 feb',nights:3,from:'Salen de Madrid 16:32 y llegan 19:34',
+  hotel:{name:'Cosmo Apartments Passeig de Gràcia',zone:'Eixample · a pasos del Paseo de Gracia',pics:['bcn-3','bcn-2','bcn-1'],
+   feats:['Departamento dúplex para los cinco, con terraza','A 50 metros del Paseo de Gracia; la Casa Batlló y La Pedrera, a 5 minutos a pie','Cocina equipada y living propio: como estar en su casa en Barcelona','Metro a 300 metros'],
+   room:'Un solo departamento para toda la familia, con dormitorios y sofá cama.'},
+  spots:[['s04-felip-neri','Plaça de Sant Felip Neri','Una placita silenciosa en pleno Barrio Gótico, con una fuente y una historia que se lee en sus muros.'],
+         ['s05-sant-pau','Recinto Modernista de Sant Pau','Un hospital convertido en joya modernista: pabellones de cerámica y jardines, con mucha menos gente que la Sagrada Familia.']]},
+ {id:'paris',n:'París',img:'paris',dates:'7 – 10 feb',nights:3,from:'Llegan a París el domingo 7 a las 22:08',
+  hotel:{name:'Hôtel De La Paix',zone:'Distrito 15 · barrio tranquilo y residencial',pics:['par-2','par-1','par-3'],
+   feats:['Desayuno incluido','Edificio parisino clásico, con balcones de fierro forjado','A 2,5 km de la Torre Eiffel','Recepción con chimenea y sala de desayuno con patio'],
+   room:'Dos habitaciones: una doble y una triple. En París las triples son compactas: la tercera cama puede ser cama extra o sofá cama.'},
+  spots:[['s07-vivienne','Galerie Vivienne','Un pasaje cubierto de 1823, con techo de vidrio, mosaicos y librerías antiguas. París de otra época.'],
+         ['s08-cremieux','Rue Crémieux','Una calle peatonal de casitas pintadas de colores. La foto que los chicos van a querer subir.']]},
+ {id:'florencia',n:'Florencia',img:'florencia',dates:'10 – 12 feb',nights:2,from:'Viajan de París a Florencia el miércoles 10',
+  hotel:{name:'NH Firenze',zone:'Santa Maria Novella · junto al río Arno',pics:['flo-1','flo-3','flo-2'],
+   feats:['Terraza en la azotea con vista a la cúpula del Duomo','Habitaciones amplias, algunas con balcón','Restaurante de cocina italiana y toscana','A unos 20 minutos a pie del Ponte Vecchio, bordeando el Arno'],
+   room:'Dos habitaciones: una doble y una triple.'},
+  spots:[['s10-buchette','Las buchette del vino','Ventanitas en las fachadas por donde los palacios vendían vino. Algunas todavía funcionan.'],
+         ['s11-san-miniato','San Miniato al Monte','Una iglesia en lo alto, con la mejor vista de Florencia y mucha menos gente que el Piazzale Michelangelo.']]},
+ {id:'roma',n:'Roma',img:'roma',dates:'12 – 15 feb',nights:3,from:'De Florencia a Roma el viernes 12',
+  hotel:{name:'Al Manthia Hotel',zone:'Trevi · en pleno centro histórico',pics:['rom-1','rom-2','rom-3'],
+   feats:['Edificio histórico de fines del siglo XIX','A 5 minutos a pie de la Fontana di Trevi y cerca de la Plaza de España','A 100 metros del metro Barberini','Sala de desayuno y salón de estar'],
+   room:'Dos habitaciones: una doble y una triple.'},
+  spots:[['s12-cerradura','La cerradura del Aventino','Se mira por el ojo de una cerradura y aparece la cúpula de San Pedro, perfectamente enmarcada.'],
+         ['s13-gianicolo','Mirador del Gianicolo','Roma entera a sus pies, con las cúpulas al atardecer. Un final de viaje inolvidable.']]}
+];
+const legs=document.getElementById('legs');
+const mv=['Madrid → Barcelona · 16:32 a 19:34','Llegada a París 22:08','París → Florencia','Florencia → Roma'];
+legs.innerHTML=C.map((c,i)=>`<li class="rv"><img src="img/c-${c.img}.jpg" alt=""><div><b>${c.n}</b><small>${c.dates}${c.hotel?' · '+c.hotel.name:' · su Airbnb'}</small></div><div class="n">${c.nights}<i>noches</i></div></li>`+(i<4?`<li class="move" aria-hidden="true">↓ ${mv[i]}</li>`:'')).join('')+`<li class="move">Lunes 15: Roma → Madrid · martes 16: vuelta a Chile</li>`;
+legs.querySelectorAll('.move').forEach(m=>{m.style.display='block';m.style.border='0'});
+
+const gal=p=>`<div class="galw"><div class="gal" tabindex="0" aria-label="Fotos del alojamiento">${p.map((x,i)=>`<img src="img/h-${x}.jpg" alt="Foto ${i+1} del alojamiento" loading="lazy">`).join('')}</div><button class="arr l" aria-label="Foto anterior">‹</button><button class="arr r" aria-label="Foto siguiente">›</button><div class="dots">${p.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</div></div>`;
+document.getElementById('chapters').innerHTML=C.map((c,i)=>`
+<section class="city" id="${c.id}"><img src="img/c-${c.img}.jpg" alt="${c.n}" loading="lazy"><div class="in"><div class="num">Ciudad ${i+1} de 5 · ${c.from}</div><h2>${c.n}</h2><span class="dates">${c.dates} · ${c.nights} noches</span></div></section>
+<div class="chap"><div class="wrap">
+ ${c.hotel?`<article class="hotel rv">${gal(c.hotel.pics)}<div class="hb"><div class="kicker">Donde se alojan</div><h3>${c.hotel.name}</h3><div class="zone">${c.hotel.zone}</div><ul class="feats">${c.hotel.feats.map(f=>`<li>${f}</li>`).join('')}</ul><div class="room">${c.hotel.room}</div></div></article>`
+ :`<div class="own rv"><div class="kicker">Donde se alojan</div><h3>${c.own.t}</h3><p>${c.own.p}</p></div>`}
+ <div class="secret"><h3 class="rv">Rincones de ${c.n}</h3><p class="s rv">Fuera del circuito de siempre.</p><div class="spots">${c.spots.map(s=>`<div class="spot rv"><img src="img/${s[0]}.jpg" alt="${s[1]}" loading="lazy"><div><b>${s[1]}</b><p>${s[2]}</p></div></div>`).join('')}</div></div>
+</div></div>`).join('');
+
+document.querySelectorAll('.galw').forEach(w=>{
+ const g=w.querySelector('.gal'),d=[...w.querySelectorAll('.dots i')],n=d.length;
+ const cur=()=>Math.round(g.scrollLeft/g.clientWidth);
+ const go=k=>g.scrollTo({left:((k+n)%n)*g.clientWidth,behavior:'smooth'});
+ w.querySelector('.l').onclick=()=>go(cur()-1);
+ w.querySelector('.r').onclick=()=>go(cur()+1);
+ g.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(cur()+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur()-1)}});
+ g.addEventListener('scroll',()=>{const k=cur();d.forEach((x,i)=>x.classList.toggle('on',i===k))},{passive:true});
+});
+
+const t=document.getElementById('tog'),det=document.getElementById('det');
+t.onclick=()=>{const o=det.classList.toggle('open');t.setAttribute('aria-expanded',o);t.textContent=o?'Ocultar detalle':'Ver detalle por ciudad'};
+
+const dd=Math.ceil((new Date(2027,1,1)-new Date())/864e5);
+if(dd>0)document.getElementById('days').textContent=dd;else document.getElementById('count').style.display='none';
+
+const msg='Hola Catalina, vi la propuesta del viaje a Europa de la familia Oyarzún y nos gustaría reservar.';
+document.getElementById('wa').href='https://wa.me/56973764358?text='+encodeURIComponent(msg);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const links=[...document.querySelectorAll('#nav a')];
+const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));const a=links.find(a=>a.classList.contains('on')),nv=a&&a.parentNode;if(nv)nv.scrollTo({left:a.offsetLeft-(nv.clientWidth-a.offsetWidth)/2,behavior:'smooth'})}}),{rootMargin:'-45% 0px -50% 0px'});
+['ruta',...C.map(c=>c.id),'estadia'].forEach(id=>so.observe(document.getElementById(id)));
+}
+</script>
+</body>
+</html>
