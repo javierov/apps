@@ -199,6 +199,18 @@ p{margin:0 0 .8em}
 @media (prefers-reduced-motion:reduce){.sig b,.sig span{opacity:1;transform:none;transition:none}}
 html{overflow-x:clip}
 html,body{max-width:100%}
+.sw{position:relative}
+.sw:after{content:"";position:absolute;top:0;bottom:0;right:-1px;width:56px;background:linear-gradient(90deg,rgba(251,246,238,0),var(--pap));pointer-events:none;transition:opacity .25s}
+.sw.end:after{opacity:0}
+.sa{position:absolute;top:76px;transform:translateY(-50%);z-index:2;width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);color:var(--pap);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 16px rgba(31,29,54,.3);transition:opacity .25s,transform .2s}
+.sa svg{width:22px;height:22px}
+.sa.l{left:-6px}.sa.r{right:-6px}
+.sa:active{transform:translateY(-50%) scale(.92)}
+.sa:focus-visible{outline:3px solid var(--bcn);outline-offset:2px}
+.sa[hidden]{display:grid;opacity:0;pointer-events:none}
+.sa.r:not([hidden]){animation:nudge 1.6s ease-in-out 3}
+@keyframes nudge{0%,100%{transform:translateY(-50%)}50%{transform:translateY(-50%) translateX(5px)}}
+@media (prefers-reduced-motion:reduce){.sa.r{animation:none!important}}
 </style>
 </head>
 <body>
@@ -246,7 +258,7 @@ html,body{max-width:100%}
  <div class="wrap">
   <h2 class="rv">Su pasaporte</h2>
   <p class="via rv">Un timbre por ciudad. Toquen uno para ir directo.</p>
-  <div class="stamps" id="stamps"></div>
+  <div class="sw"><button class="sa l" id="sl" aria-label="Timbres anteriores"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="stamps" id="stamps"></div><button class="sa r" id="sr" aria-label="Más timbres"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
   <p class="via">Lunes 15: Roma → Madrid · martes 16: vuelta a Chile.</p>
  </div>
 </section>
@@ -333,6 +345,12 @@ pols.forEach((p,i)=>p.addEventListener('click',()=>{pols.forEach(q=>q.style.zInd
 
 document.getElementById('stamps').innerHTML=C.map((c,i)=>`<a href="#${c.id}" class="rv" style="--r:${[-8,6,-4,9,-6][i]}deg"><svg viewBox="0 0 200 200" aria-hidden="true">${stamp(c.n.toUpperCase(),c.d,c.nights+' NOCHES',col(c.c))}</svg><small>${c.n}</small></a>`).join('');
 
+const stp=document.getElementById('stamps'),sl=document.getElementById('sl'),sr=document.getElementById('sr'),sw=stp.parentNode;
+const stu=()=>{const m=stp.scrollWidth-stp.clientWidth-4;sl.hidden=stp.scrollLeft<=4;sr.hidden=stp.scrollLeft>=m;sw.classList.toggle('end',stp.scrollLeft>=m)};
+const step=()=>(stp.firstElementChild?.offsetWidth||132)+6;
+sl.onclick=()=>stp.scrollBy({left:-step()*2,behavior:'smooth'});
+sr.onclick=()=>stp.scrollBy({left:step()*2,behavior:'smooth'});
+stp.addEventListener('scroll',stu,{passive:true});addEventListener('resize',stu);stu();
 const arrow=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d?'M9 4l8 8-8 8':'M15 4l-8 8 8 8'}" fill="none" stroke="currentColor" stroke-width="3"/></svg>`;
 const gal=p=>`<div class="gw"><div class="gal" tabindex="0" aria-label="Fotos del alojamiento">${p.map((x,i)=>`<img src="img/h-${x}.jpg" alt="Foto ${i+1} del alojamiento" loading="lazy">`).join('')}</div><button class="nb l" aria-label="Foto anterior">${arrow(0)}</button><button class="nb r" aria-label="Foto siguiente">${arrow(1)}</button><span class="cnt">1 / ${p.length}</span></div>`;
 document.getElementById('chapters').innerHTML=C.map((c,i)=>`
