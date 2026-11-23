@@ -192,6 +192,7 @@ p{margin:0 0 .8em}
  .pt{grid-template-columns:minmax(0,1fr) 260px}
  .pt .b{border-top:0;border-left:3px dashed #d9cfbf;flex-direction:column;justify-content:center;text-align:center}
 }
+.vid{background:var(--ink);color:var(--pap);padding:52px 0}.vid h2{font-size:clamp(36px,10vw,62px);margin-bottom:22px;color:var(--pap)}.vbox{position:relative;max-width:460px;margin:0 auto;background:#fff;padding:10px 10px 46px;transform:rotate(-1.5deg);box-shadow:0 18px 40px rgba(0,0,0,.4)}.vbox video{display:block;width:100%;aspect-ratio:4/5;background:#1f1d36}.vbox>b{position:absolute;left:0;right:0;bottom:14px;text-align:center;font:700 13px/1 var(--t);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}.snd{position:absolute;left:22px;top:22px;display:flex;align-items:center;gap:8px;background:var(--mad);color:#fff;border:0;font:700 15px/1 var(--t);padding:12px 14px;min-height:44px;cursor:pointer}.snd svg{width:20px;height:20px}.snd:focus-visible{outline:3px solid #fff}.snd.off{display:none}
 </style>
 </head>
 <body>
@@ -269,6 +270,8 @@ p{margin:0 0 .8em}
  </div>
 </section>
 
+<section class="vid"><div class="wrap"><h2 class="rv">¡Dale play!</h2><div class="vbox rv"><video id="vid" src="img/video-europa-30s.mp4" poster="img/poster-europa.jpg" muted playsinline loop preload="metadata" controls></video><b>Europa en 30 segundos</b><button class="snd" id="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2"/></svg>Con música</button></div></div></section>
+
 <section class="end">
  <div class="wrap">
   <h2 class="rv">¿Partimos?</h2>
@@ -313,7 +316,7 @@ const C=[
 ];
 const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 let sid=0;
-const stamp=(top,mid,bot,color,bg)=>{const k='p'+(sid++);return `${bg?`<circle cx="100" cy="100" r="97" fill="${bg}"/>`:''}<circle cx="100" cy="100" r="92" fill="none" stroke="${color}" stroke-width="6"/><circle cx="100" cy="100" r="78" fill="none" stroke="${color}" stroke-width="2"/><circle cx="100" cy="100" r="54" fill="${color}" opacity=".12"/><defs><path id="${k}a" d="M30 100a70 70 0 0 1 140 0"/><path id="${k}b" d="M26 100a74 74 0 0 0 148 0"/></defs><text font-family="DM,sans-serif" font-weight="700" font-size="17" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}a" startOffset="50%">${top}</textPath></text><text font-family="DM,sans-serif" font-weight="700" font-size="14" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}b" startOffset="50%" side="right">${bot}</textPath></text><text x="100" y="${mid.length>6?108:114}" font-family="AB,sans-serif" font-size="${mid.length>6?26:38}" fill="${color}" text-anchor="middle">${mid}</text>`};
+const stamp=(top,mid,bot,color,bg)=>{const k='p'+(sid++);return `${bg?`<circle cx="100" cy="100" r="97" fill="${bg}"/>`:''}<circle cx="100" cy="100" r="92" fill="none" stroke="${color}" stroke-width="6"/><circle cx="100" cy="100" r="78" fill="none" stroke="${color}" stroke-width="2"/><circle cx="100" cy="100" r="54" fill="${color}" opacity=".12"/><defs><path id="${k}a" d="M30 100a70 70 0 0 1 140 0"/><path id="${k}b" d="M14 100a86 86 0 0 0 172 0"/></defs><text font-family="DM,sans-serif" font-weight="700" font-size="17" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}a" startOffset="50%">${top}</textPath></text><text font-family="DM,sans-serif" font-weight="700" font-size="12" letter-spacing="3" fill="${color}" text-anchor="middle"><textPath href="#${k}b" startOffset="50%">${bot}</textPath></text><text x="100" y="${mid.length>6?108:114}" font-family="AB,sans-serif" font-size="${mid.length>6?26:38}" fill="${color}" text-anchor="middle">${mid}</text>`};
 
 document.getElementById('cst').innerHTML=stamp('FAMILIA OYARZÚN','2027','★ EUROPA ★','#eaa922');
 
@@ -360,6 +363,10 @@ document.getElementById('wa').href='https://wa.me/56973764358?text='+encodeURICo
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
 document.querySelectorAll('.rv,.slam').forEach(el=>io.observe(el));
+const vd=document.getElementById('vid'),sb=document.getElementById('snd');
+if(vd){const vo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(vd.muted)vd.play().catch(()=>{})}else vd.pause()}),{threshold:.5});vo.observe(vd);
+sb.onclick=()=>{vd.muted=false;vd.currentTime=0;vd.play().catch(()=>{});sb.classList.add('off')};
+vd.addEventListener('volumechange',()=>sb.classList.toggle('off',!vd.muted));}
 }
 </script>
 </body>

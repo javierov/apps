@@ -182,6 +182,7 @@ p{margin:0 0 .9em}
  .wl{grid-template-columns:1fr 1fr 1fr}
  .cover .ttl{bottom:170px}
 }
+.vid{background:var(--pet);color:#fff;padding:52px 0}.vid h2{font-size:clamp(36px,10vw,64px);margin-bottom:22px}.vbox{position:relative;max-width:480px;margin:0 auto}.vbox video{display:block;width:100%;aspect-ratio:4/5;background:#0f2e35}.snd{position:absolute;left:12px;top:12px;display:flex;align-items:center;gap:8px;background:var(--ter);color:#fff;border:0;font:500 15px/1 var(--tt);letter-spacing:.06em;text-transform:uppercase;padding:12px 14px;min-height:44px;cursor:pointer}.snd svg{width:20px;height:20px}.snd:focus-visible{outline:3px solid #fff}.snd.off{display:none}
 </style>
 </head>
 <body>
@@ -257,6 +258,8 @@ p{margin:0 0 .9em}
   </div>
  </div>
 </section>
+
+<section class="vid"><div class="wrap"><div class="kicker rv">En 30 segundos</div><h2 class="rv">Su viaje en movimiento</h2><div class="vbox rv"><video id="vid" src="img/video-europa-30s.mp4" poster="img/poster-europa.jpg" muted playsinline loop preload="metadata" controls></video><button class="snd" id="snd"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2"/></svg>Ver con música</button></div></div></section>
 
 <section class="end" id="reservar">
  <img src="img/c-roma.jpg" alt="Roma al atardecer, con la cúpula de San Pedro y el Tíber">
@@ -341,6 +344,10 @@ document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 const links=[...document.querySelectorAll('#nav a')];
 const so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));const a=links.find(a=>a.classList.contains('on')),nv=a&&a.parentNode;if(nv)nv.scrollTo({left:a.offsetLeft-(nv.clientWidth-a.offsetWidth)/2,behavior:'smooth'})}}),{rootMargin:'-45% 0px -50% 0px'});
 ['ruta',...C.map(c=>c.id),'estadia'].forEach(id=>so.observe(document.getElementById(id)));
+const vd=document.getElementById('vid'),sb=document.getElementById('snd');
+if(vd){const vo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(vd.muted)vd.play().catch(()=>{})}else vd.pause()}),{threshold:.5});vo.observe(vd);
+sb.onclick=()=>{vd.muted=false;vd.currentTime=0;vd.play().catch(()=>{});sb.classList.add('off')};
+vd.addEventListener('volumechange',()=>sb.classList.toggle('off',!vd.muted));}
 }
 </script>
 </body>
